@@ -119,11 +119,11 @@
         <div class="container pb-5"></div>
             <div class="row">
                 <div class="col-12">
-                    <ul class="nav nav-tabs" id="pricingTab" role="tablist">
+                    <ul class="nav nav-tabs d-none d-md-flex" id="pricingTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="mens-tab" data-toggle="tab" href="#mens" role="tab" aria-controls="mens" aria-selected="true">Men's Clothing</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item"></li>
                             <a class="nav-link" id="womens-tab" data-toggle="tab" href="#womens" role="tab" aria-controls="womens" aria-selected="false">Women's Clothing</a>
                         </li>
                         <li class="nav-item">
@@ -139,6 +139,19 @@
                             <a class="nav-link" id="leather-tab" data-toggle="tab" href="#leather" role="tab" aria-controls="leather" aria-selected="false">LEATHER/SUEDE CLEANING (Includes Waterproofing)</a>
                         </li>
                     </ul>
+                    <div class="d-block d-md-none">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="mobileTabsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select Category
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="mobileTabsDropdown">
+                            <a class="nav-link active" id="mens-tab" data-toggle="tab" href="#mens" role="tab" aria-controls="mens" aria-selected="true">Men's Clothing</a>
+                            <a class="dropdown-item" id="womens-tab" data-toggle="tab" href="#womens" role="tab" aria-controls="womens" aria-selected="false">Women's Clothing</a>
+                            <a class="dropdown-item" id="coats-tab" data-toggle="tab" href="#coats" role="tab" aria-controls="coats" aria-selected="false">Coats</a>
+                            <a class="dropdown-item" id="homewares-tab" data-toggle="tab" href="#homewares" role="tab" aria-controls="homewares" aria-selected="false">Homewares</a>
+                            <a class="dropdown-item" id="other-tab" data-toggle="tab" href="#other" role="tab" aria-controls="other" aria-selected="false">Other/rugs</a>
+                            <a class="dropdown-item" id="leather-tab" data-toggle="tab" href="#leather" role="tab" aria-controls="leather" aria-selected="false">LEATHER/SUEDE CLEANING (Includes Waterproofing)</a>
+                        </div>
+                    </div>
                     <div class="tab-content" id="pricingTabContent">
                         <div class="tab-pane fade show active" id="mens" role="tabpanel" aria-labelledby="mens-tab">
                             <table class="table table-striped mt-3">
