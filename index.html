@@ -23,6 +23,306 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+        /* MID-AUTUMN FESTIVAL THEME STYLES */
+        .mid-autumn-carousel-container {
+            /* Deep blue night sky background */
+            background-color: #001f3f;
+            /* Soft border for a contained, elegant look */
+            border: 3px solid #FFD700;
+            /* Optional: Slight curve to the edges */
+            border-radius: 10px;
+            padding: 15px 0;
+        }
+
+        .mid-autumn-marquee-text {
+            /* Gold text for the full moon and lanterns */
+            color: #FFD700;
+            /* A bold, elegant font */
+            font-family: 'Georgia', serif;
+            /* Make the text stand out */
+            font-weight: bold;
+            /* Slightly larger text for impact */
+            font-size: 1.1em;
+        }
+
+        /* Style the icon for a rich, warm look (using the full moon emoji) */
+        .mid-autumn-marquee-text span {
+            /* Override the gold text for a touch of warm orange-red, 
+       representing a lantern or a traditional accent color */
+            color: #FF6347;
+            margin-right: 60px;
+        }
+
+        /* Style the main text segments */
+        .mid-autumn-marquee-text span:nth-child(even),
+        .mid-autumn-marquee-text span:nth-child(odd) {
+            color: #FFD700;
+            /* Revert text color back to gold */
+        }
+
+        /* Style the Full Moon icon (🌕) to stand out more */
+        .full-moon-icon {
+            color: #FFD700;
+            /* Full Moon is gold/yellow */
+            font-size: 1.2em;
+            /* Slightly larger than the text */
+            margin: 0 10px;
+        }
+
+        /* NEW CSS for Centering the Image */
+        .banner-content-wrapper {
+            /* Use flexbox to center content vertically and horizontally */
+            display: flex;
+            flex-direction: column;
+            /* Stack items vertically */
+            align-items: center;
+            /* Center items horizontally */
+            justify-content: center;
+            width: 100%;
+            /* Ensure it takes full width for centering to work */
+        }
+
+        .img-centered {
+            /* Set max-width so it can shrink on mobile, but keep it centered */
+            max-width: 100%;
+            /* Ensure the image is treated as a block for correct sizing and alignment */
+            display: block;
+            /* The centering magic: applies equal left/right margins to center the block */
+            margin: 0 auto;
+            /* Optional: Add some space above and below the banner image */
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 0;
+            min-height: 90vh;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8a 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%233dd5e8;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%232bb4c5;stop-opacity:0.05"/></linearGradient></defs><circle cx="900" cy="400" r="400" fill="url(%23grad)"/><circle cx="1100" cy="200" r="250" fill="url(%23grad)"/></svg>');
+            background-size: cover;
+            opacity: 0.6;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-accent {
+            background: linear-gradient(135deg, #3dd5e8, #5ee5f3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #3dd5e8 0%, #2bb4c5 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(61, 213, 232, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(61, 213, 232, 0.5);
+        }
+
+        .secondary-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-visual {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(61, 213, 232, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .moon {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #ffd89b 0%, #ffeb99 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 80px rgba(255, 235, 153, 0.5);
+            position: relative;
+        }
+
+        .lantern {
+            position: absolute;
+            width: 80px;
+            height: 100px;
+            background: linear-gradient(135deg, #ff4757 0%, #ff6b7a 100%);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4);
+        }
+
+        .lantern-left {
+            top: 20%;
+            left: -15%;
+            animation: swing 3s ease-in-out infinite;
+        }
+
+        .lantern-right {
+            bottom: 20%;
+            right: -15%;
+            animation: swing 3s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes swing {
+
+            0%,
+            100% {
+                transform: rotate(-5deg);
+            }
+
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        /* Services Banner */
+        .services-banner {
+            background: linear-gradient(135deg, #ffeb99 0%, #ffd89b 100%);
+            padding: 1.5rem 2rem;
+            overflow: hidden;
+        }
+
+        .banner-scroll {
+            display: flex;
+            gap: 3rem;
+            animation: scroll 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .banner-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 600;
+            color: #1e3a5f;
+            font-size: 1.1rem;
+        }
+
+        .banner-icon {
+            width: 30px;
+            height: 30px;
+            background: rgba(30, 58, 95, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Custom CSS to add a hover effect */
+        .hover-effect {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+            /* Change cursor to indicate interactivity */
+        }
+
+        .hover-effect:hover {
+            transform: translateY(-5px);
+            /* Lifts the element up slightly */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+            /* Larger shadow */
+        }
+    </style>
 </head>
 
 <body>
@@ -89,50 +389,73 @@
         </div>
     </div>
     <!-- Navbar End -->
-
-
-    <!-- Carousel Start -->
-    <div class="container-fluid p-0">
-        <div id="header-banner" class="banner">
-            <!-- Carousel Start -->
-            <!-- <div id="header-carousel container" class="bg-light carousel slide py-lg-1" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="d-flex flex-row align-items-center justify-content-center text-center p-3">
-                            <marquee behavior="scroll" direction="left" scrollamount="5" loop="infinite" onmouseover="this.stop();" onmouseout="this.start();">
-                                <span style="margin-right: 60px;">✨ Pickup and delivery free on Tuesday and Friday of week ✨</span>
-                                <span style="margin-right: 60px;">✨ Pickup and delivery free on Tuesday and Friday of week ✨</span>
-                                <span style="margin-right: 60px;">✨ Pickup and delivery free on Tuesday and Friday of week ✨</span>
-                                <span style="margin-right: 60px;">✨ Pickup and delivery free on Tuesday and Friday of week ✨</span>
-                                <span style="margin-right: 60px;">✨ Pickup and delivery free on Tuesday and Friday of week ✨</span>
-                                <span style="margin-right: 60px;">✨ Pickup and delivery free on Tuesday and Friday of week ✨</span>
-                            </marquee>
-                        </div>
-                    </div>
-                </div>
-                
+    <!-- Services Banner -->
+    <div class="services-banner">
+        <div class="banner-scroll">
+            <div class="banner-item">
+                <div class="banner-icon">🚚</div>
+                <span>Free Delivery Available</span>
             </div>
-            <!-- Carousel End -->
-            <img class="w-100" src="img/SOUTHERN_STAR.png" alt="Free Shipping">
-            <div class="banner-caption d-flex flex-column align-items-center justify-content-center" style="background: none;"></div>
-            <div class="p-3" style="max-width: 900px;"></div>
-                <!-- <h4 class="text-white text-uppercase mb-md-3">Laundry & Dry Cleaning</h4>
-                <h1 class="display-3 text-white mb-md-4">Best Laundry Services</h1> -->
-                <!-- <a style="border-radius: 15px;" href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Learn
-                More</a> -->
+            <div class="banner-item">
+                <div class="banner-icon">⏱️</div>
+                <span>Quick Turnaround - 3 Days</span>
             </div>
+            <div class="banner-item">
+                <div class="banner-icon">📍</div>
+                <span>Serving 2km Radius</span>
+            </div>
+            <div class="banner-item">
+                <div class="banner-icon">🌟</div>
+                <span>Professional Care</span>
+            </div>
+            <div class="banner-item">
+                <div class="banner-icon">🚚</div>
+                <span>Free Delivery Available</span>
+            </div>
+            <div class="banner-item">
+                <div class="banner-icon">⏱️</div>
+                <span>Quick Turnaround - 3 Days</span>
+            </div>
+            <div class="banner-item">
+                <div class="banner-icon">📍</div>
+                <span>Serving 2km Radius</span>
+            </div>
+            <div class="banner-item">
+                <div class="banner-icon">🌟</div>
+                <span>Professional Care</span>
             </div>
         </div>
     </div>
-    <!-- Carousel End -->
-
-
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>
+                    Premium Laundry<br>
+                    <span class="hero-accent">Made Simple</span>
+                </h1>
+                <p>Experience professional laundry service with quick turnaround. Drop off Monday, delivered by
+                    Thursday. Serving areas within 2km of our store.</p>
+                <div class="hero-buttons">
+                    <a class="primary-btn">Get Started</a>
+                    <a class="secondary-btn">Our Services</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-visual">
+                    <div class="moon">
+                        <div class="lantern lantern-left"></div>
+                        <div class="lantern lantern-right"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Contact Info Start -->
     <div class="container-fluid contact-info mt-5 mb-4">
         <div class="container" style="padding: 0 30px;">
             <div class="row">
-                <div
-                    class="col-md-4 d-flex align-items-center justify-content-center bg-secondary mb-4 mb-lg-0"
+                <div class="col-md-4 d-flex align-items-center justify-content-center bg-secondary mb-4 mb-lg-0"
                     style="height: 100px;">
                     <div class="d-inline-flex">
                         <i class="fa fa-2x fa-map-marker-alt text-white m-0 mr-3"></i>
@@ -157,8 +480,7 @@
                         </div>
                     </div>
                 </div>
-                <div
-                    class="col-md-4 d-flex align-items-center justify-content-center bg-secondary mb-4 mb-lg-0"
+                <div class="col-md-4 d-flex align-items-center justify-content-center bg-secondary mb-4 mb-lg-0"
                     style="height: 100px;">
                     <div class="d-inline-flex text-left">
                         <i class="fa fa-2x fa-phone-alt text-white m-0 mr-3"></i>
@@ -229,29 +551,62 @@
             <h6 class="text-secondary text-uppercase text-center font-weight-medium mb-3">Our Services</h6>
             <h1 class="display-4 text-center mb-5">What We Offer</h1>
             <div class="row" style="cursor: pointer;">
-                <div class="col-lg-6 col-md-7 pb-1">
+                <div class="col-lg-4 col-md-7 pb-1">
                     <div class="d-flex flex-column align-items-center justify-content-center text-center bg-light mb-4 px-4"
                         style="height: 300px; border-radius: 20px;">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-4"
                             style="width: 100px; height: 100px; padding: 20px;">
-                            <img src="img/clothes-hanger_14753397.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="img/clothes-hanger_14753397.png" alt=""
+                                style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <h4 class="font-weight-bold m-0">Dry Cleaning</h4>
                     </div>
                 </div>
                 <style>
                     @keyframes shake {
-                        0% { transform: translate(1px, 1px) rotate(0deg); }
-                        10% { transform: translate(-1px, -2px) rotate(-1deg); }
-                        20% { transform: translate(-3px, 0px) rotate(1deg); }
-                        30% { transform: translate(3px, 2px) rotate(0deg); }
-                        40% { transform: translate(1px, -1px) rotate(1deg); }
-                        50% { transform: translate(-1px, 2px) rotate(-1deg); }
-                        60% { transform: translate(-3px, 1px) rotate(0deg); }
-                        70% { transform: translate(3px, 1px) rotate(-1deg); }
-                        80% { transform: translate(-1px, -1px) rotate(1deg); }
-                        90% { transform: translate(1px, 2px) rotate(0deg); }
-                        100% { transform: translate(1px, -2px) rotate(-1deg); }
+                        0% {
+                            transform: translate(1px, 1px) rotate(0deg);
+                        }
+
+                        10% {
+                            transform: translate(-1px, -2px) rotate(-1deg);
+                        }
+
+                        20% {
+                            transform: translate(-3px, 0px) rotate(1deg);
+                        }
+
+                        30% {
+                            transform: translate(3px, 2px) rotate(0deg);
+                        }
+
+                        40% {
+                            transform: translate(1px, -1px) rotate(1deg);
+                        }
+
+                        50% {
+                            transform: translate(-1px, 2px) rotate(-1deg);
+                        }
+
+                        60% {
+                            transform: translate(-3px, 1px) rotate(0deg);
+                        }
+
+                        70% {
+                            transform: translate(3px, 1px) rotate(-1deg);
+                        }
+
+                        80% {
+                            transform: translate(-1px, -1px) rotate(1deg);
+                        }
+
+                        90% {
+                            transform: translate(1px, 2px) rotate(0deg);
+                        }
+
+                        100% {
+                            transform: translate(1px, -2px) rotate(-1deg);
+                        }
                     }
 
                     .shake {
@@ -261,19 +616,21 @@
                         animation-delay: 0.5s;
                     }
                 </style>
-                <div class="col-lg-6 col-md-7 pb-1">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center bg-light mb-4 px-4 shake"
+                <div class="col-lg-4 col-md-7 pb-1" id="wash-fold">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center bg-light mb-4 px-4 shake hover-effect"
                         style="height: 300px; border-radius: 20px;" data-toggle="modal" data-target="#washFoldModal">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-4"
                             style="width: 100px; height: 100px; padding: 20px;">
-                            <img src="img/washing-machine_17521945.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="img/washing-machine_17521945.png" alt=""
+                                style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <h4 class="font-weight-bold m-0">Wash and Fold</h4>
                     </div>
                 </div>
 
                 <!-- Bootstrap Modal -->
-                <div class="modal fade" id="washFoldModal" tabindex="-1" role="dialog" aria-labelledby="washFoldModalLabel" aria-hidden="true">
+                <div class="modal fade" id="washFoldModal" tabindex="-1" role="dialog"
+                    aria-labelledby="washFoldModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -291,16 +648,17 @@
                     </div>
                 </div>
 
-                <!-- <div class="col-lg-4 col-md-7 pb-1">
+                <div class="col-lg-4 col-md-7 pb-1">
                     <div class="d-flex flex-column align-items-center justify-content-center text-center bg-light mb-4 px-4"
                         style="height: 300px; border-radius: 20px;">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-4"
                             style="width: 100px; height: 100px; padding: 20px;">
-                            <img src="img/delivery-truck_1383451.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="img/delivery-truck_1383451.png" alt=""
+                                style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <h4 class="font-weight-bold m-0">Pickup & Delivery</h4>
                     </div>
-                </div> -->
+                </div>
                 <!-- <div class="col-lg-4 col-md-7 pb-1">
                     <div class="d-flex flex-column align-items-center justify-content-center text-center bg-light mb-4 px-4"
                         style="height: 300px;">
@@ -363,7 +721,7 @@
             <h6 class="text-secondary text-uppercase text-center font-weight-medium mb-3">Working Process</h6>
             <h1 class="display-4 text-center mb-5">How We Work</h1>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4"
                             style="width: 150px; height: 150px; border-width: 15px !important;">
@@ -372,7 +730,7 @@
                         <h3 class="font-weight-bold m-0 mt-2">Order Place</h3>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4"
                             style="width: 150px; height: 150px; border-width: 15px !important;">
@@ -381,7 +739,7 @@
                         <h3 class="font-weight-bold m-0 mt-2">Pick Up</h3>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4"
                             style="width: 150px; height: 150px; border-width: 15px !important;">
@@ -390,7 +748,7 @@
                         <h3 class="font-weight-bold m-0 mt-2">Dry Cleaning</h3>
                     </div>
                 </div>
-                <!-- <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4"
                             style="width: 150px; height: 150px; border-width: 15px !important;">
@@ -398,7 +756,7 @@
                         </div>
                         <h3 class="font-weight-bold m-0 mt-2">Delivery</h3>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>
@@ -412,315 +770,317 @@
             <h1 class="display-4 text-center mb-5">Reasonable Price</h1>
             <div class="row justify-content-center">
                 <div class="row">
-                <div class="col-12">
-                    <ul class="nav nav-tabs" id="pricingTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="mens-tab" data-toggle="tab" href="#mens" role="tab" aria-controls="mens" aria-selected="true">Men's Clothing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="womens-tab" data-toggle="tab" href="#womens" role="tab" aria-controls="womens" aria-selected="false">Women's Clothing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pricing.html" class="nav-item nav-link">See More...</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="pricingTabContent">
-                        <div class="tab-pane fade show active" id="mens" role="tabpanel" aria-labelledby="mens-tab">
-                            <table class="table table-striped mt-3 bg-light">
-                                <thead>
-                                    <tr>
-                                        <th>Items</th>
-                                        <th>Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Dress Shirt - Laundered (Cotton/Polyester Blend)</td>
-                                        <td>$3.15 Each - 5 for $13.95</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dress Shirt - Laundered (Silk/Embroidery/Fancy)</td>
-                                        <td>$5.65 Each - 3 for $14.95</td>
-                                    </tr>
-                                    <tr>
-                                        <td>T-Shirt / Polo Shirt</td>
-                                        <td>$5.65 Each - 3 for $14.95</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trousers / Jeans / Shorts </td>
-                                        <td>$5.65 Each - 3 for $14.95</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sweater</td>
-                                        <td>$10.85 Each</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jersey</td>
-                                        <td>$9.85 Each</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sweatshirt / Sweatpants / Hoodie</td>
-                                        <td>$11.85 Each</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Men's Suit - Jacket Only (Blazer)</td>
-                                        <td>9.95 Each</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Men's Suit - 2 Pieces (Jacket and Trouser)</td>
-                                        <td>$14.95 Each</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Men's Suit - 3 Pieces (Jacket, Trouser and Vest)</td>
-                                        <td>$20.95 Each</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Vest</td>
-                                        <td>$8.95 Each</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tie / Bowtie</td>
-                                        <td>$7.95 Each</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hats / Baseball Cap</td>
-                                        <td>$12.95 Each</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="tab-pane fade" id="womens" role="tabpanel" aria-labelledby="womens-tab">
-                            <table class="table table-striped mt-3 bg-light">
-                                <thead>
-                                    <tr>
-                                        <th>Items</th>
-                                        <th>Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Women's Blouse / Top</td>
-                                        <td>$7.45 Each (Beads +$4.25)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Skirt (Straight)</td>
-                                        <td>$9.45 Each (beads +$4.25, Full length +$3.00)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Skirt (Pleated)</td>
-                                        <td>$14.95 Each (Beads +$4.24, Full length +$ 4.00)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Women's Dress - Knee Length </td>
-                                        <td>$16.95 Each (Beads +$8.25)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Women's Dress - Gown / Full Length / Jumpsuit</td>
-                                        <td>$20.95 Each (Beads +$10.25)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jersey</td>
-                                        <td>$9.85 Each</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="tab-pane fade" id="coats" role="tabpanel" aria-labelledby="coats-tab">
-                            <table class="table table-striped mt-3 bg-light">
-                                <thead>
-                                    <tr>
-                                        <th>Items</th>
-                                        <th>Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Coat - Fabric with Lining (Spring/Fall Jacket)</td>
-                                        <td>$18.95 Each (Hood +$3.75)</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Coat - P-Coat/Wool/Felt - Up to 36"</td>
-                                        <td>$38.95 Each (Hood +$4.75)</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Coat - P-Coat/Wool/Felt - Over 36"/Trench Coat</td>
-                                        <td>$41.95 Each (Hood +$4.75)</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Coat - Polyester Filled - Up to 32"</td>
-                                        <td>$26.95 Each (Hood +$4.25)</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Coat - Polyester Filled - 32" to 42"</td>
-                                        <td>$32.95 Each (Hood +$4.25)</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Coat - Polyester Filled - Over 42"</td>
-                                        <td>$36.95 Each (Hood +$4.25)</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Coat - Down/Feather Filled - Up to 32"</td>
-                                        <td>$46.95 Each (Hood +$6.25, Fur Trim +$14.95)</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Coat - Down/Feather Filled - Up to 32"</td>
-                                        <td>$56.95 Each (Hood +$6.25, Fur Trim +$14.95)</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Coat - Down/Feather Filled & Leather/Suede Trim Up to 30"</td>
-                                        <td>$72.95 Each (Hood +$6.25, Fur trim +$14.95)</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Coat - Down/Feather Filled & Leather/Suede Trim Over 30"</td>
-                                        <td>$78.95 Each (Hood +$6.25, Fur trim +$14.95)</td>
-                                      </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="tab-pane fade" id="homewares" role="tabpanel" aria-labelledby="homewares-tab">
-                            <table class="table table-striped mt-3 bg-light">
-                                <thead>
-                                    <tr>
-                                        <th>Items</th>
-                                        <th>Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Table Cloth</td>
-                                        <td>$15.95 Each</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Cushion covers</td>
-                                        <td>$9.95 Each</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Bed sheet - Single/Twin/Double/Full</td>
-                                        <td>$15.95 Each</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Bed Sheet - Queen/King</td>
-                                        <td>$19.95 Each</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Curtain (up to 48" Wide Panel)</td>
-                                        <td>$19.95 Each - Lining +$4.75</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Curtain (48" to 60" Wide Panel)</td>
-                                        <td>$24.95 Each - Lining +$4.75</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Comforter - Single/Twin/Double/Full</td>
-                                        <td>$30.95 Each - Down/Feather Filled +$5.75</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Comforter - Queen/King</td>
-                                        <td>$35.95 Each - Down/Feather Filled +$6.25</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Blandet/Duvel Cover - Single/Twin/Double/Full</td>
-                                        <td>$20.95 Each</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Blandet/Duvel Cover - Queen/King</td>
-                                        <td>$25.95 Each</td>
-                                      </tr>
-                                    
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
-                            <table class="table table-striped mt-3">
-                                <thead>
-                                    <tr>
-                                        <th>Items</th>
-                                        <th>Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Kurta Pyjama (2pc)</td>
-                                        <td>$24.95</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Kurta only</td>
-                                        <td>$19.95 Each</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Pyjama only</td>
-                                        <td>$5.65 Each</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Salwar Kameez - or - Indian Women's Suite 2pc/3pc</td>
-                                        <td>2Pc- $24.95 / 3Pc- $29.95 - Beads +$4.95</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Saree</td>
-                                        <td>$29.95 - Beads + $9.95</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Standard Area Rug</td>
-                                        <td>$2.55/Square Foot</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Rubber Backing Area Rug</td>
-                                        <td>$3.55/Square Foot</td>
-                                      </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="tab-pane fade" id="leather" role="tabpanel" aria-labelledby="leather-tab">
-                            <table class="table table-striped mt-3">
-                                <thead>
-                                    <tr>
-                                        <th>Items</th>
-                                        <th>Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Leather Jacket Up to 30" - Plain Lining</td>
-                                        <td>$76.95 Each - Fur Trim +$14.95</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Leather Jacket 30" to 35" - Plain Lining</td>
-                                        <td>$83.95 Each - Fur Trim +$14.95</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Leather Jacket Over 35" - Plain Lining</td>
-                                        <td>$93.95 Each - Fur Trim +$14.95</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Leather Vest</td>
-                                        <td>$64.95 Each - Fur Trim +$14.95</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Leather Pants</td>
-                                        <td>$69.95 Each</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Leather Purse</td>
-                                        <td>$83.95 Each</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Leather Gloves</td>
-                                        <td>$53.95 For the Pair</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Leather Boots</td>
-                                        <td>$65.95 For the Pair - Fur Trim +$14.95</td>
-                                      </tr>
-                                      <tr>
-                                        <td>For any Leather/Suede Items not Listed</td>
-                                        <td>Please Inquire</td>
-                                      </tr>
-                                </tbody>
-                            </table>
+                    <div class="col-12">
+                        <ul class="nav nav-tabs" id="pricingTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="mens-tab" data-toggle="tab" href="#mens" role="tab"
+                                    aria-controls="mens" aria-selected="true">Men's Clothing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="womens-tab" data-toggle="tab" href="#womens" role="tab"
+                                    aria-controls="womens" aria-selected="false">Women's Clothing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pricing.html" class="nav-item nav-link">See More...</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pricingTabContent">
+                            <div class="tab-pane fade show active" id="mens" role="tabpanel" aria-labelledby="mens-tab">
+                                <table class="table table-striped mt-3 bg-light">
+                                    <thead>
+                                        <tr>
+                                            <th>Items</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Dress Shirt - Laundered (Cotton/Polyester Blend)</td>
+                                            <td>$3.15 Each - 5 for $13.95</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dress Shirt - Laundered (Silk/Embroidery/Fancy)</td>
+                                            <td>$5.65 Each - 3 for $14.95</td>
+                                        </tr>
+                                        <tr>
+                                            <td>T-Shirt / Polo Shirt</td>
+                                            <td>$5.65 Each - 3 for $14.95</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Trousers / Jeans / Shorts </td>
+                                            <td>$5.65 Each - 3 for $14.95</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sweater</td>
+                                            <td>$10.85 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jersey</td>
+                                            <td>$9.85 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sweatshirt / Sweatpants / Hoodie</td>
+                                            <td>$11.85 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Men's Suit - Jacket Only (Blazer)</td>
+                                            <td>9.95 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Men's Suit - 2 Pieces (Jacket and Trouser)</td>
+                                            <td>$14.95 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Men's Suit - 3 Pieces (Jacket, Trouser and Vest)</td>
+                                            <td>$20.95 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vest</td>
+                                            <td>$8.95 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tie / Bowtie</td>
+                                            <td>$7.95 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hats / Baseball Cap</td>
+                                            <td>$12.95 Each</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="womens" role="tabpanel" aria-labelledby="womens-tab">
+                                <table class="table table-striped mt-3 bg-light">
+                                    <thead>
+                                        <tr>
+                                            <th>Items</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Women's Blouse / Top</td>
+                                            <td>$7.45 Each (Beads +$4.25)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Skirt (Straight)</td>
+                                            <td>$9.45 Each (beads +$4.25, Full length +$3.00)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Skirt (Pleated)</td>
+                                            <td>$14.95 Each (Beads +$4.24, Full length +$ 4.00)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Women's Dress - Knee Length </td>
+                                            <td>$16.95 Each (Beads +$8.25)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Women's Dress - Gown / Full Length / Jumpsuit</td>
+                                            <td>$20.95 Each (Beads +$10.25)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jersey</td>
+                                            <td>$9.85 Each</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="coats" role="tabpanel" aria-labelledby="coats-tab">
+                                <table class="table table-striped mt-3 bg-light">
+                                    <thead>
+                                        <tr>
+                                            <th>Items</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Coat - Fabric with Lining (Spring/Fall Jacket)</td>
+                                            <td>$18.95 Each (Hood +$3.75)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Coat - P-Coat/Wool/Felt - Up to 36"</td>
+                                            <td>$38.95 Each (Hood +$4.75)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Coat - P-Coat/Wool/Felt - Over 36"/Trench Coat</td>
+                                            <td>$41.95 Each (Hood +$4.75)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Coat - Polyester Filled - Up to 32"</td>
+                                            <td>$26.95 Each (Hood +$4.25)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Coat - Polyester Filled - 32" to 42"</td>
+                                            <td>$32.95 Each (Hood +$4.25)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Coat - Polyester Filled - Over 42"</td>
+                                            <td>$36.95 Each (Hood +$4.25)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Coat - Down/Feather Filled - Up to 32"</td>
+                                            <td>$46.95 Each (Hood +$6.25, Fur Trim +$14.95)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Coat - Down/Feather Filled - Up to 32"</td>
+                                            <td>$56.95 Each (Hood +$6.25, Fur Trim +$14.95)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Coat - Down/Feather Filled & Leather/Suede Trim Up to 30"</td>
+                                            <td>$72.95 Each (Hood +$6.25, Fur trim +$14.95)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Coat - Down/Feather Filled & Leather/Suede Trim Over 30"</td>
+                                            <td>$78.95 Each (Hood +$6.25, Fur trim +$14.95)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="homewares" role="tabpanel" aria-labelledby="homewares-tab">
+                                <table class="table table-striped mt-3 bg-light">
+                                    <thead>
+                                        <tr>
+                                            <th>Items</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Table Cloth</td>
+                                            <td>$15.95 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cushion covers</td>
+                                            <td>$9.95 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bed sheet - Single/Twin/Double/Full</td>
+                                            <td>$15.95 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bed Sheet - Queen/King</td>
+                                            <td>$19.95 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Curtain (up to 48" Wide Panel)</td>
+                                            <td>$19.95 Each - Lining +$4.75</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Curtain (48" to 60" Wide Panel)</td>
+                                            <td>$24.95 Each - Lining +$4.75</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Comforter - Single/Twin/Double/Full</td>
+                                            <td>$30.95 Each - Down/Feather Filled +$5.75</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Comforter - Queen/King</td>
+                                            <td>$35.95 Each - Down/Feather Filled +$6.25</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Blandet/Duvel Cover - Single/Twin/Double/Full</td>
+                                            <td>$20.95 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Blandet/Duvel Cover - Queen/King</td>
+                                            <td>$25.95 Each</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
+                                <table class="table table-striped mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th>Items</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Kurta Pyjama (2pc)</td>
+                                            <td>$24.95</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kurta only</td>
+                                            <td>$19.95 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pyjama only</td>
+                                            <td>$5.65 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Salwar Kameez - or - Indian Women's Suite 2pc/3pc</td>
+                                            <td>2Pc- $24.95 / 3Pc- $29.95 - Beads +$4.95</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Saree</td>
+                                            <td>$29.95 - Beads + $9.95</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Standard Area Rug</td>
+                                            <td>$2.55/Square Foot</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rubber Backing Area Rug</td>
+                                            <td>$3.55/Square Foot</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="leather" role="tabpanel" aria-labelledby="leather-tab">
+                                <table class="table table-striped mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th>Items</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Leather Jacket Up to 30" - Plain Lining</td>
+                                            <td>$76.95 Each - Fur Trim +$14.95</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Leather Jacket 30" to 35" - Plain Lining</td>
+                                            <td>$83.95 Each - Fur Trim +$14.95</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Leather Jacket Over 35" - Plain Lining</td>
+                                            <td>$93.95 Each - Fur Trim +$14.95</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Leather Vest</td>
+                                            <td>$64.95 Each - Fur Trim +$14.95</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Leather Pants</td>
+                                            <td>$69.95 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Leather Purse</td>
+                                            <td>$83.95 Each</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Leather Gloves</td>
+                                            <td>$53.95 For the Pair</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Leather Boots</td>
+                                            <td>$65.95 For the Pair - Fur Trim +$14.95</td>
+                                        </tr>
+                                        <tr>
+                                            <td>For any Leather/Suede Items not Listed</td>
+                                            <td>Please Inquire</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
@@ -732,69 +1092,75 @@
         <div class="container">
             <h6 class="text-secondary text-uppercase text-center font-weight-medium mb-3">Testimonial</h6>
             <h1 class="display-4 text-center mb-5">Our Clients Say</h1>
-                <div class="owl-carousel testimonial-carousel">
-                    <div class="testimonial-item">
-                        
-                        <div class="bg-light text-center p-4 pt-0">
-                            <h5 class="font-weight-medium mt-5">Paul Reid</h5>
-                            <!--Five stars-->
-                            <div class="d-flex justify-content-center mb-3">
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary"></i>
-                            </div>
-                            <p class="m-0">I recently relocated to this region and am seeking for a laundry to utilize. 
-                                After hearing suggestions from friends, I decided to test it, and I am quite pleased! </p>
+            <div class="owl-carousel testimonial-carousel">
+                <div class="testimonial-item">
+
+                    <div class="bg-light text-center p-4 pt-0">
+                        <h5 class="font-weight-medium mt-5">Paul Reid</h5>
+                        <!--Five stars-->
+                        <div class="d-flex justify-content-center mb-3">
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary"></i>
                         </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="bg-light text-center p-4 pt-0">
-                            <h5 class="font-weight-medium mt-5">Tony Spik</h5>
-                            <!--Five stars-->
-                            <div class="d-flex justify-content-center mb-3">
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary"></i>
-                            </div>
-                            <p class="m-0">The washing machines are good and the dryers are hot. You won’t have to worry about the cost of washing or drying your items. 
-                                I love it here because there are large washing machines for multiple loads at once and the space is clean. </p>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="bg-light text-center p-4 pt-0">
-                            <h5 class="font-weight-medium mt-5">Emma Altman</h5>
-                            <!--Five stars-->
-                            <div class="d-flex justify-content-center mb-3">
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary"></i>
-                            </div>
-                            <p class="m-0">The manager was very helpful! I don’t normally go to do laundry, but I needed a large washing machine to wash my car covers. 
-                                The manager went out of his way to help me, and there were very nice people who also assisted.</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="bg-light text-center p-4 pt-0">
-                            <h5 class="font-weight-medium mt-5">Tamy Mishcler</h5>
-                            <!--Five stars-->
-                            <div class="d-flex justify-content-center mb-3">
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary mr-1"></i>
-                                <i class="fa fa-star text-primary"></i>
-                            </div>
-                            <p class="m-0">Today is my laundry day and unfortunately, my home washing machine is broken, so I had to come here to wash my rugs. 
-                                This area is very close to my home, and I am really glad I chose the right place! The shop is very clean, with staff supporting everyone.</p>
-                        </div>
+                        <p class="m-0">I recently relocated to this region and am seeking for a laundry to utilize.
+                            After hearing suggestions from friends, I decided to test it, and I am quite pleased! </p>
                     </div>
                 </div>
+                <div class="testimonial-item">
+                    <div class="bg-light text-center p-4 pt-0">
+                        <h5 class="font-weight-medium mt-5">Tony Spik</h5>
+                        <!--Five stars-->
+                        <div class="d-flex justify-content-center mb-3">
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary"></i>
+                        </div>
+                        <p class="m-0">The washing machines are good and the dryers are hot. You won’t have to worry
+                            about the cost of washing or drying your items.
+                            I love it here because there are large washing machines for multiple loads at once and the
+                            space is clean. </p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="bg-light text-center p-4 pt-0">
+                        <h5 class="font-weight-medium mt-5">Emma Altman</h5>
+                        <!--Five stars-->
+                        <div class="d-flex justify-content-center mb-3">
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary"></i>
+                        </div>
+                        <p class="m-0">The manager was very helpful! I don’t normally go to do laundry, but I needed a
+                            large washing machine to wash my car covers.
+                            The manager went out of his way to help me, and there were very nice people who also
+                            assisted.</p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="bg-light text-center p-4 pt-0">
+                        <h5 class="font-weight-medium mt-5">Tamy Mishcler</h5>
+                        <!--Five stars-->
+                        <div class="d-flex justify-content-center mb-3">
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary mr-1"></i>
+                            <i class="fa fa-star text-primary"></i>
+                        </div>
+                        <p class="m-0">Today is my laundry day and unfortunately, my home washing machine is broken, so
+                            I had to come here to wash my rugs.
+                            This area is very close to my home, and I am really glad I chose the right place! The shop
+                            is very clean, with staff supporting everyone.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Testimonial End -->
@@ -954,12 +1320,33 @@
         // JavaScript to reset marquee after 5 seconds (optional for a hard reset)
         document.addEventListener('DOMContentLoaded', (event) => {
             const marquee = document.querySelector('marquee');
-            if(marquee){
-              setInterval(() => {
-                  marquee.scrollLeft = 0; // Reset scroll position to start (optional)
-                  //marquee.start(); // Restart the marquee if needed
-              }, 5000); // 5000 milliseconds = 5 seconds
+            if (marquee) {
+                setInterval(() => {
+                    marquee.scrollLeft = 0; // Reset scroll position to start (optional)
+                    //marquee.start(); // Restart the marquee if needed
+                }, 5000); // 5000 milliseconds = 5 seconds
             }
+        });
+        $(document).ready(function () {
+            var timer;
+
+            // Trigger modal on hover (after a short delay to prevent accidental opening)
+            $('.hover-effect').hover(
+                function () {
+                    // Mouse enters: set a timer to open the modal after 500ms
+                    timer = setTimeout(function () {
+                        $('#washFoldModal').modal('show');
+                    }, 500);
+                },
+                function () {
+                    // Mouse leaves: clear the timer if it hasn't fired yet
+                    clearTimeout(timer);
+                }
+            );
+
+            // To prevent the modal from getting stuck if it opens, 
+            // you might want to consider adding a way to close it on mouseout
+            // of the modal itself or ensure the user knows to click the close button.
         });
     </script>
 </body>
