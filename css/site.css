@@ -426,15 +426,72 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   background: var(--navy-deep);
   color: #fff;
 }
+/* Layers, back to front: still photo (the LCP image and the fallback), the
+   looping video once js/site.js starts it, then the colour overlay that keeps
+   the white text readable. */
 .hero__bg {
   position: absolute;
-  inset: -16px;
+  inset: 0;
   z-index: -1;
-  background:
-    linear-gradient(105deg, rgba(8, 34, 48, .92) 0%, rgba(13, 70, 84, .88) 60%, rgba(12, 84, 94, .88) 100%),
-    url("../img/laundromat_img.jpg") center / cover no-repeat;
-  filter: blur(3px) saturate(.9);
-  transform: scale(1.04);
+  background-color: var(--navy-deep);
+  background-image: url("../img/hero-washer-1920.jpg");
+  background-image: image-set(url("../img/hero-washer-1920.webp") type("image/webp"), url("../img/hero-washer-1920.jpg") type("image/jpeg"));
+  background-position: 70% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 50%;
+  opacity: 0;
+  transition: opacity .8s var(--ease);
+}
+.hero__video.is-playing { opacity: 1; }
+/* Dark where the text sits (left), lighter over the machine (right) */
+.hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(8, 34, 48, .94) 0%, rgba(11, 52, 66, .9) 38%, rgba(13, 70, 84, .74) 62%, rgba(12, 84, 94, .42) 100%);
+}
+.hero__pause {
+  position: absolute;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: 16px;
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(8, 34, 48, .55);
+  color: #fff;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.hero__pause[hidden] { display: none; }
+.hero__pause .icon { width: 18px; height: 18px; }
+.hero__pause .hero__play-icon { display: none; }
+.hero__pause[aria-pressed="true"] .hero__pause-icon { display: none; }
+.hero__pause[aria-pressed="true"] .hero__play-icon { display: block; }
+.hero__pause:active { transform: scale(.94); }
+@media (hover: hover) and (pointer: fine) {
+  .hero__pause:hover { background: rgba(8, 34, 48, .8); }
+}
+/* One column on phones and tablets: the text crosses the whole width, so the
+   overlay is evenly dark, and a portrait crop keeps the machine in frame */
+@media (max-width: 61.999em) {
+  .hero__bg {
+    background-image: url("../img/hero-washer-960.jpg");
+    background-image: image-set(url("../img/hero-washer-960.webp") type("image/webp"), url("../img/hero-washer-960.jpg") type("image/jpeg"));
+  }
+  .hero__bg::after { background: linear-gradient(180deg, rgba(8, 34, 48, .9) 0%, rgba(11, 52, 66, .88) 100%); }
 }
 .hero__grid {
   display: grid;
@@ -670,6 +727,18 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   color: inherit;
   box-shadow: 0 6px 16px rgba(11, 42, 58, .10);
 }
+/* Photo cards: the picture fills the media area, the badge stays on top */
+.service-card__media--photo { overflow: hidden; }
+.service-card__photo,
+.service-card__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.service-card__photo img,
+img.service-card__photo { object-fit: cover; }
+.service-card__media--photo .service-card__badge { z-index: 1; }
 .service-card__body { padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .service-card h3 { margin: 0; }
 .service-card p { margin: 0; }
@@ -684,6 +753,7 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
 @media (max-width: 39.999em) {
   .services-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .service-card__media { height: 112px; }
+  .service-card__media--photo { height: 190px; }
   .service-card__media .icon--xl { width: 56px; height: 56px; }
 }
 
@@ -723,11 +793,11 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
 .step h3 { margin: 14px 0 6px; }
 .step p { margin: 0; }
 
-.how__visual { position: relative; padding-bottom: 48px; }
+.how__visual { position: relative; padding-bottom: 120px; } /* the hours card overlaps only the lower part of the photo */
 /* The gradient shows (with the alt text) if the photo fails to load */
 .how__photo { margin-left: 120px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: linear-gradient(135deg, #E6F5F6, #C9E8EB); color: var(--text); font-size: .9rem; }
-/* The real shop photo is 640×480: at 460px tall it is shown at or below its own size */
-.how__photo img { width: 100%; height: 460px; object-fit: cover; object-position: 30% 50%; }
+.how__photo picture { display: block; }
+.how__photo img { width: 100%; height: 460px; object-fit: cover; object-position: 50% 8%; }
 
 .hours-card {
   position: absolute;
@@ -1171,7 +1241,8 @@ html:not(.js) .tabs__list { display: none; }
     transition-duration: .01ms !important;
     scroll-behavior: auto !important;
   }
-  .hero__bg, .book__bg { filter: none; transform: none; }
+  .book__bg { filter: none; transform: none; }
+  .hero__video, .hero__pause { display: none; }
 }
 
 

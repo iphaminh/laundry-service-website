@@ -6,8 +6,8 @@ ROOT = Path(__file__).resolve().parents[2]  # repo root
 SITE = 'https://sscoinlaundry.vercel.app/'
 MAPS = 'https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA'
 NAME = 'Southern Star Coin Laundry'
-OG_IMAGE = SITE + 'img/laundromat_img.jpg'
-OG_ALT = 'Rows of stacked coin-operated dryers inside Southern Star Coin Laundry, North York'
+OG_IMAGE = SITE + 'img/og-cover.jpg'  # 1200×630
+OG_ALT = 'Laundry tumbling behind the glass door of a front-load washer'
 
 def text(fragment):
     """Visible text of an HTML fragment: drop tags, decode entities, collapse whitespace (incl. nbsp)."""
@@ -202,8 +202,8 @@ def head_block(page, cfg):
         f'  <meta property="og:description" content="{e(d)}">',
         f'  <meta property="og:url" content="{u}">',
         f'  <meta property="og:image" content="{OG_IMAGE}">',
-        '  <meta property="og:image:width" content="640">',
-        '  <meta property="og:image:height" content="480">',
+        '  <meta property="og:image:width" content="1200">',
+        '  <meta property="og:image:height" content="630">',
         f'  <meta property="og:image:alt" content="{e(OG_ALT)}">',
         '  <meta name="twitter:card" content="summary_large_image">',
         f'  <meta name="twitter:title" content="{e(t)}">',

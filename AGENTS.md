@@ -105,9 +105,20 @@ only with new confirmation from MT.
   customer's email app with a pre-filled message to the shop email. Everything
   still works with JavaScript off (all price tabs show, the form is a plain
   form, FAQ uses native `<details>`).
-- **Images:** only `img/laundromat_img.jpg` (real photo of the shop's dryers) is
-  used, as the hero and booking backgrounds, the About photo and the social
-  share image. Icons are inline SVG; the favicon is an inline SVG data URL.
+- **Images and video:**
+  - Real photo: `img/laundromat_img.jpg` (MT's dryers, 640×480) on the
+    Self-serve service card and behind the booking band.
+  - AI-generated (Higgsfield, Oct 2026), illustrative only: hero washer still
+    `hero-washer-{1920,1280,960}.{webp,jpg}`, hero loop video
+    `hero-loop-{1280,854}.{mp4,webm}` (8 s, silent, seamless), service card
+    photos `svc-{washfold,dryclean,pickup,alterations}`, the How-it-works photo
+    `how-folding` (mirrored so the hours card doesn't cover her face), and the
+    1200×630 share image `og-cover.jpg`. Never present an AI image as "our shop"
+    or "our staff"; alt texts describe the scene only.
+  - The hero video only loads after the page, never with reduced motion or Data
+    Saver, pauses off-screen, and has a pause button (`js/site.js` §6). The
+    still photo is the first paint and the fallback.
+  - Icons are inline SVG; the favicon is an inline SVG data URL.
 - **Repeated on every page:** the header (logo, nav, Call button) and the footer
   (contact details, hours, quick links). Edit all three content pages (and the
   two redirects' `<head>` if titles change) when you change them.
@@ -154,8 +165,11 @@ third-party reviews).
   all follow).
 
 **Unused leftovers, kept on purpose for now** (ask the site owner before deleting;
-the Mid-Autumn images may be reused each year): every `img/` file except
-`laundromat_img.jpg`. Note `about.jpg`, `carousel-1.jpg` and `carousel-2.jpg`
+the Mid-Autumn images may be reused each year): the old `img/` files
+(`SOUTHERN_STAR.png`, `about.jpg`, `banner_free_shipping.jpg`, `carousel-*.jpg`,
+`clothes*.png`, `delivery-truck_*.png`, `free_shipping.png`, `hanger_*.png`,
+`icon-southernstar*.ico`, `mid_autumn.png`, `trung_thu_banner.png`,
+`washing-machine_*.png`). Note `about.jpg`, `carousel-1.jpg` and `carousel-2.jpg`
 came with the old HTML Codex template: don't use them on the new site without
 restoring that template's credit.
 
@@ -261,13 +275,19 @@ facts in this file always win over a design suggestion.
    the reviews row swipes, the Google map on `contact.html` pans with two fingers
    and the Directions button is easy to reach, the notch padding in landscape,
    and that "Send request by email" opens the mail app with the details filled in.
-9. **Photos.** The site uses one real photo (`img/laundromat_img.jpg`, 640×480,
-   low-res). Planned: AI-generated photos via Higgsfield (8 shots: attendant
-   with basket for the hero, folded stack, shirts on hangers, delivery hand-off,
-   machines, alterations, shop interior, family) at "high" quality, 2k, ~2.75
-   credits each (~22 total). Waiting for the site owner to add credits (balance
-   was 0 on Oct 23). Real photos of the shop from MT would be better still. Also
-   wanted: a 1200×630 share image (`og:image`).
+9. **Photos (done, could be better).** AI photos and the hero video are on the
+   `redesign` branch (see "Images and video" above). Real photos or a 10-second
+   phone video of MT's shop would be more authentic; swap them in when she has
+   them (same file names and sizes, or update the markup). Higgsfield source
+   jobs (to regenerate or re-download): hero still `3d14ab9c-7151-41de-8590-35345ca1f7fe`,
+   hero video `32026bab-223c-4ba7-808e-2285daed1db6`, wash & fold
+   `41571db2-ac08-4a7b-8637-9fe4f96fad58`, dry cleaning
+   `546361f6-c4ab-4a88-bd48-5cf231ac14a6`, pickup `dcecc032-6081-41a1-a3eb-1361d691bd67`,
+   alterations `75bf1b73-fa5f-43d5-8f37-66cee4c114d8`, folding
+   `05073782-306b-4bc3-a9b7-fd8b9f9fea18`. The site owner's Higgsfield account
+   is on a 3-day Plus trial started Oct 23 that renews at $49/month unless they
+   cancel; ask before spending credits. The cloud environment must allow
+   `d8j0ntlcm91z4.cloudfront.net` to download Higgsfield files.
 
 ## Session log
 
@@ -344,3 +364,22 @@ merged/live), and what is next.
   - Next: the site owner checks the preview (and on a phone, item 8); add photos
     once credits are in (item 9); then merge `redesign` into `main` (it replaces
     `mobile-fixes`). After going live, do item 5.
+- **2026-10-23 (night), Claude Code.**
+  - Added AI-generated photos and a hero background video (Higgsfield trial,
+    24.5 credits): 6 photos at high/2k (gpt_image_2_5) and an 8 s 1080p
+    image-to-video loop (kling4_0) with matching first and last frames.
+  - `index.html`: hero video with still-photo fallback and pause button; photos
+    on 5 of the 6 service cards (Self-serve keeps the real shop photo, ATM keeps
+    its icon); new How-it-works photo; hero still preloaded. `css/site.css`:
+    hero layers (photo, video, overlay lighter on the right), photo cards,
+    pause button. `js/site.js` §6 loads the right size and format (MP4, else
+    WebM). Share image is now `img/og-cover.jpg` 1200×630 (SEO sync re-run).
+  - Verified in Chromium: video plays, pauses, resumes, stops off-screen, stays
+    off with reduced motion and without JS; all images load; no sideways scroll
+    at 320–1440 px; white hero text ≥ 7.5:1 over every video frame (desktop) and
+    ≥ 9.5:1 (phone); 101 SEO checks pass. Headless Chromium plays the WebM;
+    real Safari/Chrome use the MP4.
+  - Where: branch `redesign`, pushed for a Vercel preview. Not merged, not live.
+  - Next: the site owner reviews the preview (photos, video, phone check, item
+    8), then merge `redesign` into `main`. Decide on the Higgsfield trial before
+    it renews (~Oct 26).

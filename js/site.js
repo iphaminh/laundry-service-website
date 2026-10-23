@@ -1,6 +1,7 @@
 /* Southern Star Coin Laundry — site.js
    Dependency-free. Handles: sticky header shadow, mobile nav, pricing tabs,
-   reviews prev/next, and the pickup form (builds a mailto: link). */
+   reviews prev/next, the pickup form (builds a mailto: link), and the hero
+   background video. */
 (function () {
   'use strict';
 
@@ -186,5 +187,79 @@
 
       window.location.href = href;
     });
+  }
+
+  /* 6. Hero video ----------------------------------------------------------
+     The still photo is the page's first paint. The loop only loads after the
+     page has loaded, never with reduced motion or Data Saver on, pauses while
+     scrolled out of view, and has a pause button (WCAG 2.2.2). */
+  var video = doc.querySelector('.hero__video');
+  var pauseBtn = doc.querySelector('.hero__pause');
+
+  if (video) {
+    var conn = navigator.connection || {};
+    var saveData = conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
+    var userPaused = false;
+    var inView = true;
+
+    var tryPlay = function () {
+      if (userPaused || !inView || reduceMotion.matches) return;
+      var p = video.play();
+      if (p && p.catch) p.catch(function () {});
+    };
+
+    var setPaused = function (paused) {
+      userPaused = paused;
+      pauseBtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      pauseBtn.querySelector('.visually-hidden').textContent =
+        paused ? 'Play background video' : 'Pause background video';
+      if (paused) video.pause(); else tryPlay();
+    };
+
+    // Files: img/hero-loop-{854|1280}.{mp4|webm}. MP4 (H.264) where supported,
+    // else WebM (VP9); the smaller size on phones.
+    var start = function () {
+      if (reduceMotion.matches || saveData || video.getAttribute('src')) return;
+      var ext = video.canPlayType('video/mp4; codecs="avc1.4D401F"') ? 'mp4'
+        : video.canPlayType('video/webm; codecs="vp9"') ? 'webm' : '';
+      if (!ext) return;
+      var size = window.matchMedia('(max-width: 47.999em)').matches ? 854 : 1280;
+      video.src = video.getAttribute('data-src') + '-' + size + '.' + ext;
+      tryPlay();
+    };
+
+    video.addEventListener('playing', function () {
+      video.classList.add('is-playing');
+      if (pauseBtn) pauseBtn.hidden = false;
+    });
+
+    if (pauseBtn) {
+      pauseBtn.addEventListener('click', function () { setPaused(!userPaused); });
+    }
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        inView = entries[0].isIntersecting;
+        if (!video.getAttribute('src')) return;
+        if (inView) tryPlay(); else video.pause();
+      }).observe(video);
+    }
+
+    var onMotion = function () {
+      if (reduceMotion.matches) {
+        video.pause();
+        video.classList.remove('is-playing');
+        if (pauseBtn) pauseBtn.hidden = true;
+      } else if (video.getAttribute('src')) {
+        tryPlay();
+      } else {
+        start();
+      }
+    };
+    if (reduceMotion.addEventListener) reduceMotion.addEventListener('change', onMotion);
+    else if (reduceMotion.addListener) reduceMotion.addListener(onMotion);
+
+    if (doc.readyState === 'complete') start();
+    else window.addEventListener('load', start);
   }
 })();
