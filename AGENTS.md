@@ -171,6 +171,24 @@ the Mid-Autumn images may be reused each year):
 - **Don't invent business facts** (prices, hours, claims, reviews). Ask the site
   owner, who checks with MT.
 
+## Design skills (optional helpers)
+
+`.claude/skills/` holds three UI skills copied from
+https://github.com/emilkowalski/skills (MIT license; see
+`.claude/skills/LICENSE-emilkowalski-skills.txt`). They were copied unchanged
+from commit `e8a175d` after a safety review: text only, no scripts.
+
+- `mobile-native`: makes the site feel right on phones (tap highlights, sticky
+  hover, input zoom, safe areas, the 100vh bug). Most customers visit on a phone.
+- `break-ui`: stress-tests a page with worst-case content (long names, long
+  prices, empty states) and reports what breaks.
+- `emil-design-eng`: general UI polish and animation judgement.
+
+Claude Code loads them automatically from `.claude/skills/`; Codex can read the
+same `SKILL.md` files as guides. They are advice for the agent, not part of the
+website, and `.vercelignore` keeps `.claude/` off the live site. The business
+facts in this file always win over a design suggestion.
+
 ## Status (as of 2026-10-09)
 
 - Done and live:
@@ -240,3 +258,11 @@ merged/live), and what is next.
   - Added this file, `CLAUDE.md` and `.vercelignore`, pushed directly to `main`
     (docs only, no visible site change).
   - Next: the domain purchase (open item 1), then MT's answers (item 2).
+- **2026-10-23, Claude Code.**
+  - Added the `mobile-native`, `break-ui` and `emil-design-eng` skills to
+    `.claude/skills/` (from emilkowalski/skills, MIT) and `.claude/` to
+    `.vercelignore`. Pushed to `main`; no visible site change.
+  - Open question: MT may want a different Gmail address as the main business
+    email. The site keeps `southernstarcoinlaundry@gmail.com` until the site
+    owner confirms.
+  - Next: the email decision, then the domain purchase (open item 1).
