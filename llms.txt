@@ -1,0 +1,106 @@
+# Southern Star Coin Laundry
+
+> Southern Star Coin Laundry is a self-serve coin laundromat and dry cleaner at Unit 10, 3685 Keele Street in North York, Toronto, open every day 5 AM – 11 PM. Wash & fold is $1.80/lb (minimum 10 lbs) and ready in 1 day. Pickup & delivery is free within 2 km for orders of 20 lbs or more.
+
+Coin laundromat and dry cleaner in North York, Toronto, Ontario, Canada. All prices are in Canadian dollars; HST applies to all prices.
+
+## Contact
+
+- Address: Unit 10, 3685 Keele Street, North York, ON M3J 3H6
+- Phone: 437-423-3962 (+1-437-423-3962)
+- Email: southernstarcoinlaundry@gmail.com
+- Google Maps (directions and reviews): https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA
+
+## Hours
+
+- Store (self-serve washers and dryers): open every day, 5 AM – 11 PM. Holiday hours may differ.
+- Attendant & pickup hours (staff on site for wash & fold, dry cleaning and pickups):
+  - Mon, Wed, Thu, Fri: 10 AM – 5 PM and 7 – 11 PM
+  - Tue: 7 – 11 PM
+  - Sat: 9 AM – 11 PM
+  - Sun: 10 AM – 11 PM
+
+## Services and prices
+
+- Self-serve coin-operated washers and dryers: ask in store for machine prices.
+- Wash & fold: $1.80/lb, minimum 10 lbs, ready in 1 day.
+- Fold only: $1.00/lb, minimum 10 lbs, ready in 1 day.
+- Same-day fast service: available as an add-on; ask for the price.
+- Pickup & delivery: free within 2 km of the store for orders of 20 lbs or more. Book by phone or email during attendant hours.
+- Dry cleaning: priced per item, from $3.45 (full list below, effective Jun 01, 2026).
+- Alterations: ask in store for pricing.
+- ATM on site.
+
+## Dry-cleaning price list (effective Jun 01, 2026; HST applies)
+
+### Men's Clothing
+
+- Dress Shirt - Laundered (Cotton/Polyester Blend): $3.45 each (5 for $15.45)
+- Dress Shirt - Laundered (Silk/Embroidery/Fancy): $6.15 each (3 for $16.45)
+- T-Shirt / Polo Shirt: $6.15 each (3 for $16.45)
+- Trousers / Jeans / Shorts: $6.15 each (3 for $16.45)
+- Sweater: $12.45 each
+- Jersey: $10.85 each
+- Sweatshirt / Sweatpants / Hoodie: $13.05 each
+- Men's Suit – Jacket Only (Blazer): $10.95 each
+- Men's Suit – 2 Pieces (Jacket & Trouser): $16.45 each
+- Men's Suit – 3 Pieces (Jacket, Trouser & Vest): $23.05 each
+- Vest: $9.85 each
+- Tie / Bowtie: $8.75 each
+- Hats / Baseball Cap: $14.25 each
+
+### Women's Clothing
+
+- Women's Blouse / Top: $8.15 each (Beads +$4.25)
+- Skirt (Straight): $10.35 each (Beads +$4.25 · Full length +$3.00)
+- Skirt (Pleated): $16.45 each (Beads +$4.24 · Full length +$4.00)
+- Women's Dress – Knee Length: $20.95 each (Beads +$8.25)
+- Women's Dress – Gown / Full Length / Jumpsuit: $25.95 each (Beads +$10.25)
+- Jersey: $9.85 each
+
+### Coats
+
+- Fabric with Lining (Spring / Fall Jacket): $19.95 each (Hood +$3.75)
+- P-Coat / Wool / Felt – Up to 36": $40.95 each (Hood +$4.75)
+- P-Coat / Wool / Felt – Over 36" / Trench Coat: $44.95 each (Hood +$4.75)
+- Polyester Filled – Up to 32": $28.95 each (Hood +$4.25)
+- Polyester Filled – 32" to 42": $32.95 each (Hood +$4.25)
+- Polyester Filled – Over 42": $38.95 each (Hood +$4.25)
+- Down / Feather Filled – Up to 32": $50.95 each (Hood +$6.25 · Fur Trim +$14.95)
+- Down / Feather Filled – 32" to 42": $60.95 each (Hood +$6.25 · Fur Trim +$14.95)
+- Down / Feather + Leather / Suede Trim – Up to 30": $76.95 each (Hood +$6.25 · Fur Trim +$14.95)
+- Down / Feather + Leather / Suede Trim – Over 30": $82.95 each (Hood +$6.25 · Fur Trim +$14.95)
+
+### Homewares
+
+- Table Cloth: $16.95 each
+- Cushion Covers: $10.95 each
+- Bed Sheet – Single / Twin / Double / Full: $16.95 each
+- Bed Sheet – Queen / King: $20.95 each
+- Curtain – Up to 48" Wide Panel: $20.95 each (Lining +$4.75)
+- Curtain – 48" to 60" Wide Panel: $25.95 each (Lining +$4.75)
+- Comforter – Single / Twin / Double / Full: $31.95 each (Down/Feather Filled +$5.75)
+- Comforter – Queen / King: $36.95 each (Down/Feather Filled +$6.25)
+- Blanket / Duvet Cover – Single / Twin / Double / Full: $21.95 each
+- Blanket / Duvet Cover – Queen / King: $26.95 each
+- Small Carpet: $16.95 each
+- Big Carpet: $20.95 each
+- XXL Carpet: $30.95 each
+
+### Other
+
+- Kurta Pyjama (2pc): $26.45 / 2pcs
+- Kurta Only: $20.95 each
+- Pyjama Only: $6.15 each
+- Salwar Kameez / Indian Women's Suit 2pc/3pc: $26.95 / $31.95 (Beads +$4.95)
+- Saree: $32.95 each (Beads +$9.95)
+- Wedding Dress: $150.00 each (Beads +$10.25)
+
+For items not listed, ask in store or call 437-423-3962.
+
+## Pages
+
+- [Home](https://sscoinlaundry.vercel.app/): services, how pickup & delivery works, prices, reviews, FAQ
+- [Pricing](https://sscoinlaundry.vercel.app/pricing.html): wash & fold and the full dry-cleaning price list
+- [Contact & hours](https://sscoinlaundry.vercel.app/contact.html): address, map, store and attendant hours, pickup request
+- [Google Maps listing](https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA): directions and customer reviews

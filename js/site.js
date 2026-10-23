@@ -60,7 +60,7 @@
       if (navIsOpen() && !header.contains(e.target)) setNav(false);
     });
 
-    var desktop = window.matchMedia('(min-width: 992px)');
+    var desktop = window.matchMedia('(min-width: 62em)');
     var onDesktop = function (e) { if (e.matches) setNav(false); };
     if (desktop.addEventListener) desktop.addEventListener('change', onDesktop);
     else desktop.addListener(onDesktop);
@@ -147,26 +147,41 @@
         return field && field.value ? field.value.trim() : '';
       };
 
-      var lines = [
-        'Pickup request from the website',
-        '',
-        'Name: ' + value('name'),
-        'Phone: ' + value('phone'),
-        'Pickup address: ' + value('address'),
-        'Service: ' + value('service'),
-        'Preferred day: ' + (value('day') || '-'),
-        'Notes: ' + (value('notes') || '-')
-      ];
+      function build(notes) {
+        var lines = [
+          'Pickup request from the website',
+          '',
+          'Name: ' + value('name'),
+          'Phone: ' + value('phone'),
+          'Pickup address: ' + value('address'),
+          'Service: ' + value('service'),
+          'Preferred day: ' + (value('day') || '-'),
+          'Notes: ' + (notes || '-')
+        ];
+        return 'mailto:' + EMAIL +
+          '?subject=' + encodeURIComponent('Pickup request') +
+          '&body=' + encodeURIComponent(lines.join('\r\n'));
+      }
 
-      var href = 'mailto:' + EMAIL +
-        '?subject=' + encodeURIComponent('Pickup request') +
-        '&body=' + encodeURIComponent(lines.join('\r\n'));
+      // Some mail apps (Outlook on Windows) cut off mailto: links over ~2,000
+      // characters, so shorten the notes until the link fits and say so.
+      var MAX_HREF = 1800;
+      var notes = value('notes');
+      var href = build(notes);
+      var trimmed = false;
+      while (href.length > MAX_HREF && notes.length > 1) {
+        notes = notes.slice(0, Math.floor(notes.length * 0.9));
+        trimmed = true;
+        href = build(notes + ' […]');
+      }
 
       // Keep a visible link in case the email app does not open
       var fallback = doc.getElementById('pickup-fallback');
       var link = doc.getElementById('pickup-mailto');
+      var trimNote = doc.getElementById('pickup-trimmed');
       if (link) link.href = href;
       if (fallback) fallback.hidden = false;
+      if (trimNote) trimNote.hidden = !trimmed;
       form.setAttribute('data-mailto', href);
 
       window.location.href = href;

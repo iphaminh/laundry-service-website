@@ -40,11 +40,12 @@ other one starts.
 ## What this is
 
 A small static marketing site for a laundromat and dry cleaner in North York,
-Toronto. It is plain HTML, CSS and JS (Bootstrap 4 + jQuery) built on the free
-**DRYME template by HTML Codex**. There is no build step, framework or backend.
-
-**License rule:** the free template requires the footer credit
-"Designed by HTML Codex" with its link. Never remove it.
+Toronto. Plain HTML, one stylesheet and one small script: no framework, no
+build step, no backend, no jQuery or Bootstrap. It was rebuilt from scratch in
+Oct 2026 (design inspired by a Behance laundry landing page, adapted to our
+facts) and no longer uses the old DRYME / HTML Codex template, so the old
+"Designed by HTML Codex" credit rule no longer applies. If any HTML Codex file
+is ever brought back, its credit must come back with it.
 
 ## Hosting and deployment
 
@@ -58,7 +59,8 @@ Toronto. It is plain HTML, CSS and JS (Bootstrap 4 + jQuery) built on the free
 | Other addresses | `southern-star-coin-laundry.vercel.app` 308-redirects to the primary. `sscoinlaundry-theta.vercel.app` is Vercel's auto-assigned alias and can't be removed. |
 
 - Do **not** create another Vercel project for this repo. One already exists.
-- `.vercelignore` keeps `AGENTS.md` and `CLAUDE.md` off the live site.
+- `.vercelignore` keeps `AGENTS.md`, `CLAUDE.md`, `.claude/` and `tools/` off the
+  live site.
 - The `.vercel.app` addresses are what customers and the Google listing use today.
   Keep them working.
 - The old remote branch `midfall-theme` is already merged into `main`. It's safe
@@ -89,77 +91,73 @@ only with new confirmation from MT.
 
 ## Where things are in the code
 
-- **Pages:** `index.html`, `about.html`, `service.html`, `pricing.html`, `contact.html`.
-- **Repeated on every page:** the top bar (phone, hours, directions), the navbar,
-  and the footer (contact info, hours, quick links, Google Maps button, HTML Codex
-  credit). Edit all five pages when you change any of them.
+- **Pages:** `index.html` (the landing page, all sections), `pricing.html` (full
+  price list), `contact.html` (hours, map, pickup request). `about.html` and
+  `service.html` are tiny `noindex` redirects to `index.html#about` and
+  `index.html#services`, kept so old links and Google results still work.
+- **Styles:** `css/site.css` only. Colour, radius and shadow tokens are on
+  `:root` at the top (teal `--blue`, coral `--cta`, aqua `--aqua`, navy, amber
+  for the "Most popular" badge). Every `:hover` rule must sit inside
+  `@media (hover: hover) and (pointer: fine)` so taps on phones don't leave
+  stuck colours; presses use `:active`.
+- **Script:** `js/site.js` (no dependencies): mobile menu, sticky-header shadow,
+  pricing tabs, reviews prev/next, and the pickup form, which opens the
+  customer's email app with a pre-filled message to the shop email. Everything
+  still works with JavaScript off (all price tabs show, the form is a plain
+  form, FAQ uses native `<details>`).
+- **Images:** only `img/laundromat_img.jpg` (real photo of the shop's dryers) is
+  used, as the hero and booking backgrounds, the About photo and the social
+  share image. Icons are inline SVG; the favicon is an inline SVG data URL.
+- **Repeated on every page:** the header (logo, nav, Call button) and the footer
+  (contact details, hours, quick links). Edit all three content pages (and the
+  two redirects' `<head>` if titles change) when you change them.
 
-**Prices and terms appear in many places.** When a price or term changes, update
-every one:
-- `pricing.html`: the Wash & Fold box, the full dry-cleaning item list, and the
-  "Effective Jun 01, 2026 / H.S.T." lines (two places).
-- `index.html`:
-  - the hero paragraph (1-day, same-day add-on, 2km, 20 lbs)
-  - the scrolling banner (both copies of the item set)
-  - the "What We Offer" cards (Pickup & Delivery "Free within 2km · min. 20 lbs",
-    Alterations "Ask in store for pricing")
-  - the Wash & Fold popup `#washFoldModal`
-  - the "Why Choose Us" tiles
-  - the dry-cleaning price tabs, which copy the pricing.html list item for item
-  - the "Effective Jun 01, 2026" lines (two places)
-  - the June 2026 price-announcement popup `#priceAnnouncementModal`, which shows
-    item prices and auto-opens every 12 hours (localStorage key `priceNoticeShown`);
-    it closes with ×, "Got it", Esc or a tap outside
-- `service.html`: the one-line summaries under the service cards.
-- `about.html`: the "Why Choose Us" tiles.
-- `contact.html`: the "Questions or want to book a pickup?" paragraph (delivery terms).
-- Every page: the `<meta name="description">`.
+**Prices and terms appear in several places.** When a price or term changes,
+update every one, then run the SEO sync (below):
+- `pricing.html`: the Wash & Fold / Fold only box, the full dry-cleaning list
+  (5 tabs), and the "Effective Jun 01, 2026 · HST" lines.
+- `index.html`: the hero summary and checklist, the "Why us" cards, the stats
+  band, the service cards, the "How it works" steps, the 3 pricing cards and the
+  line under them, the FAQ answers.
+- `contact.html`: the intro, the contact card and the booking note.
+- `llms.txt`, the JSON-LD and the meta descriptions are generated by the SEO
+  sync from the pages, so don't hand-edit them.
 
-**Hours:**
-- `contact.html`: the `#hours` section (Store Hours card and attendant table) and
-  its meta description.
-- The top bar and footer on every page, and the homepage banner.
-- The JSON-LD `openingHoursSpecification` in `index.html` (`05:00` to `23:00`).
+**Hours:** store hours (5 AM – 11 PM daily) appear in the hero chip, "Why us",
+the stats band, the FAQ, the contact page, the footer and the JSON-LD. The
+attendant & pickup hours table is in `index.html` (How it works + booking band)
+and `contact.html#hours`.
 
-**Services** (Alterations, ATM): the homepage banner, the `index.html` "What We
-Offer" cards, and the `service.html` cards plus its ATM line.
+**Reviews:** `index.html#reviews` holds the four real Google reviews (first name
++ last initial, original wording, trimmed only by whole sentences), each
+labelled "Google review", plus "Read more reviews on Google". Never mark them up
+as schema.org `Review`/`AggregateRating` (Google forbids self-serving markup of
+third-party reviews).
 
-**Reviews:** the testimonial carousel in `index.html` and `service.html` holds four
-real Google reviews (first name + last initial, original wording, trimmed only by
-whole sentences), each labelled "Google review", plus a "Read more reviews on
-Google" button.
-
-**Structured data:** a schema.org `DryCleaningOrLaundry` JSON-LD block in the
-`index.html` `<head>` (address, phone, email, hours, geo, `url`). Update `url` when
-the primary domain changes.
-
-**Styles:**
-- `css/style.css` is the compiled template CSS **plus** two hand-added blocks at
-  the end: the pricing rules ("PRICING SECTION — NEW DESIGN", around line 9600
-  onward) and the "MOBILE-NATIVE FIXES" block after them (focus rings only for
-  keyboard users, `touch-action`, `user-select` on controls, bigger hit areas for
-  the carousel dots and top-bar links). Neither is in `scss/`. Bootstrap's
-  `:hover` rules for links and buttons are wrapped in
-  `@media (hover: hover) and (pointer: fine)` in place, so a tap on a phone does
-  not leave a stuck hover colour. Gate any new `:hover` rule the same way.
-- `index.html` has one inline `<style>` block: the seasonal hero and banner styles
-  (including a `max-width: 991.98px` media query that stacks the hero to one
-  column on phones and tablets; keep it when swapping the seasonal hero), plus a
-  copy of the pricing rules. To change pricing styles, edit both `css/style.css`
-  and that block.
-- `pricing.html` has no inline style; it uses `css/style.css`.
-- `css/style.min.css` is stale and unused. Do not switch to it, and do not rebuild
-  `css/style.css` from `scss/`; that would wipe the hand-added rules.
-
-**Libraries:** in `lib/`. jQuery, Bootstrap JS and Font Awesome load from CDNs.
+**SEO, answer engines and AI search (GEO):**
+- Each indexable page has a unique title (≤ 60 chars), description (140–160),
+  canonical, Open Graph and Twitter tags, and one H1 with the page's main phrase.
+- JSON-LD in each `<head>`: `index.html` has WebSite + DryCleaningOrLaundry
+  (address, geo, phone, email, hours, price list) + FAQPage; `pricing.html` and
+  `contact.html` have BreadcrumbList + the business. Only store hours are marked
+  up as opening hours; attendant hours are text.
+- The hero paragraph on `index.html` is an "answer-first" summary written to be
+  quoted by AI assistants. Keep it factual and about three sentences.
+- `robots.txt` allows all crawlers, AI crawlers included; `sitemap.xml` lists the
+  three indexable pages; `llms.txt` is a plain summary for AI crawlers.
+- **Keep them in sync:** run `python3 tools/seo/build_seo.py` after changing the
+  FAQ, any price, the hero summary or the address. It regenerates the head tags,
+  JSON-LD, sitemap and `llms.txt` from the visible page text and is safe to
+  re-run. `tools/seo/verify_seo.js` checks the result (see `tools/seo/README.md`).
+- When the primary domain changes, edit `SITE` in `tools/seo/build_seo.py` and
+  re-run it (canonical, og:url, JSON-LD `url`/`@id`, sitemap, robots, llms.txt
+  all follow).
 
 **Unused leftovers, kept on purpose for now** (ask the site owner before deleting;
-the Mid-Autumn images may be reused each year):
-- `img/` files: `SOUTHERN_STAR.png`, `banner_free_shipping.jpg`,
-  `carousel-1.jpg`, `carousel-2.jpg`, `clothes_13354565.png`, `free_shipping.png`,
-  `hanger_8244646.png`, `icon-southernstar.ico`, `laundromat_img.jpg`,
-  `mid_autumn.png`, `trung_thu_banner.png`
-- the `.mid-autumn-*` and `.hover-effect` CSS in `index.html`
+the Mid-Autumn images may be reused each year): every `img/` file except
+`laundromat_img.jpg`. Note `about.jpg`, `carousel-1.jpg` and `carousel-2.jpg`
+came with the old HTML Codex template: don't use them on the new site without
+restoring that template's credit.
 
 ## How to work on it
 
@@ -167,7 +165,8 @@ the Mid-Autumn images may be reused each year):
   http://localhost:8000. Check phone width (about 375 px) as well as desktop.
 - **Stale-value check:** this must return nothing:
   `grep -n -i -e '1\.65' -e '/lbs' -e 'hieuthuong' -e 'yahoo' -e '3 days' -e 'delivered by thursday' *.html`
-- **Before committing:** make sure every opened HTML tag is closed.
+- **Before committing:** make sure every opened HTML tag is closed, and if you
+  changed prices, FAQ, hours or the summary, run `python3 tools/seo/build_seo.py`.
 - **Commits:** small, with clear messages. Push to `main` only when the change is
   ready to go live, since `main` is production. For anything uncertain, push a
   branch, open a PR, and let the site owner check the Vercel preview first. Log
@@ -199,20 +198,13 @@ facts in this file always win over a design suggestion.
 
 ## Status (as of 2026-10-23)
 
-- Done and live:
-  - correct prices, delivery rules and email
-  - call, email and directions buttons in place of a broken PHP form
-  - store and attendant hours
-  - Alterations and ATM
-  - real Google reviews
-  - working links
-  - page titles, meta descriptions and JSON-LD
-  - template blog pages, PHP mail script and testimonial stock images removed
-    (other unused images are listed above)
-- Done, see the 2026-10-23 Session log entry for where it is: phone fixes from the
-  `mobile-native` skill (one-column hero on phones and tablets, no sideways scroll
-  on 320 px phones, price cards that wrap, readable price notes, a price popup that
-  fits and closes, no stuck hover colours or focus rings after a tap).
+- Live on `main` (old template site): correct prices, delivery rules, email,
+  hours, Alterations and ATM, real Google reviews, SEO tags and JSON-LD.
+- **New site built, not live:** a full rebuild (new design, teal/coral colours,
+  phone-first, SEO + AI-search work) is on branch `redesign`, waiting for the
+  site owner to check the Vercel preview. See the last Session log entry.
+- Branch `mobile-fixes` (phone fixes to the old site) is superseded by
+  `redesign`; don't merge both.
 - Ownership: the repo, the Vercel project and the `.vercel.app` addresses all
   belong to the site owner. The previous maintainer's Vercel project is deleted.
 
@@ -231,15 +223,20 @@ facts in this file always win over a design suggestion.
      - 308-redirect `.ca`, `www.southernstarlaundry.com`, `sscoinlaundry.vercel.app`
        **and** `southern-star-coin-laundry.vercel.app` straight to the `.com`, so no
        address goes through two redirects
-     - update the JSON-LD `url`
+     - change `SITE` in `tools/seo/build_seo.py` and re-run it (updates
+       canonical, og:url, JSON-LD, sitemap, robots and llms.txt)
+     - submit `sitemap.xml` in Google Search Console and Bing Webmaster Tools
      - the site owner updates the website link on MT's Google Business Profile
 2. **Waiting on MT:**
    - self-serve washer and dryer prices (to add a price list)
    - the same-day add-on price
    - whether "Organic Solvents", "Progressive Cleaning System" and "Non-Toxic"
-     (on `index.html` and `about.html`) are true. If not, remove them; green claims
-     need proof under Canadian advertising law.
-   - whether to keep or remove the June 2026 price-announcement popup
+     are true. The new site leaves them out; add them back only with MT's
+     confirmation (green claims need proof under Canadian advertising law).
+   - the June 2026 price-announcement popup is not in the new site. Ask MT
+     whether she wants a price notice back.
+   - "Skirt (Pleated) · Beads +$4.24" on the price list: every other beads
+     add-on ends in 5 ($4.25). Typo for $4.25? The site keeps $4.24 until MT says.
 3. **MT's Google listing:** shorten the business name to just "Southern Star Coin
    Laundry" (Google's rules forbid extra keywords in the name) and list the services
    and categories instead.
@@ -250,19 +247,27 @@ facts in this file always win over a design suggestion.
    listings; rename the Facebook page and then link it; keep collecting Google
    reviews. Research (Oct 2026) found .ca vs .com barely matters; the Google
    Business Profile, reviews and directory listings drive local and AI visibility.
+   Google Business Profile: categories laundromat + dry cleaner, services, hours,
+   photos, website = the canonical URL. Use the identical name, address and phone
+   everywhere. Submit `sitemap.xml` to Google Search Console and Bing Webmaster
+   Tools once the site is live.
 6. **Ads (later):** an ad's final URL must be the primary domain, never one that
    redirects. Target a radius around the shop and use "Presence" location targeting.
 7. **Repo visibility:** the repo is public. The site owner could make it private;
    Vercel deploys keep working either way.
-8. **Real-phone check of the 2026-10-23 mobile fixes.** Emulation can't show these;
-   check on an iPhone and an Android phone: buttons and cards return to normal
-   after a tap (Call / Email / Directions on `contact.html`, the footer Google
-   button, price rows, the "What We Offer" cards); a held button shows press
-   feedback; the hamburger and price tabs have no ring after a tap; the review
-   carousel swipes without the page jumping and pinch-zoom still works;
-   `pricing.html` fits with iPhone Display Zoom on; the price popup closes. A tap
-   outside the popup is hard to hit on phones (8 px gutters); × and "Got it" are
-   the real exits.
+8. **Real-phone check of the new site** (emulation can't show these): on an
+   iPhone and an Android phone, check buttons and cards return to normal after a
+   tap, presses show feedback, the menu opens/closes and scrolls in landscape,
+   the reviews row swipes, the Google map on `contact.html` pans with two fingers
+   and the Directions button is easy to reach, the notch padding in landscape,
+   and that "Send request by email" opens the mail app with the details filled in.
+9. **Photos.** The site uses one real photo (`img/laundromat_img.jpg`, 640×480,
+   low-res). Planned: AI-generated photos via Higgsfield (8 shots: attendant
+   with basket for the hero, folded stack, shirts on hangers, delivery hand-off,
+   machines, alterations, shop interior, family) at "high" quality, 2k, ~2.75
+   credits each (~22 total). Waiting for the site owner to add credits (balance
+   was 0 on Oct 23). Real photos of the shop from MT would be better still. Also
+   wanted: a 1200×630 share image (`og:image`).
 
 ## Session log
 
@@ -314,3 +319,28 @@ merged/live), and what is next.
   - Next: check the preview on a phone (item 8) and merge `mobile-fixes` into
     `main`; then MT's popup decision (item 2), the email decision, and the domain
     purchase (item 1).
+- **2026-10-23 (evening), Claude Code.**
+  - The site owner asked for a full rebuild inspired by a Behance laundry landing
+    page ("WashNow247", screenshots supplied), with our own facts, a trendier
+    colour scheme, photos, and strong SEO / AI-search work.
+  - Built from scratch with a multi-agent workflow: core page, secondary pages,
+    four reviews (content accuracy, mobile-native, break-ui, design critique;
+    46 findings, 41 fixed, 5 skipped with reasons), a colour pass and an SEO pass.
+    - Pages: `index.html` (hero with answer-first summary, why us, stats,
+      services, about + how pickup works, pricing cards, reviews, pickup request,
+      FAQ), `pricing.html` (full list, verbatim from the old site), `contact.html`
+      (hours, map, form); `about.html`/`service.html` redirect.
+    - Colours: deep teal + aqua with coral Call buttons; every text pair checked
+      ≥ WCAG AA by script.
+    - SEO/GEO: per-page titles/descriptions/canonicals/OG, JSON-LD (business,
+      prices, FAQ, breadcrumbs), `robots.txt`, `sitemap.xml`, `llms.txt`, and the
+      sync tools in `tools/seo/` (101 checks pass).
+    - Removed the old template code (`lib/`, `scss/`, `css/style*.css`,
+      `js/main.js`, the HTML Codex `LICENSE.txt`) and the footer credit, since no
+      template code or image is used any more. Unused images kept (see above).
+  - Verified in Chromium: no sideways scroll at 280–1280 px on every page and
+    tab, no console errors, one H1 per page, JSON-LD valid, no-JS fallbacks work.
+  - Where: branch `redesign`, pushed for a Vercel preview. Not merged, not live.
+  - Next: the site owner checks the preview (and on a phone, item 8); add photos
+    once credits are in (item 9); then merge `redesign` into `main` (it replaces
+    `mobile-fixes`). After going live, do item 5.
