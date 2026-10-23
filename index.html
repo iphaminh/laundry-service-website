@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Southern Star Coin Laundry | Wash &amp; Fold, Dry Cleaning in North York</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="theme-color" content="#194376">
     <meta content="coin laundry North York, laundromat Keele Street, wash and fold Toronto, dry cleaning North York, laundry pickup and delivery" name="keywords">
     <meta content="Coin laundry at 3685 Keele St, North York. Wash &amp; fold $1.80/lb ready in 1 day, dry cleaning, and free pickup &amp; delivery within 2km (min. 20 lbs)." name="description">
 
@@ -162,11 +163,13 @@
             display: inline-block;
         }
 
-        .primary-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 35px rgba(255,179,71,0.65);
-            color: #7a4500;
-            text-decoration: none;
+        @media (hover: hover) and (pointer: fine) {
+            .primary-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 35px rgba(255,179,71,0.65);
+                color: #7a4500;
+                text-decoration: none;
+            }
         }
 
         .secondary-btn {
@@ -183,11 +186,19 @@
             display: inline-block;
         }
 
-        .secondary-btn:hover {
-            background: rgba(255,255,255,0.28);
-            border-color: white;
-            color: white;
-            text-decoration: none;
+        @media (hover: hover) and (pointer: fine) {
+            .secondary-btn:hover {
+                background: rgba(255,255,255,0.28);
+                border-color: white;
+                color: white;
+                text-decoration: none;
+            }
+        }
+
+        /* press feedback on touch (hover is gated above) */
+        .primary-btn:active, .secondary-btn:active {
+            transform: scale(0.97);
+            transition-duration: 100ms;
         }
 
         .hero-image {
@@ -270,11 +281,19 @@
             gap: 3rem;
             animation: scroll 30s linear infinite;
             white-space: nowrap;
+            /* size to the content, so -50% is exactly one set of items on every screen width */
+            width: max-content;
+            padding-right: 3rem;
         }
 
         @keyframes scroll {
             0%   { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .banner-scroll { animation: none; width: auto; padding-right: 0; flex-wrap: wrap; justify-content: center; gap: .75rem 2rem; white-space: normal; }
+            .banner-item:nth-child(n+7) { display: none; } /* hide the duplicate set */
         }
 
         .banner-item {
@@ -324,6 +343,22 @@
             animation: shake 1s 3 ease-in-out 0.5s;
         }
 
+        /* "What We Offer" cards: lift on mouse hover only, so a tap doesn't leave them raised */
+        @media (hover: hover) and (pointer: fine) {
+            .offer-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 16px 40px var(--offer-shadow);
+            }
+        }
+        #wash-fold .offer-card {
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        #wash-fold .offer-card:active {
+            transform: scale(0.98);
+            transition-duration: 100ms;
+        }
+
         /* =============================================
            PRICING SECTION — NEW DESIGN
            ============================================= */
@@ -347,10 +382,24 @@
             font-family: 'Open Sans', sans-serif;
         }
 
-        .pricing-tab-btn:hover {
-            background: #edf2f7;
-            border-color: #a0aec0;
-            color: #1e3a5f;
+        @media (hover: hover) and (pointer: fine) {
+            .pricing-tab-btn:hover {
+                background: #edf2f7;
+                border-color: #a0aec0;
+                color: #1e3a5f;
+            }
+        }
+
+        .pricing-tab-btn:active {
+            transform: scale(0.97);
+            transition-duration: 100ms;
+        }
+
+        @media (pointer: coarse) {
+            .pricing-tab-btn {
+                padding-top: 11px;
+                padding-bottom: 11px;
+            }
         }
 
         .pricing-tab-btn.active {
@@ -364,11 +413,11 @@
         .pricing-tab-pane.active { display: block; }
 
         .pricing-section-label {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: #718096;
+            color: #4a5568;
             margin: 1.5rem 0 0.75rem;
             padding-left: 4px;
         }
@@ -378,6 +427,7 @@
         .pricing-cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
             gap: 10px;
         }
 
@@ -390,24 +440,29 @@
             justify-content: space-between;
             align-items: flex-start;
             gap: 14px;
+            flex-wrap: wrap;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
 
-        .pricing-card:hover {
-            border-color: #3dd5e8;
-            box-shadow: 0 4px 16px rgba(61, 213, 232, 0.15);
+        @media (hover: hover) and (pointer: fine) {
+            .pricing-card:hover {
+                border-color: #3dd5e8;
+                box-shadow: 0 4px 16px rgba(61, 213, 232, 0.15);
+            }
         }
 
         .pricing-card-name {
             font-size: 13.5px;
             color: #2d3748;
             line-height: 1.45;
-            flex: 1;
+            flex: 1 1 7rem;
+            min-width: 0;
         }
 
         .pricing-card-right {
             text-align: right;
             flex-shrink: 0;
+            margin-left: auto;
         }
 
         .pricing-card-price {
@@ -418,20 +473,20 @@
         }
 
         .pricing-card-note {
-            font-size: 11.5px;
-            color: #718096;
+            font-size: 12.5px;
+            color: #4a5568;
             margin-top: 3px;
             white-space: nowrap;
         }
 
         .pricing-special-badge {
             display: inline-block;
-            font-size: 10.5px;
+            font-size: 11.5px;
             font-weight: 700;
             padding: 2px 9px;
             border-radius: 50px;
             background: #fff8e1;
-            color: #b7791f;
+            color: #975a16;
             border: 1px solid #f6e05e;
             margin-bottom: 5px;
         }
@@ -453,12 +508,23 @@
 
         .pricing-effective-note {
             font-size: 12px;
-            color: #718096;
+            color: #4a5568;
             background: #f7fafc;
             border-radius: 8px;
             padding: 10px 14px;
             margin-top: 1.25rem;
             border-left: 3px solid #1e3a5f;
+        }
+
+        /* Hero on phones and tablets: one column; the 2-column grid only fits from ~873px */
+        @media (max-width: 991.98px) {
+            .hero { min-height: 90vh; min-height: 90svh; }
+            .hero-container { grid-template-columns: minmax(0, 1fr); width: 100%; gap: 0; padding: 3rem 1.25rem 7rem; }
+            .hero-image { display: none; }
+            .hero-content h1 { font-size: clamp(2.5rem, 11vw, 4rem); }
+            .hero-content p { font-size: 1.1rem; margin-bottom: 1.75rem; }
+            .hero-buttons { flex-wrap: wrap; gap: .75rem; }
+            .primary-btn, .secondary-btn { padding: .85rem 1.75rem; }
         }
     </style>
     <!-- Business info for search engines -->
@@ -672,14 +738,12 @@
             <h6 class="text-uppercase text-center font-weight-medium mb-3" style="color:#0096c7; letter-spacing:0.1em;">Our Services</h6>
             <h1 class="display-4 text-center mb-2">What We Offer</h1>
             <p class="text-center mb-5" style="color:#555; font-size:1.05rem;">Keep your wardrobe fresh and ready for every season.</p>
-            <div class="row justify-content-center" style="cursor: pointer;">
+            <div class="row justify-content-center">
 
                 <!-- Dry Cleaning -->
                 <div class="col-lg-3 col-md-6 pb-4">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-4 px-4"
-                        style="height:300px; border-radius:24px; background:linear-gradient(145deg,#e0f7fa,#b2ebf2); border:2px solid #80deea; transition:transform 0.3s,box-shadow 0.3s;"
-                        onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,150,199,0.2)'"
-                        onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div class="offer-card d-flex flex-column align-items-center justify-content-center text-center mb-4 px-4"
+                        style="height:300px; border-radius:24px; background:linear-gradient(145deg,#e0f7fa,#b2ebf2); border:2px solid #80deea; transition:transform 0.3s,box-shadow 0.3s; --offer-shadow:rgba(0,150,199,0.2);">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-4"
                             style="width:100px;height:100px;padding:20px; border: 3px solid #b2ebf2;">
                             <img src="img/clothes-hanger_14753397.png" alt="" style="width:100%;height:100%;object-fit:cover;">
@@ -691,11 +755,9 @@
 
                 <!-- Wash and Fold -->
                 <div class="col-lg-3 col-md-6 pb-4" id="wash-fold">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-4 px-4 shake"
-                        style="height:300px; border-radius:24px; background:linear-gradient(145deg,#fff9c4,#fff176); border:2px solid #fff176; transition:transform 0.3s,box-shadow 0.3s; cursor:pointer;"
-                        data-toggle="modal" data-target="#washFoldModal"
-                        onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(255,179,0,0.25)'"
-                        onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div class="offer-card d-flex flex-column align-items-center justify-content-center text-center mb-4 px-4 shake"
+                        style="height:300px; border-radius:24px; background:linear-gradient(145deg,#fff9c4,#fff176); border:2px solid #fff176; transition:transform 0.3s,box-shadow 0.3s; cursor:pointer; --offer-shadow:rgba(255,179,0,0.25);"
+                        data-toggle="modal" data-target="#washFoldModal">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-4"
                             style="width:100px;height:100px;padding:20px; border: 3px solid #fff176;">
                             <img src="img/washing-machine_17521945.png" alt="" style="width:100%;height:100%;object-fit:cover;">
@@ -707,10 +769,8 @@
 
                 <!-- Pickup & Delivery -->
                 <div class="col-lg-3 col-md-6 pb-4">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-4 px-4"
-                        style="height:300px; border-radius:24px; background:linear-gradient(145deg,#e8f5e9,#c8e6c9); border:2px solid #a5d6a7; transition:transform 0.3s,box-shadow 0.3s;"
-                        onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(56,142,60,0.18)'"
-                        onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div class="offer-card d-flex flex-column align-items-center justify-content-center text-center mb-4 px-4"
+                        style="height:300px; border-radius:24px; background:linear-gradient(145deg,#e8f5e9,#c8e6c9); border:2px solid #a5d6a7; transition:transform 0.3s,box-shadow 0.3s; --offer-shadow:rgba(56,142,60,0.18);">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-4"
                             style="width:100px;height:100px;padding:20px; border: 3px solid #c8e6c9;">
                             <img src="img/delivery-truck_1383451.png" alt="" style="width:100%;height:100%;object-fit:cover;">
@@ -722,10 +782,8 @@
 
                 <!-- Alterations -->
                 <div class="col-lg-3 col-md-6 pb-4">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-4 px-4"
-                        style="height:300px; border-radius:24px; background:linear-gradient(145deg,#f3e5f5,#e1bee7); border:2px solid #ce93d8; transition:transform 0.3s,box-shadow 0.3s;"
-                        onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(106,27,154,0.18)'"
-                        onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <div class="offer-card d-flex flex-column align-items-center justify-content-center text-center mb-4 px-4"
+                        style="height:300px; border-radius:24px; background:linear-gradient(145deg,#f3e5f5,#e1bee7); border:2px solid #ce93d8; transition:transform 0.3s,box-shadow 0.3s; --offer-shadow:rgba(106,27,154,0.18);">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-4"
                             style="width:100px;height:100px;padding:20px; border: 3px solid #e1bee7;">
                             <i class="fa fa-3x fa-cut" style="color:#8e24aa;"></i>
@@ -1021,8 +1079,8 @@
     <!-- Testimonial End -->
 
     <!-- Price Announcement Modal -->
-    <div class="modal fade" id="priceAnnouncementModal" tabindex="-1" role="dialog" aria-labelledby="priceAnnouncementLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal fade" id="priceAnnouncementModal" tabindex="-1" role="dialog" aria-labelledby="priceAnnouncementLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content" style="border-radius: 16px; border: none; overflow: hidden;">
                 <div class="modal-header" style="background: linear-gradient(135deg, #1e3a5f 0%, #0096c7 100%); border-bottom: none; padding: 1.5rem 1.75rem;">
                     <div>
@@ -1043,24 +1101,24 @@
                     <!-- Price Grid -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem;">
                         <div style="background: #f7fafc; border-radius: 10px; padding: 12px 14px; border-left: 3px solid #0096c7;">
-                            <div style="font-size: 11px; color: #718096; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Dress Shirt</div>
+                            <div style="font-size: 12px; color: #4a5568; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Dress Shirt</div>
                             <div style="font-size: 17px; font-weight: 700; color: #1e3a5f; margin-top: 2px;">$3.45</div>
-                            <div style="font-size: 11px; color: #a0aec0;">each</div>
+                            <div style="font-size: 12px; color: #718096;">each</div>
                         </div>
                         <div style="background: #f7fafc; border-radius: 10px; padding: 12px 14px; border-left: 3px solid #0096c7;">
-                            <div style="font-size: 11px; color: #718096; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Pants / Jeans</div>
+                            <div style="font-size: 12px; color: #4a5568; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Pants / Jeans</div>
                             <div style="font-size: 17px; font-weight: 700; color: #1e3a5f; margin-top: 2px;">$6.15</div>
-                            <div style="font-size: 11px; color: #a0aec0;">each</div>
+                            <div style="font-size: 12px; color: #718096;">each</div>
                         </div>
                         <div style="background: #f7fafc; border-radius: 10px; padding: 12px 14px; border-left: 3px solid #0096c7;">
-                            <div style="font-size: 11px; color: #718096; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Blazer</div>
+                            <div style="font-size: 12px; color: #4a5568; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Blazer</div>
                             <div style="font-size: 17px; font-weight: 700; color: #1e3a5f; margin-top: 2px;">$10.95</div>
-                            <div style="font-size: 11px; color: #a0aec0;">each</div>
+                            <div style="font-size: 12px; color: #718096;">each</div>
                         </div>
                         <div style="background: #fff8e1; border-radius: 10px; padding: 12px 14px; border-left: 3px solid #ffb347;">
-                            <div style="font-size: 11px; color: #b7791f; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Wash &amp; Fold</div>
+                            <div style="font-size: 12px; color: #975a16; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Wash &amp; Fold</div>
                             <div style="font-size: 17px; font-weight: 700; color: #7a4500; margin-top: 2px;">$1.80/lb</div>
-                            <div style="font-size: 11px; color: #b7791f;">1-day · min. 10 lbs</div>
+                            <div style="font-size: 12px; color: #975a16;">1-day · min. 10 lbs</div>
                         </div>
                     </div>
 
@@ -1138,20 +1196,6 @@
             btn.classList.add('active');
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var marquee = document.querySelector('marquee');
-            if (marquee) {
-                setInterval(function() { marquee.scrollLeft = 0; }, 5000);
-            }
-        });
-
-        $(document).ready(function() {
-            var timer;
-            $('.hover-effect').hover(
-                function() { timer = setTimeout(function() { $('#washFoldModal').modal('show'); }, 500); },
-                function() { clearTimeout(timer); }
-            );
-        });
         // Auto-show price announcement every 12 hours
         var lastPriceNotice = localStorage.getItem('priceNoticeShown');
         var currentTime = Date.now();

@@ -1,6 +1,9 @@
 (function ($) {
   "use strict";
 
+  // iOS Safari only applies :active (press feedback) when a touch listener exists
+  document.addEventListener("touchstart", function () {}, { passive: true });
+
   // Dropdown on mouse hover
   $(document).ready(function () {
     function toggleNavbarMethod() {
@@ -41,7 +44,8 @@
 
   // Testimonials carousel
   $(".testimonial-carousel").owlCarousel({
-    autoplay: true,
+    autoplay: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    autoplayTimeout: 10000, // phones show one review at a time; the longest is 54 words
     smartSpeed: 1000,
     dots: true,
     loop: true,

@@ -108,7 +108,8 @@ every one:
   - the dry-cleaning price tabs, which copy the pricing.html list item for item
   - the "Effective Jun 01, 2026" lines (two places)
   - the June 2026 price-announcement popup `#priceAnnouncementModal`, which shows
-    item prices and auto-opens every 12 hours (localStorage key `priceNoticeShown`)
+    item prices and auto-opens every 12 hours (localStorage key `priceNoticeShown`);
+    it closes with ×, "Got it", Esc or a tap outside
 - `service.html`: the one-line summaries under the service cards.
 - `about.html`: the "Why Choose Us" tiles.
 - `contact.html`: the "Questions or want to book a pickup?" paragraph (delivery terms).
@@ -133,12 +134,19 @@ Google" button.
 the primary domain changes.
 
 **Styles:**
-- `css/style.css` is the compiled template CSS **plus** hand-added pricing rules at
-  the end ("PRICING SECTION — NEW DESIGN", around line 9574 onward). Those rules are
-  not in `scss/`.
-- `index.html` has one inline `<style>` block: the seasonal hero and banner styles,
-  plus a copy of the pricing rules. To change pricing styles, edit both
-  `css/style.css` and that block.
+- `css/style.css` is the compiled template CSS **plus** two hand-added blocks at
+  the end: the pricing rules ("PRICING SECTION — NEW DESIGN", around line 9600
+  onward) and the "MOBILE-NATIVE FIXES" block after them (focus rings only for
+  keyboard users, `touch-action`, `user-select` on controls, bigger hit areas for
+  the carousel dots and top-bar links). Neither is in `scss/`. Bootstrap's
+  `:hover` rules for links and buttons are wrapped in
+  `@media (hover: hover) and (pointer: fine)` in place, so a tap on a phone does
+  not leave a stuck hover colour. Gate any new `:hover` rule the same way.
+- `index.html` has one inline `<style>` block: the seasonal hero and banner styles
+  (including a `max-width: 991.98px` media query that stacks the hero to one
+  column on phones and tablets; keep it when swapping the seasonal hero), plus a
+  copy of the pricing rules. To change pricing styles, edit both `css/style.css`
+  and that block.
 - `pricing.html` has no inline style; it uses `css/style.css`.
 - `css/style.min.css` is stale and unused. Do not switch to it, and do not rebuild
   `css/style.css` from `scss/`; that would wipe the hand-added rules.
@@ -189,7 +197,7 @@ same `SKILL.md` files as guides. They are advice for the agent, not part of the
 website, and `.vercelignore` keeps `.claude/` off the live site. The business
 facts in this file always win over a design suggestion.
 
-## Status (as of 2026-10-09)
+## Status (as of 2026-10-23)
 
 - Done and live:
   - correct prices, delivery rules and email
@@ -201,6 +209,10 @@ facts in this file always win over a design suggestion.
   - page titles, meta descriptions and JSON-LD
   - template blog pages, PHP mail script and testimonial stock images removed
     (other unused images are listed above)
+- Done, see the 2026-10-23 Session log entry for where it is: phone fixes from the
+  `mobile-native` skill (one-column hero on phones and tablets, no sideways scroll
+  on 320 px phones, price cards that wrap, readable price notes, a price popup that
+  fits and closes, no stuck hover colours or focus rings after a tap).
 - Ownership: the repo, the Vercel project and the `.vercel.app` addresses all
   belong to the site owner. The previous maintainer's Vercel project is deleted.
 
@@ -242,6 +254,15 @@ facts in this file always win over a design suggestion.
    redirects. Target a radius around the shop and use "Presence" location targeting.
 7. **Repo visibility:** the repo is public. The site owner could make it private;
    Vercel deploys keep working either way.
+8. **Real-phone check of the 2026-10-23 mobile fixes.** Emulation can't show these;
+   check on an iPhone and an Android phone: buttons and cards return to normal
+   after a tap (Call / Email / Directions on `contact.html`, the footer Google
+   button, price rows, the "What We Offer" cards); a held button shows press
+   feedback; the hamburger and price tabs have no ring after a tap; the review
+   carousel swipes without the page jumping and pinch-zoom still works;
+   `pricing.html` fits with iPhone Display Zoom on; the price popup closes. A tap
+   outside the popup is hard to hit on phones (8 px gutters); × and "Got it" are
+   the real exits.
 
 ## Session log
 
@@ -266,3 +287,30 @@ merged/live), and what is next.
     email. The site keeps `southernstarcoinlaundry@gmail.com` until the site
     owner confirms.
   - Next: the email decision, then the domain purchase (open item 1).
+- **2026-10-23 (later), Claude Code.**
+  - Ran the `mobile-native` skill on all five pages (Playwright, Chromium only, in
+    iPhone 13 / Pixel 5 / 320 px profiles) and fixed what it found. No business
+    facts changed.
+    - `index.html`: the hero stacks to one column below 992 px (it was a fixed
+      2-column grid that clipped text at 320 px and pushed the sun off every
+      phone); the services banner loops seamlessly on every width; the "What We
+      Offer" cards lift on mouse hover only (inline `onmouseover` removed); the
+      price popup lost `data-backdrop="static"` and scrolls inside, so "Got it"
+      is on screen on short phones; dead `.hover-effect` and marquee JS removed
+      (also from `pricing.html`).
+    - Pricing rules, both copies: cards no longer force a 300 px column (no
+      sideways scroll at 320 px), the price block wraps under long item names,
+      and notes, labels and the badge are 12–12.5 px in darker colours (WCAG AA).
+    - `css/style.css`: Bootstrap `:hover` rules gated to mouse pointers, focus
+      rings only for keyboard focus, and the new "MOBILE-NATIVE FIXES" block.
+      `theme-color` meta on every page. `js/main.js`: a passive `touchstart`
+      listener (iOS press feedback) and the review carousel slowed to 10 s (off
+      under reduced motion).
+  - Verified in emulation: no horizontal overflow at 280–1280 px on any page,
+    desktop hover unchanged at 1280 px. Real-phone behaviour is open item 8.
+  - Where: branch `mobile-fixes`, pushed for a Vercel preview. Not merged and not
+    live. Merge it into `main` once the site owner has checked the preview on a
+    phone.
+  - Next: check the preview on a phone (item 8) and merge `mobile-fixes` into
+    `main`; then MT's popup decision (item 2), the email decision, and the domain
+    purchase (item 1).

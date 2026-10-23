@@ -157,9 +157,11 @@ a {
   background-color: transparent;
 }
 
-a:hover {
-  color: #0c1f37;
-  text-decoration: underline;
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    color: #0c1f37;
+    text-decoration: underline;
+  }
 }
 
 a:not([href]):not([class]) {
@@ -2340,9 +2342,11 @@ textarea.form-control {
   }
 }
 
-.btn:hover {
-  color: #757575;
-  text-decoration: none;
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    color: #757575;
+    text-decoration: none;
+  }
 }
 
 .btn:focus, .btn.focus {
@@ -2369,10 +2373,12 @@ fieldset:disabled a.btn {
   border-color: #194376;
 }
 
-.btn-primary:hover {
-  color: #fff;
-  background-color: #123156;
-  border-color: #102b4c;
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    color: #fff;
+    background-color: #123156;
+    border-color: #102b4c;
+  }
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -2406,10 +2412,12 @@ fieldset:disabled a.btn {
   border-color: #46C6CE;
 }
 
-.btn-secondary:hover {
-  color: #fff;
-  background-color: #32b4bc;
-  border-color: #2faab2;
+@media (hover: hover) and (pointer: fine) {
+  .btn-secondary:hover {
+    color: #fff;
+    background-color: #32b4bc;
+    border-color: #2faab2;
+  }
 }
 
 .btn-secondary:focus, .btn-secondary.focus {
@@ -2591,10 +2599,12 @@ fieldset:disabled a.btn {
   border-color: #F3F6FF;
 }
 
-.btn-light:hover {
-  color: #212529;
-  background-color: #cdd9ff;
-  border-color: #c0d0ff;
+@media (hover: hover) and (pointer: fine) {
+  .btn-light:hover {
+    color: #212529;
+    background-color: #cdd9ff;
+    border-color: #c0d0ff;
+  }
 }
 
 .btn-light:focus, .btn-light.focus {
@@ -2664,10 +2674,12 @@ fieldset:disabled a.btn {
   border-color: #194376;
 }
 
-.btn-outline-primary:hover {
-  color: #fff;
-  background-color: #194376;
-  border-color: #194376;
+@media (hover: hover) and (pointer: fine) {
+  .btn-outline-primary:hover {
+    color: #fff;
+    background-color: #194376;
+    border-color: #194376;
+  }
 }
 
 .btn-outline-primary:focus, .btn-outline-primary.focus {
@@ -2856,10 +2868,12 @@ fieldset:disabled a.btn {
   border-color: #F3F6FF;
 }
 
-.btn-outline-light:hover {
-  color: #212529;
-  background-color: #F3F6FF;
-  border-color: #F3F6FF;
+@media (hover: hover) and (pointer: fine) {
+  .btn-outline-light:hover {
+    color: #212529;
+    background-color: #F3F6FF;
+    border-color: #F3F6FF;
+  }
 }
 
 .btn-outline-light:focus, .btn-outline-light.focus {
@@ -9594,10 +9608,24 @@ h6,
             font-family: 'Open Sans', sans-serif;
         }
 
-        .pricing-tab-btn:hover {
-            background: #edf2f7;
-            border-color: #a0aec0;
-            color: #1e3a5f;
+        @media (hover: hover) and (pointer: fine) {
+            .pricing-tab-btn:hover {
+                background: #edf2f7;
+                border-color: #a0aec0;
+                color: #1e3a5f;
+            }
+        }
+
+        .pricing-tab-btn:active {
+            transform: scale(0.97);
+            transition-duration: 100ms;
+        }
+
+        @media (pointer: coarse) {
+            .pricing-tab-btn {
+                padding-top: 11px;
+                padding-bottom: 11px;
+            }
         }
 
         .pricing-tab-btn.active {
@@ -9611,11 +9639,11 @@ h6,
         .pricing-tab-pane.active { display: block; }
 
         .pricing-section-label {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: #718096;
+            color: #4a5568;
             margin: 1.5rem 0 0.75rem;
             padding-left: 4px;
         }
@@ -9625,6 +9653,7 @@ h6,
         .pricing-cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
             gap: 10px;
         }
 
@@ -9637,24 +9666,29 @@ h6,
             justify-content: space-between;
             align-items: flex-start;
             gap: 14px;
+            flex-wrap: wrap;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
 
-        .pricing-card:hover {
-            border-color: #3dd5e8;
-            box-shadow: 0 4px 16px rgba(61, 213, 232, 0.15);
+        @media (hover: hover) and (pointer: fine) {
+            .pricing-card:hover {
+                border-color: #3dd5e8;
+                box-shadow: 0 4px 16px rgba(61, 213, 232, 0.15);
+            }
         }
 
         .pricing-card-name {
             font-size: 13.5px;
             color: #2d3748;
             line-height: 1.45;
-            flex: 1;
+            flex: 1 1 7rem;
+            min-width: 0;
         }
 
         .pricing-card-right {
             text-align: right;
             flex-shrink: 0;
+            margin-left: auto;
         }
 
         .pricing-card-price {
@@ -9665,20 +9699,20 @@ h6,
         }
 
         .pricing-card-note {
-            font-size: 11.5px;
-            color: #718096;
+            font-size: 12.5px;
+            color: #4a5568;
             margin-top: 3px;
             white-space: nowrap;
         }
 
         .pricing-special-badge {
             display: inline-block;
-            font-size: 10.5px;
+            font-size: 11.5px;
             font-weight: 700;
             padding: 2px 9px;
             border-radius: 50px;
             background: #fff8e1;
-            color: #b7791f;
+            color: #975a16;
             border: 1px solid #f6e05e;
             margin-bottom: 5px;
         }
@@ -9700,10 +9734,116 @@ h6,
 
         .pricing-effective-note {
             font-size: 12px;
-            color: #718096;
+            color: #4a5568;
             background: #f7fafc;
             border-radius: 8px;
             padding: 10px 14px;
             margin-top: 1.25rem;
             border-left: 3px solid #1e3a5f;
         }
+
+/* =============================================
+   MOBILE-NATIVE FIXES (hand-added; not in scss/)
+   See .claude/skills/mobile-native/SKILL.md
+   ============================================= */
+/* Focus styling only for keyboard users (:focus-visible); a tap should not leave a ring.
+   Bootstrap's :hover rules above are gated to (hover: hover) and (pointer: fine). */
+button:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+.btn:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .btn-primary:focus:not(:focus-visible) {
+    background-color: #194376;
+    border-color: #194376;
+  }
+
+  .btn-secondary:focus:not(:focus-visible) {
+    color: #212529;
+    background-color: #46C6CE;
+    border-color: #46C6CE;
+  }
+
+  .btn-light:focus:not(:focus-visible) {
+    background-color: #F3F6FF;
+    border-color: #F3F6FF;
+  }
+}
+
+/* Controls: no double-tap delay, no long-press text selection on labels.
+   Content (prices, address, phone, email, reviews) stays selectable. */
+a, button, [role="button"] {
+  touch-action: manipulation;
+}
+
+.btn, .pricing-tab-btn, .primary-btn, .secondary-btn, .navbar-toggler {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Testimonial carousel: it handles horizontal swipes; the browser keeps vertical scroll and pinch-zoom */
+.owl-carousel .owl-stage-outer {
+  touch-action: pan-y;
+  touch-action: pan-y pinch-zoom;
+}
+
+/* 320px phones: keep the menu button beside the logo */
+@media (max-width: 359.98px) {
+  .navbar-brand {
+    margin-right: 0.5rem;
+  }
+}
+
+/* Footer email can't break; stops a 280px-wide page scrolling sideways */
+.container-fluid.bg-primary.text-white a[href^="mailto:"] {
+  overflow-wrap: anywhere;
+}
+
+@media (pointer: coarse) {
+  .navbar-toggler {
+    min-height: 44px;
+  }
+
+  /* bigger hit areas for the carousel dots and the top-bar phone/directions links, same layout */
+  .testimonial-carousel .owl-dot {
+    position: relative;
+    margin: 0 8px;
+  }
+
+  .testimonial-carousel .owl-dot::after {
+    content: "";
+    position: absolute;
+    top: -16px;
+    right: -8px;
+    bottom: -16px;
+    left: -8px;
+  }
+
+  body > .container-fluid.bg-primary.py-3 a {
+    position: relative;
+    z-index: 1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+  }
+
+  /* back-to-top: no bobbing on touch, and room so it doesn't cover the footer credit at page end */
+  .back-to-top {
+    animation: none;
+  }
+
+  .container-fluid.bg-dark {
+    padding-bottom: 80px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top {
+    animation: none;
+  }
+}

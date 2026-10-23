@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Pricing | Southern Star Coin Laundry, North York</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="theme-color" content="#194376">
     <meta content="coin laundry North York, laundromat Keele Street, wash and fold Toronto, dry cleaning North York, laundry pickup and delivery" name="keywords">
     <meta content="Prices at Southern Star Coin Laundry, North York: wash &amp; fold $1.80/lb, fold only $1.00/lb, plus dry cleaning for shirts, suits, coats and more." name="description">
 
@@ -304,19 +305,5 @@
         btn.classList.add('active');
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        var marquee = document.querySelector('marquee');
-        if (marquee) {
-            setInterval(function() { marquee.scrollLeft = 0; }, 5000);
-        }
-    });
-
-    $(document).ready(function() {
-        var timer;
-        $('.hover-effect').hover(
-            function() { timer = setTimeout(function() { $('#washFoldModal').modal('show'); }, 500); },
-            function() { clearTimeout(timer); }
-        );
-    });
 </script>
 </html>
