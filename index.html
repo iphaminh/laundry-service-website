@@ -1,1212 +1,756 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="en-CA">
 <head>
-    <meta charset="utf-8">
-    <title>Southern Star Coin Laundry | Wash &amp; Fold, Dry Cleaning in North York</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="theme-color" content="#194376">
-    <meta content="coin laundry North York, laundromat Keele Street, wash and fold Toronto, dry cleaning North York, laundry pickup and delivery" name="keywords">
-    <meta content="Coin laundry at 3685 Keele St, North York. Wash &amp; fold $1.80/lb ready in 1 day, dry cleaning, and free pickup &amp; delivery within 2km (min. 20 lbs)." name="description">
-
-    <!-- Favicon -->
-    <link href="img/icon-southernstar (2).ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-    <style>
-        /* MID-AUTUMN FESTIVAL THEME STYLES */
-        .mid-autumn-carousel-container {
-            background-color: #001f3f;
-            border: 3px solid #FFD700;
-            border-radius: 10px;
-            padding: 15px 0;
-        }
-
-        .mid-autumn-marquee-text {
-            color: #FFD700;
-            font-family: 'Georgia', serif;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-
-        .mid-autumn-marquee-text span {
-            color: #FF6347;
-            margin-right: 60px;
-        }
-
-        .mid-autumn-marquee-text span:nth-child(even),
-        .mid-autumn-marquee-text span:nth-child(odd) {
-            color: #FFD700;
-        }
-
-        .full-moon-icon {
-            color: #FFD700;
-            font-size: 1.2em;
-            margin: 0 10px;
-        }
-
-        .banner-content-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .img-centered {
-            max-width: 100%;
-            display: block;
-            margin: 0 auto;
-            margin-top: 15px;
-            margin-bottom: 15px;
-        }
-
-        /* ── SUMMER HERO ── */
-        .hero {
-            margin-top: 0;
-            min-height: 90vh;
-            background: linear-gradient(160deg, #0077b6 0%, #00b4d8 45%, #90e0ef 100%);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-
-        /* wavy ocean floor */
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L0,120Z'/%3E%3C/svg%3E");
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        /* floating clouds */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background:
-                radial-gradient(ellipse 180px 90px at 10% 20%, rgba(255,255,255,0.18) 0%, transparent 70%),
-                radial-gradient(ellipse 120px 60px at 25% 15%, rgba(255,255,255,0.12) 0%, transparent 70%),
-                radial-gradient(ellipse 200px 100px at 75% 12%, rgba(255,255,255,0.15) 0%, transparent 70%),
-                radial-gradient(ellipse 140px 70px at 88% 8%, rgba(255,255,255,0.10) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem 8rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            color: white;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-            text-shadow: 0 2px 12px rgba(0,60,100,0.25);
-        }
-
-        .hero-accent {
-            background: linear-gradient(135deg, #ffe066, #ffb347);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-        }
-
-        .hero-buttons { display: flex; gap: 1.5rem; }
-
-        .primary-btn {
-            background: linear-gradient(135deg, #ffe066 0%, #ffb347 100%);
-            color: #7a4500;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 6px 25px rgba(255,179,71,0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        @media (hover: hover) and (pointer: fine) {
-            .primary-btn:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 10px 35px rgba(255,179,71,0.65);
-                color: #7a4500;
-                text-decoration: none;
-            }
-        }
-
-        .secondary-btn {
-            background: rgba(255,255,255,0.15);
-            color: white;
-            padding: 1rem 2.5rem;
-            border: 2px solid rgba(255,255,255,0.5);
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        @media (hover: hover) and (pointer: fine) {
-            .secondary-btn:hover {
-                background: rgba(255,255,255,0.28);
-                border-color: white;
-                color: white;
-                text-decoration: none;
-            }
-        }
-
-        /* press feedback on touch (hover is gated above) */
-        .primary-btn:active, .secondary-btn:active {
-            transform: scale(0.97);
-            transition-duration: 100ms;
-        }
-
-        .hero-image {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Summer visual: sun + bubbles */
-        .hero-visual {
-            width: 420px;
-            height: 420px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            animation: float 5s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-18px); }
-        }
-
-        /* Big sun */
-        .summer-sun {
-            width: 260px;
-            height: 260px;
-            background: radial-gradient(circle, #ffe566 30%, #ffb347 100%);
-            border-radius: 50%;
-            box-shadow: 0 0 0 20px rgba(255,229,102,0.25), 0 0 0 40px rgba(255,179,71,0.12), 0 0 60px rgba(255,200,50,0.4);
-            position: relative;
-            animation: spin-slow 20s linear infinite;
-        }
-
-        @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to   { transform: rotate(360deg); }
-        }
-
-        /* Sun rays */
-        .summer-sun::before {
-            content: '';
-            position: absolute;
-            inset: -35px;
-            border-radius: 50%;
-            background: repeating-conic-gradient(rgba(255,220,50,0.35) 0deg 10deg, transparent 10deg 20deg);
-            border-radius: 50%;
-        }
-
-        /* Floating bubbles */
-        .bubble {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.25);
-            border: 2px solid rgba(255,255,255,0.45);
-            animation: bubble-rise 4s ease-in-out infinite;
-        }
-        .bubble:nth-child(1) { width:38px; height:38px; bottom:15%; left:8%;  animation-delay:0s;   animation-duration:3.5s; }
-        .bubble:nth-child(2) { width:22px; height:22px; bottom:30%; left:18%; animation-delay:0.8s; animation-duration:4.2s; }
-        .bubble:nth-child(3) { width:50px; height:50px; bottom:10%; right:10%;animation-delay:1.4s; animation-duration:5s; }
-        .bubble:nth-child(4) { width:16px; height:16px; bottom:45%; right:5%; animation-delay:2.1s; animation-duration:3.8s; }
-        .bubble:nth-child(5) { width:28px; height:28px; top:20%;    right:20%;animation-delay:0.4s; animation-duration:4.5s; }
-
-        @keyframes bubble-rise {
-            0%,100% { transform: translateY(0) scale(1); opacity:0.7; }
-            50%      { transform: translateY(-22px) scale(1.08); opacity:1; }
-        }
-
-        /* Services Banner — summer */
-        .services-banner {
-            background: linear-gradient(90deg, #0096c7 0%, #00b4d8 50%, #48cae4 100%);
-            padding: 1.2rem 2rem;
-            overflow: hidden;
-        }
-
-        .banner-scroll {
-            display: flex;
-            gap: 3rem;
-            animation: scroll 30s linear infinite;
-            white-space: nowrap;
-            /* size to the content, so -50% is exactly one set of items on every screen width */
-            width: max-content;
-            padding-right: 3rem;
-        }
-
-        @keyframes scroll {
-            0%   { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .banner-scroll { animation: none; width: auto; padding-right: 0; flex-wrap: wrap; justify-content: center; gap: .75rem 2rem; white-space: normal; }
-            .banner-item:nth-child(n+7) { display: none; } /* hide the duplicate set */
-        }
-
-        .banner-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 600;
-            color: #ffffff;
-            font-size: 1rem;
-        }
-
-        .banner-icon {
-            width: 32px;
-            height: 32px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-
-        .hover-effect {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            cursor: pointer;
-        }
-
-        .hover-effect:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
-        }
-
-        @keyframes shake {
-            0%   { transform: translate(1px, 1px) rotate(0deg); }
-            10%  { transform: translate(-1px, -2px) rotate(-1deg); }
-            20%  { transform: translate(-3px, 0px) rotate(1deg); }
-            30%  { transform: translate(3px, 2px) rotate(0deg); }
-            40%  { transform: translate(1px, -1px) rotate(1deg); }
-            50%  { transform: translate(-1px, 2px) rotate(-1deg); }
-            60%  { transform: translate(-3px, 1px) rotate(0deg); }
-            70%  { transform: translate(3px, 1px) rotate(-1deg); }
-            80%  { transform: translate(-1px, -1px) rotate(1deg); }
-            90%  { transform: translate(1px, 2px) rotate(0deg); }
-            100% { transform: translate(1px, -2px) rotate(-1deg); }
-        }
-        .shake {
-            animation: shake 1s 3 ease-in-out 0.5s;
-        }
-
-        /* "What We Offer" cards: lift on mouse hover only, so a tap doesn't leave them raised */
-        @media (hover: hover) and (pointer: fine) {
-            .offer-card:hover {
-                transform: translateY(-6px);
-                box-shadow: 0 16px 40px var(--offer-shadow);
-            }
-        }
-        #wash-fold .offer-card {
-            -webkit-user-select: none;
-            user-select: none;
-        }
-        #wash-fold .offer-card:active {
-            transform: scale(0.98);
-            transition-duration: 100ms;
-        }
-
-        /* =============================================
-           PRICING SECTION — NEW DESIGN
-           ============================================= */
-        .pricing-tabs-nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 1.5rem;
-        }
-
-        .pricing-tab-btn {
-            padding: 8px 18px;
-            font-size: 13.5px;
-            font-weight: 600;
-            cursor: pointer;
-            border: 1.5px solid #cbd5e0;
-            border-radius: 50px;
-            background: #fff;
-            color: #4a5568;
-            transition: all 0.2s ease;
-            font-family: 'Open Sans', sans-serif;
-        }
-
-        @media (hover: hover) and (pointer: fine) {
-            .pricing-tab-btn:hover {
-                background: #edf2f7;
-                border-color: #a0aec0;
-                color: #1e3a5f;
-            }
-        }
-
-        .pricing-tab-btn:active {
-            transform: scale(0.97);
-            transition-duration: 100ms;
-        }
-
-        @media (pointer: coarse) {
-            .pricing-tab-btn {
-                padding-top: 11px;
-                padding-bottom: 11px;
-            }
-        }
-
-        .pricing-tab-btn.active {
-            background: #1e3a5f;
-            color: #fff;
-            border-color: #1e3a5f;
-            box-shadow: 0 4px 12px rgba(30, 58, 95, 0.25);
-        }
-
-        .pricing-tab-pane { display: none; }
-        .pricing-tab-pane.active { display: block; }
-
-        .pricing-section-label {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #4a5568;
-            margin: 1.5rem 0 0.75rem;
-            padding-left: 4px;
-        }
-
-        .pricing-section-label:first-child { margin-top: 0; }
-
-        .pricing-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
-            gap: 10px;
-        }
-
-        .pricing-card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 14px 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 14px;
-            flex-wrap: wrap;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-
-        @media (hover: hover) and (pointer: fine) {
-            .pricing-card:hover {
-                border-color: #3dd5e8;
-                box-shadow: 0 4px 16px rgba(61, 213, 232, 0.15);
-            }
-        }
-
-        .pricing-card-name {
-            font-size: 13.5px;
-            color: #2d3748;
-            line-height: 1.45;
-            flex: 1 1 7rem;
-            min-width: 0;
-        }
-
-        .pricing-card-right {
-            text-align: right;
-            flex-shrink: 0;
-            margin-left: auto;
-        }
-
-        .pricing-card-price {
-            font-size: 15px;
-            font-weight: 700;
-            color: #1e3a5f;
-            white-space: nowrap;
-        }
-
-        .pricing-card-note {
-            font-size: 12.5px;
-            color: #4a5568;
-            margin-top: 3px;
-            white-space: nowrap;
-        }
-
-        .pricing-special-badge {
-            display: inline-block;
-            font-size: 11.5px;
-            font-weight: 700;
-            padding: 2px 9px;
-            border-radius: 50px;
-            background: #fff8e1;
-            color: #975a16;
-            border: 1px solid #f6e05e;
-            margin-bottom: 5px;
-        }
-
-        .pricing-info-bar {
-            font-size: 12.5px;
-            color: #4a5568;
-            background: #f7fafc;
-            border-radius: 8px;
-            padding: 10px 14px;
-            margin-top: 1rem;
-            border-left: 3px solid #3dd5e8;
-        }
-
-        .pricing-info-bar i {
-            color: #3dd5e8;
-            margin-right: 6px;
-        }
-
-        .pricing-effective-note {
-            font-size: 12px;
-            color: #4a5568;
-            background: #f7fafc;
-            border-radius: 8px;
-            padding: 10px 14px;
-            margin-top: 1.25rem;
-            border-left: 3px solid #1e3a5f;
-        }
-
-        /* Hero on phones and tablets: one column; the 2-column grid only fits from ~873px */
-        @media (max-width: 991.98px) {
-            .hero { min-height: 90vh; min-height: 90svh; }
-            .hero-container { grid-template-columns: minmax(0, 1fr); width: 100%; gap: 0; padding: 3rem 1.25rem 7rem; }
-            .hero-image { display: none; }
-            .hero-content h1 { font-size: clamp(2.5rem, 11vw, 4rem); }
-            .hero-content p { font-size: 1.1rem; margin-bottom: 1.75rem; }
-            .hero-buttons { flex-wrap: wrap; gap: .75rem; }
-            .primary-btn, .secondary-btn { padding: .85rem 1.75rem; }
-        }
-    </style>
-    <!-- Business info for search engines -->
-    <script type="application/ld+json">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Southern Star Coin Laundry | Wash &amp; Fold, Dry Cleaning in North York</title>
+  <meta name="description" content="Coin laundry at 3685 Keele St, North York. Wash &amp; fold $1.80/lb ready in 1 day, dry cleaning, and free pickup &amp; delivery within 2 km (min. 20 lbs).">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="canonical" href="https://sscoinlaundry.vercel.app/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%232457F5'/%3E%3Cpolygon fill='%23fff' points='20,7 23.23,15.55 32.36,15.98 25.23,21.7 27.64,30.52 20,25.5 12.36,30.52 14.77,21.7 7.64,15.98 16.77,15.55'/%3E%3Ccircle cx='31.5' cy='8.5' r='2.2' fill='%23F5B82E'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/site.js" defer></script>
+  <script type="application/ld+json">
 {
-        "@context": "https://schema.org",
-        "@type": "DryCleaningOrLaundry",
-        "name": "Southern Star Coin Laundry",
-        "url": "https://sscoinlaundry.vercel.app/",
-        "telephone": "+1-437-423-3962",
-        "email": "southernstarcoinlaundry@gmail.com",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "3685 Keele St, Unit 10",
-            "addressLocality": "North York",
-            "addressRegion": "ON",
-            "postalCode": "M3J 3H6",
-            "addressCountry": "CA"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 43.7545952,
-            "longitude": -79.4872762
-        },
-        "hasMap": "https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA",
-        "openingHoursSpecification": [
-            {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday"
-                ],
-                "opens": "05:00",
-                "closes": "23:00"
-            }
-        ]
-    }
-    </script>
+    "@context": "https://schema.org",
+    "@type": "DryCleaningOrLaundry",
+    "name": "Southern Star Coin Laundry",
+    "url": "https://sscoinlaundry.vercel.app/",
+    "telephone": "+1-437-423-3962",
+    "email": "southernstarcoinlaundry@gmail.com",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3685 Keele St, Unit 10",
+        "addressLocality": "North York",
+        "addressRegion": "ON",
+        "postalCode": "M3J 3H6",
+        "addressCountry": "CA"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.7545952,
+        "longitude": -79.4872762
+    },
+    "hasMap": "https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA",
+    "openingHoursSpecification": [
+        {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+            ],
+            "opens": "05:00",
+            "closes": "23:00"
+        }
+    ]
+}
+  </script>
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-primary py-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0"></div>
-                <div class="col-md-6 text-center text-lg-right">
-                    <div class="d-inline-flex flex-wrap align-items-center justify-content-center">
-                        <a class="text-white text-nowrap px-2 px-md-3" href="tel:+14374233962"><i class="fa fa-phone-alt mr-2"></i>437-423-3962</a>
-                        <span class="text-white text-nowrap px-2 px-md-3"><i class="fa fa-clock mr-2"></i>Open daily 5 AM – 11 PM</span>
-                        <a class="text-white text-nowrap px-2 px-md-3" href="https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA" target="_blank" rel="noopener"><i class="fa fa-map-marker-alt mr-2"></i>Directions</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Topbar End -->
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Navbar Start -->
-    <div class="container-fluid position-relative nav-bar p-0">
-        <div class="p-0" style="z-index: 9;">
-            <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 pl-3 pl-lg-5">
-                <a href="index.html" class="navbar-brand">
-                    <h1 class="m-0 text-secondary"><span class="text-primary">SOUTHERN</span>STAR</h1>
-                    <p class="m-0 text-primary font-weight-bold" style="font-size: 75%; float: right;">Coin Laundry</p>
-                </a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Services</a>
-                        <a href="pricing.html" class="nav-item nav-link">Pricing</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                    </div>
-                </div>
-            </nav>
-        </div>
+  <!-- Header (shared by every page) -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Southern Star Coin Laundry, home">
+        <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect width="40" height="40" rx="10" fill="#2457F5"/><polygon fill="#fff" points="20,7 23.23,15.55 32.36,15.98 25.23,21.7 27.64,30.52 20,25.5 12.36,30.52 14.77,21.7 7.64,15.98 16.77,15.55"/><circle cx="31.5" cy="8.5" r="2.2" fill="#F5B82E"/></svg>
+        <span class="brand__text">
+          <span class="brand__name">Southern Star</span>
+          <span class="brand__tag">Coin Laundry · North York</span>
+        </span>
+      </a>
+      <nav class="nav__links" id="nav-panel" aria-label="Main">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <a class="btn btn--green btn--call" href="tel:+14374233962">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="btn--call__full">Call 437-423-3962</span>
+          <span class="btn--call__short">Call</span>
+        </a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu">
+          <svg class="icon icon--menu" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          <svg class="icon icon--close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
     </div>
-    <!-- Navbar End -->
+  </header>
 
-    <!-- Services Banner -->
-    <div class="services-banner">
-        <div class="banner-scroll">
-            <div class="banner-item"><div class="banner-icon">🌊</div><span>Free Pickup &amp; Delivery within 2km (min. 20 lbs)</span></div>
-            <div class="banner-item"><div class="banner-icon">☀️</div><span>Wash &amp; Fold in 1 Day · Same-Day Add-on</span></div>
-            <div class="banner-item"><div class="banner-icon">🧺</div><span>Wash &amp; Fold $1.80/lb</span></div>
-            <div class="banner-item"><div class="banner-icon">🕔</div><span>Open Daily 5 AM – 11 PM</span></div>
-            <div class="banner-item"><div class="banner-icon">✂️</div><span>Alterations</span></div>
-            <div class="banner-item"><div class="banner-icon">🏧</div><span>ATM On Site</span></div>
-            <div class="banner-item"><div class="banner-icon">🌊</div><span>Free Pickup &amp; Delivery within 2km (min. 20 lbs)</span></div>
-            <div class="banner-item"><div class="banner-icon">☀️</div><span>Wash &amp; Fold in 1 Day · Same-Day Add-on</span></div>
-            <div class="banner-item"><div class="banner-icon">🧺</div><span>Wash &amp; Fold $1.80/lb</span></div>
-            <div class="banner-item"><div class="banner-icon">🕔</div><span>Open Daily 5 AM – 11 PM</span></div>
-            <div class="banner-item"><div class="banner-icon">✂️</div><span>Alterations</span></div>
-            <div class="banner-item"><div class="banner-icon">🏧</div><span>ATM On Site</span></div>
-        </div>
-    </div>
+  <main id="main">
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Fresh &amp; Clean<br><span class="hero-accent">Every Season</span></h1>
-                <p>Let us handle your laundry. Wash &amp; fold ready in 1 day, with a same-day fast service add-on. Free pickup &amp; delivery within 2km of our store (minimum 20 lbs).</p>
-                <div class="hero-buttons">
-                    <a href="about.html" class="primary-btn">Get Started</a>
-                    <a href="service.html" class="secondary-btn">Our Services</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="hero-visual">
-                    <div class="bubble"></div>
-                    <div class="bubble"></div>
-                    <div class="bubble"></div>
-                    <div class="bubble"></div>
-                    <div class="bubble"></div>
-                    <div class="summer-sun"></div>
-                </div>
-            </div>
+    <!-- 2. Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="chip"><span class="chip__dot" aria-hidden="true"></span>Open every day · 5 AM – 11 PM</p>
+          <h1 id="hero-title">Self-serve, or leave it to us.</h1>
+          <p class="hero__lead">Your neighbourhood coin laundromat and dry cleaner on Keele Street, North York. Use the self-serve washers and dryers, or drop off wash &amp; fold at $1.80/lb, ready in 1 day. Dry cleaning too, and free pickup &amp; delivery within 2 km for orders of 20 lbs or more.</p>
+          <ul class="checklist">
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              <div><strong>Wash &amp; fold $1.80/lb</strong><small>Minimum 10 lbs · ready in 1 day</small></div>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              <div><strong>Free pickup &amp; delivery</strong><small>Within 2 km of the store · orders of 20 lbs or more</small></div>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              <div><strong>Open every day, 5 AM – 11 PM</strong><small>Staff on site during attendant hours</small></div>
+            </li>
+          </ul>
+          <div class="hero__actions">
+            <a class="btn btn--green" href="tel:+14374233962">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call to book a pickup
+            </a>
+            <a class="btn btn--outline" href="#pricing">See prices</a>
+          </div>
         </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="hero__orb"></div>
+          <div class="float-card float-card--rating">
+            <div class="float-card__row">
+              <span class="float-card__icon float-card__icon--amber">
+                <svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </span>
+              <div>
+                <p class="float-card__big">4.2 ★</p>
+                <p class="float-card__label">on Google</p>
+              </div>
+            </div>
+          </div>
+          <div class="float-badge">
+            <span class="float-badge__icon">
+              <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="5" rx="2"/><rect x="3" y="10" width="18" height="5" rx="2"/><rect x="3" y="16" width="18" height="5" rx="2"/></svg>
+            </span>
+            <div>
+              <div class="float-badge__value">$1.80/lb</div>
+              <div class="float-badge__label">Wash &amp; Fold · ready in 1 day</div>
+            </div>
+          </div>
+          <div class="float-card float-card--address">
+            <div class="float-card__row">
+              <span class="float-card__icon float-card__icon--blue">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <div>
+                <strong>Unit 10, 3685 Keele St</strong>
+                <span class="float-card__label">North York, ON M3J 3H6</span>
+              </div>
+            </div>
+            <a class="link-arrow" href="https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA" target="_blank" rel="noopener" tabindex="-1">Directions
+              <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact Info Start -->
-    <div class="container-fluid contact-info mt-5 mb-4">
-        <div class="container" style="padding: 0 30px;">
-            <div class="row">
-                <div class="col-md-4 d-flex align-items-center justify-content-center bg-secondary mb-4 mb-lg-0 py-3" style="min-height: 100px;">
-                    <div class="d-inline-flex">
-                        <i class="fa fa-2x fa-map-marker-alt text-white m-0 mr-3"></i>
-                        <div class="d-flex flex-column">
-                            <h5 class="text-white font-weight-medium">Our Location</h5>
-                            <p class="m-0" style="width: 200px;">
-                                <a class="text-white font-weight-small" href="https://www.google.com/maps/place/3685+Keele+St+Unit+10,+North+York,+ON+M3J+3H6,+Canada/@43.7545952,-79.4872762,17z">
-                                    Unit 10, 3685 Keele Street</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 d-flex align-items-center justify-content-center bg-primary mb-4 mb-lg-0 py-3" style="min-height: 100px;">
-                    <div class="d-inline-flex text-left">
-                        <i class="fa fa-2x fa-envelope text-white m-0 mr-3"></i>
-                        <div class="d-flex flex-column">
-                            <h5 class="text-white font-weight-medium">Email Us</h5>
-                            <p class="m-0"><a class="text-white" href="mailto:southernstarcoinlaundry@gmail.com" style="font-size: .9rem;">southernstarcoinlaundry<wbr>@gmail.com</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 d-flex align-items-center justify-content-center bg-secondary mb-4 mb-lg-0 py-3" style="min-height: 100px;">
-                    <div class="d-inline-flex text-left">
-                        <i class="fa fa-2x fa-phone-alt text-white m-0 mr-3"></i>
-                        <div class="d-flex flex-column">
-                            <h5 class="text-white font-weight-medium">Call Us</h5>
-                            <p class="m-0"><a class="text-white" href="tel:+14374233962">437-423-3962</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- 3. Why us -->
+    <section class="section section--light" id="why-us" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Why us</p>
+          <h2 class="section__title" id="why-title">Why neighbours choose Southern Star</h2>
+          <p class="section__lead">Open early and late every day, with staff on site during attendant hours.</p>
         </div>
-    </div>
-    <!-- Contact Info End -->
-
-    <!-- About Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-0 pt-lg-4">
-            <div class="row align-items-center">
-                <div class="col-lg-5">
-                    <img style="border-top-left-radius: 40px; border-bottom-right-radius: 40px;" class="img-fluid" src="img/about.jpg" alt="">
-                </div>
-                <div class="col-lg-7 mt-5 mt-lg-0 pl-lg-5">
-                    <h6 class="text-secondary text-uppercase font-weight-medium mb-3">Learn About Us</h6>
-                    <h1 class="mb-4">Your Neighbourhood Coin Laundry in North York</h1>
-                    <h5 class="font-weight-medium font-italic mb-4">Our mission is to bring satisfaction and provide clean, pristine clothes to you.</h5>
-                    <p class="mb-2">For a better experience, please come to our laundry shop to experience the best service at Unit 10, 3685 Keele Street, North York, ON M3J 3H6</p>
-                    <div class="row">
-                        <div class="col-sm-6 pt-3">
-                            <div class="d-flex align-items-center">
-                                <i class="fa fa-check text-primary mr-2"></i>
-                                <p class="text-secondary font-weight-medium m-0">Organic Solvents</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 pt-3">
-                            <div class="d-flex align-items-center">
-                                <i class="fa fa-check text-primary mr-2"></i>
-                                <p class="text-secondary font-weight-medium m-0">Progressive Cleaning System</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 pt-3">
-                            <div class="d-flex align-items-center">
-                                <i class="fa fa-check text-primary mr-2"></i>
-                                <p class="text-secondary font-weight-medium m-0">Non-Toxic</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="icon-circle icon-circle--blue">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </span>
+            <h3>Open 18 hours a day</h3>
+            <p>Every day, 5 AM to 11 PM, for self-serve washing and drying.</p>
+          </article>
+          <article class="feature-card">
+            <span class="icon-circle icon-circle--amber">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3c.6 5.2 3.8 8.4 9 9-5.2.6-8.4 3.8-9 9-.6-5.2-3.8-8.4-9-9 5.2-.6 8.4-3.8 9-9z"/><path d="M5 2l.5 1.5L7 4l-1.5.5L5 6l-.5-1.5L3 4l1.5-.5z"/></svg>
+            </span>
+            <h3>Clean, bright and attended</h3>
+            <p>Staff are on site during attendant hours for wash &amp; fold, dry cleaning and pickups.</p>
+          </article>
+          <article class="feature-card">
+            <span class="icon-circle icon-circle--salmon">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="5" rx="2"/><rect x="3" y="10" width="18" height="5" rx="2"/><rect x="3" y="16" width="18" height="5" rx="2"/></svg>
+            </span>
+            <h3>Wash &amp; fold ready in 1 day</h3>
+            <p>$1.80/lb with a 10 lb minimum. Fold only is $1.00/lb.</p>
+          </article>
+          <article class="feature-card">
+            <span class="icon-circle icon-circle--green">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </span>
+            <h3>Free pickup &amp; delivery</h3>
+            <p>Within 2 km of the store for orders of 20 lbs or more.</p>
+          </article>
         </div>
-    </div>
-    <!-- About End -->
+      </div>
+    </section>
 
-    <!-- Services Start -->
-    <div class="container-fluid pt-5 pb-3" style="background: linear-gradient(180deg, #e0f7fa 0%, #ffffff 100%);">
-        <div class="container">
-            <h6 class="text-uppercase text-center font-weight-medium mb-3" style="color:#0096c7; letter-spacing:0.1em;">Our Services</h6>
-            <h1 class="display-4 text-center mb-2">What We Offer</h1>
-            <p class="text-center mb-5" style="color:#555; font-size:1.05rem;">Keep your wardrobe fresh and ready for every season.</p>
-            <div class="row justify-content-center">
-
-                <!-- Dry Cleaning -->
-                <div class="col-lg-3 col-md-6 pb-4">
-                    <div class="offer-card d-flex flex-column align-items-center justify-content-center text-center mb-4 px-4"
-                        style="height:300px; border-radius:24px; background:linear-gradient(145deg,#e0f7fa,#b2ebf2); border:2px solid #80deea; transition:transform 0.3s,box-shadow 0.3s; --offer-shadow:rgba(0,150,199,0.2);">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-4"
-                            style="width:100px;height:100px;padding:20px; border: 3px solid #b2ebf2;">
-                            <img src="img/clothes-hanger_14753397.png" alt="" style="width:100%;height:100%;object-fit:cover;">
-                        </div>
-                        <h4 class="font-weight-bold m-0" style="color:#006064;">Dry Cleaning</h4>
-                        <p class="mt-2 mb-0" style="font-size:13.5px;color:#00838f;">Expert care for your finest garments</p>
-                    </div>
-                </div>
-
-                <!-- Wash and Fold -->
-                <div class="col-lg-3 col-md-6 pb-4" id="wash-fold">
-                    <div class="offer-card d-flex flex-column align-items-center justify-content-center text-center mb-4 px-4 shake"
-                        style="height:300px; border-radius:24px; background:linear-gradient(145deg,#fff9c4,#fff176); border:2px solid #fff176; transition:transform 0.3s,box-shadow 0.3s; cursor:pointer; --offer-shadow:rgba(255,179,0,0.25);"
-                        data-toggle="modal" data-target="#washFoldModal">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-4"
-                            style="width:100px;height:100px;padding:20px; border: 3px solid #fff176;">
-                            <img src="img/washing-machine_17521945.png" alt="" style="width:100%;height:100%;object-fit:cover;">
-                        </div>
-                        <h4 class="font-weight-bold m-0" style="color:#e65100;">Wash and Fold</h4>
-                        <p class="mt-2 mb-0" style="font-size:13.5px;color:#ef6c00;">Tap to see pricing ☀️</p>
-                    </div>
-                </div>
-
-                <!-- Pickup & Delivery -->
-                <div class="col-lg-3 col-md-6 pb-4">
-                    <div class="offer-card d-flex flex-column align-items-center justify-content-center text-center mb-4 px-4"
-                        style="height:300px; border-radius:24px; background:linear-gradient(145deg,#e8f5e9,#c8e6c9); border:2px solid #a5d6a7; transition:transform 0.3s,box-shadow 0.3s; --offer-shadow:rgba(56,142,60,0.18);">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-4"
-                            style="width:100px;height:100px;padding:20px; border: 3px solid #c8e6c9;">
-                            <img src="img/delivery-truck_1383451.png" alt="" style="width:100%;height:100%;object-fit:cover;">
-                        </div>
-                        <h4 class="font-weight-bold m-0" style="color:#1b5e20;">Pickup &amp; Delivery</h4>
-                        <p class="mt-2 mb-0" style="font-size:13.5px;color:#2e7d32;">Free within 2km · min. 20 lbs</p>
-                    </div>
-                </div>
-
-                <!-- Alterations -->
-                <div class="col-lg-3 col-md-6 pb-4">
-                    <div class="offer-card d-flex flex-column align-items-center justify-content-center text-center mb-4 px-4"
-                        style="height:300px; border-radius:24px; background:linear-gradient(145deg,#f3e5f5,#e1bee7); border:2px solid #ce93d8; transition:transform 0.3s,box-shadow 0.3s; --offer-shadow:rgba(106,27,154,0.18);">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white shadow rounded-circle mb-4"
-                            style="width:100px;height:100px;padding:20px; border: 3px solid #e1bee7;">
-                            <i class="fa fa-3x fa-cut" style="color:#8e24aa;"></i>
-                        </div>
-                        <h4 class="font-weight-bold m-0" style="color:#4a148c;">Alterations</h4>
-                        <p class="mt-2 mb-0" style="font-size:13.5px;color:#6a1b9a;">Ask in store for pricing</p>
-                    </div>
-                </div>
-
-            </div>
+    <!-- 4. Stats band -->
+    <section class="stats" aria-label="Key facts">
+      <div class="container stats__grid">
+        <div class="stat">
+          <div class="stat__value">$1.80/lb</div>
+          <div class="stat__label">Wash &amp; Fold</div>
+          <p class="stat__note">Minimum 10 lbs</p>
         </div>
-    </div>
-    <!-- Services End -->
-
-    <!-- Wash and Fold Modal -->
-    <div class="modal fade" id="washFoldModal" tabindex="-1" role="dialog" aria-labelledby="washFoldModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header" style="background:linear-gradient(135deg,#fff9c4,#fff176); border-bottom:1px solid #fff176;">
-                    <h3 class="modal-title font-weight-bold" id="washFoldModalLabel" style="color:#e65100;">☀️ Wash and Fold</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <p>Wash and Fold: <strong>$1.80/lb</strong></p>
-                    <p>Fold only: <strong>$1.00/lb</strong></p>
-                    <p>Ready in <strong>1 day</strong>. Need it today? Same-day fast service is available as an add-on; call or ask in store for pricing.</p>
-                    <p style="font-weight: bold; color:#e65100;">Minimum 10 lbs — under 10 lbs billed at minimum price.</p>
-                    <p class="mb-0" style="color:#2e7d32;">Free pickup &amp; delivery within 2km for orders of 20 lbs or more.</p>
-                </div>
-            </div>
+        <div class="stat">
+          <div class="stat__value">1 day</div>
+          <div class="stat__label">Turnaround</div>
+          <p class="stat__note">Same-day fast service on request</p>
         </div>
-    </div>
-
-    <!-- Features Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7 m-0 my-lg-5 pt-0 pt-lg-5 pr-lg-5">
-                    <h6 class="text-secondary text-uppercase font-weight-medium mb-3">Our Features</h6>
-                    <h1 class="mb-4">Why Choose Us</h1>
-                    <div class="row">
-                        <div class="col-sm-6 mb-4">
-                            <h1 class="text-secondary">$1.80<small>/lb</small></h1>
-                            <h5 class="font-weight-bold">Wash &amp; Fold</h5>
-                        </div>
-                        <div class="col-sm-6 mb-4">
-                            <h1 class="text-secondary">1-Day</h1>
-                            <h5 class="font-weight-bold">Wash &amp; Fold Service</h5>
-                        </div>
-                        <div class="col-sm-6 mb-4">
-                            <h1 class="text-secondary">Same-Day</h1>
-                            <h5 class="font-weight-bold">Fast Service Add-on</h5>
-                        </div>
-                        <div class="col-sm-6 mb-4">
-                            <h1 class="text-secondary">Free</h1>
-                            <h5 class="font-weight-bold">Pickup &amp; Delivery within 2km <small class="d-block mt-1">(min. 20 lbs)</small></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div style="border-top-right-radius: 40px; border-bottom-left-radius: 40px;" class="d-flex flex-column align-items-center justify-content-center bg-secondary h-100 py-5 px-3 text-center">
-                        <i class="fa fa-5x fa-star text-white mb-4"></i>
-                        <h1 class="text-white mb-4">Loved by Our Neighbours</h1>
-                        <a class="btn btn-light py-2 px-4" href="https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA" target="_blank" rel="noopener" style="border-radius: 50px;"><i class="fab fa-google mr-2"></i>Read our Google reviews</a>
-                    </div>
-                </div>
-            </div>
+        <div class="stat">
+          <div class="stat__value">2 km</div>
+          <div class="stat__label">Free delivery radius</div>
+          <p class="stat__note">Orders of 20 lbs or more</p>
         </div>
-    </div>
-    <!-- Features End -->
-
-    <!-- Working Process Start -->
-    <div class="container-fluid pt-5">
-        <div class="container">
-            <h6 class="text-secondary text-uppercase text-center font-weight-medium mb-3">Working Process</h6>
-            <h1 class="display-4 text-center mb-5">How We Work</h1>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4" style="width: 150px; height: 150px; border-width: 15px !important;">
-                            <h2 class="display-2 text-secondary m-0">1</h2>
-                        </div>
-                        <h3 class="font-weight-bold m-0 mt-2">Call or Email Us</h3>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4" style="width: 150px; height: 150px; border-width: 15px !important;">
-                            <h2 class="display-2 text-secondary m-0">2</h2>
-                        </div>
-                        <h3 class="font-weight-bold m-0 mt-2">We Pick Up</h3>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4" style="width: 150px; height: 150px; border-width: 15px !important;">
-                            <h2 class="display-2 text-secondary m-0">3</h2>
-                        </div>
-                        <h3 class="font-weight-bold m-0 mt-2">We Clean</h3>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center mb-5">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white border border-light shadow rounded-circle mb-4" style="width: 150px; height: 150px; border-width: 15px !important;">
-                            <h2 class="display-2 text-secondary m-0">4</h2>
-                        </div>
-                        <h3 class="font-weight-bold m-0 mt-2">We Deliver</h3>
-                    </div>
-                </div>
-            </div>
+        <div class="stat">
+          <div class="stat__value stat__value--sm">5 AM – 11 PM</div>
+          <div class="stat__label">Open every day</div>
+          <p class="stat__note">Holiday hours may differ</p>
         </div>
-    </div>
-    <!-- Working Process End -->
+      </div>
+    </section>
 
-    <!-- Pricing Plan Start -->
-    <div class="container-fluid pt-5 pb-3">
-        <div class="container">
-            <h6 class="text-secondary text-uppercase text-center font-weight-medium mb-3">Our Pricing Plan</h6>
-            <h1 class="display-4 text-center mb-2">Reasonable Price</h1>
-            <p class="text-center text-muted mb-4" style="font-size: 13.5px;">Effective Jun 01, 2026 &nbsp;·&nbsp; H.S.T. applicable on all prices</p>
-
-            <!-- Tab Nav -->
-            <div class="pricing-tabs-nav">
-                <button class="pricing-tab-btn active" onclick="pricingTab('mens', this)">Men's Clothing</button>
-                <button class="pricing-tab-btn" onclick="pricingTab('womens', this)">Women's Clothing</button>
-                <button class="pricing-tab-btn" onclick="pricingTab('coats', this)">Coats</button>
-                <button class="pricing-tab-btn" onclick="pricingTab('homewares', this)">Homewares</button>
-                <button class="pricing-tab-btn" onclick="pricingTab('other', this)">Other</button>
-                <a href="pricing.html" class="pricing-tab-btn" style="text-decoration:none;">See Full List →</a>
-            </div>
-
-            <!-- Men's Clothing -->
-            <div id="ptab-mens" class="pricing-tab-pane active">
-                <div class="pricing-cards-grid">
-                    <div class="pricing-card"><span class="pricing-card-name">Dress Shirt - Laundered (Cotton/Polyester Blend)</span><div class="pricing-card-right"><div class="pricing-card-price">$3.45 each</div><div class="pricing-card-note">5 for $15.45</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Dress Shirt - Laundered (Silk/Embroidery/Fancy)</span><div class="pricing-card-right"><div class="pricing-card-price">$6.15 each</div><div class="pricing-card-note">3 for $16.45</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">T-Shirt / Polo Shirt</span><div class="pricing-card-right"><div class="pricing-card-price">$6.15 each</div><div class="pricing-card-note">3 for $16.45</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Trousers / Jeans / Shorts</span><div class="pricing-card-right"><div class="pricing-card-price">$6.15 each</div><div class="pricing-card-note">3 for $16.45</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Sweater</span><div class="pricing-card-right"><div class="pricing-card-price">$12.45 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Jersey</span><div class="pricing-card-right"><div class="pricing-card-price">$10.85 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Sweatshirt / Sweatpants / Hoodie</span><div class="pricing-card-right"><div class="pricing-card-price">$13.05 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Men's Suit – Jacket Only (Blazer)</span><div class="pricing-card-right"><div class="pricing-card-price">$10.95 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Men's Suit – 2 Pieces (Jacket &amp; Trouser)</span><div class="pricing-card-right"><div class="pricing-card-price">$16.45 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Men's Suit – 3 Pieces (Jacket, Trouser &amp; Vest)</span><div class="pricing-card-right"><div class="pricing-card-price">$23.05 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Vest</span><div class="pricing-card-right"><div class="pricing-card-price">$9.85 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Tie / Bowtie</span><div class="pricing-card-right"><div class="pricing-card-price">$8.75 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Hats / Baseball Cap</span><div class="pricing-card-right"><div class="pricing-card-price">$14.25 each</div></div></div>
-                </div>
-            </div>
-
-            <!-- Women's Clothing -->
-            <div id="ptab-womens" class="pricing-tab-pane">
-                <div class="pricing-cards-grid">
-                    <div class="pricing-card"><span class="pricing-card-name">Women's Blouse / Top</span><div class="pricing-card-right"><div class="pricing-card-price">$8.15 each</div><div class="pricing-card-note">Beads +$4.25</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Skirt (Straight)</span><div class="pricing-card-right"><div class="pricing-card-price">$10.35 each</div><div class="pricing-card-note">Beads +$4.25 · Full length +$3.00</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Skirt (Pleated)</span><div class="pricing-card-right"><div class="pricing-card-price">$16.45 each</div><div class="pricing-card-note">Beads +$4.24 · Full length +$4.00</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Women's Dress – Knee Length</span><div class="pricing-card-right"><div class="pricing-card-price">$20.95 each</div><div class="pricing-card-note">Beads +$8.25</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Women's Dress – Gown / Full Length / Jumpsuit</span><div class="pricing-card-right"><div class="pricing-card-price">$25.95 each</div><div class="pricing-card-note">Beads +$10.25</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Jersey</span><div class="pricing-card-right"><div class="pricing-card-price">$9.85 each</div></div></div>
-                </div>
-            </div>
-
-            <!-- Coats -->
-            <div id="ptab-coats" class="pricing-tab-pane">
-                <p class="pricing-section-label">Fabric &amp; Wool</p>
-                <div class="pricing-cards-grid">
-                    <div class="pricing-card"><span class="pricing-card-name">Fabric with Lining (Spring / Fall Jacket)</span><div class="pricing-card-right"><div class="pricing-card-price">$19.95 each</div><div class="pricing-card-note">Hood +$3.75</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">P-Coat / Wool / Felt – Up to 36"</span><div class="pricing-card-right"><div class="pricing-card-price">$40.95 each</div><div class="pricing-card-note">Hood +$4.75</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">P-Coat / Wool / Felt – Over 36" / Trench Coat</span><div class="pricing-card-right"><div class="pricing-card-price">$44.95 each</div><div class="pricing-card-note">Hood +$4.75</div></div></div>
-                </div>
-                <p class="pricing-section-label">Polyester Filled</p>
-                <div class="pricing-cards-grid">
-                    <div class="pricing-card"><span class="pricing-card-name">Polyester Filled – Up to 32"</span><div class="pricing-card-right"><div class="pricing-card-price">$28.95 each</div><div class="pricing-card-note">Hood +$4.25</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Polyester Filled – 32" to 42"</span><div class="pricing-card-right"><div class="pricing-card-price">$32.95 each</div><div class="pricing-card-note">Hood +$4.25</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Polyester Filled – Over 42"</span><div class="pricing-card-right"><div class="pricing-card-price">$38.95 each</div><div class="pricing-card-note">Hood +$4.25</div></div></div>
-                </div>
-                <p class="pricing-section-label">Down / Feather Filled</p>
-                <div class="pricing-cards-grid">
-                    <div class="pricing-card"><span class="pricing-card-name">Down / Feather Filled – Up to 32"</span><div class="pricing-card-right"><div class="pricing-card-price">$50.95 each</div><div class="pricing-card-note">Hood +$6.25 · Fur Trim +$14.95</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Down / Feather Filled – 32" to 42"</span><div class="pricing-card-right"><div class="pricing-card-price">$60.95 each</div><div class="pricing-card-note">Hood +$6.25 · Fur Trim +$14.95</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Down / Feather + Leather / Suede Trim – Up to 30"</span><div class="pricing-card-right"><div class="pricing-card-price">$76.95 each</div><div class="pricing-card-note">Hood +$6.25 · Fur Trim +$14.95</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Down / Feather + Leather / Suede Trim – Over 30"</span><div class="pricing-card-right"><div class="pricing-card-price">$82.95 each</div><div class="pricing-card-note">Hood +$6.25 · Fur Trim +$14.95</div></div></div>
-                </div>
-            </div>
-
-            <!-- Homewares -->
-            <div id="ptab-homewares" class="pricing-tab-pane">
-                <p class="pricing-section-label">Linens</p>
-                <div class="pricing-cards-grid">
-                    <div class="pricing-card"><span class="pricing-card-name">Table Cloth</span><div class="pricing-card-right"><div class="pricing-card-price">$16.95 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Cushion Covers</span><div class="pricing-card-right"><div class="pricing-card-price">$10.95 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Bed Sheet – Single / Twin / Double / Full</span><div class="pricing-card-right"><div class="pricing-card-price">$16.95 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Bed Sheet – Queen / King</span><div class="pricing-card-right"><div class="pricing-card-price">$20.95 each</div></div></div>
-                </div>
-                <p class="pricing-section-label">Curtains</p>
-                <div class="pricing-cards-grid">
-                    <div class="pricing-card"><span class="pricing-card-name">Curtain – Up to 48" Wide Panel</span><div class="pricing-card-right"><div class="pricing-card-price">$20.95 each</div><div class="pricing-card-note">Lining +$4.75</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Curtain – 48" to 60" Wide Panel</span><div class="pricing-card-right"><div class="pricing-card-price">$25.95 each</div><div class="pricing-card-note">Lining +$4.75</div></div></div>
-                </div>
-                <p class="pricing-section-label">Comforters &amp; Covers</p>
-                <div class="pricing-cards-grid">
-                    <div class="pricing-card"><span class="pricing-card-name">Comforter – Single / Twin / Double / Full</span><div class="pricing-card-right"><div class="pricing-card-price">$31.95 each</div><div class="pricing-card-note">Down/Feather Filled +$5.75</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Comforter – Queen / King</span><div class="pricing-card-right"><div class="pricing-card-price">$36.95 each</div><div class="pricing-card-note">Down/Feather Filled +$6.25</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Blanket / Duvet Cover – Single / Twin / Double / Full</span><div class="pricing-card-right"><div class="pricing-card-price">$21.95 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Blanket / Duvet Cover – Queen / King</span><div class="pricing-card-right"><div class="pricing-card-price">$26.95 each</div></div></div>
-                </div>
-                <p class="pricing-section-label">Carpets</p>
-                <div class="pricing-cards-grid">
-                    <div class="pricing-card"><span class="pricing-card-name">Small Carpet</span><div class="pricing-card-right"><div class="pricing-card-price">$16.95 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Big Carpet</span><div class="pricing-card-right"><div class="pricing-card-price">$20.95 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">XXL Carpet</span><div class="pricing-card-right"><div class="pricing-card-price">$30.95 each</div></div></div>
-                </div>
-            </div>
-
-            <!-- Other -->
-            <div id="ptab-other" class="pricing-tab-pane">
-                <div class="pricing-cards-grid">
-                    <div class="pricing-card"><span class="pricing-card-name">Kurta Pyjama (2pc)</span><div class="pricing-card-right"><div class="pricing-card-price">$26.45 / 2pcs</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Kurta Only</span><div class="pricing-card-right"><div class="pricing-card-price">$20.95 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Pyjama Only</span><div class="pricing-card-right"><div class="pricing-card-price">$6.15 each</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Salwar Kameez / Indian Women's Suit 2pc/3pc</span><div class="pricing-card-right"><div class="pricing-card-price">$26.95 / $31.95</div><div class="pricing-card-note">Beads +$4.95</div></div></div>
-                    <div class="pricing-card"><span class="pricing-card-name">Saree</span><div class="pricing-card-right"><div class="pricing-card-price">$32.95 each</div><div class="pricing-card-note">Beads +$9.95</div></div></div>
-                    <div class="pricing-card" style="border-color: #f6e05e;">
-                        <span class="pricing-card-name"><span class="pricing-special-badge">✦ Special</span><br>Wedding Dress</span>
-                        <div class="pricing-card-right"><div class="pricing-card-price">$150.00 each</div><div class="pricing-card-note">Beads +$10.25</div></div>
-                    </div>
-                </div>
-                <div class="pricing-info-bar mt-3">
-                    <i class="fa fa-info-circle"></i> For any items not listed, please inquire in store or call <strong>437-423-3962</strong>.
-                </div>
-            </div>
-
-            <div class="pricing-effective-note">
-                <i class="fa fa-tag mr-1"></i> All prices are effective <strong>Jun 01, 2026</strong>. H.S.T. applicable on all services.
-            </div>
+    <!-- 5. Services -->
+    <section class="section section--white" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Services</p>
+          <h2 class="section__title" id="services-title">Everything your laundry needs</h2>
+          <p class="section__lead">Self-serve machines, wash &amp; fold, dry cleaning and more, all at one address in North York.</p>
         </div>
-    </div>
-    <!-- Pricing Plan End -->
-
-    <!-- Testimonial Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <h6 class="text-secondary text-uppercase text-center font-weight-medium mb-3">Testimonial</h6>
-            <h1 class="display-4 text-center mb-5">Our Clients Say</h1>
-            <div class="owl-carousel testimonial-carousel">
-                <div class="testimonial-item">
-                    <div class="bg-light text-center p-4 pt-0">
-                        <h5 class="font-weight-medium mt-5">Rayan A.</h5>
-                        <div class="d-flex justify-content-center mb-1" aria-label="5 out of 5 stars">
-                            <i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i>
-                        </div>
-                        <p class="text-muted mb-3" style="font-size: 0.8rem;"><i class="fab fa-google mr-1"></i>Google review</p>
-                        <p class="m-0">I can’t say enough good things about southern star coin Laundry! From the moment I walked in, the place was spotless, bright, and super welcoming. The staff is incredibly friendly and always ready to help. The machines are fast, efficient, and the prices are super fair. … Five stars all the way!</p>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <div class="bg-light text-center p-4 pt-0">
-                        <h5 class="font-weight-medium mt-5">Thalia R.</h5>
-                        <div class="d-flex justify-content-center mb-1" aria-label="5 out of 5 stars">
-                            <i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i>
-                        </div>
-                        <p class="text-muted mb-3" style="font-size: 0.8rem;"><i class="fab fa-google mr-1"></i>Google review</p>
-                        <p class="m-0">This laundromat was possibly the cleanest and most pleasant laundromat I've been to! I will definitely use Southern Star Coin Laundry again &amp; recommend it to everyone.</p>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <div class="bg-light text-center p-4 pt-0">
-                        <h5 class="font-weight-medium mt-5">Omar S.</h5>
-                        <div class="d-flex justify-content-center mb-1" aria-label="5 out of 5 stars">
-                            <i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i>
-                        </div>
-                        <p class="text-muted mb-3" style="font-size: 0.8rem;"><i class="fab fa-google mr-1"></i>Google review</p>
-                        <p class="m-0">The cleanest and well organized coin laundry I have ever been. … I recommend this place any day.</p>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <div class="bg-light text-center p-4 pt-0">
-                        <h5 class="font-weight-medium mt-5">Small E.</h5>
-                        <div class="d-flex justify-content-center mb-1" aria-label="5 out of 5 stars">
-                            <i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i><i class="fa fa-star text-primary mr-1"></i>
-                        </div>
-                        <p class="text-muted mb-3" style="font-size: 0.8rem;"><i class="fab fa-google mr-1"></i>Google review</p>
-                        <p class="m-0">I had a great experience at this coin laundry! The machines were clean, easy to use, and worked quickly. The space was well-maintained, and I appreciated how convenient it was. It made laundry day a lot less stressful. Definitely recommend it for anyone needing a quick, reliable place to wash clothes! I love it.</p>
-                    </div>
-                </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-card__media media--blue">
+              <svg class="icon icon--xl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="2" width="18" height="20" rx="3"/><circle cx="12" cy="13" r="5"/><path d="M9.5 14.5c1.5-1.5 3.5-1.5 5 0"/><path d="M7 6h.01M11 6h3"/></svg>
+              <span class="service-card__badge service-card__badge--blue" aria-hidden="true">
+                <svg class="icon icon--sm" viewBox="0 0 24 24"><rect x="3" y="2" width="18" height="20" rx="3"/><circle cx="12" cy="13" r="5"/><path d="M7 6h.01M11 6h3"/></svg>
+              </span>
             </div>
-            <div class="text-center mt-5">
-                <p class="mb-4" style="font-size: 1.1rem;">Read more reviews from our customers on Google.</p>
-                <a class="btn btn-primary py-3 px-5" href="https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA" target="_blank" rel="noopener" style="border-radius: 50px;"><i class="fab fa-google mr-2"></i>Read more reviews on Google</a>
+            <div class="service-card__body">
+              <h3>Self-serve washers &amp; dryers</h3>
+              <p>Coin-operated washers and dryers, open every day from 5 AM to 11 PM. Ask in store for machine prices.</p>
             </div>
+          </article>
+          <article class="service-card">
+            <div class="service-card__media media--green">
+              <svg class="icon icon--xl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="5" rx="2"/><rect x="3" y="10" width="18" height="5" rx="2"/><rect x="3" y="16" width="18" height="5" rx="2"/></svg>
+              <span class="service-card__badge service-card__badge--green" aria-hidden="true">
+                <svg class="icon icon--sm" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="5" rx="2"/><rect x="3" y="10" width="18" height="5" rx="2"/><rect x="3" y="16" width="18" height="5" rx="2"/></svg>
+              </span>
+            </div>
+            <div class="service-card__body">
+              <h3>Wash &amp; Fold</h3>
+              <p>$1.80/lb, minimum 10 lbs, ready in 1 day. Fold only is $1.00/lb. Same-day fast service is available on request.</p>
+            </div>
+          </article>
+          <article class="service-card">
+            <div class="service-card__media media--amber">
+              <svg class="icon icon--xl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5a2 2 0 0 1 2 2c0 1.6-2 1.9-2 3.5"/><path d="M12 9L3.2 15.2A1.2 1.2 0 0 0 3.9 17.4h16.2a1.2 1.2 0 0 0 .7-2.2L12 9z"/></svg>
+              <span class="service-card__badge service-card__badge--amber" aria-hidden="true">
+                <svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M12 3.5a2 2 0 0 1 2 2c0 1.6-2 1.9-2 3.5"/><path d="M12 9L3.2 15.2A1.2 1.2 0 0 0 3.9 17.4h16.2a1.2 1.2 0 0 0 .7-2.2L12 9z"/></svg>
+              </span>
+            </div>
+            <div class="service-card__body">
+              <h3>Dry Cleaning</h3>
+              <p>Shirts, suits, coats, dresses, linens and more — from $3.45 per item.</p>
+              <a class="link-arrow" href="pricing.html">See the full price list
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+          <article class="service-card">
+            <div class="service-card__media media--salmon">
+              <svg class="icon icon--xl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <span class="service-card__badge service-card__badge--blue" aria-hidden="true">
+                <svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              </span>
+            </div>
+            <div class="service-card__body">
+              <h3>Pickup &amp; Delivery</h3>
+              <p>Free within 2 km of the store for orders of 20 lbs or more. Book by phone or email during attendant hours.</p>
+              <a class="link-arrow" href="#contact">Request a pickup
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+          <article class="service-card">
+            <div class="service-card__media media--violet">
+              <svg class="icon icon--xl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88"/><path d="M14.47 14.48L20 20"/><path d="M8.12 8.12L12 12"/></svg>
+              <span class="service-card__badge service-card__badge--green" aria-hidden="true">
+                <svg class="icon icon--sm" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88"/><path d="M14.47 14.48L20 20"/><path d="M8.12 8.12L12 12"/></svg>
+              </span>
+            </div>
+            <div class="service-card__body">
+              <h3>Alterations</h3>
+              <p>Alterations are available in store. Ask in store for pricing.</p>
+            </div>
+          </article>
+          <article class="service-card">
+            <div class="service-card__media media--teal">
+              <svg class="icon icon--xl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 12h.01M18 12h.01"/></svg>
+              <span class="service-card__badge service-card__badge--amber" aria-hidden="true">
+                <svg class="icon icon--sm" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 12h.01M18 12h.01"/></svg>
+              </span>
+            </div>
+            <div class="service-card__body">
+              <h3>ATM on site</h3>
+              <p>An ATM is available in the store, handy when you need cash for the coin machines.</p>
+            </div>
+          </article>
         </div>
-    </div>
-    <!-- Testimonial End -->
+      </div>
+    </section>
 
-    <!-- Price Announcement Modal -->
-    <div class="modal fade" id="priceAnnouncementModal" tabindex="-1" role="dialog" aria-labelledby="priceAnnouncementLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-            <div class="modal-content" style="border-radius: 16px; border: none; overflow: hidden;">
-                <div class="modal-header" style="background: linear-gradient(135deg, #1e3a5f 0%, #0096c7 100%); border-bottom: none; padding: 1.5rem 1.75rem;">
-                    <div>
-                        <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7);">Important Notice</span>
-                        <h4 class="modal-title m-0 text-white font-weight-bold" id="priceAnnouncementLabel" style="margin-top: 4px !important;">
-                            Pricing Update — Effective Jun 01, 2026
-                        </h4>
-                    </div>
-                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close" style="opacity: 0.8; font-size: 1.5rem;">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" style="padding: 1.5rem 1.75rem;">
-                    <p style="font-size: 13.5px; color: #4a5568; line-height: 1.6; margin-bottom: 1.25rem;">
-                        Due to recent increases in fuel costs and logistics, we are updating our pricing structure to maintain the quality of our services. We sincerely thank you for your continued support.
-                    </p>
-
-                    <!-- Price Grid -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem;">
-                        <div style="background: #f7fafc; border-radius: 10px; padding: 12px 14px; border-left: 3px solid #0096c7;">
-                            <div style="font-size: 12px; color: #4a5568; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Dress Shirt</div>
-                            <div style="font-size: 17px; font-weight: 700; color: #1e3a5f; margin-top: 2px;">$3.45</div>
-                            <div style="font-size: 12px; color: #718096;">each</div>
-                        </div>
-                        <div style="background: #f7fafc; border-radius: 10px; padding: 12px 14px; border-left: 3px solid #0096c7;">
-                            <div style="font-size: 12px; color: #4a5568; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Pants / Jeans</div>
-                            <div style="font-size: 17px; font-weight: 700; color: #1e3a5f; margin-top: 2px;">$6.15</div>
-                            <div style="font-size: 12px; color: #718096;">each</div>
-                        </div>
-                        <div style="background: #f7fafc; border-radius: 10px; padding: 12px 14px; border-left: 3px solid #0096c7;">
-                            <div style="font-size: 12px; color: #4a5568; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Blazer</div>
-                            <div style="font-size: 17px; font-weight: 700; color: #1e3a5f; margin-top: 2px;">$10.95</div>
-                            <div style="font-size: 12px; color: #718096;">each</div>
-                        </div>
-                        <div style="background: #fff8e1; border-radius: 10px; padding: 12px 14px; border-left: 3px solid #ffb347;">
-                            <div style="font-size: 12px; color: #975a16; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Wash &amp; Fold</div>
-                            <div style="font-size: 17px; font-weight: 700; color: #7a4500; margin-top: 2px;">$1.80/lb</div>
-                            <div style="font-size: 12px; color: #975a16;">1-day · min. 10 lbs</div>
-                        </div>
-                    </div>
-
-                    <div style="font-size: 12px; color: #718096; background: #f7fafc; border-radius: 8px; padding: 10px 14px; border-left: 3px solid #e2e8f0;">
-                        Other items adjusted approximately ±10%. H.S.T. applicable on all services.
-                    </div>
-                </div>
-                <div class="modal-footer" style="border-top: 1px solid #edf2f7; padding: 1rem 1.75rem; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 12px; color: #a0aec0;">Southern Star Coin Laundry</span>
-                    <button type="button" class="btn btn-primary px-4" data-dismiss="modal" style="border-radius: 50px; font-weight: 600; font-size: 14px;">
-                        Got it
-                    </button>
-                </div>
+    <!-- 6. About / How it works -->
+    <div id="about">
+      <section class="section section--light" id="how-it-works" aria-labelledby="about-title">
+        <div class="container how__grid">
+          <div>
+            <div class="section__head">
+              <p class="eyebrow">About us</p>
+              <h2 class="section__title" id="about-title">Your neighbourhood coin laundry on Keele Street</h2>
             </div>
+            <p class="how__intro">Southern Star Coin Laundry is a coin laundromat and dry cleaner at Unit 10, 3685 Keele Street, North York. Wash and dry on your own schedule, or leave your laundry with us. If you would rather not come in, we pick up and deliver.</p>
+            <h3 class="how__subtitle">How pickup &amp; delivery works</h3>
+            <ol class="steps">
+              <li class="step">
+                <span class="step__num step__num--blue" aria-hidden="true">1</span>
+                <div>
+                  <h3>Call or email during attendant hours</h3>
+                  <p>Call <a href="tel:+14374233962">437-423-3962</a> or <a href="mailto:southernstarcoinlaundry@gmail.com">email us</a> with your address and what needs picking up.</p>
+                </div>
+              </li>
+              <li class="step">
+                <span class="step__num step__num--green" aria-hidden="true">2</span>
+                <div>
+                  <h3>We pick up</h3>
+                  <p>Free within 2 km of the store for orders of 20 lbs or more.</p>
+                </div>
+              </li>
+              <li class="step">
+                <span class="step__num step__num--amber" aria-hidden="true">3</span>
+                <div>
+                  <h3>Washed, folded and ready in 1 day</h3>
+                  <p>Then we bring it back to you.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+          <div class="how__visual">
+            <div class="how__photo">
+              <img src="img/about.jpg" width="500" height="600" alt="A stack of freshly folded knitwear held in two hands" loading="lazy">
+            </div>
+            <div class="hours-card">
+              <h3>Attendant &amp; pickup hours</h3>
+              <p class="hours-card__note">Staff on site for wash &amp; fold, dry cleaning and pickups.</p>
+              <table class="hours-table">
+                <tbody>
+                  <tr><th scope="row">Mon</th><td>10 AM – 5 PM · 7 – 11 PM</td></tr>
+                  <tr><th scope="row">Tue</th><td>7 – 11 PM</td></tr>
+                  <tr><th scope="row">Wed</th><td>10 AM – 5 PM · 7 – 11 PM</td></tr>
+                  <tr><th scope="row">Thu</th><td>10 AM – 5 PM · 7 – 11 PM</td></tr>
+                  <tr><th scope="row">Fri</th><td>10 AM – 5 PM · 7 – 11 PM</td></tr>
+                  <tr><th scope="row">Sat</th><td>9 AM – 11 PM</td></tr>
+                  <tr><th scope="row">Sun</th><td>10 AM – 11 PM</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
+      </section>
     </div>
-    <!-- Footer Start -->
-    <div class="container-fluid bg-primary text-white mt-5 pt-5 px-sm-3 px-md-5">
-        <div class="row pt-5">
-            <div class="col-lg-4 col-md-7 mb-5">
-                <a href="index.html">
-                    <h1 class="text-secondary mb-3"><span class="text-white">SOUTHERN</span>STAR</h1>
-                </a>
-                <div class="d-flex justify-content-start mt-4">
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA" target="_blank" rel="noopener" title="Find us on Google Maps" aria-label="Find us on Google Maps"><i class="fab fa-google"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-7 mb-5">
-                <h4 class="text-white mb-4">Get In Touch</h4>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>
-                    <a class="text-white" href="https://www.google.com/maps/place/3685+Keele+St+Unit+10,+North+York,+ON+M3J+3H6,+Canada/@43.7545952,-79.4872762,17z">
-                        Unit 10, 3685 Keele Street, North York, ON M3J 3H6</a>
-                </p>
-                <p><i class="fa fa-phone-alt mr-2"></i><a class="text-white" href="tel:+14374233962">437-423-3962</a></p>
-                <p><i class="fa fa-envelope mr-2"></i><a class="text-white" href="mailto:southernstarcoinlaundry@gmail.com">southernstarcoinlaundry@gmail.com</a></p>
-                <p><i class="fa fa-clock mr-2"></i>Open daily 5 AM – 11 PM<br><a class="text-white" href="contact.html#hours" style="margin-left: 1.6rem; text-decoration: underline;">Attendant &amp; pickup hours</a></p>
-            </div>
-            <div class="col-lg-4 col-md-7 mb-5">
-                <h4 class="text-white mb-4">Quick Links</h4>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                    <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                    <a class="text-white mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white mb-2" href="pricing.html"><i class="fa fa-angle-right mr-2"></i>Pricing</a>
-                    <a class="text-white" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                </div>
-            </div>
+
+    <!-- 7. Pricing band -->
+    <section class="section section--dark pricing" id="pricing" aria-labelledby="pricing-title">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow eyebrow--amber">Pricing</p>
+          <h2 class="section__title" id="pricing-title">Simple pricing</h2>
+          <p class="section__lead">Wash &amp; fold by the pound, dry cleaning by the item. HST applies to all prices.</p>
         </div>
+        <div class="price-grid">
+          <article class="glass glass--featured">
+            <span class="glass__badge">Most popular</span>
+            <h3>Wash &amp; Fold</h3>
+            <p class="glass__sub">Drop off, or book a pickup</p>
+            <p class="price"><span class="price__amount">$1.80</span><span class="price__unit">/lb</span></p>
+            <ul>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5"/></svg>Minimum 10 lbs</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5"/></svg>Ready in 1 day</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5"/></svg>Same-day fast service on request</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5"/></svg>Free pickup &amp; delivery within 2 km (20 lbs+)</li>
+            </ul>
+            <a class="btn btn--amber btn--block" href="tel:+14374233962">Call to book</a>
+          </article>
+          <article class="glass">
+            <h3>Fold only</h3>
+            <p class="glass__sub">You wash, we fold</p>
+            <p class="price"><span class="price__amount">$1.00</span><span class="price__unit">/lb</span></p>
+            <ul>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5"/></svg>Minimum 10 lbs</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5"/></svg>Ready in 1 day</li>
+            </ul>
+            <a class="btn btn--outline btn--block" href="tel:+14374233962">Call us</a>
+          </article>
+          <article class="glass">
+            <h3>Dry Cleaning</h3>
+            <p class="glass__sub">Priced per item</p>
+            <p class="price"><span class="price__from">from</span><span class="price__amount">$3.45</span><span class="price__unit">/item</span></p>
+            <ul>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5"/></svg>Shirts, suits, coats and dresses</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5"/></svg>Linens, curtains and carpets</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5"/></svg>Wedding dress</li>
+            </ul>
+            <a class="btn btn--outline btn--block" href="pricing.html">See full price list</a>
+          </article>
+        </div>
+        <p class="pricing__note">Alterations: ask in store for pricing · Effective Jun 01, 2026 · HST applies to all prices.</p>
+      </div>
+    </section>
+
+    <!-- 8. Reviews -->
+    <section class="section section--light" id="reviews" aria-labelledby="reviews-title">
+      <div class="container" data-scroller>
+        <div class="reviews__head">
+          <div class="section__head">
+            <p class="eyebrow">Reviews</p>
+            <h2 class="section__title" id="reviews-title">What our neighbours say</h2>
+            <p class="rating-line">
+              <span class="stars" role="img" aria-label="4.2 out of 5 stars">
+                <svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span class="stars__fill" style="width: 84%;">
+                  <svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </span>
+              </span>
+              <span>4.2 ★ on Google</span>
+            </p>
+          </div>
+          <div class="reviews__nav">
+            <button class="circle-btn circle-btn--light" type="button" data-prev aria-label="Previous reviews">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+            </button>
+            <button class="circle-btn circle-btn--blue" type="button" data-next aria-label="Next reviews">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <ul class="reviews__track" data-track aria-label="Google reviews">
+          <li class="review-card">
+            <div class="review-card__head">
+              <span class="avatar avatar--blue" aria-hidden="true">RA</span>
+              <div>
+                <span class="review-card__name">Rayan A.</span>
+                <span class="stars stars--sm" role="img" aria-label="5 out of 5 stars">
+                  <span class="stars__fill" style="width: 100%;">
+                    <svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  </span>
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </span>
+              </div>
+            </div>
+            <p class="review-card__text">I can’t say enough good things about southern star coin Laundry! From the moment I walked in, the place was spotless, bright, and super welcoming. The staff is incredibly friendly and always ready to help. The machines are fast, efficient, and the prices are super fair. … Five stars all the way!</p>
+            <span class="review-card__source"><svg class="icon icon--fill" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Google review</span>
+          </li>
+          <li class="review-card">
+            <div class="review-card__head">
+              <span class="avatar avatar--green" aria-hidden="true">TR</span>
+              <div>
+                <span class="review-card__name">Thalia R.</span>
+                <span class="stars stars--sm" role="img" aria-label="5 out of 5 stars">
+                  <span class="stars__fill" style="width: 100%;">
+                    <svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  </span>
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </span>
+              </div>
+            </div>
+            <p class="review-card__text">This laundromat was possibly the cleanest and most pleasant laundromat I've been to! I will definitely use Southern Star Coin Laundry again &amp; recommend it to everyone.</p>
+            <span class="review-card__source"><svg class="icon icon--fill" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Google review</span>
+          </li>
+          <li class="review-card">
+            <div class="review-card__head">
+              <span class="avatar avatar--amber" aria-hidden="true">OS</span>
+              <div>
+                <span class="review-card__name">Omar S.</span>
+                <span class="stars stars--sm" role="img" aria-label="5 out of 5 stars">
+                  <span class="stars__fill" style="width: 100%;">
+                    <svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  </span>
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </span>
+              </div>
+            </div>
+            <p class="review-card__text">The cleanest and well organized coin laundry I have ever been. … I recommend this place any day.</p>
+            <span class="review-card__source"><svg class="icon icon--fill" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Google review</span>
+          </li>
+          <li class="review-card">
+            <div class="review-card__head">
+              <span class="avatar avatar--salmon" aria-hidden="true">SE</span>
+              <div>
+                <span class="review-card__name">Small E.</span>
+                <span class="stars stars--sm" role="img" aria-label="5 out of 5 stars">
+                  <span class="stars__fill" style="width: 100%;">
+                    <svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  </span>
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </span>
+              </div>
+            </div>
+            <p class="review-card__text">I had a great experience at this coin laundry! The machines were clean, easy to use, and worked quickly. The space was well-maintained, and I appreciated how convenient it was. It made laundry day a lot less stressful. Definitely recommend it for anyone needing a quick, reliable place to wash clothes! I love it.</p>
+            <span class="review-card__source"><svg class="icon icon--fill" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Google review</span>
+          </li>
+        </ul>
+
+        <div class="reviews__cta">
+          <a class="btn btn--blue" href="https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA" target="_blank" rel="noopener">Read more reviews on Google
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Book a pickup / contact -->
+    <section class="section section--dark book" id="contact" aria-labelledby="contact-title">
+      <div class="book__bg" aria-hidden="true"></div>
+      <div class="container book__grid">
+        <div>
+          <div class="section__head">
+            <p class="eyebrow eyebrow--white">Book a pickup</p>
+            <h2 class="section__title" id="contact-title">Call us during attendant hours</h2>
+            <p class="section__lead">We confirm every pickup by phone or email. Free within 2 km of the store for orders of 20 lbs or more.</p>
+          </div>
+          <a class="book__phone" href="tel:+14374233962">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            437-423-3962
+          </a>
+          <ul class="contact-links">
+            <li><a href="mailto:southernstarcoinlaundry@gmail.com">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+              southernstarcoinlaundry@gmail.com</a></li>
+            <li><a href="https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Unit 10, 3685 Keele Street, North York, ON M3J 3H6 · Directions</a></li>
+          </ul>
+          <div class="hours-summary">
+            <h3>Attendant &amp; pickup hours</h3>
+            <dl>
+              <dt>Mon, Wed–Fri</dt><dd>10 AM – 5 PM and 7 – 11 PM</dd>
+              <dt>Tue</dt><dd>7 – 11 PM</dd>
+              <dt>Sat</dt><dd>9 AM – 11 PM</dd>
+              <dt>Sun</dt><dd>10 AM – 11 PM</dd>
+            </dl>
+            <p class="hours-summary__note">The laundromat itself is open every day, 5 AM – 11 PM. Holiday hours may differ.</p>
+          </div>
+        </div>
+
+        <form class="form-card" id="pickup-form" action="mailto:southernstarcoinlaundry@gmail.com?subject=Pickup%20request" method="post" enctype="text/plain" novalidate="">
+          <h3>Request a pickup</h3>
+          <p class="form-card__intro">Fill this in and we will get the details by email.</p>
+          <div class="field">
+            <label for="pf-name">Name</label>
+            <input id="pf-name" name="name" type="text" autocomplete="name" required enterkeyhint="next">
+          </div>
+          <div class="field">
+            <label for="pf-phone">Phone</label>
+            <input id="pf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required enterkeyhint="next">
+          </div>
+          <div class="field">
+            <label for="pf-address">Pickup address</label>
+            <input id="pf-address" name="address" type="text" autocomplete="street-address" required enterkeyhint="next">
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="pf-service">Service</label>
+              <select id="pf-service" name="service" required>
+                <option value="Wash &amp; Fold">Wash &amp; Fold</option>
+                <option value="Dry Cleaning">Dry Cleaning</option>
+                <option value="Both">Both</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="pf-day">Preferred day</label>
+              <input id="pf-day" name="day" type="text" placeholder="e.g. Friday, after 7 PM" autocomplete="off" enterkeyhint="next">
+            </div>
+          </div>
+          <div class="field">
+            <label for="pf-notes">Notes</label>
+            <textarea id="pf-notes" name="notes" rows="3" placeholder="Anything we should know" enterkeyhint="send"></textarea>
+          </div>
+          <button class="btn btn--green btn--block" type="submit">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>
+            Send request by email
+          </button>
+          <p class="form-note">Opens your email app. We confirm by phone or email during attendant hours. Free within 2 km for orders of 20 lbs or more.</p>
+          <p class="form-fallback" id="pickup-fallback" hidden>If your email app did not open, <a id="pickup-mailto" href="mailto:southernstarcoinlaundry@gmail.com?subject=Pickup%20request">use this link</a> or call <a href="tel:+14374233962">437-423-3962</a>.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- 10. FAQ -->
+    <section class="section section--light" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">Questions</p>
+          <h2 class="section__title" id="faq-title">Frequently asked questions</h2>
+          <p class="section__lead">Hours, minimums, turnaround and prices.</p>
+        </div>
+        <div class="faq-list">
+          <details class="faq">
+            <summary>What are your hours, and when is someone there?
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq__body">
+              <p>The laundromat is open every day from 5 AM to 11 PM for self-serve washing and drying. An attendant is on site for wash &amp; fold, dry cleaning and pickups during attendant hours: Mon, Wed, Thu and Fri 10 AM – 5 PM and 7 – 11 PM; Tue 7 – 11 PM; Sat 9 AM – 11 PM; Sun 10 AM – 11 PM.</p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>Is there a minimum for wash &amp; fold?
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq__body">
+              <p>Yes, 10 lbs. Wash &amp; fold is $1.80/lb and fold only is $1.00/lb. HST applies.</p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>How long does wash &amp; fold take? Can I get it the same day?
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq__body">
+              <p>Your laundry is ready in 1 day. Same-day fast service is available as an add-on; ask us for the price.</p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>Do you pick up and deliver?
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq__body">
+              <p>Yes. Pickup and delivery is free within 2 km of the store for orders of 20 lbs or more. Call or email during attendant hours to book, or use the <a href="#contact">pickup request form</a>.</p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>How much does dry cleaning cost?
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq__body">
+              <p>Prices start at $3.45 per item for a laundered dress shirt. The <a href="pricing.html">full price list</a> covers shirts, suits, coats, dresses, linens, curtains, carpets and more, including wedding dresses. Prices are effective Jun 01, 2026, and HST applies to all prices.</p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>Do you do alterations?
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq__body">
+              <p>Yes. Ask in store for pricing.</p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>Are you open on holidays?
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq__body">
+              <p>Holiday hours may differ. Call <a href="tel:+14374233962">437-423-3962</a> to check before you come.</p>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>Can I do my own laundry there? Is there an ATM?
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq__body">
+              <p>Yes. The self-serve coin-operated washers and dryers are open every day, 5 AM – 11 PM, and there is an ATM on site. Ask in store for machine prices.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (shared by every page) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="index.html" aria-label="Southern Star Coin Laundry, home">
+            <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect width="40" height="40" rx="10" fill="#2457F5"/><polygon fill="#fff" points="20,7 23.23,15.55 32.36,15.98 25.23,21.7 27.64,30.52 20,25.5 12.36,30.52 14.77,21.7 7.64,15.98 16.77,15.55"/><circle cx="31.5" cy="8.5" r="2.2" fill="#F5B82E"/></svg>
+            <span class="brand__text">
+              <span class="brand__name">Southern Star</span>
+              <span class="brand__tag">Coin Laundry · North York</span>
+            </span>
+          </a>
+          <p>Coin laundromat and dry cleaner on Keele Street, North York. Self-serve machines, wash &amp; fold, dry cleaning, and free pickup &amp; delivery within 2 km.</p>
+        </div>
+        <nav aria-label="Quick links">
+          <h4>Quick links</h4>
+          <ul>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#how-it-works">How it works</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="index.html#reviews">Reviews</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Services">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="index.html#services">Self-serve washers &amp; dryers</a></li>
+            <li><a href="pricing.html">Wash &amp; Fold</a></li>
+            <li><a href="pricing.html">Dry Cleaning</a></li>
+            <li><a href="index.html#contact">Pickup &amp; Delivery</a></li>
+            <li><a href="index.html#services">Alterations</a></li>
+            <li><a href="index.html#services">ATM on site</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer__contact">
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <a href="https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA" target="_blank" rel="noopener">Unit 10, 3685 Keele Street, North York, ON M3J 3H6</a>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:+14374233962">437-423-3962</a>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+              <a href="mailto:southernstarcoinlaundry@gmail.com">southernstarcoinlaundry@gmail.com</a>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <span>Open every day 5 AM – 11 PM<br><a href="contact.html#hours">Attendant &amp; pickup hours</a></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Southern Star Coin Laundry. All rights reserved.</p>
+      </div>
     </div>
-    <div class="container-fluid bg-dark text-white py-4 px-sm-3 px-md-5">
-        <p class="m-0 text-center text-white">
-            &copy; <a class="text-white font-weight-medium" href="index.html">Southern Star Coin Laundry</a>. All Rights Reserved.
-            Designed by <a class="text-white font-weight-medium" href="https://htmlcodex.com">HTML Codex</a>
-        </p>
-    </div>
-    <!-- Footer End -->
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary back-to-top" style="border-radius: 40px;"><i class="fa fa-angle-double-up"></i></a>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-
-    <script>
-        function pricingTab(id, btn) {
-            document.querySelectorAll('.pricing-tab-pane').forEach(function(p) { p.classList.remove('active'); });
-            document.querySelectorAll('.pricing-tab-btn').forEach(function(b) { b.classList.remove('active'); });
-            document.getElementById('ptab-' + id).classList.add('active');
-            btn.classList.add('active');
-        }
-
-        // Auto-show price announcement every 12 hours
-        var lastPriceNotice = localStorage.getItem('priceNoticeShown');
-        var currentTime = Date.now();
-        var twelveHours = 12 * 60 * 60 * 1000; // 43,200,000 ms
-
-        if (!lastPriceNotice || (currentTime - parseInt(lastPriceNotice)) > twelveHours) {
-            setTimeout(function() {
-                $('#priceAnnouncementModal').modal('show');
-                localStorage.setItem('priceNoticeShown', currentTime.toString());
-            }, 800);
-        }
-    </script>
+  </footer>
 </body>
 </html>
