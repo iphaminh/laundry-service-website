@@ -95,11 +95,22 @@ only with new confirmation from MT.
   price list), `contact.html` (hours, map, pickup request). `about.html` and
   `service.html` are tiny `noindex` redirects to `index.html#about` and
   `index.html#services`, kept so old links and Google results still work.
-- **Styles:** `css/site.css` only. Colour, radius and shadow tokens are on
-  `:root` at the top (teal `--blue`, coral `--cta`, aqua `--aqua`, navy, amber
-  for the "Most popular" badge). Every `:hover` rule must sit inside
-  `@media (hover: hover) and (pointer: fine)` so taps on phones don't leave
-  stuck colours; presses use `:active`.
+- **Styles:** `css/site.css` only. Look: "warm paper & ink" (Oct 2026). Tokens
+  are on `:root` at the top: `--paper`, `--manila`, `--ink`, `--butter` (the
+  only supporting tint), `--night` (dark bands, footer) and `--action`
+  (persimmon, the ONLY filled button colour). Persimmon is never text, and a
+  filled persimmon button on a light background must keep its 2px ink border
+  (it is only 2.8:1 against paper). No soft shadows: hairlines, ink rules and a
+  zero-blur ink offset on the Call buttons and the hours card only. Section
+  backgrounds carry a faint grain (`img/grain.webp`); cards and fields don't.
+  On desktop the hero shows the washer in a round "porthole"; on phones the
+  photo/video sits full-bleed under a neutral ink overlay. Every `:hover` rule
+  must sit inside `@media (hover: hover) and (pointer: fine)` so taps on phones
+  don't leave stuck colours; presses use `:active`.
+- **Fonts:** self-hosted in `fonts/` (Besley for headings, prices and figures;
+  Schibsted Grotesk for everything else), latin subsets from
+  `@fontsource-variable` 5.3.0, SIL OFL 1.1 (licences next to the files).
+  Both are preloaded in each page `<head>`; no Google Fonts.
 - **Script:** `js/site.js` (no dependencies): mobile menu, sticky-header shadow,
   pricing tabs, reviews prev/next, and the pickup form, which opens the
   customer's email app with a pre-filled message to the shop email. Everything
@@ -118,7 +129,9 @@ only with new confirmation from MT.
   - The hero video only loads after the page, never with reduced motion or Data
     Saver, pauses off-screen, and has a pause button (`js/site.js` §6). The
     still photo is the first paint and the fallback.
-  - Icons are inline SVG; the favicon is an inline SVG data URL.
+  - Icons are inline SVG. The logo is a porthole (ink disc, butter star; inverted
+    in the footer) drawn inline on every page; the favicon is the same mark as
+    an inline SVG data URL.
 - **Repeated on every page:** the header (logo, nav, Call button) and the footer
   (contact details, hours, quick links). Edit all three content pages (and the
   two redirects' `<head>` if titles change) when you change them.
@@ -214,9 +227,10 @@ facts in this file always win over a design suggestion.
 
 - Live on `main` (old template site): correct prices, delivery rules, email,
   hours, Alterations and ATM, real Google reviews, SEO tags and JSON-LD.
-- **New site built, not live:** a full rebuild (new design, teal/coral colours,
-  phone-first, SEO + AI-search work) is on branch `redesign`, waiting for the
-  site owner to check the Vercel preview. See the last Session log entry.
+- **New site built, not live:** a full rebuild (phone-first, SEO + AI-search
+  work, AI photos and a hero video, "Warm Paper & Ink" look) is on branch
+  `redesign`, waiting for the site owner to check the Vercel preview. See the
+  last Session log entry.
 - Branch `mobile-fixes` (phone fixes to the old site) is superseded by
   `redesign`; don't merge both.
 - Ownership: the repo, the Vercel project and the `.vercel.app` addresses all
@@ -383,3 +397,28 @@ merged/live), and what is next.
   - Next: the site owner reviews the preview (photos, video, phone check, item
     8), then merge `redesign` into `main`. Decide on the Higgsfield trial before
     it renews (~Oct 26).
+- **2026-10-24, Claude Code.**
+  - The site owner said the teal/turquoise colours looked like a bought template
+    and asked for a 2026-trend restyle plus removing the ATM card.
+  - Multi-agent workflow: 2 researchers (2026 colour/type trends with sources:
+    Pantone Cloud Dancer, Pinterest Palette 2026 persimmon, warm neutrals,
+    laundromat brands escaping "bluish white"; template tells), 3 directions
+    rendered on the real pages (A Warm Paper & Ink, B Linen & cobalt
+    colour-block, C Neighbourhood signage), 2 judges (customer fit, craft) →
+    A won 15.7 vs 13.1 vs 8.4, then implementation and an independent review.
+  - Result: paper `#F7F3EB` / manila base, ink `#211A16`, one persimmon `#FF5C34`
+    action colour (ink label + 2px ink border), butter `#F4CF5D` accent,
+    charcoal dark bands; Besley (headings) + Schibsted Grotesk (text),
+    self-hosted in `fonts/` (Google Fonts removed); desktop hero shows the
+    washer video in a round "porthole"; new porthole star logo and favicon;
+    faint paper grain on section backgrounds; template tells removed (glass
+    cards, gradients, pastel icon circles, repeated eyebrows, floating rating
+    card). ATM service card and footer link removed (ATM stays in the FAQ and
+    JSON-LD); services grid is 2 wide + 3 on desktop.
+  - Verified: 0 contrast failures on all text (white hero text ≥ 6.8:1 over
+    every video frame on phones, ≥ 9.75:1 on desktop), no sideways scroll
+    280–1440 px, 0 tap targets under 44 px, every :hover gated, no-JS and
+    reduced-motion OK, 101 SEO checks pass.
+  - Where: branch `redesign`, pushed for a Vercel preview. Not merged, not live.
+  - Next: the site owner reviews the preview on a phone (item 8); then merge
+    `redesign` into `main`. Higgsfield trial renews ~Oct 26 unless cancelled.

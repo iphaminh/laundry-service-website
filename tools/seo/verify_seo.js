@@ -25,6 +25,7 @@ const row = (page, check, ok, detail='') => out.push({ page, check, result: ok ?
     }
     const resp = await p.goto(BASE + pg, { waitUntil: 'load' });
     await p.waitForTimeout(400);
+    await p.evaluate(() => document.fonts.ready);
     const d = await p.evaluate(() => {
       const q = s => document.querySelector(s);
       const meta = n => q(`meta[name="${n}"]`)?.content ?? null;
@@ -45,8 +46,9 @@ const row = (page, check, ok, detail='') => out.push({ page, check, result: ok ?
         tw: { card: meta('twitter:card'), title: meta('twitter:title'), image: meta('twitter:image') },
         h1: [...document.querySelectorAll('h1')].map(h => h.textContent.replace(/\s+/g,' ').trim()),
         ld, faq, imgs, scripts, bodyText, visible,
-        preconnect: [...document.querySelectorAll('link[rel="preconnect"]')].map(l => l.href),
-        fontsSwap: !!q('link[href*="fonts.googleapis.com"][href*="display=swap"]'),
+        fontPreloads: [...document.querySelectorAll('link[rel="preload"][as="font"]')].map(l => ({ href: l.getAttribute('href'), cors: l.hasAttribute('crossorigin') })),
+        thirdPartyFonts: !!q('link[href*="fonts.googleapis.com"], link[href*="fonts.gstatic.com"]'),
+        fontsLoaded: document.fonts.check('700 32px "Besley"') && document.fonts.check('400 16px "Schibsted Grotesk"') && [...document.fonts].filter(f => f.status === 'loaded').length >= 2,
         sw: document.documentElement.scrollWidth, vw: innerWidth, vh: innerHeight,
         heroLead: q('.hero__lead')?.getBoundingClientRect().bottom ?? null,
       };
@@ -64,7 +66,7 @@ const row = (page, check, ok, detail='') => out.push({ page, check, result: ok ?
       row(pg, 'og:* tags', ogOk, `type=${d.og.type} url=${d.og.url} image=${d.og.image}`);
       row(pg, 'twitter:* tags', d.tw.card === 'summary_large_image' && !!d.tw.title && !!d.tw.image, d.tw.card);
       row(pg, 'theme-color + viewport', !!d.theme && /width=device-width/.test(d.viewport), d.theme);
-      row(pg, 'preconnect fonts + display=swap', d.preconnect.some(u => u.includes('fonts.googleapis.com')) && d.preconnect.some(u => u.includes('fonts.gstatic.com')) && d.fontsSwap, d.preconnect.join(' '));
+      row(pg, 'self-hosted fonts preloaded + loaded', !d.thirdPartyFonts && d.fontPreloads.length >= 1 && d.fontPreloads.every(f => f.cors && /^fonts\/.+\.woff2$/.test(f.href)) && d.fontsLoaded, JSON.stringify(d.fontPreloads));
       row(pg, 'robots indexable', /index/.test(d.robots) && !/noindex/.test(d.robots), d.robots);
     } else {
       row(pg, 'noindex', /noindex/.test(d.robots || ''), d.robots);
