@@ -59,13 +59,15 @@ is ever brought back, its credit must come back with it.
 | Other addresses | `southern-star-coin-laundry.vercel.app` 308-redirects to the primary. `sscoinlaundry-theta.vercel.app` is Vercel's auto-assigned alias and can't be removed. |
 
 - Do **not** create another Vercel project for this repo. One already exists.
-- Preview deployments (branches) are behind Vercel Authentication: only people
-  signed in to the Vercel team can open them. To show MT a preview, make a
-  share link for that deployment (the Share button on the deployment in
-  Vercel, or the Vercel MCP tool `get_access_to_vercel_url`). New links work
-  for 23 hours and only for that one deployment, so every new push needs a new
-  link. Never commit a share link: the repo is public. Making previews public
-  (Project Settings → Deployment Protection) is the site owner's decision.
+- Deployment Protection (Vercel Authentication) is **off** since Oct 25, 2026,
+  at the site owner's request, so MT can open previews without a Vercel login.
+  Every preview URL is public (fine: the repo is public too). Each branch has a
+  fixed address that always shows its latest push:
+  `https://sscoinlaundry-git-<branch>-iphaminhs-projects.vercel.app` (for
+  example `-git-redesign-`). Don't turn protection back on without asking the
+  site owner. If it is ever on again, a share link (Vercel MCP
+  `get_access_to_vercel_url`) works for 23 hours for one deployment; never
+  commit one.
 - `.vercelignore` keeps `AGENTS.md`, `CLAUDE.md`, `.claude/` and `tools/` off the
   live site.
 - The `.vercel.app` addresses are what customers and the Google listing use today.
@@ -507,5 +509,12 @@ merged/live), and what is next.
     owner (not written here: the repo is public). Documented how under
     "Hosting and deployment". No site change.
   - Where: branch `redesign`, docs only. Not merged, not live.
-  - Next: same as the previous entry. If MT needs to see a later preview, make
-    a new share link for that deployment.
+  - The share link didn't work for MT either (still asked to sign in). The
+    project had Vercel Authentication on for "all deployments except custom
+    domains". With the site owner's OK, turned it off (`ssoProtection: null`),
+    so previews open for anyone with the link. Gave the site owner the fixed
+    branch address `sscoinlaundry-git-redesign-iphaminhs-projects.vercel.app`
+    (always the latest `redesign` push). Could not test it from the cloud
+    container (its proxy blocks vercel.app); the site owner checks in a private
+    window.
+  - Next: same as the previous entry.
