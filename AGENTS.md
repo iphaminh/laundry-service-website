@@ -59,6 +59,13 @@ is ever brought back, its credit must come back with it.
 | Other addresses | `southern-star-coin-laundry.vercel.app` 308-redirects to the primary. `sscoinlaundry-theta.vercel.app` is Vercel's auto-assigned alias and can't be removed. |
 
 - Do **not** create another Vercel project for this repo. One already exists.
+- Preview deployments (branches) are behind Vercel Authentication: only people
+  signed in to the Vercel team can open them. To show MT a preview, make a
+  share link for that deployment (the Share button on the deployment in
+  Vercel, or the Vercel MCP tool `get_access_to_vercel_url`). New links work
+  for 23 hours and only for that one deployment, so every new push needs a new
+  link. Never commit a share link: the repo is public. Making previews public
+  (Project Settings → Deployment Protection) is the site owner's decision.
 - `.vercelignore` keeps `AGENTS.md`, `CLAUDE.md`, `.claude/` and `tools/` off the
   live site.
 - The `.vercel.app` addresses are what customers and the Google listing use today.
@@ -493,3 +500,12 @@ merged/live), and what is next.
     merge `redesign` into `main` when they say go live. Optional tidy-up: fold
     the "Direction B" part of `css/site.css` into sections 1–21 (check it
     stays pixel-identical).
+- **2026-10-25 (late night), Claude Code.**
+  - MT couldn't open the preview link: branch previews require a Vercel login.
+    Made a 23-hour share link for the `redesign` preview (deployment
+    `dpl_GAXC2am9bnEZpjGujH287LMvS8rm`, commit af4ebbb) and gave it to the site
+    owner (not written here: the repo is public). Documented how under
+    "Hosting and deployment". No site change.
+  - Where: branch `redesign`, docs only. Not merged, not live.
+  - Next: same as the previous entry. If MT needs to see a later preview, make
+    a new share link for that deployment.
