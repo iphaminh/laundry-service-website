@@ -95,16 +95,27 @@ only with new confirmation from MT.
   price list), `contact.html` (hours, map, pickup request). `about.html` and
   `service.html` are tiny `noindex` redirects to `index.html#about` and
   `index.html#services`, kept so old links and Google results still work.
-- **Styles:** `css/site.css` only. Look: "warm paper & ink" (Oct 2026). Tokens
-  are on `:root` at the top: `--paper`, `--manila`, `--ink`, `--butter` (the
-  only supporting tint), `--night` (dark bands, footer) and `--action`
-  (persimmon, the ONLY filled button colour). Persimmon is never text, and a
-  filled persimmon button on a light background must keep its 2px ink border
-  (it is only 2.8:1 against paper). No soft shadows: hairlines, ink rules and a
-  zero-blur ink offset on the Call buttons and the hours card only. Section
-  backgrounds carry a faint grain (`img/grain.webp`); cards and fields don't.
-  On desktop the hero shows the washer in a round "porthole"; on phones the
-  photo/video sits full-bleed under a neutral ink overlay. Every `:hover` rule
+- **Styles:** `css/site.css` only. Look: "warm paper & ink", cobalt version
+  (Oct 2026). Tokens are on `:root` at the top: `--paper`, `--manila`,
+  `--butter` (the only supporting tint), `--cobalt` `#2330B0` (laundry-bluing
+  blue for every dark block: hero, dark bands such as the booking band and the
+  pricing CTA band), `--cobalt-deep` `#1E2899` (footer), `--ink` `#14162B`
+  (blue-black night ink: headings, borders, icons, offsets), `--text`
+  `#3A3C52`, `--muted` `#55576C`, `--on-cobalt` (paper text on cobalt) and
+  `--action` (persimmon, the ONLY filled button colour). There is no black or
+  charcoal surface any more. Persimmon is never text, and a filled persimmon
+  button always keeps its 2px ink border and ink offset (it is only 2.8:1
+  against paper and 3.2:1 against cobalt, so don't make the cobalt lighter).
+  No soft shadows: hairlines, ink rules and a zero-blur ink offset on the Call
+  buttons and the hours card only. Section backgrounds carry a faint grain
+  (`img/grain.webp`); cards and fields don't. On desktop the hero is flat
+  cobalt with the washer untinted in a round "porthole" (keep its crop: it is
+  the zoomed-out framing the site owner chose); on phones and tablets the
+  photo/video sits full-bleed, printed in cobalt with `mix-blend-mode:
+  multiply`, and the booking band prints MT's dryer photo in cobalt the same
+  way (`background-blend-mode`, plus a 40% cobalt veil that lifts its black
+  shadows to blue), so text there never gets less contrast than on flat
+  cobalt. Every `:hover` rule
   must sit inside `@media (hover: hover) and (pointer: fine)` so taps on phones
   don't leave stuck colours; presses use `:active`.
 - **Fonts:** self-hosted in `fonts/` (Besley for headings, prices and figures;
@@ -129,9 +140,10 @@ only with new confirmation from MT.
   - The hero video only loads after the page, never with reduced motion or Data
     Saver, pauses off-screen, and has a pause button (`js/site.js` §6). The
     still photo is the first paint and the fallback.
-  - Icons are inline SVG. The logo is a porthole (ink disc, butter star; inverted
-    in the footer) drawn inline on every page; the favicon is the same mark as
-    an inline SVG data URL.
+  - Icons are inline SVG. The logo is a porthole (cobalt `#2330B0` disc,
+    butter star; inverted in the footer as a butter disc with a deep-cobalt
+    star) drawn inline on every page; the favicon is the same mark as an
+    inline SVG data URL on all five pages.
 - **Repeated on every page:** the header (logo, nav, Call button) and the footer
   (contact details, hours, quick links). Edit all three content pages (and the
   two redirects' `<head>` if titles change) when you change them.
@@ -433,3 +445,20 @@ merged/live), and what is next.
   - Next: the site owner picks A or B. If B, implement it properly on `redesign`
     (the mock-up hides the ATM card with CSS and was never reviewed), then delete
     `preview-cobalt`. If A, delete `preview-cobalt` and merge `redesign`.
+- **2026-10-25 (later), Claude Code.**
+  - The site owner chose to keep design A but asked for "the black changed to
+    the 2nd design's blue", with the video framing kept zoomed out like design A.
+  - `css/site.css`: dark surfaces are now cobalt (`--cobalt #2330B0` hero,
+    booking band, call bands, header logo disc; `--cobalt-deep #1E2899` footer).
+    `#2330B0` is a touch darker than design B's `#2A38C8` so the persimmon Call
+    button keeps ≥ 3:1 against it. Ink is design B's blue-black `#14162B`, text
+    `#3A3C52`, muted `#55576C`. Phone hero and booking band tint the video/photo
+    with a cobalt multiply blend (plus a 40% cobalt veil on the booking band) so
+    text never drops below its contrast on flat cobalt. Logo and favicon
+    recoloured on all 5 pages. Porthole crop verified pixel-identical to design A.
+  - Verified: every text pair ≥ AA (white hero text over every video frame ≥
+    5.9:1), no sideways scroll 320–1440 px, no console errors, every :hover
+    gated, 101 SEO checks pass.
+  - Where: branch `redesign`, pushed for a Vercel preview. Not merged, not live.
+    `preview-cobalt` (design B) is now obsolete and can be deleted.
+  - Next: the site owner reviews the preview; then merge `redesign` into `main`.
