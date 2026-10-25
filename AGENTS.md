@@ -233,6 +233,9 @@ facts in this file always win over a design suggestion.
   last Session log entry.
 - Branch `mobile-fixes` (phone fixes to the old site) is superseded by
   `redesign`; don't merge both.
+- Branch `preview-cobalt` is a throwaway preview of colour direction B (linen +
+  cobalt) for comparison only. Never merge it; delete it once a direction is
+  chosen.
 - Ownership: the repo, the Vercel project and the `.vercel.app` addresses all
   belong to the site owner. The previous maintainer's Vercel project is deleted.
 
@@ -422,3 +425,11 @@ merged/live), and what is next.
   - Where: branch `redesign`, pushed for a Vercel preview. Not merged, not live.
   - Next: the site owner reviews the preview on a phone (item 8); then merge
     `redesign` into `main`. Higgsfield trial renews ~Oct 26 unless cancelled.
+- **2026-10-25, Claude Code.**
+  - The site owner asked to see direction B (linen + cobalt) as a clickable site.
+    Pushed throwaway branch `preview-cobalt` (b6a78ee): commit 0577612 plus B's
+    mock-up stylesheet `css/direction-b.css` and its fonts. Vercel preview only;
+    not merged, not live. `redesign` (direction A) is unchanged.
+  - Next: the site owner picks A or B. If B, implement it properly on `redesign`
+    (the mock-up hides the ATM card with CSS and was never reviewed), then delete
+    `preview-cobalt`. If A, delete `preview-cobalt` and merge `redesign`.
