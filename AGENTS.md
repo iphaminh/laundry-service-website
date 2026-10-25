@@ -95,31 +95,33 @@ only with new confirmation from MT.
   price list), `contact.html` (hours, map, pickup request). `about.html` and
   `service.html` are tiny `noindex` redirects to `index.html#about` and
   `index.html#services`, kept so old links and Google results still work.
-- **Styles:** `css/site.css` only. Look: "warm paper & ink", cobalt version
-  (Oct 2026). Tokens are on `:root` at the top: `--paper`, `--manila`,
-  `--butter` (the only supporting tint), `--cobalt` `#2330B0` (laundry-bluing
-  blue for every dark block: hero, dark bands such as the booking band and the
-  pricing CTA band), `--cobalt-deep` `#1E2899` (footer), `--ink` `#14162B`
-  (blue-black night ink: headings, borders, icons, offsets), `--text`
-  `#3A3C52`, `--muted` `#55576C`, `--on-cobalt` (paper text on cobalt) and
-  `--action` (persimmon, the ONLY filled button colour). There is no black or
-  charcoal surface any more. Persimmon is never text, and a filled persimmon
-  button always keeps its 2px ink border and ink offset (it is only 2.8:1
-  against paper and 3.2:1 against cobalt, so don't make the cobalt lighter).
-  No soft shadows: hairlines, ink rules and a zero-blur ink offset on the Call
-  buttons and the hours card only. Section backgrounds carry a faint grain
-  (`img/grain.webp`); cards and fields don't. On desktop the hero is flat
-  cobalt with the washer untinted in a round "porthole" (keep its crop: it is
-  the zoomed-out framing the site owner chose); on phones and tablets the
-  photo/video sits full-bleed, printed in cobalt with `mix-blend-mode:
-  multiply`, and the booking band prints MT's dryer photo in cobalt the same
-  way (`background-blend-mode`, plus a 40% cobalt veil that lifts its black
-  shadows to blue), so text there never gets less contrast than on flat
+- **Styles:** `css/site.css` only. Look: "fresh linen & colour-block"
+  (design B, chosen by the site owner on Oct 25, 2026). The file has two
+  parts: sections 1–21 are the layout (grid, spacing, components), and the
+  final part, "Direction B" (from the `@font-face` rules to the end), sets
+  the look and overrides the older colour values above it. Change colours,
+  fonts and surfaces in that final part; its `:root` holds the real tokens:
+  `--bg` `#F3EEE4` (linen), `--card` `#FFFCF5` (paper), `--blue` `#2A38C8`
+  (cobalt "laundry bluing": hero, stats band, footer, featured price card),
+  `--navy` `#14162B` (night ink: pricing and booking bands, footer logo
+  disc), `--ink` `#14162B` (headings, borders, button labels), `--text`
+  `#3A3C52`, `--muted` `#5B5D72`, and `--cta` `#FFC83D` (sun yellow: the ONLY
+  filled button colour and the star; never text, never a background block).
+  Yellow buttons keep their 2px ink border and the ink "sticker" edge below
+  them. No soft shadows: hairlines, ink rules and hard ink offsets only. Light
+  sections, cobalt blocks and the footer carry a faint grain (an inline PNG
+  in the `--grain` token); cards and fields don't. Hero: on tablets and
+  desktop a flat cobalt block with the washer photo/video untinted in a round
+  "porthole" with a paper rim and the round "4.2 on Google" sticker. Keep the
+  porthole's crop: it is the zoomed-out framing the site owner chose (the
+  window shows 86% of the frame's height, centred on the drum). On phones
+  the photo/video sits full-bleed behind the text, printed in cobalt with
+  `mix-blend-mode: multiply`, so text never gets less contrast than on flat
   cobalt. Every `:hover` rule
   must sit inside `@media (hover: hover) and (pointer: fine)` so taps on phones
   don't leave stuck colours; presses use `:active`.
-- **Fonts:** self-hosted in `fonts/` (Besley for headings, prices and figures;
-  Schibsted Grotesk for everything else), latin subsets from
+- **Fonts:** self-hosted in `fonts/` (Bricolage Grotesque for headings, prices
+  and figures; Hanken Grotesk for everything else), latin subsets from
   `@fontsource-variable` 5.3.0, SIL OFL 1.1 (licences next to the files).
   Both are preloaded in each page `<head>`; no Google Fonts.
 - **Script:** `js/site.js` (no dependencies): mobile menu, sticky-header shadow,
@@ -140,10 +142,10 @@ only with new confirmation from MT.
   - The hero video only loads after the page, never with reduced motion or Data
     Saver, pauses off-screen, and has a pause button (`js/site.js` §6). The
     still photo is the first paint and the fallback.
-  - Icons are inline SVG. The logo is a porthole (cobalt `#2330B0` disc,
-    butter star; inverted in the footer as a butter disc with a deep-cobalt
-    star) drawn inline on every page; the favicon is the same mark as an
-    inline SVG data URL on all five pages.
+  - Icons are inline SVG. The logo is a porthole (cobalt `#2A38C8` disc,
+    sun-yellow `#FFC83D` star; a night-ink disc in the footer, set in CSS)
+    drawn inline on every page; the favicon is the same mark as an inline SVG
+    data URL on all five pages.
 - **Repeated on every page:** the header (logo, nav, Call button) and the footer
   (contact details, hours, quick links). Edit all three content pages (and the
   two redirects' `<head>` if titles change) when you change them.
@@ -235,19 +237,18 @@ same `SKILL.md` files as guides. They are advice for the agent, not part of the
 website, and `.vercelignore` keeps `.claude/` off the live site. The business
 facts in this file always win over a design suggestion.
 
-## Status (as of 2026-10-23)
+## Status (as of 2026-10-25)
 
 - Live on `main` (old template site): correct prices, delivery rules, email,
   hours, Alterations and ATM, real Google reviews, SEO tags and JSON-LD.
 - **New site built, not live:** a full rebuild (phone-first, SEO + AI-search
-  work, AI photos and a hero video, "Warm Paper & Ink" look) is on branch
-  `redesign`, waiting for the site owner to check the Vercel preview. See the
-  last Session log entry.
+  work, AI photos and a hero video, design B "fresh linen & colour-block") is
+  on branch `redesign`, waiting for the site owner to check the Vercel
+  preview. See the last Session log entry.
 - Branch `mobile-fixes` (phone fixes to the old site) is superseded by
   `redesign`; don't merge both.
-- Branch `preview-cobalt` is a throwaway preview of colour direction B (linen +
-  cobalt) for comparison only. Never merge it; delete it once a direction is
-  chosen.
+- Branch `preview-cobalt` (the design B mock-up) is obsolete now that B is
+  built properly on `redesign`. Never merge it; it can be deleted.
 - Ownership: the repo, the Vercel project and the `.vercel.app` addresses all
   belong to the site owner. The previous maintainer's Vercel project is deleted.
 
@@ -462,3 +463,33 @@ merged/live), and what is next.
   - Where: branch `redesign`, pushed for a Vercel preview. Not merged, not live.
     `preview-cobalt` (design B) is now obsolete and can be deleted.
   - Next: the site owner reviews the preview; then merge `redesign` into `main`.
+- **2026-10-25 (night), Claude Code.**
+  - The site owner clarified: keep design B (the `preview-cobalt` preview,
+    linen + cobalt, Bricolage Grotesque, sun-yellow buttons, "4.2 on Google"
+    sticker) but frame the hero video zoomed out like design A, so the whole
+    washer door shows instead of a close-up of the drum.
+  - Rebuilt `redesign` from design B: pages, `css/site.css` and B's fonts
+    from `preview-cobalt`; design A's fonts and `img/grain.webp` removed.
+    B's mock-up stylesheet `css/direction-b.css` is now the final part of
+    `css/site.css` (see "Styles"). Made it production-ready without changing
+    the look: ATM card, footer ATM link, the hidden hero cards and the
+    repeated section labels are removed from the HTML (not hidden with CSS);
+    Google Fonts replaced by preloaded self-hosted fonts; logo and favicon
+    redrawn as B's porthole mark on all 5 pages; theme-color `#F3EEE4` (also
+    in `tools/seo/build_seo.py`); `tools/seo/verify_seo.js` checks B's fonts.
+    The ATM stays in the FAQ and the JSON-LD.
+  - Hero: on tablets and desktop the porthole element now holds the photo and
+    video with design A's crop (photo `116.3%` tall at `90.9% 7.2%`; video
+    `205.6%` × `116.3%` at `-96%`, `-1.2%`); tablets load
+    `hero-washer-1280`. Phones are unchanged (they already matched A).
+  - Verified in Chromium: every page at 1440/1280/820/390/320 px is
+    pixel-identical to the B preview except the porthole; the video in the
+    porthole matches design A's framing; 101 SEO checks pass; no sideways
+    scroll 280–1440 px; no text below WCAG AA; every `:hover` gated; tags
+    balanced; still photo shows with JavaScript off.
+  - Where: branch `redesign`, pushed for a Vercel preview. Not merged, not
+    live. `preview-cobalt` can be deleted.
+  - Next: the site owner reviews the preview (and on a phone, item 8); then
+    merge `redesign` into `main` when they say go live. Optional tidy-up: fold
+    the "Direction B" part of `css/site.css` into sections 1–21 (check it
+    stays pixel-identical).

@@ -48,7 +48,7 @@ const row = (page, check, ok, detail='') => out.push({ page, check, result: ok ?
         ld, faq, imgs, scripts, bodyText, visible,
         fontPreloads: [...document.querySelectorAll('link[rel="preload"][as="font"]')].map(l => ({ href: l.getAttribute('href'), cors: l.hasAttribute('crossorigin') })),
         thirdPartyFonts: !!q('link[href*="fonts.googleapis.com"], link[href*="fonts.gstatic.com"]'),
-        fontsLoaded: document.fonts.check('700 32px "Besley"') && document.fonts.check('400 16px "Schibsted Grotesk"') && [...document.fonts].filter(f => f.status === 'loaded').length >= 2,
+        fontsLoaded: document.fonts.check('800 32px "Bricolage Grotesque"') && document.fonts.check('400 16px "Hanken Grotesk"') && [...document.fonts].filter(f => f.status === 'loaded').length >= 2,
         sw: document.documentElement.scrollWidth, vw: innerWidth, vh: innerHeight,
         heroLead: q('.hero__lead')?.getBoundingClientRect().bottom ?? null,
       };

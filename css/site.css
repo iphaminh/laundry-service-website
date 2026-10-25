@@ -2,16 +2,7 @@
    Southern Star Coin Laundry — site.css
    One stylesheet for every page. No framework, no icon font.
 
-   Look: "Warm paper & ink", cobalt version (Oct 2026). A warm paper page with
-   blue-black night ink, laundry-bluing cobalt for the dark blocks (hero, dark
-   bands, footer), ONE persimmon action colour for every Call button, and
-   butter yellow as the only supporting tint. Hairlines and printed rules instead of soft shadows,
-   4–6px corners instead of pills, a faint baked paper grain on section
-   backgrounds. Laundry motifs instead of template cards: claim tickets with
-   notches, a butter hang tag, a porthole hero window and a porthole logo.
-
    Table of contents
-     0. Fonts
      1. Tokens
      2. Base and reset
      3. Typography
@@ -19,96 +10,64 @@
      5. Icons and buttons
      6. Header and navigation
      7. Hero
-     8. Why us (ruled columns)
+     8. Why us (feature cards)
      9. Stats band
     10. Services
     11. About / How it works
-    12. Pricing band (claim tickets)
+    12. Pricing band (glass cards)
     13. Reviews
     14. Book a pickup (contact block + form)
     15. FAQ
     16. Footer
-    17. Secondary pages: page hero, tabs, price list, cards, map, CTA band
+    17. Secondary pages: page hero, tabs, price list, hours table, map, CTA band
     18. Utilities
-    19. Press feedback, hover (fine pointers only) and reduced motion
+    19. Hover (fine pointers only) and reduced motion
     20. Pricing page (pricing.html)
     21. Contact page (contact.html)
+    22. Direction B, "fresh linen & colour-block": the look (tokens, fonts,
+        colours, surfaces). It overrides the older colour values above.
    ========================================================================== */
-
-
-/* 0. Fonts
-   Self-hosted latin subsets from @fontsource-variable 5.3.0 (SIL OFL 1.1; the
-   licences are in /fonts). Both are variable fonts, one file each.
-   ========================================================================== */
-@font-face {
-  font-family: "Besley";
-  src: url("../fonts/besley-latin-wght-normal.woff2") format("woff2");
-  font-weight: 400 900;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Schibsted Grotesk";
-  src: url("../fonts/schibsted-grotesk-latin-wght-normal.woff2") format("woff2");
-  font-weight: 400 900;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
 
 /* 1. Tokens
-   Contrast ratios are WCAG 2.x, measured by script (on the grained averages
-   where grain applies). Persimmon is never used as text: it is 2.8:1 on paper,
-   so on light backgrounds every filled persimmon button keeps its 2px ink
-   border (WCAG 1.4.11).
    ========================================================================== */
 :root {
-  /* Surfaces */
-  --paper: #F7F3EB;         /* page base, cards, header (Pantone 2026 Cloud Dancer, a touch warmer) */
-  --paper-hi: #FCFAF5;      /* form fields */
-  --manila: #EEE6D8;        /* alternate sections, price boxes, note boxes */
-  --butter: #F4CF5D;        /* the one supporting tint: stats band, featured ticket, hang tag, rating stars */
-  --butter-tint: #FAEBBE;   /* special price row */
-  --press: #E6DCCB;         /* pressed / hover tint on light (ink 13.1:1) */
-  --cobalt: #2330B0;        /* laundry-bluing cobalt: hero, dark bands, header logo. Paper text 9.0:1, butter 6.6:1, persimmon 3.2:1 */
-  --cobalt-deep: #1E2899;   /* footer, the darker bookend: paper text 10.4:1, butter 7.7:1 */
-
-  /* Ink and text (cool blue-black, to sit with the cobalt) */
-  --ink: #14162B;           /* headings, borders, icons, offsets: 16.1:1 on paper, 14.4:1 on manila, 11.8:1 on butter */
-  --ink-soft: #2E3152;      /* ink hover */
-  --text: #3A3C52;          /* body: 9.7:1 on paper, 8.7:1 on manila, 7.2:1 on butter */
-  --muted: #55576C;         /* secondary: 6.4:1 on paper, 5.7:1 on manila, 4.7:1 on butter */
-  --on-cobalt: #F7F3EB;     /* paper text on cobalt: 9.0:1 (10.4:1 on the footer) */
-  --on-cobalt-muted: rgba(247, 243, 235, .82);   /* leads on cobalt: 6.5:1 */
-  --star-empty: #CDBFAB;    /* empty part of a rating star */
-
-  /* Action */
-  --action: #FF5C34;        /* persimmon (Pinterest Palette 2026): the ONLY filled button colour; ink label 5.8:1, 3.2:1 vs cobalt */
-  --action-hover: #FF7552;  /* ink label 6.7:1 */
-
-  /* Lines */
-  --line: #D3CDC5;          /* decorative hairline (header, menu dividers) */
-  --line-strong: #827F8C;   /* UI boundaries: cards, inputs, tabs, FAQ rules (3.5:1 on paper, 3.2:1 on manila) */
-
-  /* Shape */
-  --radius: 6px;
-  --radius-sm: 4px;
-  --hard: 3px 3px 0 var(--ink);   /* the only shadow style: zero blur, CTA and hours card only */
-  --star: polygon(50% 0, 63% 36%, 100% 38%, 71% 62.5%, 81% 100%, 50% 79%, 19% 100%, 29% 62.5%, 0 38%, 37% 36%);
-  --grain: url("../img/grain.webp");   /* 96px baked paper grain, 2.7 KB: section backgrounds only */
-
-  /* Type */
-  --font: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-serif: "Besley", Georgia, "Times New Roman", serif;
-
-  /* Layout */
+  /* "Fresh & clean": deep teal for trust, aqua for highlights, warm coral for the
+     Call buttons. --blue keeps its name but is the deep teal. Contrast ratios are
+     WCAG 2.x, measured by script. */
+  --blue: #0E7C86;          /* deep teal: links, eyebrows, icons, secondary buttons (white text 4.95:1) */
+  --blue-dark: #0A5F67;     /* teal hover / pressed (white text 7.4:1) */
+  --blue-soft: #EDF7F8;     /* teal tint: light button hover, note boxes (teal text 4.5:1) */
+  --aqua: #6FD9CF;          /* highlights on dark only: eyebrows, stat numbers, check icons (4.6:1+ on every dark surface) */
+  --aqua-deep: #0B7268;     /* aqua-family icons on light tints */
+  --cta: #FF6B4A;           /* warm coral: the Call buttons, with --ink text (6.0:1) */
+  --cta-hover: #FF8466;     /* lighter on hover so the dark label gains contrast (7.0:1) */
+  --cta-deep: #C23E1F;      /* coral-family icons on light tints */
+  --navy: #0B2A3A;          /* deep sea navy: footer, dark band base */
+  --navy-deep: #082230;     /* photo overlays */
+  --navy-mid: #0D4654;
+  --teal-end: #0C545E;      /* lightest stop of the dark bands: aqua 5.1:1, amber 4.8:1 */
+  --ink: #0F1F2A;           /* headings */
+  --text: #35505C;          /* body: 8.0:1 on --bg */
+  --muted: #557481;         /* secondary text: 4.7:1 on --bg, 5.0:1 on white */
+  --bg: #F3F9F9;
+  --card: #FFFFFF;
+  --line: #DCE9EB;
+  --amber: #F7B733;         /* only the "Most popular" badge, the pricing eyebrow and rating stars */
+  --amber-dark: #D9980E;
+  --radius: 20px;
+  --radius-sm: 12px;
+  --pill: 999px;
+  --shadow: 0 10px 30px rgba(11, 42, 58, .08);
+  --shadow-lg: 0 24px 60px rgba(11, 42, 58, .18);
+  --font: "Outfit", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "DM Serif Display", Georgia, "Times New Roman", serif;
   --header-h: 72px;
   --container: 1200px;
   --gutter: 24px;
   --section-pad: clamp(64px, 9vw, 112px);
   --ease: cubic-bezier(.2, .7, .2, 1);
+  --dark-gradient: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, var(--teal-end) 100%);
 }
 
 @media (max-width: 39.999em) {
@@ -136,7 +95,7 @@ body {
   font-size: 1.05rem;
   line-height: 1.6;
   color: var(--text);
-  background: var(--paper);
+  background: var(--card);
   -webkit-font-smoothing: antialiased;
   /* break-word (not anywhere) so flex and grid items never shrink to one letter;
      the long email address opts back in to "anywhere" (section 18) */
@@ -145,61 +104,48 @@ body {
 
 img, svg, iframe { display: block; max-width: 100%; }
 
-/* Links are ink with a persimmon underline (the underline is decoration only) */
-a {
-  color: var(--ink);
-  text-decoration-color: var(--action);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
-}
+a { color: var(--blue); }
 a, button, [role="button"], summary { touch-action: manipulation; }
 /* Phone numbers in running text never split at the hyphens */
 a[href^="tel:"]:not(.btn):not(.book__phone) { white-space: nowrap; }
 
 button, input, select, textarea { font: inherit; color: inherit; }
 
-::selection { background: var(--butter); color: var(--ink); }
-
 /* Anchor offset for the sticky header lives on html (scroll-padding-top) only;
    adding scroll-margin on targets as well doubled it */
 
-:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 :focus:not(:focus-visible) { outline: none; }
 .hero :focus-visible,
 .section--dark :focus-visible,
-.site-footer :focus-visible { outline-color: var(--on-cobalt); }
-/* ...except on the paper form card inside a dark band, where a paper ring vanishes */
-.section--dark .form-card :focus-visible { outline-color: var(--ink); }
+.site-footer :focus-visible { outline-color: #fff; }
 
 
 /* 3. Typography
-   Besley (a Clarendon revival: shop fronts and printed tickets) for headings,
-   prices and figures; Schibsted Grotesk for everything else.
    ========================================================================== */
-h1, h2, h3, h4 { margin: 0; font-family: var(--font-serif); color: var(--ink); line-height: 1.15; letter-spacing: -.012em; }
-h1 { font-size: clamp(2.4rem, 5.2vw, 4.1rem); font-weight: 700; line-height: 1.05; letter-spacing: -.015em; }
-h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); font-weight: 650; line-height: 1.1; }
-h3 { font-size: 1.25rem; font-weight: 600; letter-spacing: -.005em; }
+h1, h2, h3, h4 { margin: 0; color: var(--ink); line-height: 1.15; letter-spacing: -.02em; }
+h1 { font-size: clamp(2.4rem, 5.5vw, 4.25rem); font-weight: 700; line-height: 1.05; }
+h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 600; letter-spacing: -.01em; }
 p { margin: 0 0 1em; }
 h1, h2, h3 { text-wrap: balance; }
 p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported */
 
-/* Eyebrow: a small printed label led by the brand star. Only where it adds
-   something the heading does not say (About us, Book a pickup, page heroes). */
 .eyebrow {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 14px;
   margin: 0;
-  font-weight: 700;
-  font-size: .8rem;
-  line-height: 1.3;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--ink);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  color: var(--blue);
 }
-.eyebrow::before { content: ""; width: 11px; height: 11px; flex: none; background: currentColor; clip-path: var(--star); }
-.section--dark .eyebrow { color: var(--butter); }   /* 6.6:1 on cobalt */
+.eyebrow::after { content: ""; width: 40px; height: 2px; background: currentColor; border-radius: 2px; }
+.eyebrow--amber { color: var(--amber); }
+.eyebrow--white { color: #fff; }
+.eyebrow--aqua { color: var(--aqua); }   /* on dark bands only */
 
 
 /* 4. Layout
@@ -217,20 +163,20 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
 }
 
-/* Three section grounds, each with the faint grain; cards on them stay clean */
 .section { padding: var(--section-pad) 0; }
-.section--paper { background: var(--grain) repeat, var(--paper); }
-.section--manila { background: var(--grain) repeat, var(--manila); }
-.section--dark { background: var(--grain) repeat, var(--cobalt); color: var(--on-cobalt); }
-.section--dark h2, .section--dark h3 { color: var(--on-cobalt); }
+.section--light { background: var(--bg); }
+.section--white { background: var(--card); }
+.section--dark { background: var(--dark-gradient); color: #fff; }
+.section--dark h2, .section--dark h3 { color: #fff; }
 
 .section__head { max-width: 760px; margin-bottom: 44px; }
-.section__title { margin: 0 0 12px; }
-.eyebrow + .section__title { margin-top: 12px; }
+.section__title { margin: 10px 0 12px; }
 .section__lead { font-size: 1.15rem; margin: 0; color: var(--text); }
-.section--dark .section__lead { color: var(--on-cobalt-muted); }
+.section--dark .section__lead { color: rgba(255, 255, 255, .82); }
 .section__head--center { margin-left: auto; margin-right: auto; text-align: center; }
 .section__head--center .eyebrow { justify-content: center; }
+/* Centred eyebrows get a line on both sides so the word sits on the centre line */
+.section__head--center .eyebrow::before { content: ""; width: 40px; height: 2px; background: currentColor; border-radius: 2px; }
 
 
 /* 5. Icons and buttons
@@ -246,6 +192,8 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   stroke-linejoin: round;
 }
 .icon--fill { fill: currentColor; stroke: none; }
+.icon--sm { width: 20px; height: 20px; }
+.icon--xl { width: 84px; height: 84px; stroke-width: 1.4; }
 
 .btn {
   display: inline-flex;
@@ -255,53 +203,47 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   min-height: 52px;
   padding: 0 26px;
   border: 2px solid transparent;
-  border-radius: var(--radius);
-  font-weight: 700;
+  border-radius: var(--pill);
+  font-weight: 600;
   font-size: 1rem;
   line-height: 1.2;
-  letter-spacing: .005em;
   text-decoration: none;
   text-align: center;
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
-  transition: transform .12s var(--ease), background-color .15s, color .15s, border-color .15s, box-shadow .12s var(--ease);
+  transition: transform .12s var(--ease), background-color .15s, color .15s, border-color .15s, box-shadow .15s;
 }
-.btn:active { transform: translate(1px, 1px); }
+.btn:active { transform: scale(.97); }
 .btn .icon { width: 20px; height: 20px; }
 
-/* The one action colour: flat persimmon, ink border, hard ink offset. It presses
-   into its shadow. Never remove the border: it carries the 3:1 edge on paper
-   and butter. On cobalt the persimmon itself is 3.2:1. */
-.btn--cta { background: var(--action); color: var(--ink); border-color: var(--ink); box-shadow: var(--hard); }
-.btn--cta:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--ink); }
-/* Secondary: a 2px ink outline (never a second fill colour) */
-.btn--ink { background: transparent; color: var(--ink); border-color: var(--ink); }
-/* Secondary on cobalt: a paper outline */
-.btn--outline { background: transparent; color: var(--on-cobalt); border-color: rgba(247, 243, 235, .6); }
+.btn--cta { background: var(--cta); color: var(--ink); box-shadow: 0 8px 22px rgba(255, 107, 74, .32); }
+.btn--blue { background: var(--blue); color: #fff; }
+.btn--light { background: #fff; color: var(--blue); }
+.btn--outline { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .55); }
+.btn--outline-blue { background: transparent; color: var(--blue); border-color: var(--blue); }
 .btn--block { width: 100%; }
 .btn--sm { min-height: 44px; padding: 0 18px; font-size: .95rem; }
 
-/* Square arrow buttons (reviews prev/next) */
-.arrow-btn {
-  width: 52px;
-  height: 52px;
-  border: 2px solid var(--ink);
-  border-radius: var(--radius);
+/* Circle buttons (reviews prev/next) */
+.circle-btn {
+  width: 56px;
+  height: 56px;
+  border: 0;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  color: var(--ink);
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
-  transition: transform .12s var(--ease), background-color .15s, border-color .15s, opacity .15s;
+  transition: transform .12s var(--ease), background-color .15s, opacity .15s;
 }
-.arrow-btn:active { transform: translate(1px, 1px); }
-.arrow-btn:disabled { opacity: .4; cursor: default; }
-.arrow-btn--solid { background: var(--ink); color: var(--paper); }
+.circle-btn:active { transform: scale(.94); }
+.circle-btn:disabled { opacity: .4; cursor: default; }
+.circle-btn--light { background: #fff; color: var(--ink); box-shadow: var(--shadow); }
+.circle-btn--blue { background: var(--blue); color: #fff; box-shadow: 0 10px 24px rgba(14, 124, 134, .3); }
 
 /* Text link with arrow */
 .link-arrow {
@@ -309,12 +251,9 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   align-items: center;
   gap: 6px;
   min-height: 44px;
-  font-weight: 700;
-  color: var(--ink);
-  text-decoration: underline;
-  text-decoration-color: var(--action);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
 }
 .link-arrow .icon { width: 18px; height: 18px; }
 
@@ -328,9 +267,9 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   z-index: 100;
   padding: 12px 18px;
   border-radius: var(--radius-sm);
-  background: var(--ink);
-  color: var(--paper);
-  font-weight: 700;
+  background: var(--navy);
+  color: #fff;
+  font-weight: 600;
   text-decoration: none;
 }
 .skip-link:focus { top: 12px; }
@@ -339,11 +278,11 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
-  transition: border-color .2s;
+  background: #fff;
+  border-bottom: 1px solid transparent;
+  transition: box-shadow .2s var(--ease), border-color .2s;
 }
-.site-header.is-scrolled { border-color: var(--ink); }
+.site-header.is-scrolled { box-shadow: 0 6px 24px rgba(11, 42, 58, .08); border-color: var(--line); }
 
 .nav { position: relative; display: flex; align-items: center; gap: 16px; min-height: var(--header-h); }
 
@@ -357,12 +296,11 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   color: var(--ink);
   text-decoration: none;
 }
-/* Porthole logo: ink disc, butter star (colours are also on the SVG itself) */
 .brand__mark { width: 40px; height: 40px; flex: none; }
 .brand__text { display: flex; flex-direction: column; min-width: 0; line-height: 1.1; }
-/* The shop name is never cut off: it wraps on the narrowest screens instead */
-.brand__name { font-family: var(--font-serif); font-weight: 700; font-size: 1.28rem; letter-spacing: -.01em; white-space: nowrap; }
-.brand__tag { margin-top: 2px; font-size: .78rem; font-weight: 600; letter-spacing: .02em; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.brand__name, .brand__tag { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.brand__name { font-weight: 700; font-size: 1.2rem; letter-spacing: -.01em; }
+.brand__tag { font-size: .78rem; font-weight: 500; color: var(--muted); margin-top: 2px; }
 
 .nav__links ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; }
 .nav__links a {
@@ -370,15 +308,14 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   align-items: center;
   min-height: 44px;
   padding: 0 14px;
-  border-radius: var(--radius-sm);
-  color: var(--ink);
-  font-weight: 600;
+  border-radius: var(--pill);
+  color: var(--text);
+  font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
   transition: background-color .15s, color .15s;
 }
-.nav__links a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--action); text-decoration-thickness: 2px; text-underline-offset: 6px; }
-.nav__links a:active { background: var(--press); }
+.nav__links a:active { background: var(--bg); }
 
 .nav__actions { display: flex; align-items: center; gap: 8px; flex: none; }
 
@@ -391,9 +328,9 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   width: 44px;
   height: 44px;
   padding: 0;
-  border: 2px solid var(--ink);
+  border: 0;
   border-radius: var(--radius-sm);
-  background: transparent;
+  background: var(--bg);
   color: var(--ink);
   cursor: pointer;
   align-items: center;
@@ -401,7 +338,7 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   user-select: none;
   -webkit-user-select: none;
 }
-.nav__toggle:active { transform: translate(1px, 1px); background: var(--press); }
+.nav__toggle:active { transform: scale(.94); }
 .nav__toggle .icon--close { display: none; }
 .site-header.is-open .nav__toggle .icon--menu { display: none; }
 .site-header.is-open .nav__toggle .icon--close { display: block; }
@@ -420,19 +357,18 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   .btn--call { padding: 0 16px; min-height: 44px; }
   .nav { gap: 12px; }
 
-  /* Phone menu: a printed paper panel with serif links and hairline rules */
   .nav__links {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    padding: 4px var(--gutter) 12px;
+    padding: 8px var(--gutter) 16px;
     padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
     padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
-    background: var(--paper);
-    border-top: 1px solid var(--ink);
-    border-bottom: 2px solid var(--ink);
+    background: #fff;
+    border-top: 1px solid var(--line);
+    box-shadow: 0 24px 40px rgba(11, 42, 58, .14);
     /* The panel scrolls on its own when it is taller than the screen (phones in landscape) */
     max-height: calc(100vh - var(--header-h));
     max-height: calc(100dvh - var(--header-h));
@@ -441,17 +377,15 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
     -webkit-overflow-scrolling: touch;
   }
   .site-header.is-open .nav__links { display: block; }
-  .nav__links ul { flex-direction: column; gap: 0; }
-  .nav__links li + li { border-top: 1px solid var(--line); }
-  .nav__links a { min-height: 52px; padding: 0 4px; font-family: var(--font-serif); font-size: 1.2rem; border-radius: 0; }
+  .nav__links ul { flex-direction: column; gap: 2px; }
+  .nav__links a { min-height: 48px; padding: 0 12px; font-size: 1.1rem; border-radius: var(--radius-sm); }
 
   /* No JavaScript (or site.js failed to load): a short, non-sticky header with the
      links in wrapping rows, so the menu is reachable and never covers the page */
   html:not(.js) .site-header { position: static; }
-  html:not(.js) .nav__links { display: block; position: static; border: 0; padding: 0 0 10px; width: 100%; max-height: none; overflow: visible; }
+  html:not(.js) .nav__links { display: block; position: static; box-shadow: none; border: 0; padding: 0 0 10px; width: 100%; max-height: none; overflow: visible; }
   html:not(.js) .nav__links ul { flex-direction: row; flex-wrap: wrap; gap: 0 4px; }
-  html:not(.js) .nav__links li + li { border: 0; }
-  html:not(.js) .nav__links a { min-height: 44px; padding: 0 10px; font-family: var(--font); font-size: 1rem; }
+  html:not(.js) .nav__links a { min-height: 44px; padding: 0 10px; font-size: 1rem; }
   html:not(.js) .nav { flex-wrap: wrap; }
   html:not(.js) .nav__links { order: 3; }   /* brand and Call on the first row */
   html:not(.js) .nav__toggle { display: none; }
@@ -461,37 +395,26 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
 }
 
 @media (max-width: 39.999em) {
-  .brand__name { font-size: 1.15rem; }
+  .brand__name { font-size: 1.1rem; }
   .brand__tag { font-size: .75rem; }   /* 12px floor */
 }
-/* Phones: the subline only shows when it fits whole (it is never cut short) */
-@media (max-width: 27.499em) {
-  .site-header .brand__tag { display: none; }
-}
-/* Narrow phones: drop the subline and the Call label so the full name shows */
 @media (max-width: 23.749em) {
-  .nav { gap: 8px; }
-  .brand { gap: 8px; }
-  .brand__mark { width: 34px; height: 34px; }
+  .brand__mark { width: 36px; height: 36px; }
   .brand__name { font-size: 1.05rem; }
-  .btn--call { padding: 0 10px; min-width: 44px; }
+  .brand__tag { display: none; }
+  .btn--call { padding: 0 12px; min-width: 44px; }
   .btn--call__short { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .btn--call .icon { width: 22px; height: 22px; }
 }
-@media (max-width: 22.5em) {
-  .brand__name { font-size: 1rem; }
-}
 /* Very narrow screens or large text: the business name wraps, it is never cut off */
 @media (max-width: 18.749em) {
+  .nav { gap: 8px; }
+  .brand { gap: 8px; }
   .brand__name { white-space: normal; line-height: 1.05; }
 }
 
 
 /* 7. Hero
-   Phones and tablets: the washer photo / video full-bleed, printed in cobalt
-   (multiply). Desktop (62em+): flat cobalt behind the text and the washer shown
-   untinted in a round "porthole" window, with the price hang tag and the
-   address ticket pinned to its rim.
    ========================================================================== */
 .hero {
   position: relative;
@@ -502,18 +425,19 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   min-height: 90vh;
   min-height: 90svh;
   padding: clamp(48px, 6vw, 80px) 0;
-  background: var(--grain) repeat, var(--cobalt);
-  color: var(--on-cobalt);
+  background: var(--navy-deep);
+  color: #fff;
 }
 /* Layers, back to front: still photo (the LCP image and the fallback), the
-   looping video once js/site.js starts it, then the overlay or door seal. */
+   looping video once js/site.js starts it, then the colour overlay that keeps
+   the white text readable. */
 .hero__bg {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-color: var(--cobalt);
-  background-image: url("../img/hero-washer-960.jpg");
-  background-image: image-set(url("../img/hero-washer-960.webp") type("image/webp"), url("../img/hero-washer-960.jpg") type("image/jpeg"));
+  background-color: var(--navy-deep);
+  background-image: url("../img/hero-washer-1920.jpg");
+  background-image: image-set(url("../img/hero-washer-1920.webp") type("image/webp"), url("../img/hero-washer-1920.jpg") type("image/jpeg"));
   background-position: 70% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -529,17 +453,13 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   transition: opacity .8s var(--ease);
 }
 .hero__video.is-playing { opacity: 1; }
-/* The photo printed in cobalt: multiply keeps the washer's shapes while its
-   brightest white can only reach the cobalt itself, so the text keeps the
-   same contrast as on the flat cobalt */
+/* Dark where the text sits (left), lighter over the machine (right) */
 .hero__bg::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--grain) repeat, var(--cobalt);
-  mix-blend-mode: multiply;
+  background: linear-gradient(100deg, rgba(8, 34, 48, .94) 0%, rgba(11, 52, 66, .9) 38%, rgba(13, 70, 84, .74) 62%, rgba(12, 84, 94, .42) 100%);
 }
-
 .hero__pause {
   position: absolute;
   right: max(16px, env(safe-area-inset-right, 0px));
@@ -547,12 +467,12 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   z-index: 1;
   width: 44px;
   height: 44px;
-  border: 1px solid rgba(247, 243, 235, .5);
-  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 50%;
   display: grid;
   place-items: center;
-  background: rgba(20, 22, 43, .6);
-  color: var(--on-cobalt);
+  background: rgba(8, 34, 48, .55);
+  color: #fff;
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
@@ -562,153 +482,128 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
 .hero__pause .hero__play-icon { display: none; }
 .hero__pause[aria-pressed="true"] .hero__pause-icon { display: none; }
 .hero__pause[aria-pressed="true"] .hero__play-icon { display: block; }
-.hero__pause:active { transform: translate(1px, 1px); }
-
+.hero__pause:active { transform: scale(.94); }
+@media (hover: hover) and (pointer: fine) {
+  .hero__pause:hover { background: rgba(8, 34, 48, .8); }
+}
+/* One column on phones and tablets: the text crosses the whole width, so the
+   overlay is evenly dark, and a portrait crop keeps the machine in frame */
+@media (max-width: 61.999em) {
+  .hero__bg {
+    background-image: url("../img/hero-washer-960.jpg");
+    background-image: image-set(url("../img/hero-washer-960.webp") type("image/webp"), url("../img/hero-washer-960.jpg") type("image/jpeg"));
+  }
+  .hero__bg::after { background: linear-gradient(180deg, rgba(8, 34, 48, .9) 0%, rgba(11, 52, 66, .88) 100%); }
+}
 .hero__grid {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
   gap: 48px;
   align-items: center;
 }
-.hero h1 { margin: 22px 0 20px; color: var(--on-cobalt); max-width: 13ch; }
+.hero h1 { margin: 22px 0 20px; color: #fff; max-width: 12ch; }
 /* Small descriptive line inside the H1 (search phrase), above the display line */
 .hero__kicker {
   display: block;
   margin-bottom: 12px;
-  font-family: var(--font);
   font-size: clamp(1rem, 1.3vw, 1.15rem);
   font-weight: 600;
   line-height: 1.35;
   letter-spacing: .01em;
-  color: var(--butter);
+  color: var(--aqua);
 }
 .hero__lead {
   max-width: 58ch;
   margin: 0 0 24px;
   font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-  color: rgba(247, 243, 235, .9);
+  color: rgba(255, 255, 255, .88);
 }
 
-/* "Open every day": a square-cornered printed sign with the brand star */
 .chip {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   min-height: 40px;
-  padding: 6px 14px 6px 12px;
-  border: 1px solid rgba(247, 243, 235, .5);
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  font-size: .82rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--on-cobalt);
+  padding: 6px 16px 6px 12px;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: var(--pill);
+  background: rgba(255, 255, 255, .12);
+  font-weight: 500;
+  font-size: .95rem;
+  color: #fff;
 }
-.chip__dot { width: 13px; height: 13px; flex: none; background: var(--butter); clip-path: var(--star); }
+.chip__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--aqua); box-shadow: 0 0 0 4px rgba(111, 217, 207, .28); flex: none; }
 
 .checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
 .checklist li { display: flex; gap: 12px; align-items: flex-start; }
-.checklist .icon { width: 26px; height: 26px; color: var(--butter); margin-top: 1px; }
-.checklist strong { display: block; font-weight: 600; color: var(--on-cobalt); }
-.checklist small { display: block; font-size: .95rem; color: rgba(247, 243, 235, .82); }
+.checklist .icon { width: 26px; height: 26px; color: var(--aqua); margin-top: 1px; }
+.checklist strong { display: block; font-weight: 600; color: #fff; }
+.checklist small { display: block; font-size: .95rem; color: rgba(255, 255, 255, .78); }
 
 /* The buttons sit right under the lead so both are on the first screen */
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
-/* On cobalt the offset stays night ink, like on paper */
-.hero .btn--cta, .section--dark .btn--cta { box-shadow: 3px 3px 0 var(--ink); }
-.hero .btn--cta:active, .section--dark .btn--cta:active { box-shadow: 0 0 0 var(--ink); }
 
-/* Pinned paper (desktop only; decorative, aria-hidden) */
+/* Floating card composition (desktop only) */
 .hero__visual { position: relative; height: 480px; }
-/* Address claim ticket: semicircle notches cut from both sides */
+.hero__orb {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 45% 45%, rgba(111, 217, 207, .34), rgba(111, 217, 207, 0) 68%);
+  filter: blur(12px);
+  pointer-events: none;
+}
 .float-card {
   position: absolute;
-  padding: 18px 26px;
-  border-radius: 3px;
-  background: var(--paper);
+  padding: 20px 22px;
+  border-radius: var(--radius);
+  background: #fff;
   color: var(--ink);
-  -webkit-mask: radial-gradient(circle 8px at 0 50%, #0000 97%, #000) left / 51% 100% no-repeat,
-                radial-gradient(circle 8px at 100% 50%, #0000 97%, #000) right / 51% 100% no-repeat;
-          mask: radial-gradient(circle 8px at 0 50%, #0000 97%, #000) left / 51% 100% no-repeat,
-                radial-gradient(circle 8px at 100% 50%, #0000 97%, #000) right / 51% 100% no-repeat;
+  box-shadow: var(--shadow-lg);
 }
-.float-card--address { left: 0; bottom: 8px; width: 300px; transform: rotate(1.5deg); }
+.float-card--rating { top: 28px; right: 24px; width: 250px; }
+/* The three cards are staggered so they never share a horizontal band:
+   rating ~28–140, price badge ~199–284, address ~327–464 (of 480) */
+.float-card--address { left: 0; bottom: 16px; width: 300px; }
+.float-card__big { font-size: 2.6rem; font-weight: 700; line-height: 1; letter-spacing: -.02em; color: var(--ink); margin: 0; }
+.star-glyph { color: var(--amber); }
+.float-card__label { margin: 6px 0 0; font-size: .95rem; color: var(--muted); font-weight: 500; }
 .float-card__row { display: flex; align-items: center; gap: 12px; }
 .float-card__icon {
   width: 44px;
   height: 44px;
   flex: none;
-  border: 1.5px solid var(--ink);
-  border-radius: 50%;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ink);
 }
-.float-card strong { display: block; font-weight: 700; color: var(--ink); }
-.float-card__label { display: block; margin-top: 2px; font-size: .95rem; color: var(--muted); }
-.float-card .link-arrow { margin-top: 2px; }
-/* $1.80/lb butter hang tag with a punched hole */
+.float-card__icon--star { background: #FFF1CC; color: #B7700A; }   /* rating gold, 3.5:1 */
+.float-card__icon--teal { background: #D6EEF0; color: var(--blue); }
+.float-card strong { display: block; font-weight: 600; color: var(--ink); }
+.float-card .link-arrow { min-height: 44px; margin-top: 2px; }
 .float-badge {
   position: absolute;
   right: 0;
-  top: 18px;
-  padding: 14px 20px 14px 40px;
-  border-radius: var(--radius);
-  background: var(--butter);
-  color: var(--ink);
-  transform: rotate(-1.5deg);
-  -webkit-mask: radial-gradient(circle 6px at 20px 50%, #0000 97%, #000);
-          mask: radial-gradient(circle 6px at 20px 50%, #0000 97%, #000);
+  bottom: 196px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 20px 50px rgba(8, 34, 48, .45);
 }
-.float-badge__value { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
-.float-badge__label { margin-top: 4px; font-size: .9rem; font-weight: 600; white-space: nowrap; }
-
-@media (min-width: 62em) {
-  /* The porthole: the photo / video untinted in a round window with a paper
-     rim, an ink door seal and a faint outer frame */
-  .hero { --port: min(520px, 40vw); }
-  .hero__bg {
-    inset: auto;
-    top: 50%;
-    right: max(var(--gutter), (100% - var(--container)) / 2);
-    width: var(--port);
-    height: var(--port);
-    transform: translateY(-50%);
-    border: 12px solid var(--paper);
-    border-radius: 50%;
-    outline: 2px solid rgba(247, 243, 235, .22);
-    outline-offset: 10px;
-    overflow: hidden;
-    background-image: url("../img/hero-washer-1920.jpg");
-    background-image: image-set(url("../img/hero-washer-1920.webp") type("image/webp"), url("../img/hero-washer-1920.jpg") type("image/jpeg"));
-    /* the window shows 86% of the photo's height, centred on the drum
-       (drum centre at 71% / 44% of the frame) */
-    background-size: auto 116.3%;
-    background-position: 90.9% 7.2%;
-  }
-  .hero__video {
-    inset: auto;
-    left: -96%;
-    top: -1.2%;
-    width: 205.6%;
-    height: 116.3%;
-    object-position: 50% 50%;
-  }
-  .hero__bg::after { border-radius: 50%; background: none; mix-blend-mode: normal; box-shadow: inset 0 0 0 3px var(--ink); }
-  .hero__visual { height: calc(var(--port) + 24px); }
-  /* The pause button sits by the porthole it controls (the bottom-right corner
-     of its square, clear of the rim), not in the far corner of the band */
-  .hero__pause {
-    top: calc(50% + var(--port) / 2 - 44px);
-    bottom: auto;
-    right: max(var(--gutter), (100% - var(--container)) / 2);
-  }
-}
+.float-badge__icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(255, 255, 255, .16); display: flex; align-items: center; justify-content: center; flex: none; }
+.float-badge__value { font-size: 1.6rem; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+.float-badge__label { font-size: .9rem; color: #fff; margin-top: 4px; white-space: nowrap; }
 
 @media (max-width: 61.999em) {
-  /* room under the checklist for the pause button (bottom 16px + 44px) */
-  .hero { padding-bottom: 76px; }
   .hero__grid { grid-template-columns: minmax(0, 1fr); }
   .hero__visual { display: none; }
   .hero h1 { max-width: none; }
@@ -718,40 +613,56 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
 }
 /* Phones in landscape: a compact hero so the buttons are near the first screen */
 @media (max-height: 500px) and (orientation: landscape) {
-  .hero { min-height: 0; padding: 32px 0 76px; }
+  .hero { min-height: 0; padding: 32px 0; }
   .hero h1 { font-size: clamp(2rem, 5vw, 2.4rem); margin: 14px 0 12px; }
 }
 
 
-/* 8. Why us: four open columns under ink rules (no boxes, no icon circles)
+/* 8. Why us (feature cards)
    ========================================================================== */
-.feature-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 32px; }
-.feature-card { padding: 22px 0 0; border-top: 2px solid var(--ink); }
-.feature-card__icon { display: block; margin: 0 0 14px; color: var(--ink); }
-.feature-card__icon .icon { width: 30px; height: 30px; stroke-width: 1.5; }
-.feature-card h3 { margin: 0 0 8px; font-size: 1.3rem; }
-.feature-card p { margin: 0; font-size: .98rem; color: var(--text); }
+.feature-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
 
-@media (max-width: 61.999em) { .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; } }
+.feature-card {
+  padding: 32px 24px;
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.feature-card h3 { margin: 0 0 8px; font-size: 1.2rem; }
+.feature-card p { margin: 0; font-size: .98rem; color: var(--muted); }
+.feature-card--left { text-align: left; }
+.feature-card--left .icon-circle { margin-left: 0; }
+
+.icon-circle {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-circle .icon { width: 28px; height: 28px; }
+.icon-circle--teal { background: #D6EEF0; color: var(--blue); }        /* 4.1:1 */
+.icon-circle--aqua { background: #DFF6F3; color: var(--aqua-deep); }   /* 5.1:1 */
+.icon-circle--coral { background: #FFE4DC; color: var(--cta-deep); }   /* 4.3:1 */
+.icon-circle--sea { background: #E2ECF1; color: var(--navy); }         /* 12.4:1 */
+
+@media (max-width: 61.999em) { .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 39.999em) {
-  /* Phones: a ruled list, icon beside the text */
-  .feature-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  .feature-card { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 2px 14px; align-items: start; padding: 18px 0; border-top-width: 1px; }
-  .feature-card:first-child { border-top-width: 2px; }
-  .feature-card__icon { grid-row: span 2; margin: 4px 0 0; }
-  .feature-card h3 { margin: 0 0 2px; }
+  .feature-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  /* Phones: icon beside the text, so four short cards are not four screens */
+  .feature-card { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 2px 16px; align-items: start; text-align: left; padding: 20px; }
+  .feature-card .icon-circle { grid-row: span 2; width: 56px; height: 56px; margin: 0; }
+  .feature-card h3 { margin: 4px 0 2px; }
 }
 
 
-/* 9. Stats band: one flat butter field between two ink rules
+/* 9. Stats band
    ========================================================================== */
-.stats {
-  padding: clamp(48px, 6vw, 80px) 0;
-  background: var(--grain) repeat, var(--butter);
-  color: var(--ink);
-  border-top: 2px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
-}
+.stats { background: var(--dark-gradient); color: #fff; padding: clamp(48px, 6vw, 80px) 0; }
 .stats__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 24px; }
 /* Every value box is one big-number line tall and its text sits on the bottom,
    so the labels and notes line up even where the value is set smaller */
@@ -759,19 +670,15 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
   display: flex;
   align-items: flex-end;
   min-height: calc(clamp(2rem, 3.4vw, 2.9rem) * 1.05);
-  font-family: var(--font-serif);
   font-size: clamp(2rem, 3.4vw, 2.9rem);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -.02em;
-  color: var(--ink);
+  color: var(--aqua);
 }
 .stat__value--sm { font-size: clamp(1.7rem, 2.6vw, 2.25rem); }
-.stat__label { margin-top: 8px; font-weight: 700; font-size: 1.1rem; color: var(--ink); }
-.stat__note { margin: 2px 0 0; font-size: .95rem; color: var(--text); }   /* 7.6:1 on grained butter */
-@media (min-width: 62em) {
-  .stat + .stat { padding-left: 24px; border-left: 1px solid rgba(20, 22, 43, .35); }
-}
+.stat__label { margin-top: 8px; font-weight: 600; font-size: 1.1rem; }
+.stat__note { margin: 2px 0 0; font-size: .95rem; color: rgba(255, 255, 255, .76); }
 
 /* Two columns until four fit without squeezing "5 AM – 11 PM" */
 @media (max-width: 61.999em) { .stats__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -785,33 +692,45 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
 @media (max-width: 18.749em) { .stats__grid { grid-template-columns: minmax(0, 1fr); } }
 
 
-/* 10. Services: hairline paper cards in a bento
-   Desktop: the real shop photo and Wash & Fold as two wide cards over three.
-   Tablet: the first card full width over a 2 × 2. Phones: one column.
+/* 10. Services
    ========================================================================== */
-.services-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 24px; }
-.services-grid > .service-card { grid-column: span 2; }
-.services-grid > .service-card:nth-child(-n+2) { grid-column: span 3; }
+.services-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
 
 .service-card {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--paper);
-  transition: transform .2s var(--ease), border-color .2s;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
 }
 .service-card__media {
   position: relative;
   height: 200px;
-  overflow: hidden;
-  border-bottom: 1px solid var(--line-strong);
-  background: var(--manila);   /* shows (with the alt text) if a photo fails */
-  color: var(--text);
-  font-size: .9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.services-grid > .service-card:nth-child(-n+2) .service-card__media { height: 280px; }
+.service-card__badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* White tile in the card's own hue (the media block sets `color`), so each card
+     stays one colour instead of adding a second accent */
+  background: #fff;
+  color: inherit;
+  box-shadow: 0 6px 16px rgba(11, 42, 58, .10);
+}
+/* Photo cards: the picture fills the media area, the badge stays on top */
+.service-card__media--photo { overflow: hidden; }
 .service-card__photo,
 .service-card__photo img {
   position: absolute;
@@ -821,23 +740,23 @@ p, li, dd { text-wrap: pretty; }   /* avoids one-word last lines where supported
 }
 .service-card__photo img,
 img.service-card__photo { object-fit: cover; }
+.service-card__media--photo .service-card__badge { z-index: 1; }
 .service-card__body { padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-.service-card h3 { margin: 0; font-size: 1.35rem; }
+.service-card h3 { margin: 0; }
 .service-card p { margin: 0; }
 .service-card .link-arrow { margin-top: auto; padding-top: 4px; }
 
-@media (max-width: 61.999em) {
-  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .services-grid > .service-card,
-  .services-grid > .service-card:nth-child(-n+2) { grid-column: auto; }
-  .services-grid > .service-card:first-child { grid-column: 1 / -1; }
-  .services-grid > .service-card:nth-child(2) .service-card__media { height: 200px; }
-  .services-grid > .service-card:first-child .service-card__media { height: 260px; }
-}
+/* Three tints in diagonal order (teal, aqua, coral / aqua, coral, teal) */
+.media--teal { background: linear-gradient(135deg, #E6F5F6 0%, #C9E8EB 100%); color: var(--blue); }
+.media--aqua { background: linear-gradient(135deg, #E6F9F5 0%, #C3EEE5 100%); color: var(--aqua-deep); }
+.media--coral { background: linear-gradient(135deg, #FFF0EA 0%, #FFD3C4 100%); color: var(--cta-deep); }
+
+@media (max-width: 61.999em) { .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 39.999em) {
   .services-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-  .services-grid > .service-card .service-card__media,
-  .services-grid > .service-card:nth-child(-n+2) .service-card__media { height: 200px; }
+  .service-card__media { height: 112px; }
+  .service-card__media--photo { height: 190px; }
+  .service-card__media .icon--xl { width: 56px; height: 56px; }
 }
 
 
@@ -845,7 +764,7 @@ img.service-card__photo { object-fit: cover; }
    ========================================================================== */
 .how__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 56px; align-items: center; }
 .how__intro { font-size: 1.1rem; margin: 0 0 32px; }
-.how__subtitle { margin: 0 0 20px; font-family: var(--font); font-size: .85rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
+.how__subtitle { font-size: 1.05rem; font-weight: 600; color: var(--text); text-transform: uppercase; letter-spacing: .08em; margin: 0 0 20px; }
 
 .steps { list-style: none; margin: 0; padding: 0; }
 .step { position: relative; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 20px; padding-bottom: 32px; }
@@ -856,50 +775,49 @@ img.service-card__photo { object-fit: cover; }
   left: 27px;
   top: 64px;
   bottom: 0;
-  border-left: 2px dotted rgba(20, 22, 43, .45);
+  border-left: 2px dashed #B9D3D8;
 }
 .step__num {
   width: 56px;
   height: 56px;
-  border: 2px solid var(--ink);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--paper);
-  font-family: var(--font-serif);
   font-weight: 700;
-  font-size: 1.35rem;
-  color: var(--ink);
+  font-size: 1.25rem;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(11, 42, 58, .14);
 }
+.step__num--teal { background: var(--blue); }
+.step__num--aqua { background: var(--aqua); color: var(--ink); }
+.step__num--coral { background: var(--cta); color: var(--ink); }
 .step h3 { margin: 14px 0 6px; }
 .step p { margin: 0; }
 
 .how__visual { position: relative; padding-bottom: 120px; } /* the hours card overlaps only the lower part of the photo */
-/* The tint shows (with the alt text) if the photo fails to load */
-.how__photo { margin-left: 120px; border: 1px solid var(--ink); border-radius: var(--radius); overflow: hidden; background: var(--press); color: var(--text); font-size: .9rem; }
+/* The gradient shows (with the alt text) if the photo fails to load */
+.how__photo { margin-left: 120px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: linear-gradient(135deg, #E6F5F6, #C9E8EB); color: var(--text); font-size: .9rem; }
 .how__photo picture { display: block; }
 .how__photo img { width: 100%; height: 460px; object-fit: cover; object-position: 50% 8%; }
 
-/* A printed sign pinned over the photo: the one other hard offset on the site */
 .hours-card {
   position: absolute;
   left: 0;
   bottom: 0;
   width: min(360px, 100%);
   padding: 22px 24px;
-  border: 2px solid var(--ink);
-  border-radius: var(--radius-sm);
-  background: var(--paper);
-  box-shadow: 6px 6px 0 var(--ink);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow-lg);
 }
-.hours-card h3 { margin: 0 0 4px; font-size: 1.25rem; }
+.hours-card h3 { margin: 0 0 4px; font-size: 1.15rem; }
 .hours-card__note { margin: 0 0 12px; font-size: .9rem; color: var(--muted); }
 
 .hours-table { width: 100%; border-collapse: collapse; font-size: .98rem; }
-.hours-table th { width: 3.4em; padding: 8px 0; text-align: left; font-weight: 700; color: var(--ink); }
+.hours-table th { width: 3.4em; padding: 8px 0; text-align: left; font-weight: 600; color: var(--ink); }
 .hours-table td { padding: 8px 0; text-align: right; color: var(--text); }
-.hours-table tr + tr { border-top: 1px dotted var(--line-strong); }
+.hours-table tr + tr { border-top: 1px solid var(--line); }
 .hours-table--lg { font-size: 1.05rem; }
 .hours-table--lg th, .hours-table--lg td { padding: 12px 0; }
 
@@ -908,76 +826,66 @@ img.service-card__photo { object-fit: cover; }
   .how__visual { padding-bottom: 0; }
   .how__photo { margin-left: 0; }
   .how__photo img { height: 280px; }
-  .hours-card { position: relative; width: auto; margin: -56px 22px 0 16px; }
+  .hours-card { position: relative; width: auto; margin: -56px 16px 0; }
 }
 
 
-/* 12. Pricing band: claim tickets on manila
-   Each ticket has a dashed tear line under the price with a semicircle notch
-   cut from each side. The notches are painted in the band colour (--band), so
-   they follow if the band changes.
+/* 12. Pricing band (glass cards)
    ========================================================================== */
-.pricing { --band: var(--manila); }
+.pricing { position: relative; isolation: isolate; overflow: hidden; }
+.pricing::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: -10%;
+  top: -20%;
+  width: 60vw;
+  height: 60vw;
+  max-width: 720px;
+  max-height: 720px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(111, 217, 207, .14), rgba(111, 217, 207, 0) 65%);
+  pointer-events: none;
+}
 
 .price-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding-top: 16px; align-items: stretch; }
 
-.ticket {
-  --edge: var(--line-strong);
-  --edge-w: 1px;
+.glass {
   position: relative;
   display: flex;
   flex-direction: column;
   padding: 32px 28px 28px;
-  border: var(--edge-w) solid var(--edge);
+  border: 1px solid rgba(255, 255, 255, .18);
   border-radius: var(--radius);
-  background: var(--paper);
-  color: var(--ink);
+  background: rgba(255, 255, 255, .08);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: #fff;
 }
-.ticket--featured { --edge: var(--ink); --edge-w: 2px; background: var(--butter); }
-.ticket__tag {
+.glass--featured { border-color: rgba(111, 217, 207, .75); background: rgba(255, 255, 255, .12); box-shadow: 0 24px 60px rgba(8, 34, 48, .35); }
+.glass__badge {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  background: var(--ink);
-  color: var(--paper);
-  font-size: .78rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: var(--pill);
+  background: var(--amber);
+  color: var(--navy);
+  font-size: .85rem;
+  font-weight: 600;
   white-space: nowrap;
 }
-.ticket h3 { margin: 0 0 4px; font-size: 1.5rem; text-align: center; }
-.ticket__sub { margin: 0 0 20px; text-align: center; font-size: .95rem; color: var(--text); }
-.price {
-  position: relative;
-  margin: 0 -28px 22px;
-  padding: 0 28px 22px;
-  border-bottom: 2px dashed rgba(20, 22, 43, .4);
-  text-align: center;
-  line-height: 1;
-}
-/* The two notches: half-discs in the band colour, outlined like the ticket edge */
-.price::before, .price::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  width: 10px;
-  height: 18px;
-  background: var(--band);
-  border: var(--edge-w) solid var(--edge);
-}
-.price::before { left: calc(-1 * var(--edge-w)); border-left: 0; border-radius: 0 10px 10px 0; }
-.price::after { right: calc(-1 * var(--edge-w)); border-right: 0; border-radius: 10px 0 0 10px; }
-.price__from { margin-right: 2px; font-size: 1.05rem; font-weight: 500; color: var(--text); }
-.price__amount { font-family: var(--font-serif); font-size: clamp(2.6rem, 4vw, 3.4rem); font-weight: 700; letter-spacing: -.02em; color: var(--ink); }
-.price__unit { margin-left: 4px; font-size: 1.05rem; font-weight: 500; color: var(--text); }
-.ticket ul { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 10px; align-content: start; flex: 1; }
-.ticket li { display: flex; gap: 10px; align-items: flex-start; color: var(--text); }
-.ticket li .icon { width: 20px; height: 20px; margin-top: 4px; color: var(--ink); }
-.pricing__note { margin: 28px 0 0; text-align: center; font-size: .95rem; color: var(--text); }
+.glass h3 { margin: 0 0 4px; font-size: 1.35rem; text-align: center; color: #fff; }
+.glass__sub { margin: 0 0 20px; text-align: center; font-size: .95rem; color: rgba(255, 255, 255, .86); }
+.price { margin: 0 0 22px; text-align: center; line-height: 1; }
+.price__from { margin-right: 2px; font-size: 1.05rem; font-weight: 500; color: rgba(255, 255, 255, .8); }
+.price__amount { font-size: clamp(2.6rem, 4vw, 3.4rem); font-weight: 700; letter-spacing: -.02em; }
+.price__unit { margin-left: 4px; font-size: 1.05rem; font-weight: 500; color: rgba(255, 255, 255, .82); }
+.glass ul { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 10px; align-content: start; flex: 1; }
+.glass li { display: flex; gap: 10px; align-items: flex-start; color: rgba(255, 255, 255, .92); }
+.glass li .icon { width: 20px; height: 20px; margin-top: 4px; color: var(--aqua); }
+.pricing__note { margin: 28px 0 0; text-align: center; font-size: .95rem; color: rgba(255, 255, 255, .86); }
 
 @media (max-width: 61.999em) {
   .price-grid { grid-template-columns: minmax(0, 1fr); max-width: 460px; margin: 0 auto; gap: 32px; }
@@ -990,21 +898,19 @@ img.service-card__photo { object-fit: cover; }
 .reviews__head .section__head { margin-bottom: 0; }
 .reviews__nav { display: flex; gap: 12px; padding-bottom: 6px; }
 
-.rating-line { display: flex; align-items: center; gap: 10px; margin-top: 14px; font-weight: 700; color: var(--ink); }
-/* Gold stars with an ink outline, so they read as a rating at a glance */
-.stars { position: relative; display: inline-flex; gap: 2px; color: var(--star-empty); line-height: 0; }
-.stars .icon { width: 22px; height: 22px; fill: currentColor; stroke: var(--ink); stroke-width: 1.4; stroke-linejoin: round; }
-.stars__fill { position: absolute; left: 0; top: 0; display: inline-flex; gap: 2px; overflow: hidden; white-space: nowrap; color: var(--butter); }
-.stars--sm .icon { width: 16px; height: 16px; stroke-width: 1.6; }
+.rating-line { display: flex; align-items: center; gap: 10px; margin-top: 14px; font-weight: 600; color: var(--ink); }
+.stars { position: relative; display: inline-flex; gap: 2px; color: #C9D9DD; line-height: 0; }
+.stars .icon { width: 22px; height: 22px; }
+.stars__fill { position: absolute; left: 0; top: 0; display: inline-flex; gap: 2px; overflow: hidden; white-space: nowrap; color: var(--amber); }
+.stars--sm .icon { width: 16px; height: 16px; }
 
 .reviews__track {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: min(85%, 352px);   /* the next card always peeks in */
   gap: 24px;
-  margin: 36px 0 0;
+  margin-top: 36px;
   padding: 8px 2px 28px;
-  list-style: none;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-padding: 0 2px;
@@ -1021,55 +927,50 @@ html:not(.js) .reviews__nav { display: none; }
   flex-direction: column;
   gap: 14px;
   padding: 28px;
-  border: 1px solid var(--line-strong);
   border-radius: var(--radius);
-  background: var(--paper-hi);
+  background: #fff;
+  box-shadow: var(--shadow);
   scroll-snap-align: start;
-  transition: border-color .2s;
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
 }
 .review-card__head { display: flex; align-items: center; gap: 14px; }
-.review-card__name { display: block; font-family: var(--font-serif); font-weight: 600; font-size: 1.1rem; color: var(--ink); }
+.review-card__name { display: block; font-weight: 600; color: var(--ink); }
 .review-card__text { margin: 0; color: var(--text); }
 .review-card__source { display: flex; align-items: center; gap: 6px; margin-top: auto; font-size: .9rem; font-weight: 500; color: var(--muted); }
 .review-card__source .icon { width: 16px; height: 16px; }
 
-/* Initials in an ink ring, the same for every reviewer */
 .avatar {
   width: 52px;
   height: 52px;
   flex: none;
-  border: 1.5px solid var(--ink);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-serif);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1rem;
-  color: var(--ink);
+  color: #fff;
 }
+.avatar--teal { background: var(--blue); }                    /* white 4.95:1 */
+.avatar--aqua { background: var(--aqua); color: var(--ink); }  /* 9.3:1 */
+.avatar--coral { background: var(--cta); color: var(--ink); }  /* 6.0:1 */
+.avatar--sea { background: var(--navy); }                     /* white 14:1 */
 
 .reviews__cta { margin-top: 8px; display: flex; justify-content: center; }
 
 
 /* 14. Book a pickup (contact block + form)
-   MT's real shop photo printed in cobalt (multiply), lightly blurred so the
-   machines are still recognisable. A 40% cobalt veil on top lifts the photo's
-   near-black shadows towards cobalt (calm, like the old charcoal band) but
-   never past it, so text keeps at least its flat-cobalt contrast.
    ========================================================================== */
-.book { position: relative; isolation: isolate; overflow: hidden; }
+.book { position: relative; isolation: isolate; overflow: hidden; background: var(--navy-deep); color: #fff; }
 .book__bg {
   position: absolute;
-  inset: -8px;
+  inset: -16px;
   z-index: -1;
   background:
-    linear-gradient(rgba(35, 48, 176, .4), rgba(35, 48, 176, .4)),
-    url("../img/laundromat_img.jpg") center / cover no-repeat,
-    var(--cobalt);
-  background-blend-mode: normal, multiply;
-  filter: blur(1.5px);
-  transform: scale(1.02);
+    linear-gradient(105deg, rgba(8, 34, 48, .94) 0%, rgba(13, 70, 84, .9) 55%, rgba(12, 84, 94, .9) 100%),
+    url("../img/laundromat_img.jpg") center / cover no-repeat;
+  filter: blur(3px) saturate(.9);
+  transform: scale(1.04);
 }
 .book__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: start; }
 .book__phone {
@@ -1077,54 +978,56 @@ html:not(.js) .reviews__nav { display: none; }
   align-items: center;
   gap: 14px;
   margin: 8px 0 20px;
-  font-family: var(--font-serif);
   font-size: clamp(1.8rem, 3.5vw, 2.6rem);
   font-weight: 700;
   letter-spacing: -.01em;
-  color: var(--on-cobalt);
+  color: #fff;
   text-decoration: none;
 }
-.book__phone .icon { width: 36px; height: 36px; color: var(--butter); }
+.book__phone .icon { width: 36px; height: 36px; color: var(--aqua); }
 .contact-links { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 6px; }
 .contact-links a {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   min-height: 44px;
-  color: var(--on-cobalt);
+  color: #fff;
   font-weight: 500;
   text-decoration: none;
 }
-.contact-links .icon { color: rgba(247, 243, 235, .7); }
+.contact-links .icon { color: rgba(255, 255, 255, .7); }
 
-.hours-summary { padding: 20px 22px; border: 1px solid rgba(247, 243, 235, .4); border-radius: var(--radius); }
-.hours-summary h3 { margin: 0 0 10px; font-size: 1.1rem; color: var(--on-cobalt); }
-.hours-summary dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 16px; font-size: .98rem; }
-.hours-summary dt, .hours-summary dd { padding: 6px 0; }
-.hours-summary dt:not(:first-of-type), .hours-summary dt:not(:first-of-type) + dd { border-top: 1px dotted rgba(247, 243, 235, .3); }
-.hours-summary dt { font-weight: 700; color: var(--on-cobalt); }
-.hours-summary dd { margin: 0; color: rgba(247, 243, 235, .86); }
-.hours-summary__note { margin: 12px 0 0; font-size: .9rem; color: rgba(247, 243, 235, .8); }
+.hours-summary {
+  padding: 20px 22px;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .08);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.hours-summary h3 { margin: 0 0 10px; font-size: 1.05rem; color: #fff; }
+.hours-summary dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 16px; font-size: .98rem; }
+.hours-summary dt { font-weight: 600; color: #fff; }
+.hours-summary dd { margin: 0; color: rgba(255, 255, 255, .84); }
+.hours-summary__note { margin: 12px 0 0; font-size: .9rem; color: rgba(255, 255, 255, .8); }
 @media (max-width: 18.749em) {   /* large text: day above hours */
-  .hours-summary dl { grid-template-columns: minmax(0, 1fr); }
-  .hours-summary dt:not(:first-of-type) + dd { border-top: 0; padding-top: 0; }
-  .hours-summary dd { margin-bottom: 4px; }
+  .hours-summary dl { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .hours-summary dd { margin-bottom: 8px; }
 }
 
-.form-card { padding: 32px; border-radius: var(--radius); background: var(--paper); color: var(--ink); }
-.form-card h3 { margin: 0 0 6px; font-size: 1.6rem; }
-.section--dark .form-card h3 { color: var(--ink); }   /* not the band's paper heading colour */
+.form-card { padding: 32px; border-radius: var(--radius); background: #fff; color: var(--ink); box-shadow: var(--shadow-lg); }
+.form-card h3 { margin: 0 0 6px; font-size: 1.5rem; }
 .form-card__intro { margin: 0 0 22px; color: var(--muted); font-size: .98rem; }
 
 .field { display: grid; gap: 6px; margin-bottom: 16px; }
-.field label { font-weight: 700; font-size: .95rem; color: var(--ink); }
+.field label { font-weight: 600; font-size: .95rem; color: var(--ink); }
 .field input, .field select, .field textarea {
   width: 100%;
   min-height: 48px;
   padding: 10px 14px;
-  border: 1.5px solid var(--line-strong);
+  border: 1px solid #BFD3D8;
   border-radius: var(--radius-sm);
-  background-color: var(--paper-hi);
+  background: #F7FBFB;
   color: var(--ink);
   font-size: 16px; /* 16px minimum: iOS does not zoom the page */
   line-height: 1.4;
@@ -1134,17 +1037,17 @@ html:not(.js) .reviews__nav { display: none; }
   appearance: none;
   -webkit-appearance: none;
   padding-right: 44px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2314162B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2335505C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   background-size: 20px;
 }
-.field input::placeholder, .field textarea::placeholder { color: var(--muted); opacity: 1; }   /* 5.9:1 on the field */
-.field :is(input, select, textarea):focus-visible { outline: 2px solid var(--ink); outline-offset: 0; border-color: var(--ink); background-color: #fff; }
+.field input::placeholder, .field textarea::placeholder { color: var(--muted); opacity: 1; }   /* 4.8:1 on #F7FBFB */
+.field :is(input, select, textarea):focus-visible { outline: 2px solid var(--blue); outline-offset: 0; border-color: var(--blue); background: #fff; }
 .form-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 16px; }
 .form-note { margin: 14px 0 0; font-size: .9rem; color: var(--muted); }
-.form-fallback { margin: 12px 0 0; padding: 12px 14px; border-radius: var(--radius-sm); background: var(--press); color: var(--text); font-size: .95rem; }
-.form-fallback a { font-weight: 700; }
+.form-fallback { margin: 12px 0 0; padding: 12px 14px; border-radius: var(--radius-sm); background: var(--blue-soft); color: var(--text); font-size: .95rem; }
+.form-fallback a { font-weight: 600; }
 
 @media (max-width: 61.999em) {
   .book__grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
@@ -1155,68 +1058,54 @@ html:not(.js) .reviews__nav { display: none; }
 }
 
 
-/* 15. FAQ: one ruled list
+/* 15. FAQ
    ========================================================================== */
-.faq-list { max-width: 860px; border-top: 2px solid var(--ink); }
-.faq { border-bottom: 1px solid var(--line-strong); }
+.faq-list { max-width: 860px; margin: 0 auto; display: grid; gap: 14px; }
+.faq { border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: var(--shadow); }
 .faq summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   min-height: 64px;
-  padding: 20px 4px;
+  padding: 18px 24px;
   list-style: none;
   cursor: pointer;
-  font-family: var(--font-serif);
   font-weight: 600;
-  font-size: 1.15rem;
-  line-height: 1.3;
   color: var(--ink);
   user-select: none;
   -webkit-user-select: none;
+  border-radius: 16px;
 }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::marker { content: ""; }
-.faq summary .icon { color: var(--ink); transition: transform .2s var(--ease); }
+.faq summary .icon { color: var(--muted); transition: transform .2s var(--ease); }
 .faq[open] summary .icon { transform: rotate(180deg); }
 .faq summary:focus-visible { outline-offset: -3px; }
-.faq__body { padding: 0 4px 22px; color: var(--text); }
+.faq__body { padding: 0 24px 22px; color: var(--text); }
 .faq__body p { margin: 0; }
 .faq__body p + p { margin-top: 10px; }
 
 
 /* 16. Footer
    ========================================================================== */
-/* A butter rule along the top, like a painted sign edge, separates it from a
-   dark band above */
-.site-footer {
-  padding: 64px 0 28px;
-  padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px));
-  border-top: 3px solid var(--butter);
-  background: var(--grain) repeat, var(--cobalt-deep);
-  color: var(--on-cobalt-muted);
-  font-size: 1rem;
-}
+/* The top rule marks the end of the page where a dark band runs into the footer */
+.site-footer { background: var(--navy); color: rgba(255, 255, 255, .78); padding: 64px 0 28px; padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px)); font-size: 1rem; border-top: 1px solid rgba(255, 255, 255, .1); }
 .footer__grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .9fr) minmax(0, 1fr) minmax(0, 1.6fr); gap: 40px 32px; }
-.footer__brand .brand { color: var(--on-cobalt); margin-right: 0; }
-.footer__brand .brand__tag { color: rgba(247, 243, 235, .72); }
-/* The logo inverted: butter disc, cobalt star */
-.site-footer .brand__disc { fill: var(--butter); }
-.site-footer .brand__seal { stroke: var(--cobalt-deep); }
-.site-footer .brand__star { fill: var(--cobalt-deep); }
+.footer__brand .brand { color: #fff; margin-right: 0; }
+.footer__brand .brand__tag { color: rgba(255, 255, 255, .7); }
 .footer__brand p { margin: 16px 0 0; max-width: 34ch; }
-.site-footer h4 { margin: 0 0 14px; font-size: 1.15rem; font-weight: 600; letter-spacing: 0; color: var(--on-cobalt); }
+.site-footer h4 { margin: 0 0 14px; font-size: 1.05rem; color: #fff; letter-spacing: 0; }
 .site-footer ul { list-style: none; margin: 0; padding: 0; }
 .site-footer li { margin: 0; }
-.site-footer a { display: inline-flex; align-items: center; gap: 10px; min-width: 44px; min-height: 44px; color: rgba(247, 243, 235, .86); text-decoration: none; transition: color .15s; }
-.site-footer .icon { width: 20px; height: 20px; color: rgba(247, 243, 235, .6); }
+.site-footer a { display: inline-flex; align-items: center; gap: 10px; min-width: 44px; min-height: 44px; color: rgba(255, 255, 255, .82); text-decoration: none; transition: color .15s; }
+.site-footer .icon { width: 20px; height: 20px; color: rgba(255, 255, 255, .6); }
 .footer__contact { min-width: 0; }
 .footer__contact li { display: flex; gap: 10px; align-items: flex-start; padding: 2px 0; }
 .footer__contact .icon { margin-top: 12px; }
 .footer__contact span { display: block; padding: 10px 0; }
 .footer__contact span a { padding: 0; margin: 0; }
-.footer__bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(247, 243, 235, .16); text-align: center; font-size: .95rem; }
+.footer__bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, .12); text-align: center; font-size: .95rem; }
 .footer__bottom p { margin: 0; }
 
 @media (max-width: 61.999em) { .footer__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
@@ -1225,89 +1114,57 @@ html:not(.js) .reviews__nav { display: none; }
 
 /* 17. Secondary pages
    ========================================================================== */
-/* Page hero (pricing.html, contact.html): paper with an ink rule below and, on
-   desktop, MT's real dryers in a porthole on the right */
-.page-hero { padding: clamp(48px, 7vw, 80px) 0; background: var(--grain) repeat, var(--paper); color: var(--ink); border-bottom: 2px solid var(--ink); }
-.page-hero h1 { margin: 12px 0 12px; max-width: 20ch; font-size: clamp(2.2rem, 4.4vw, 3.4rem); }
-.page-hero p:not(.eyebrow) { margin: 0; max-width: 60ch; font-size: 1.15rem; color: var(--text); }
-@media (min-width: 62em) {
-  .page-hero .container { position: relative; padding-right: calc(var(--gutter) + 300px); }
-  .page-hero .container::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: var(--gutter);
-    width: 252px;
-    height: 252px;
-    transform: translateY(-50%);
-    padding: 9px;
-    border: 2px solid var(--ink);
-    border-radius: 50%;
-    background: url("../img/laundromat_img.jpg") 40% 50% / cover no-repeat content-box, var(--paper);
-    box-shadow: inset 0 0 0 9px var(--paper), inset 0 0 0 11px var(--ink);
-  }
-}
+/* Page hero (pricing.html, contact.html) */
+.page-hero { padding: clamp(48px, 7vw, 80px) 0; background: var(--dark-gradient); color: #fff; }
+.page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); color: #fff; margin: 10px 0 12px; }
+.page-hero p:not(.eyebrow) { margin: 0; max-width: 60ch; font-size: 1.15rem; color: rgba(255, 255, 255, .84); }
 
 /* Tabs (pricing.html). Without JS every panel is visible with its own title. */
 .tabs__list { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; padding: 0; list-style: none; }
 .tabs__tab {
   min-height: 44px;
   padding: 0 18px;
-  border: 1.5px solid var(--line-strong);
-  border-radius: var(--radius-sm);
-  background: transparent;
-  color: var(--ink);
-  font-weight: 700;
+  border: 1px solid var(--line);
+  border-radius: var(--pill);
+  background: #fff;
+  color: var(--text);
+  font-weight: 600;
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   transition: background-color .15s, color .15s, border-color .15s, transform .12s var(--ease);
 }
-.tabs__tab:active { transform: translate(1px, 1px); }
-.tabs__tab[aria-selected="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.tabs__tab:active { transform: scale(.97); }
+.tabs__tab[aria-selected="true"] { background: var(--blue); color: #fff; border-color: var(--blue); }
 .tabs__panel-title { margin: 32px 0 8px; font-size: 1.4rem; }
 .js .tabs__list { display: flex; }
 .js .tabs__panel-title { display: none; }
 html:not(.js) .tabs__list { display: none; }
 
-/* Price list rows: a printed menu with dotted rules */
+/* Price list rows */
 .price-list { list-style: none; margin: 0; padding: 0; }
-.price-list__group { margin: 28px 0 6px; font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
+.price-list__group { margin: 28px 0 6px; font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
 .price-list__group:first-child { margin-top: 0; }
-.price-row { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px dotted var(--line-strong); }
+.price-row { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
 .price-row__name { font-weight: 500; color: var(--ink); }
 .price-row__note { display: block; margin-top: 2px; font-size: .9rem; font-weight: 400; color: var(--muted); }
 .price-row__price { flex: none; text-align: right; font-weight: 700; color: var(--ink); white-space: nowrap; }
 .price-row__multi { display: block; font-size: .9rem; font-weight: 500; color: var(--muted); }
-.price-row--special { margin-top: 12px; padding: 14px 16px; border: 1.5px solid var(--ink); border-radius: var(--radius-sm); background: var(--butter-tint); }
-.price-row--special .price-row__note, .price-row--special .price-row__multi { color: var(--text); }   /* 10:1 on the butter tint */
-.tag { display: inline-block; margin-right: 8px; padding: 2px 8px; border-radius: var(--radius-sm); background: var(--ink); color: var(--paper); font-size: .78rem; font-weight: 700; letter-spacing: .04em; vertical-align: middle; }
+.price-row--special { margin-top: 12px; padding: 14px 16px; border: 1px solid #FFCDBD; border-radius: var(--radius-sm); background: #FFF1EC; }
+.price-row--special .price-row__note { color: var(--text); }   /* 7.8:1 on the coral tint */
+.tag { display: inline-block; margin-right: 8px; padding: 2px 10px; border-radius: var(--pill); background: var(--cta); color: var(--ink); font-size: .78rem; font-weight: 700; vertical-align: middle; }
 
-/* Generic card: paper with a hairline */
-.card { padding: 28px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--paper); }
+/* Generic white card */
+.card { padding: 28px; border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); border: 1px solid var(--line); }
 .card h2, .card h3 { margin-bottom: 12px; }
-.card--light { background: var(--manila); }
-
-/* Outlined icon stamps (contact list, store hours) */
-.stamp {
-  width: 48px;
-  height: 48px;
-  flex: none;
-  border: 1.5px solid var(--ink);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ink);
-}
-.stamp .icon { width: 22px; height: 22px; }
+.card--light { background: var(--bg); border: 0; box-shadow: none; }
 
 /* Two-column helper */
 .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
 @media (max-width: 61.999em) { .split { grid-template-columns: minmax(0, 1fr); } }
 
 /* Map embed (contact.html) */
-.map-embed { border: 1px solid var(--ink); border-radius: var(--radius); overflow: hidden; aspect-ratio: 16 / 10; background: var(--manila); }
+.map-embed { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 16 / 10; background: var(--bg); }
 .map-embed iframe { width: 100%; height: 100%; border: 0; }
 
 /* Call / Email / Directions row */
@@ -1316,7 +1173,7 @@ html:not(.js) .tabs__list { display: none; }
 
 /* CTA band */
 .cta-band { text-align: center; }
-.cta-band .section__head { max-width: 680px; margin: 0 auto 28px; }
+.cta-band .section__head { margin: 0 auto 28px; }
 .cta-band__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 @media (max-width: 29.999em) { .cta-band__actions .btn { width: 100%; } }
 
@@ -1348,40 +1205,36 @@ html:not(.js) .tabs__list { display: none; }
 [hidden] { display: none !important; }
 /* The long email address may break anywhere (the <wbr> before @ is tried first) */
 .contact-links a, .footer__contact a[href^="mailto:"], .contact-list__email { overflow-wrap: anywhere; }
-/* Inline text links in notes get a 44px tall hit area via padding (padding on
-   inline elements does not change line spacing) */
-.price-panel__note a, .price-effective a, .hours-footnote a, .store-hours__note a,
-.form-note a, .form-fallback a, .faq__body a, .hours-summary__note a, .step p a { padding: 13px 0; }
 
 
 /* 19. Press feedback, hover (fine pointers only) and reduced motion
    ========================================================================== */
 /* Touch screens get no hover, so every tappable thing answers the press itself
-   (.btn, .arrow-btn, .nav__toggle, .nav__links a and .tabs__tab have their own) */
-.faq summary:active { background: var(--press); }
+   (.btn, .circle-btn, .nav__toggle, .nav__links a and .tabs__tab have their own) */
+.faq summary:active { background: var(--bg); }
 .link-arrow:active, .book__phone:active, .contact-links a:active, .contact-list a:active,
 .brand:active, .steps a:active, .faq__body a:active, .form-note a:active,
 .form-fallback a:active, .price-panel__note a:active, .price-effective a:active,
 .hours-footnote a:active, .hours-summary__note a:active, .redirect a:not(.btn):active { opacity: .7; }
-.site-footer a:active { color: var(--on-cobalt); }
+.site-footer a:active { color: #fff; }
 
 @media (hover: hover) and (pointer: fine) {
-  .btn--cta:hover { background: var(--action-hover); box-shadow: 4px 4px 0 var(--ink); transform: translate(-1px, -1px); }
-  .hero .btn--cta:hover, .section--dark .btn--cta:hover { box-shadow: 4px 4px 0 var(--ink); }
-  .btn--ink:hover { background: var(--ink); color: var(--paper); }
-  .btn--outline:hover { background: rgba(247, 243, 235, .12); border-color: var(--on-cobalt); }
-  .hero__pause:hover { background: rgba(20, 22, 43, .85); }
-  .nav__links a:hover { color: var(--ink); text-decoration: underline; text-decoration-color: var(--action); text-decoration-thickness: 2px; text-underline-offset: 6px; }
-  .nav__toggle:hover { background: var(--press); }
-  .link-arrow:hover { text-decoration-color: var(--ink); }
-  .service-card:hover { transform: translateY(-3px); border-color: var(--ink); }
-  .review-card:hover { border-color: var(--ink); }
-  .arrow-btn:hover:not(:disabled) { background: var(--press); }
-  .arrow-btn--solid:hover:not(:disabled) { background: var(--ink-soft); border-color: var(--ink-soft); }
-  .faq summary:hover { text-decoration: underline; text-decoration-color: var(--action); text-decoration-thickness: 2px; text-underline-offset: 5px; }
-  .site-footer a:hover { color: var(--on-cobalt); }
+  .btn--cta:hover { background: var(--cta-hover); box-shadow: 0 10px 26px rgba(255, 107, 74, .4); }
+  .btn--blue:hover { background: var(--blue-dark); }
+  .btn--light:hover { background: var(--blue-soft); }
+  .btn--outline:hover { background: rgba(255, 255, 255, .12); border-color: #fff; }
+  .btn--outline-blue:hover { background: var(--blue-soft); }
+  .nav__links a:hover { background: var(--bg); color: var(--ink); }
+  .nav__toggle:hover { background: var(--line); }
+  .link-arrow:hover { color: var(--blue-dark); text-decoration: underline; }
+  .feature-card:hover, .service-card:hover, .review-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(11, 42, 58, .12); }
+  .circle-btn--light:hover:not(:disabled) { background: var(--bg); }
+  .circle-btn--blue:hover:not(:disabled) { background: var(--blue-dark); }
+  .faq summary:hover { color: var(--blue); }
+  .site-footer a:hover { color: #fff; }
   .contact-links a:hover { text-decoration: underline; }
-  .tabs__tab:hover:not([aria-selected="true"]) { border-color: var(--ink); background: var(--press); }
+  .tabs__tab:hover:not([aria-selected="true"]) { border-color: var(--blue); color: var(--blue); }
+  .float-card .link-arrow:hover { color: var(--blue-dark); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1392,7 +1245,6 @@ html:not(.js) .tabs__list { display: none; }
   }
   .book__bg { filter: none; transform: none; }
   .hero__video, .hero__pause { display: none; }
-  .btn--cta:active { transform: none; }
 }
 
 
@@ -1405,9 +1257,10 @@ html:not(.js) .tabs__list { display: none; }
   gap: 32px 48px;
   align-items: center;
   padding: 36px;
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--paper);
+  background: var(--card);
+  box-shadow: var(--shadow);
 }
 .wf-card__prices { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
 .wf-price {
@@ -1415,25 +1268,26 @@ html:not(.js) .tabs__list { display: none; }
   flex-direction: column;
   gap: 4px;
   padding: 24px 22px;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius-sm);
-  background: var(--manila);
+  border-radius: 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
 }
-.wf-price--featured { border: 2px solid var(--ink); background: var(--butter); }
-.wf-price__label { font-weight: 700; color: var(--ink); }
-.wf-price__amount { font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 700; line-height: 1; letter-spacing: -.02em; color: var(--ink); }
-.wf-price__unit { margin-left: 2px; font-family: var(--font); font-size: 1.05rem; font-weight: 500; color: var(--text); letter-spacing: 0; }
+.wf-price--featured { background: var(--blue-soft); border-color: #BFE3E6; }
+.wf-price__label { font-weight: 600; color: var(--ink); }
+.wf-price__amount { font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 700; line-height: 1; letter-spacing: -.02em; color: var(--ink); }
+.wf-price--featured .wf-price__amount { color: var(--blue); }
+.wf-price__unit { margin-left: 2px; font-size: 1.05rem; font-weight: 500; color: var(--text); letter-spacing: 0; }
 .wf-price__sub { font-size: .92rem; color: var(--text); }
 .wf-card__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .wf-card__list li { display: flex; gap: 10px; align-items: flex-start; color: var(--text); }
-.wf-card__list .icon { width: 22px; height: 22px; margin-top: 2px; color: var(--ink); }
-.wf-card__actions { grid-column: 1 / -1; padding-top: 24px; border-top: 1px dotted var(--line-strong); }
+.wf-card__list .icon { width: 22px; height: 22px; margin-top: 2px; color: var(--blue); }
+.wf-card__actions { grid-column: 1 / -1; padding-top: 24px; border-top: 1px solid var(--line); }
 
 /* Tabbed price list panel */
-.price-panel { padding: 28px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--paper-hi); }
+.price-panel { padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
 .price-panel .tabs__list { margin-bottom: 20px; }
 .price-panel .price-row:last-child { border-bottom: 0; }
-.price-panel .price-row--special { border-bottom: 1.5px solid var(--ink); }
+.price-panel .price-row--special { border-bottom: 0; }
 .price-panel .tabs__panel-title { margin-top: 36px; }
 .price-panel .tabs__panel:first-of-type .tabs__panel-title { margin-top: 0; }
 .price-panel__note, .price-effective {
@@ -1444,8 +1298,8 @@ html:not(.js) .tabs__list { display: none; }
   font-size: .95rem;
   color: var(--text);
 }
-.price-panel__note { padding: 14px 16px; border-radius: var(--radius-sm); background: var(--manila); }
-.price-panel__note .icon, .price-effective .icon { width: 20px; height: 20px; margin-top: 2px; color: var(--ink); }
+.price-panel__note { padding: 14px 16px; border-radius: var(--radius-sm); background: var(--bg); }
+.price-panel__note .icon, .price-effective .icon { width: 20px; height: 20px; margin-top: 2px; color: var(--blue); }
 .price-effective { justify-content: center; text-align: center; }
 
 @media (max-width: 61.999em) {
@@ -1474,20 +1328,22 @@ html:not(.js) .tabs__list { display: none; }
 .contact-card .section__title { margin: 10px 0 20px; font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
 .contact-list { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 18px; }
 .contact-list li { display: flex; gap: 16px; align-items: flex-start; min-width: 0; }
+.contact-list .icon-circle { width: 48px; height: 48px; margin: 0; flex: none; }
+.contact-list .icon-circle .icon { width: 22px; height: 22px; }
 .contact-list li > div { min-width: 0; padding-top: 2px; }
-.contact-list__label { display: block; font-size: .82rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.contact-list__label { display: block; font-size: .82rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .contact-list a { display: inline-block; min-height: 44px; padding: 6px 0; font-weight: 500; color: var(--ink); text-decoration: none; }
-.contact-list span a { display: inline-flex; align-items: center; min-height: 44px; padding: 0; font-weight: 700; color: var(--ink); text-decoration: underline; text-decoration-color: var(--action); text-decoration-thickness: 2px; }
+.contact-list span a { min-height: 0; padding: 0; color: var(--blue); font-weight: 600; }
 .contact-list__email { font-size: .95rem; overflow-wrap: anywhere; }  /* breaks at the <wbr> before @ when it must */
 .contact-list li > div > span:not(.contact-list__label) { display: block; padding: 6px 0; color: var(--text); }
 .split--contact .map-embed { aspect-ratio: auto; min-height: 360px; }
 
 .hours-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 24px; align-items: stretch; }
 .store-hours { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 36px 24px; }
-.store-hours .stamp { margin-bottom: 16px; }
+.store-hours .icon-circle { margin-bottom: 16px; }
 .store-hours h3 { margin: 0 0 10px; }
 .store-hours__big { margin: 0; font-size: 1.25rem; font-weight: 600; color: var(--ink); }
-.store-hours__time { margin: 2px 0 12px; font-family: var(--font-serif); font-size: clamp(1.9rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; color: var(--ink); }
+.store-hours__time { margin: 2px 0 12px; font-size: clamp(1.9rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; color: var(--blue); }
 .store-hours__note { margin: 0; font-size: .95rem; color: var(--text); }
 .attendant-hours h3 { margin: 0 0 4px; }
 .attendant-hours__note { margin: 0 0 14px; font-size: .95rem; color: var(--muted); }
@@ -1504,4 +1360,594 @@ html:not(.js) .tabs__list { display: none; }
   .attendant-hours { padding: 22px 18px; }
   .attendant-hours .hours-table { font-size: .98rem; }
   .attendant-hours .hours-table th { width: 6.5em; }
+}
+
+/* Fixes shared with index.html: the white form card sits inside a dark band, so its
+   heading must not inherit the band's white heading colour; and inline text links in
+   notes get a 44px tall hit area via padding (padding on inline elements does not
+   change line spacing). */
+.section--dark .form-card h3 { color: var(--ink); }
+.price-panel__note a, .price-effective a, .hours-footnote a, .store-hours__note a,
+.form-note a, .form-fallback a, .faq__body a, .hours-summary__note a, .step p a { padding: 13px 0; }
+.contact-list span a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* ==========================================================================
+   22. Direction B: "Fresh linen & colour-block"
+   Linen paper base, one bold "laundry-bluing" cobalt for flat colour blocks,
+   a night-ink for the dark bands, and one sun-yellow that only ever means
+   "the star" (logo, rating stars) or "do this" (the call / book buttons).
+   Display: Bricolage Grotesque (variable, opsz + wght). Text/UI: Hanken Grotesk.
+   This part comes last and overrides the colours and surfaces in sections
+   1–21 above: change the look here.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("../fonts/bricolage-grotesque-latin-opsz-normal.woff2") format("woff2-variations"),
+       url("../fonts/bricolage-grotesque-latin-opsz-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/hanken-grotesk-latin-wght-normal.woff2") format("woff2-variations"),
+       url("../fonts/hanken-grotesk-latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* 1. Tokens: every token from site.css, re-pointed
+   -------------------------------------------------------------------------- */
+:root {
+  --blue: #2A38C8;          /* cobalt "laundry bluing" (ultramarine): blocks, links, icons. White text 8.4:1; on linen 7.3:1 */
+  --blue-dark: #1E2899;     /* cobalt pressed / hover */
+  --blue-soft: #E5E8FB;     /* pale bluing tint: light hovers, note boxes */
+  --aqua: #CDD3FF;          /* (name kept) pale bluing for small highlights on cobalt and night only */
+  --aqua-deep: #2C3FD9;
+  --cta: #FFC83D;           /* sun yellow: CTA fill (ink label 11.5:1) and the star. Never a background block */
+  --cta-hover: #FFD66E;
+  --cta-deep: #14162B;      /* old coral-icon role, now ink */
+  --navy: #14162B;          /* night ink: dark bands */
+  --navy-deep: #0E1023;
+  --navy-mid: #1B1E3B;
+  --teal-end: #232750;
+  --ink: #14162B;           /* headings, button labels, borders: 15.4:1 on linen */
+  --text: #3A3C52;          /* body: 9.3:1 on linen */
+  --muted: #5B5D72;         /* secondary text: >= 4.9:1 on linen, paper and linen-deep */
+  --bg: #F3EEE4;            /* linen (Cloud Dancer family, a touch warmer) */
+  --card: #FFFCF5;          /* paper */
+  --line: #DCD3C2;          /* warm hairline */
+  --amber: #FFC83D;         /* rating stars = the star colour */
+  --amber-dark: #E0A800;
+  --radius: 18px;           /* blocks, cards, photos */
+  --radius-sm: 10px;        /* buttons, inputs, tabs, small boxes */
+  --pill: 10px;             /* no more pills: same as buttons */
+  --shadow: none;           /* depth comes from flat colour + hairlines, not blur */
+  --shadow-lg: none;
+  --font: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font); /* the old serif eyebrows become sans labels */
+  --font-display: "Bricolage Grotesque", "Hanken Grotesk", system-ui, sans-serif;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --linen-deep: #E9E2D3;
+  --hair: rgba(20, 22, 43, .16);       /* ink hairline on linen / paper */
+  --press: 0 4px 0 var(--ink);         /* the sticker / key shadow under CTAs */
+  --grain: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAQAAABIkb+zAAALsUlEQVR42o1cXYsjOQz03MKCIaCXnv//AzcvCwMDgSH30C2rqlROduHuZjNJ2pb1USqVbwz4c8z87/N2/pyvjHHMY57/PqJeXb+N/Ol5O6Le8bzVZ6/fnt8bx1y/i/zufGL9c37v83auqX5/xPWkeb4Q+Shc7PkYu43IJZ/vyAddv5nn3495PjQfXd9QhqptqlHwM2wM8w7Yf5RN8/H8Ef5bWrQ+U9uuR6CF6zvzvbr0POk8n1oobmF9ineKtta942LrkHWTa8mB5hjjeVML6jmYNQQbDJ0s3WhZFW2nnst+fi6lLIQ2X6/ObhB2Hv5ZjclWxhMc+/BrvyEPrnDScyvnO72+IqK9Z5K7om1jfUdUWFuX6StGq609h24T8kioqyybhvqwZhA8mUod6OX86TQLGvL8iaNvuUa+6fz5eZMgnbwZ5zaYENjp/vVPujFkPEjr7ITHhHR4LmxlDnIZiQ5IoZhp8HQyAOGB4VKDOtVptDoZTMKXU4c41pmoTqvrsjLHtKAKF1gY3vjQvhCf/8vKZT5MMure1/JxT5gd0D/RD9F/X2QH84cdEhNwVejn7aqwJtHgWR1xxPq+tBHavgI0X9VMwg5Un1mnJk5Y7if1JK5QjfoZY0F/bvGSFgXfDZfDXXE5cwKm2oQWmG8yt4ijZHgG551aARc/hiTpXivCc5EcMtfj47Ro5Si2fmarfFx+QiBYdA9PR8Ci2cwXZQaM0xUD5dm6IMz9amV3pIgdM6MAuIs0R0/frjRigUujVT1f68UDTavsMnemMY8nGaVg9sb60mGeZvuKizrJrAoOG7W6m7vMitexSE+Iy/sjF3tVy8ijZ2SDr9Tm+V1s2PqEAd+c3DBpucytCMhU5RBUOr2hTrtWou6lDQMYi5jU5ToMV4rKsRgi0+MCK/QwbVKGNFcXyif78525XQbvay28436k3IdRxpgOz/OD1bJc6/nkM0owpjCNWCiRNmBkeHW/0ZuLCnAp8fOd6zULyuZ4YdyJYQuFWEkwfi7ZW6myBaW66VrB1suuhJhZBn9ynRmvgx0yy9/QNoOdZrSuuecJDLFdYuiQW3+LGe5KpsGbxwJI8XhWWAm2YGepfM6FCGFCR5i8zOzUsmurzI4ZC12q/N01mqt6SxmHpjAXrxmC02w6Am69dVixa9cxe/WK3skCMFu6kJZwhre7TJNHzUAQgTB6PsGCqSQMVgOPhhyohic7FMIdrmdtuJ5iB1WtJHIZ+m9L64TnQYg6iNaJ9N1zKlMXcFvjrut5y8cwswHdXcvmCBXglMK8ioY7ovzJ5+dl7wb3MhkixHUlShMjMqS7dxbfIWVQTv2/+9+Pr/EY4/5dX3P/vn9//uS27t9/fo1x/x6PMY74+Brj/veYnz8fX+MxHuMxxsfXGH9+xu/z/R9fkHJjjM8f4igeY3z+Gr/HGOP+9/6tnGeizz+/xuP8+8fXtbDfx7x/j/Hx1SKSkTZGf7LR5fWcVKs2ar0F7jn46Pf9hKHAgioPef+1zgo6zijIE/HXKoDo+b54C5/XbF6JXtR6AlhpQottteIbksqULOQUOIYsLA4+u779otFc9s/lY106e+LAvglpbSRPColWieEMkl6vi98Ts+ZEpnbmVVB16KHMkF2QdlF1zNrZKhGGxkisVIbCRhJzHsRO9PLqkOsRrXuqPnTh01ko6AzKsmofIb3jPHuvQVsPpjLVgSteuHZT2cDpC7oUAu0dF6FH3BOk6fWme2dWmb595Uw2VnJZA7mZLH/IYBfxSDRsOKfTvo476gSBmJKVNIZN9M6KvxKyRmRYMVZk7q7cjPx6shPoea5+LYrG4mapo6E2nutYnvF973eVx3O5BRYSvb8bo09vfFtvalD4I402RhgCYRtLUdmjYDbXU8fH4UnYuhy69VUmA1qa10i8Ht86rPku3yi5qwXSQ4zWSc8awrSTxD6T2eltHxB4JtqMMGaREWAo8aWTZEa+HnzglHk7gKiiLdm39aiV6hADmbluNM5uvhuNVGSyL7yYuXE3y3ZQWQHXR7ZxH3q7+a/w2eEm00xlZU2HhOH3UpOtPk9heyCXqiDtNIIkAUoFhaE84aJzOWSYFpzeFbJXE0Z0sAauumhk2hmXtJfemTvtSRVnDteu9YZv761FgVgiK5zOgllWnTYktwGuGY5wvl5l+IpkSR/i1XE7INAHFqpT4UGUAcrTDRWRQ7IMXy/nAAmmahsKGu+SYgkBbKozroJQw+sjbOcQduiAQdL5tJK5aP/guOgemPiaQ1SeaAN4N3kMm+RiKFQ1zGVg5ofONxwZw3otbP25dqiUgZ+1y3/EQ+kMF/U/7FDqStyJabT08Z87Z89HcBhbNrsGkdjpKr/G9G0/Ey57zFszOcaksLLcSyoYulgM8MqR0iKpKu4dPFPIx02N68l2lcGzH60OTx9pK5CzCe8swC72nW6rjzx6a6nqI0schwORSuvTk7FgqKV9IttJL1hWcIV47ISTWG32wBz7MI0AGnQzzwAcxUzM009G1RA6W+ybdW2LDsu5Cz67AG1q4RnAP0SnN7qO8GSlXb7xhUqsHl6TV5NoTLc1DWOIw5OHN7USubvOzrswFCAWDAj5vLTuuiGimggVSBcWUqKpNA7MbLqZFqrbXtOGutQaeji/dx26k5tId4PUtcCnYHkf9rkixQwn7dsPMvzQtjoScZw53mNvV5RKt95DdV89tKlUDYX8RhjQ1QPOUtQhzFhVAIFDR5/dG7nFgyZ77rXYbvar5+abVzf9XzP+KZyoGWVODlqcy18aw1nUrzb5zDA47XSPCj/YbZreBBesD+KBRbf66EFvtmya0+gKR8W/Oqf2wgTRrgY1Lq8GCSXJ6FcYkq8k/iF0JNQlIzsBvk6SXdAzuTWRilV410+l9bigaCxVChBhsRkqBo5NeuPPLFCfJFC84QxLb3RsZvnxPtu/six1ebM7nUoIOeThCUiYs0i136DpsEvZBerWmpAHKgsssCPXf+mLm3+jIzlJ9u5+hSr8WZbUmR9fsVW1jdzITszWZgSvayWPVSu0eubXptPf6qhemcFaxwTazoBseSITxA4wncSSxH/hZwp9RN2hgFWEhU2X4adqcNq7AZOtyY0pYrVP75sJ7UfCRLp4tCZhXU7VY7D5ixmjTZ6bWyhLqAnk83ITYzPV52tzYcQH0bEvzJmRalR5amfw0VfHlgzOrMLerNdH1D3wxl+fp9XgqRR3DnALC6nzMdV8+grQbt1M462mrjIUrEFSETyVy6qwES+NTLBn6+tOkyZLl3PeTc64THZmQwXHSuFA3Qlgp+nFBqI153alWx+ZVkbb9R8KIbXBrNL4gqXiIRxbwMlf6NBjN4bjq6I72iQpAsP6TTfkdYoYIi/GRgSIMmOV/zpSyuDPyfJWGa6HgnWdCu21XW2wjVfaGMsQSoqdsmJnayRt1Zu1DndeugvTKUnXvMt5mzKhwirMvUygvpWHtV1b1/sOFzHFWoMnKGHiaG8rutiosagyBGMnphq5acERN14WQm3SRpKGQwZsq+smUrdwk84EC5Hstd1g8E7D8DBjlC1flCOu5+2IBgEU7+ykqNp67mcH/RtUl+5mlW5yxmYArZCb6PZs7e4zMUjA1lIxjKTiwAqswG3ptSaqFfu87Bqz7ppFLkQIoVA+7GZdnYPezJFD9aLLAFMjzWm1bWFx2gYVXpPwZerNRwdGel+lSju98qNCHOXo1jqJseFDD7f8dp/X5e3JmnNlnpyUbzfo6BhWmG5Wg7KTsNf7O49dDcF3xHDRChmUTO9kparutPe7VuOZG++tttmcKp9VKhLUEdoBmOsmNZFwytIXMk72SzxYFT8xV9EvTr+6F9D7Arx7gAOQPhfAcdj1rJ7ttafifldUjJQ1VN/SbYQ3PNw4g5YYXcSWXN4LtkhvqYhYKTRv6P8zpa5DMwO97eMmT15qg614zZ0afniMV2HIX1fW72yPH+mhAoyvs+zFaPw8nYRWcP8PZsUw+bkxHhoAAAAASUVORK5CYII=");
+  --dark-gradient: var(--grain) 0 0 / 96px repeat, var(--navy);
+}
+
+::selection { background: var(--cta); color: var(--ink); }
+
+/* 2. Base and type
+   -------------------------------------------------------------------------- */
+body { background: var(--bg) var(--grain) 0 0 / 96px repeat; color: var(--text); font-size: 1.0625rem; }
+
+h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); }
+h1 { font-weight: 800; letter-spacing: -.025em; line-height: .98; }
+h2 { font-weight: 800; letter-spacing: -.022em; line-height: 1.02; font-size: clamp(2.05rem, 3.9vw, 3.15rem); }
+h3 { font-weight: 700; letter-spacing: -.015em; }
+
+/* Section labels: a small star + caps instead of the serif eyebrow and rule.
+   Shown only where the label adds something the heading does not say. */
+.eyebrow {
+  gap: 8px;
+  font-family: var(--font);
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.eyebrow::after { display: none; }
+.eyebrow::before,
+.section__head--center .eyebrow::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-radius: 0;
+  background: currentColor;
+  clip-path: polygon(50% 2%, 62.3% 35%, 97.6% 36.5%, 70% 58.5%, 79.4% 92.5%, 50% 73%, 20.6% 92.5%, 30% 58.5%, 2.4% 36.5%, 37.7% 35%);
+  flex: none;
+}
+.eyebrow--amber, .eyebrow--white, .eyebrow--aqua { color: #fff; }
+.section__title { margin: 12px 0 14px; }
+.section__head { margin-bottom: 48px; }
+.section__lead { font-size: 1.15rem; color: var(--text); max-width: 56ch; }
+
+/* 3. Sections: linen, paper, cobalt and night blocks (all flat, all grained)
+   -------------------------------------------------------------------------- */
+.section--light { background: var(--bg) var(--grain) 0 0 / 96px repeat; }
+.section--white { background: var(--card) var(--grain) 0 0 / 96px repeat; }
+.section--dark { background: var(--dark-gradient); }
+.section--dark .section__lead { color: rgba(255, 255, 255, .86); }
+
+/* 4. Buttons: 10px corners, 2px borders; the CTA is a yellow "sticker" that
+   sits on an ink edge and presses down into it
+   -------------------------------------------------------------------------- */
+.btn {
+  min-height: 52px;
+  border-width: 2px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  letter-spacing: .005em;
+  transition: transform .12s var(--ease), background-color .15s, color .15s, border-color .15s, box-shadow .12s var(--ease);
+}
+.btn--cta { background: var(--cta); color: var(--ink); border-color: var(--ink); box-shadow: var(--press); }
+.btn--cta:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+.btn--blue { background: var(--blue); color: #fff; border-color: var(--blue); }
+.btn--light { background: var(--card); color: var(--ink); border-color: var(--ink); }
+.btn--outline { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .8); }
+.btn--outline-blue { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn--sm { min-height: 44px; }
+.btn--call { min-height: 46px; box-shadow: 0 3px 0 var(--ink); }
+
+.circle-btn { width: 52px; height: 52px; }
+.circle-btn--light { background: var(--card); color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+.circle-btn--blue { background: var(--blue); color: #fff; box-shadow: none; }
+
+.link-arrow { color: var(--blue); font-weight: 700; }
+
+/* 5. Header and logo: linen bar, porthole logo (cobalt circle, yellow star)
+   -------------------------------------------------------------------------- */
+.site-header { background: var(--bg); border-bottom: 1.5px solid var(--hair); }
+.site-header.is-scrolled { box-shadow: none; border-color: var(--ink); }
+.brand__disc { fill: var(--blue); }
+.brand__star { fill: var(--cta); }
+.brand__name { font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; letter-spacing: -.025em; }
+.brand__tag { color: var(--muted); font-weight: 600; letter-spacing: .01em; }
+@media (max-width: 39.999em) { .brand__name { font-size: 1.12rem; } }
+@media (max-width: 23.749em) {
+  .brand__name { font-size: 1rem; letter-spacing: -.02em; }
+}
+.nav__links a { font-weight: 600; color: var(--ink); }
+.nav__links a:active { background: var(--linen-deep); }
+.nav__toggle { background: transparent; box-shadow: inset 0 0 0 2px var(--ink); }
+@media (max-width: 61.999em) {
+  .nav__links { background: var(--bg); border-top: 1.5px solid var(--ink); box-shadow: 0 18px 0 -10px rgba(20, 22, 43, .0), 0 2px 0 var(--ink); }
+}
+.skip-link { background: var(--ink); }
+
+/* 6. Hero: a flat cobalt block with a round porthole window in it. On
+   tablets and desktop the washer photo / video plays untinted inside the
+   window, framed like the first design: zoomed out so the whole door shows.
+   On phones the photo is printed in cobalt (multiply) under the text.
+   -------------------------------------------------------------------------- */
+.hero { background: var(--grain) 0 0 / 96px repeat, var(--blue); }
+.hero__bg { background-color: var(--blue); }
+.hero__pause { background: var(--ink); border: 2px solid var(--card); }
+@media (hover: hover) and (pointer: fine) {
+  .hero__pause:hover { background: var(--blue-dark); }
+}
+@media (min-width: 48em) {
+  .hero {
+    --port-x: calc(50% + min(326px, 26vw));   /* centre of the window */
+    --port-r: min(280px, 22vw, 40vh);          /* radius of the glass */
+  }
+  /* The window itself, with a paper rim. The photo and video inside show 86%
+     of the frame's height, centred on the drum (at 71% / 44% of the frame). */
+  .hero__bg {
+    inset: auto;
+    left: calc(var(--port-x) - var(--port-r));
+    top: calc(50% - var(--port-r));
+    width: calc(2 * var(--port-r));
+    height: calc(2 * var(--port-r));
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 10px var(--card);
+    background-image: url("../img/hero-washer-1920.jpg");
+    background-image: image-set(url("../img/hero-washer-1920.webp") type("image/webp"), url("../img/hero-washer-1920.jpg") type("image/jpeg"));
+    background-size: auto 116.3%;
+    background-position: 90.9% 7.2%;
+  }
+  .hero__video {
+    inset: auto;
+    left: -96%;
+    top: -1.2%;
+    width: 205.6%;
+    height: 116.3%;
+    object-position: 50% 50%;
+  }
+  /* thin ink ring just inside the paper rim: the door seal */
+  .hero__bg::after { z-index: 1; border-radius: 50%; background: none; box-shadow: inset 0 0 0 3px rgba(20, 22, 43, .55); }
+}
+/* Tablets (one column, room on the right): a smaller porthole beside the
+   text, so the smaller photo is enough */
+@media (min-width: 48em) and (max-width: 61.999em) {
+  .hero { --port-r: clamp(80px, calc(50vw - 290px), 150px); --port-x: calc(100% - var(--port-r) - 28px); }
+  .hero__bg {
+    background-image: url("../img/hero-washer-1280.jpg");
+    background-image: image-set(url("../img/hero-washer-1280.webp") type("image/webp"), url("../img/hero-washer-1280.jpg") type("image/jpeg"));
+  }
+}
+/* Phones: no room beside the text, so the photo is printed in cobalt under it
+   (multiply can only darken, so white text never drops below 8.4:1), and a
+   porthole ring sits in the corner */
+@media (max-width: 47.999em) {
+  .hero__bg::after { z-index: 1; background: var(--grain) 0 0 / 96px repeat, var(--blue); mix-blend-mode: multiply; }
+  .hero__bg::before {   /* porthole ring echo in the corner, clear of the text */
+    content: "";
+    position: absolute;
+    right: -70px;
+    top: -80px;
+    width: 150px;
+    height: 150px;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: 50%;
+    border: 8px solid var(--card);
+    box-shadow: inset 0 0 0 3px rgba(20, 22, 43, .5);
+  }
+}
+
+@media (max-width: 23.749em) {
+  .hero__bg::before { right: -60px; top: -70px; width: 130px; height: 130px; }
+}
+
+.hero h1 { font-size: clamp(2.75rem, 6.2vw, 5rem); margin: 20px 0 22px; max-width: 11ch; }
+.hero__kicker {
+  font-family: var(--font);
+  font-size: clamp(1rem, 1.25vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: var(--aqua);
+}
+.hero__lead { color: rgba(255, 255, 255, .92); max-width: 52ch; }
+.hero__actions { gap: 14px; margin-bottom: 32px; }
+.chip {
+  min-height: 36px;
+  padding: 6px 14px 6px 12px;
+  border: 2px solid rgba(255, 255, 255, .85);
+  border-radius: 8px;
+  background: transparent;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.chip__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 0;
+  background: var(--cta);
+  box-shadow: none;
+  clip-path: polygon(50% 2%, 62.3% 35%, 97.6% 36.5%, 70% 58.5%, 79.4% 92.5%, 50% 73%, 20.6% 92.5%, 30% 58.5%, 2.4% 36.5%, 37.7% 35%);
+}
+@media (max-width: 23.749em) {
+  .chip { letter-spacing: .06em; font-size: .75rem; padding-right: 10px; }
+}
+.checklist { gap: 12px; }
+.checklist .icon { color: #fff; width: 24px; height: 24px; }
+.checklist small { color: rgba(255, 255, 255, .86); }
+
+/* Floating proof cards retire; the rating becomes one round sticker on the porthole rim */
+.float-card--rating {
+  top: auto;
+  right: auto;
+  left: 0;
+  bottom: -14px;
+  width: 132px;
+  height: 132px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: var(--card);
+  box-shadow: 0 4px 0 var(--ink);
+  transform: rotate(-9deg);
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.float-card--rating .float-card__big { font-family: var(--font-display); font-size: 2.3rem; font-weight: 800; letter-spacing: -.03em; }
+.float-card--rating .star-glyph { color: var(--ink); font-size: .8em; }
+.float-card--rating .float-card__label { margin-top: 2px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+
+/* 7. Why us: open columns under an ink rule, no icon bubbles
+   -------------------------------------------------------------------------- */
+.feature-grid { gap: 32px; }
+.feature-card {
+  padding: 22px 0 0;
+  border-top: 2px solid var(--ink);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: left;
+}
+.feature-card h3 { font-size: 1.3rem; margin-bottom: 8px; }
+.feature-card p { color: var(--text); }
+.feature-card .icon-circle { width: auto; height: auto; margin: 0 0 16px; background: none; justify-content: flex-start; color: var(--blue); }
+.feature-card .icon-circle .icon { width: 34px; height: 34px; stroke-width: 1.6; }
+@media (max-width: 39.999em) {
+  .feature-grid { gap: 0; }
+  .feature-card { padding: 18px 0 20px; grid-template-columns: 40px minmax(0, 1fr); text-align: left; border-top-width: 1.5px; }
+  .feature-card:first-child { border-top-width: 2px; }
+  .feature-card .icon-circle { width: 40px; height: auto; margin: 2px 0 0; }
+  .feature-card .icon-circle .icon { width: 28px; height: 28px; }
+}
+
+/* 8. Stats: a flat cobalt block, big numbers, hairline dividers
+   -------------------------------------------------------------------------- */
+.stats { background: var(--grain) 0 0 / 96px repeat, var(--blue); }
+.stat__value { font-family: var(--font-display); font-weight: 800; letter-spacing: -.035em; color: #fff; font-size: clamp(2.2rem, 3.8vw, 3.3rem); min-height: calc(clamp(2.2rem, 3.8vw, 3.3rem) * 1.05); }
+.stat__value--sm { font-size: clamp(1.75rem, 2.7vw, 2.4rem); }
+.stat__label { font-weight: 700; }
+.stat__note { color: rgba(255, 255, 255, .86); }
+@media (min-width: 62em) {
+  .stats__grid { gap: 0; }
+  .stat { padding: 4px 28px; border-left: 1.5px solid rgba(255, 255, 255, .35); }
+  .stat:first-child { padding-left: 0; border-left: 0; }
+}
+@media (max-width: 29.999em) {
+  .stat__value { font-size: 2rem; min-height: calc(2rem * 1.05); }
+  .stat__value--sm { font-size: 1.5rem; }
+}
+
+/* 9. Services: 5 cards as a 2 + 3 bento (ATM card removed), flat paper,
+   hairline border, no icon tiles
+   -------------------------------------------------------------------------- */
+.services-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 24px; }
+.services-grid .service-card { grid-column: span 2; }
+.services-grid .service-card:nth-child(-n+2) { grid-column: span 3; }
+.services-grid .service-card:nth-child(-n+2) .service-card__media { height: 280px; }
+.service-card { border: 1.5px solid var(--hair); background: var(--card); box-shadow: none; }
+.service-card__media { height: 210px; border-bottom: 1.5px solid var(--hair); }
+.service-card__badge { display: none; }
+.service-card__body { padding: 22px 24px 26px; }
+.service-card h3 { font-size: 1.35rem; }
+.media--teal, .media--aqua, .media--coral { background: var(--linen-deep); color: var(--blue); }
+@media (max-width: 61.999em) {
+  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .services-grid .service-card, .services-grid .service-card:nth-child(2) { grid-column: span 1; }
+  .services-grid .service-card:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 39.999em) {
+  .services-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .services-grid .service-card, .services-grid .service-card:first-child { grid-column: auto; }
+  .services-grid .service-card:nth-child(-n+2) .service-card__media,
+  .service-card__media--photo { height: 200px; }
+}
+
+/* 10. About / how it works
+   -------------------------------------------------------------------------- */
+.how__subtitle { font-family: var(--font); font-size: .85rem; font-weight: 700; letter-spacing: .14em; color: var(--blue); }
+.step__num { background: var(--blue); color: #fff; box-shadow: none; font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; }
+.step__num--teal, .step__num--aqua, .step__num--coral { background: var(--blue); color: #fff; }
+.step:not(:last-child)::before { border-left: 2px dashed rgba(20, 22, 43, .35); }
+.step h3 { font-size: 1.25rem; }
+.how__photo { border-radius: var(--radius); box-shadow: none; background: var(--linen-deep); }
+.hours-card {
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  background: var(--card);
+  box-shadow: 6px 6px 0 var(--blue);
+}
+.hours-card h3 { font-size: 1.25rem; }
+.hours-table th { font-weight: 700; }
+.hours-table tr + tr { border-top: 1px solid var(--line); }
+@media (max-width: 61.999em) {
+  .hours-card { margin: -48px 14px 0; }
+}
+
+/* 11. Pricing: night band, paper "claim tickets", the featured one in cobalt
+   -------------------------------------------------------------------------- */
+.pricing::before { display: none; }
+.price-grid { gap: 24px; padding-top: 22px; }
+.glass {
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--card);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  color: var(--ink);
+  text-align: left;
+}
+.glass--featured { background: var(--blue); color: #fff; box-shadow: none; }
+.glass h3 { color: var(--ink); text-align: left; font-size: 1.5rem; }
+.glass__sub { text-align: left; color: var(--muted); }
+.price {
+  text-align: left;
+  padding-bottom: 22px;
+  border-bottom: 2px dashed rgba(20, 22, 43, .3);
+}
+.price__amount { font-family: var(--font-display); font-weight: 800; letter-spacing: -.04em; font-size: clamp(3rem, 4.6vw, 3.9rem); }
+.price__from, .price__unit { color: var(--muted); font-weight: 600; }
+.glass li { color: var(--text); }
+.glass li .icon { color: var(--blue); }
+.glass .btn--outline { color: var(--ink); border-color: var(--ink); }
+.glass--featured h3, .glass--featured .price__amount { color: #fff; }
+.glass--featured .glass__sub, .glass--featured .price__from, .glass--featured .price__unit, .glass--featured li { color: rgba(255, 255, 255, .9); }
+.glass--featured li .icon { color: #fff; }
+.glass--featured .price { border-bottom-color: rgba(255, 255, 255, .45); }
+.glass__badge {   /* round-cornered sticker, slightly askew, on the ticket's corner */
+  left: auto;
+  right: 18px;
+  top: 0;
+  transform: translateY(-50%) rotate(4deg);
+  padding: 7px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--ink);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  box-shadow: 0 3px 0 var(--ink);
+}
+.pricing__note { color: rgba(255, 255, 255, .86); }
+
+/* 12. Reviews
+   -------------------------------------------------------------------------- */
+.review-card { border: 1.5px solid var(--hair); background: var(--card); box-shadow: none; }
+.review-card__name { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; }
+.avatar, .avatar--teal, .avatar--aqua, .avatar--coral, .avatar--sea {
+  background: var(--blue-soft);
+  color: var(--blue);
+  box-shadow: inset 0 0 0 2px var(--blue);
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+.stars { color: transparent; }
+.stars .icon { stroke: var(--ink); stroke-width: 1.4; }
+.stars__fill { color: var(--cta); }
+.rating-line { font-family: var(--font); font-weight: 700; }
+.review-card__source { color: var(--muted); font-weight: 600; }
+.reviews__track { padding-bottom: 32px; }
+
+/* 13. Book a pickup: night band over the real shop photo, no glass
+   -------------------------------------------------------------------------- */
+.book { background: var(--navy); }
+.book__bg {   /* the real shop photo printed in night ink (multiply), so it reads as texture */
+  background:
+    linear-gradient(105deg, #15173A 0%, #1B1E4A 50%, #262B66 100%),
+    url("../img/laundromat_img.jpg") center / cover no-repeat;
+  background-blend-mode: multiply;
+  filter: blur(1.5px);
+}
+.book__phone { font-family: var(--font-display); font-weight: 800; letter-spacing: -.03em; }
+.book__phone .icon { color: var(--cta); }
+.contact-links .icon { color: rgba(255, 255, 255, .8); }
+.hours-summary {
+  border: 1.5px solid rgba(255, 255, 255, .4);
+  border-radius: 14px;
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.hours-summary h3 { font-size: 1.15rem; }
+.hours-summary dd { color: rgba(255, 255, 255, .88); }
+.hours-summary__note { color: rgba(255, 255, 255, .84); }
+.form-card { border-radius: var(--radius); background: var(--card); box-shadow: none; }
+.form-card h3 { font-size: 1.65rem; }
+.field label { font-weight: 700; }
+.field input, .field select, .field textarea {
+  border: 1.5px solid #8C8B98;           /* 3.3:1 against the paper card */
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+.field :is(input, select, textarea):focus-visible { outline: 2px solid var(--blue); border-color: var(--blue); }
+.form-fallback { background: var(--blue-soft); }
+
+/* 14. FAQ: one ruled list instead of a stack of boxes
+   -------------------------------------------------------------------------- */
+.faq-list { gap: 0; border-top: 2px solid var(--ink); }
+.faq { border: 0; border-bottom: 1.5px solid var(--hair); border-radius: 0; background: transparent; box-shadow: none; }
+.faq summary { padding: 20px 4px; border-radius: 0; font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; letter-spacing: -.01em; }
+.faq summary .icon { color: var(--blue); }
+.faq__body { padding: 0 4px 24px; max-width: 70ch; }
+.faq summary:active { background: var(--linen-deep); }
+
+/* 15. Footer: cobalt bookend
+   -------------------------------------------------------------------------- */
+.site-footer { background: var(--grain) 0 0 / 96px repeat, var(--blue); color: rgba(255, 255, 255, .9); border-top: 0; }
+.site-footer h4 { font-family: var(--font); font-size: .8rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #fff; }
+.site-footer a { color: #fff; }
+.site-footer .icon { color: rgba(255, 255, 255, .85); }
+.footer__brand .brand__tag { color: rgba(255, 255, 255, .86); }
+.footer__bottom { border-top-color: rgba(255, 255, 255, .3); }
+.site-footer .brand__disc { fill: var(--navy); }
+
+/* 16. Secondary pages
+   -------------------------------------------------------------------------- */
+.page-hero { position: relative; isolation: isolate; overflow: hidden; background: var(--grain) 0 0 / 96px repeat, var(--blue); }
+.page-hero::after {   /* porthole rings, echoing the home hero */
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: max(-120px, calc(50% - 760px));
+  top: 50%;
+  width: 380px;
+  height: 380px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: 10px solid var(--card);
+  box-shadow: inset 0 0 0 3px rgba(20, 22, 43, .55), 0 0 0 46px rgba(20, 22, 43, .12);
+  opacity: .9;
+  pointer-events: none;
+}
+.page-hero h1 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); max-width: 16ch; }
+.page-hero p:not(.eyebrow) { color: rgba(255, 255, 255, .92); }
+@media (max-width: 61.999em) {   /* a corner ring above the heading, never behind it */
+  .page-hero::after { width: 190px; height: 190px; right: -92px; top: -122px; transform: none; border-width: 8px; box-shadow: inset 0 0 0 3px rgba(20, 22, 43, .55), 0 0 0 26px rgba(20, 22, 43, .12); }
+}
+
+.tabs__tab { border: 1.5px solid var(--ink); border-radius: var(--radius-sm); background: transparent; color: var(--ink); font-weight: 700; }
+.tabs__tab[aria-selected="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.price-list__group { color: var(--blue); letter-spacing: .14em; }
+.price-row { border-bottom: 1px solid var(--line); }
+.price-row__price { font-family: var(--font-display); font-weight: 700; font-size: 1.08rem; letter-spacing: -.01em; }
+.price-row--special { border: 1.5px solid var(--blue); background: var(--blue-soft); }
+.tag { border-radius: 6px; background: var(--blue); color: #fff; font-weight: 800; letter-spacing: .04em; }
+
+.card { border: 1.5px solid var(--hair); background: var(--card); box-shadow: none; }
+.card--light { border: 0; }
+
+.wf-card { border: 1.5px solid var(--hair); background: var(--card); box-shadow: none; }
+.wf-price { border: 1.5px solid var(--hair); border-radius: 14px; background: var(--bg); }
+.wf-price--featured { background: var(--blue); border-color: var(--blue); }
+.wf-price__amount { font-family: var(--font-display); font-weight: 800; letter-spacing: -.04em; }
+.wf-price--featured .wf-price__amount, .wf-price--featured .wf-price__label { color: #fff; }
+.wf-price--featured .wf-price__unit, .wf-price--featured .wf-price__sub { color: rgba(255, 255, 255, .9); }
+.wf-card__list .icon { color: var(--blue); }
+.wf-card__actions { border-top: 2px dashed rgba(20, 22, 43, .3); }
+.price-panel { border: 1.5px solid var(--hair); background: var(--card); box-shadow: none; }
+.price-panel__note { background: var(--bg); }
+.price-panel__note .icon, .price-effective .icon { color: var(--blue); }
+
+.map-embed { border: 1.5px solid var(--ink); box-shadow: none; background: var(--linen-deep); }
+
+.contact-list .icon-circle { background: transparent; color: var(--blue); box-shadow: inset 0 0 0 1.5px var(--hair); }
+.contact-list__label { color: var(--muted); letter-spacing: .12em; }
+.contact-list a { color: var(--ink); font-weight: 600; }
+
+/* Store hours card: a cobalt block */
+.store-hours { background: var(--grain) 0 0 / 96px repeat, var(--blue); color: #fff; }
+.store-hours h3, .store-hours__big, .store-hours__time, .store-hours__note { color: #fff; }
+.store-hours__time { font-family: var(--font-display); font-weight: 800; letter-spacing: -.035em; font-size: clamp(2.2rem, 3.6vw, 3rem); }
+.store-hours__note { color: rgba(255, 255, 255, .9); }
+.store-hours__note a { color: #fff; }
+.store-hours .icon-circle { background: transparent; color: #fff; box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .8); }
+.icon-circle--teal, .icon-circle--aqua, .icon-circle--coral, .icon-circle--sea { background: transparent; color: var(--blue); }
+
+/* 17. Hover: fine pointers only
+   -------------------------------------------------------------------------- */
+@media (hover: hover) and (pointer: fine) {
+  .btn--cta:hover { background: var(--cta-hover); box-shadow: 0 6px 0 var(--ink); transform: translateY(-2px); }
+  .btn--cta:active:hover { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+  .btn--blue:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+  .btn--light:hover { background: var(--blue-soft); }
+  .btn--outline:hover { background: rgba(255, 255, 255, .14); border-color: #fff; }
+  .btn--outline-blue:hover, .glass .btn--outline:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .nav__links a:hover { background: var(--linen-deep); color: var(--ink); }
+  .nav__toggle:hover { background: var(--linen-deep); }
+  .feature-card:hover, .review-card:hover { transform: none; box-shadow: none; }
+  .service-card:hover { transform: none; box-shadow: none; border-color: var(--ink); }
+  .circle-btn--light:hover:not(:disabled) { background: var(--linen-deep); }
+  .circle-btn--blue:hover:not(:disabled) { background: var(--blue-dark); }
+  .faq summary:hover { color: var(--blue); }
+  .site-footer a:hover { color: #fff; text-decoration: underline; }
+  .tabs__tab:hover:not([aria-selected="true"]) { background: var(--linen-deep); color: var(--ink); border-color: var(--ink); }
+  .link-arrow:hover { color: var(--blue-dark); }
 }
