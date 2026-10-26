@@ -24,7 +24,7 @@
     19. Hover (fine pointers only) and reduced motion
     20. Pricing page (pricing.html)
     21. Contact page (contact.html)
-    22. Direction B, "fresh linen & colour-block": the look (tokens, fonts,
+    22. Direction C, "neighbourhood signage": the look (tokens, fonts,
         colours, surfaces). It overrides the older colour values above.
    ========================================================================== */
 
@@ -1372,22 +1372,26 @@ html:not(.js) .tabs__list { display: none; }
 .contact-list span a { display: inline-flex; align-items: center; min-height: 44px; }
 
 /* ==========================================================================
-   22. Direction B: "Fresh linen & colour-block"
-   Linen paper base, one bold "laundry-bluing" cobalt for flat colour blocks,
-   a night-ink for the dark bands, and one sun-yellow that only ever means
-   "the star" (logo, rating stars) or "do this" (the call / book buttons).
-   Display: Bricolage Grotesque (variable, opsz + wght). Text/UI: Hanken Grotesk.
+   22. Direction C: "Neighbourhood signage"
+   Warm cream paper, one deep brand colour for the big fields (hero overlay,
+   stats, pricing and booking bands, footer), a brick-red "open sign" for the
+   one action colour, and a sunflower-mustard spark (hero chip and kicker,
+   the wavy underline, checks, stat figures, stars, stamps).
+   Display: Fraunces (variable: opsz, SOFT, WONK, wght). Text/UI: Hanken
+   Grotesk. Small radii, hairline borders, hard offset "sign-board" shadows,
+   printed uppercase section labels, a faint paper grain on the backgrounds.
    This part comes last and overrides the colours and surfaces in sections
-   1–21 above: change the look here.
+   1–21 above. Every colour is a token in the :root below: to recolour the
+   site, override those tokens (in :root) and nothing else.
    ========================================================================== */
 
 @font-face {
-  font-family: "Bricolage Grotesque";
+  font-family: "Fraunces";
   font-style: normal;
-  font-weight: 200 800;
+  font-weight: 100 900;
   font-display: swap;
-  src: url("../fonts/bricolage-grotesque-latin-opsz-normal.woff2") format("woff2-variations"),
-       url("../fonts/bricolage-grotesque-latin-opsz-normal.woff2") format("woff2");
+  src: url("../fonts/fraunces-latin-full-normal.woff2") format("woff2-variations"),
+       url("../fonts/fraunces-latin-full-normal.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
@@ -1400,561 +1404,392 @@ html:not(.js) .tabs__list { display: none; }
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* 1. Tokens: every token from site.css, re-pointed
+/* 1. Tokens. Contrast ratios are WCAG 2.x against the flat token colours.
    -------------------------------------------------------------------------- */
 :root {
-  /* Blues toned down at MT's request ("too blue, too saturated"), matched to
-     the calm steel and navy blues of a laundry-equipment flyer she likes.
-     Ratios measured on the rendered page, grain included. */
-  --blue: #2F4770;          /* "steel denim": blocks, links, icons. White 9.3:1 (8.2 on the grain's light specks); on linen 8.0:1; yellow on it 6.0:1 */
-  --blue-dark: #24395B;     /* pressed / hover. White 11.6:1 */
-  --blue-soft: #E1EAEF;     /* ice: light hovers, note boxes, avatar fill. Blue on it 7.6:1 */
-  --aqua: #D3E2EA;          /* (name kept) pale ice for small highlights on steel and navy (hero kicker): 7.0:1 on steel */
-  --aqua-deep: #2F4770;
-  --cta: #FFC83D;           /* sun yellow: CTA fill (ink label 11.5:1) and the star. Never a background block */
-  --cta-hover: #FFD66E;
-  --cta-deep: #141B2C;      /* old coral-icon role, now ink */
-  --navy: #15233C;          /* night navy: pricing and booking bands, footer logo disc. White 15.7:1 */
-  --navy-deep: #0E1A2E;
-  --navy-mid: #1A2B48;
-  --teal-end: #22375A;
-  --ink: #141B2C;           /* headings, button labels, borders: 14.9:1 on linen, 11.1:1 on yellow */
-  --text: #384152;          /* body: 8.9:1 on linen */
-  --muted: #565F72;         /* secondary text: >= 5.0:1 on linen, paper and linen-deep */
-  --bg: #F3EEE4;            /* linen (Cloud Dancer family, a touch warmer) */
-  --card: #FFFCF5;          /* paper */
-  --line: #DCD3C2;          /* warm hairline */
-  --amber: #FFC83D;         /* rating stars = the star colour */
-  --amber-dark: #E0A800;
-  --radius: 18px;           /* blocks, cards, photos */
-  --radius-sm: 10px;        /* buttons, inputs, tabs, small boxes */
-  --pill: 10px;             /* no more pills: same as buttons */
-  --shadow: none;           /* depth comes from flat colour + hairlines, not blur */
-  --shadow-lg: none;
+  /* Brand field (bottle green) */
+  --blue: #0E5236;          /* brand: links, icons, icon rings, step numbers, secondary buttons, selected tab, card borders. White on it 9.2:1; on cream 7.6:1 */
+  --blue-dark: #0A3F2A;     /* brand pressed / hover; the edge under brand buttons */
+  --blue-soft: #E7EFE3;     /* pale brand tint: light-button hover, note boxes, featured Wash & Fold box. Brand text on it 7.8:1 */
+  --aqua-deep: var(--blue); /* (name kept) icons on light tints */
+  --navy: #0C3123;          /* darkest field: footer, one review avatar */
+  --navy-deep: #0A2B1E;     /* behind the hero photo and the booking photo before they load */
+  --navy-mid: #0E4430;      /* (name kept, not used by this layer) */
+  --teal-end: #12573B;      /* (name kept, not used by this layer) */
+  --band-1: #0F4430;        /* dark bands (stats, pricing, booking, page heroes): lightest stop, top left. Also their flat fallback colour */
+  --band-2: #0C3B29;        /* dark bands: middle stop */
+  --band-3: #0A3123;        /* dark bands: darkest stop, bottom right */
+  --dark-gradient: var(--grain), linear-gradient(162deg, var(--band-1) 0%, var(--band-2) 58%, var(--band-3) 100%), var(--band-1);
+
+  /* Hero overlay over the washer photo / video. Desktop runs left to right:
+     dark under the text, lighter over the machine on the right */
+  --hero-shade-1: rgba(8, 38, 26, .93);    /* desktop, left edge (under the text) */
+  --hero-shade-2: rgba(10, 45, 31, .9);    /* desktop, 40% across */
+  --hero-shade-3: rgba(14, 61, 42, .74);   /* desktop, 64% across */
+  --hero-shade-4: rgba(16, 70, 48, .46);   /* desktop, right edge (the washer shows through) */
+  --hero-shade-phone-1: rgba(8, 38, 26, .9);   /* phones and tablets (text crosses the photo): top */
+  --hero-shade-phone-2: rgba(12, 52, 35, .9);  /* phones and tablets: bottom */
+  --hero-pause-bg: rgba(10, 43, 30, .55);       /* video pause button */
+  --hero-pause-bg-hover: rgba(10, 43, 30, .8);  /* video pause button, mouse hover */
+  --book-shade-1: rgba(8, 38, 26, .95);    /* booking band overlay over the shop photo, left */
+  --book-shade-2: rgba(13, 61, 42, .92);   /* booking band overlay, middle */
+  --book-shade-3: rgba(12, 72, 48, .92);   /* booking band overlay, right */
+
+  /* Ink and paper */
+  --ink: #20281E;           /* headings, dark labels, chip text: 14:1 on cream */
+  --text: #3B463A;          /* body text: 9.2:1 on paper, 8.1:1 on cream */
+  --muted: #5C6657;         /* secondary text: 5.6:1 on paper, 4.9:1 on cream */
+  --bg: #F1E8D6;            /* cream: page bands, note boxes, menu-button fill */
+  --card: #FBF6EB;          /* paper: body, white sections, cards, header */
+  --line: #D8C8A8;          /* tan hairline: card borders, dotted rows */
+  --field-bg: #FFFDF6;      /* form fields */
+  --field-line: #A78C4E;    /* form field borders: 3.2:1 on the white form card */
+
+  /* Spark (sunflower mustard) */
+  --amber: #E3A008;         /* hero chip and kicker, checks, stat figures, stars, stamps, footer rule. Ink on it 6.7:1; on the dark bands >= 4.9:1 */
+  --amber-dark: #B87B06;    /* (name kept, not used by this layer) */
+  --aqua: #F2C14E;          /* (name kept) lighter mustard for small text on the dark bands (Pricing / Book a pickup labels) and the wavy underline: 6.6:1 */
+  --stamp-line: #8A5A06;    /* dashed edge of the "Most popular" and "Special" stamps */
+  --star-empty: #C9D9DD;    /* unfilled part of the rating stars */
+
+  /* Action (brick-red "open sign") */
+  --cta: #C23A1C;           /* the one action colour (Call / Book / Send): white label 5.4:1; logo dot */
+  --cta-hover: #A6300F;     /* action, mouse hover: white 6.9:1 */
+  --cta-deep: #A8341A;      /* action-family icons on light tints */
+  --cta-edge: #7E2410;      /* border and hard "painted edge" under the action buttons */
+  --cta-edge-hover: #6A1D0C;/* the same edge on mouse hover */
+  --cta-tint: #F8E7DD;      /* "Special" price row background */
+  --label: #B5330F;         /* printed section labels and price-list group names on light: 5.0:1 on cream */
+
+  /* Logo: round badge, cream star, brick dot (the inline SVG fills match) */
+  --logo-disc: var(--blue);   /* logo badge (header and footer) */
+  --logo-star: #F6E7C6;       /* logo star (cream) */
+  --logo-dot: var(--cta);     /* small dot at the logo's top right */
+
+  /* Photo fallbacks (shown only while a photo loads or if it fails) */
+  --tint-brand-1: #E7EFE3;  /* brand tint, light (service card / How-it-works photo boxes) */
+  --tint-brand-2: #D3E2CF;  /* brand tint, dark */
+  --tint-paper-1: #F3EAD6;  /* paper tint, light */
+  --tint-paper-2: #E8D9B6;  /* paper tint, dark */
+  --tint-cta-1: #F6E0D5;    /* brick tint, light */
+  --tint-cta-2: #EFC9B6;    /* brick tint, dark */
+
+  /* Hard "sign-board" shadows and see-through edges */
+  --shadow: 3px 4px 0 rgba(20, 40, 30, .11);        /* cards */
+  --shadow-lg: 5px 7px 0 rgba(20, 40, 30, .17);     /* framed cards: hours, form, price boards, Wash & Fold */
+  --shadow-hover: 5px 8px 0 rgba(20, 40, 30, .14);  /* cards lifting on mouse hover */
+  --shadow-featured: 6px 8px 0 rgba(194, 58, 28, .22); /* featured price board (brick tinted) */
+  --shadow-num: 2px 3px 0 rgba(10, 43, 30, .25);    /* How-it-works step numbers */
+  --menu-shadow: 0 24px 40px rgba(20, 40, 30, .14); /* phone menu panel */
+  --edge-brand: rgba(14, 82, 54, .28);       /* edge under outline buttons on paper */
+  --edge-brand-soft: rgba(14, 82, 54, .25);  /* edge under the light review arrow */
+  --rule-brand: rgba(14, 82, 54, .45);       /* dotted line between the How-it-works steps */
+  --chip-line: rgba(32, 40, 30, .5);         /* hero chip border */
+  --hours-line: rgba(246, 231, 198, .35);    /* rim of the hours box on the booking band */
+
+  /* Paper grain: the design's speckle (its 5% multiply overlay, without the
+     overlay's flat 2.5% darkening), laid over section backgrounds as a layer */
+  --grain: url("data:image/png;base64,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") 0 0 / 110px 110px repeat;
+
+  /* Shape and type */
+  --radius: 9px;
+  --radius-sm: 7px;
+  --pill: 8px;              /* no full pills: tags and slab buttons */
   --font: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--font); /* the old serif eyebrows become sans labels */
-  --font-display: "Bricolage Grotesque", "Hanken Grotesk", system-ui, sans-serif;
-  --ease: cubic-bezier(.2, .7, .2, 1);
-  --linen-deep: #E9E2D3;
-  --hair: rgba(20, 27, 44, .16);       /* ink hairline on linen / paper */
-  --press: 0 4px 0 var(--ink);         /* the sticker / key shadow under CTAs */
-  --grain: url("data:image/png;base64,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");
-  --dark-gradient: var(--grain) 0 0 / 96px repeat, var(--navy);
+  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
 }
 
-::selection { background: var(--cta); color: var(--ink); }
-
-/* 2. Base and type
+/* 2. Paper base and grain
    -------------------------------------------------------------------------- */
-body { background: var(--bg) var(--grain) 0 0 / 96px repeat; color: var(--text); font-size: 1.0625rem; }
+html { background: var(--bg); }
+body { background: var(--grain), var(--card); }
+.section--light { background: var(--grain), var(--bg); }
+.section--white { background: var(--grain), var(--card); }
 
-h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); }
-h1 { font-weight: 800; letter-spacing: -.025em; line-height: .98; }
-h2 { font-weight: 800; letter-spacing: -.022em; line-height: 1.02; font-size: clamp(2.05rem, 3.9vw, 3.15rem); }
-h3 { font-weight: 700; letter-spacing: -.015em; }
+/* 3. Typography: serif headlines, sans labels
+   -------------------------------------------------------------------------- */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -.005em;
+  line-height: 1.08;
+  font-variation-settings: "opsz" 120, "SOFT" 40, "WONK" 1, "wght" 600;
+}
+.section__title, .hero h1, .page-hero h1 { letter-spacing: -.01em; }
+.hero h1 { font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1, "wght" 620; }
+.brand__name {
+  font-family: var(--font-serif);
+  font-weight: 650;
+  font-variation-settings: "opsz" 30, "SOFT" 50, "WONK" 1, "wght" 650;
+  letter-spacing: 0;
+}
 
-/* Section labels: a small star + caps instead of the serif eyebrow and rule.
-   Shown only where the label adds something the heading does not say. */
+/* Section label: a printed uppercase sign-label above every section heading */
 .eyebrow {
-  gap: 8px;
+  gap: 10px;
+  margin-bottom: 12px;
   font-family: var(--font);
-  font-size: .82rem;
-  font-weight: 700;
-  letter-spacing: .14em;
+  font-weight: 800;
+  font-size: .8rem;
+  line-height: 1.3;
+  letter-spacing: .15em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: var(--label);
 }
-.eyebrow::after { display: none; }
-.eyebrow::before,
-.section__head--center .eyebrow::before {
-  content: "";
-  width: 14px;
-  height: 14px;
-  border-radius: 0;
-  background: currentColor;
-  clip-path: polygon(50% 2%, 62.3% 35%, 97.6% 36.5%, 70% 58.5%, 79.4% 92.5%, 50% 73%, 20.6% 92.5%, 30% 58.5%, 2.4% 36.5%, 37.7% 35%);
-  flex: none;
-}
-.eyebrow--amber, .eyebrow--white, .eyebrow--aqua { color: #fff; }
-.section__title { margin: 12px 0 14px; }
-.section__head { margin-bottom: 48px; }
-.section__lead { font-size: 1.15rem; color: var(--text); max-width: 56ch; }
+.eyebrow::after, .section__head--center .eyebrow::before { display: none; }
+.eyebrow--white { color: #fff; }
+.eyebrow--aqua, .eyebrow--amber { color: var(--aqua); }   /* on the dark bands */
 
-/* 3. Sections: linen, paper, cobalt and night blocks (all flat, all grained)
+/* 4. Logo: round badge, cream star, brick dot
    -------------------------------------------------------------------------- */
-.section--light { background: var(--bg) var(--grain) 0 0 / 96px repeat; }
-.section--white { background: var(--card) var(--grain) 0 0 / 96px repeat; }
-.section--dark { background: var(--dark-gradient); }
-.section--dark .section__lead { color: rgba(255, 255, 255, .86); }
+.brand__disc { fill: var(--logo-disc); }
+.brand__star { fill: var(--logo-star); }
+.brand__dot { fill: var(--logo-dot); }
 
-/* 4. Buttons: 10px corners, 2px borders; the CTA is a yellow "sticker" that
-   sits on an ink edge and presses down into it
+/* 5. Header: paper signboard
    -------------------------------------------------------------------------- */
-.btn {
-  min-height: 52px;
-  border-width: 2px;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  letter-spacing: .005em;
-  transition: transform .12s var(--ease), background-color .15s, color .15s, border-color .15s, box-shadow .12s var(--ease);
-}
-.btn--cta { background: var(--cta); color: var(--ink); border-color: var(--ink); box-shadow: var(--press); }
-.btn--cta:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
-.btn--blue { background: var(--blue); color: #fff; border-color: var(--blue); }
-.btn--light { background: var(--card); color: var(--ink); border-color: var(--ink); }
-.btn--outline { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .8); }
-.btn--outline-blue { background: transparent; color: var(--ink); border-color: var(--ink); }
-.btn--sm { min-height: 44px; }
-.btn--call { min-height: 46px; box-shadow: 0 3px 0 var(--ink); }
-
-.circle-btn { width: 52px; height: 52px; }
-.circle-btn--light { background: var(--card); color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
-.circle-btn--blue { background: var(--blue); color: #fff; box-shadow: none; }
-
-.link-arrow { color: var(--blue); font-weight: 700; }
-
-/* 5. Header and logo: linen bar, porthole logo (cobalt circle, yellow star)
-   -------------------------------------------------------------------------- */
-.site-header { background: var(--bg); border-bottom: 1.5px solid var(--hair); }
-.site-header.is-scrolled { box-shadow: none; border-color: var(--ink); }
-.brand__disc { fill: var(--blue); }
-.brand__star { fill: var(--cta); }
-.brand__name { font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; letter-spacing: -.025em; }
-.brand__tag { color: var(--muted); font-weight: 600; letter-spacing: .01em; }
-@media (max-width: 39.999em) { .brand__name { font-size: 1.12rem; } }
-@media (max-width: 23.749em) {
-  .brand__name { font-size: 1rem; letter-spacing: -.02em; }
-}
-.nav__links a { font-weight: 600; color: var(--ink); }
-.nav__links a:active { background: var(--linen-deep); }
-.nav__toggle { background: transparent; box-shadow: inset 0 0 0 2px var(--ink); }
+.site-header { background: var(--grain), var(--card); border-bottom: 1px solid var(--line); }
+.site-header.is-scrolled { box-shadow: 0 2px 0 var(--line); border-color: var(--line); }
 @media (max-width: 61.999em) {
-  .nav__links { background: var(--bg); border-top: 1.5px solid var(--ink); box-shadow: 0 18px 0 -10px rgba(20, 27, 44, .0), 0 2px 0 var(--ink); }
+  .nav__links { background: var(--card); box-shadow: var(--menu-shadow); }
 }
-.skip-link { background: var(--ink); }
-/* A steel focus ring would vanish on a steel block, so white there too */
-.page-hero :focus-visible,
-.store-hours :focus-visible,
-.stats :focus-visible { outline-color: #fff; }
 
-/* 6. Hero: a flat cobalt block with a round porthole window in it. On
-   tablets and desktop the washer photo / video plays untinted inside the
-   window, framed like the first design: zoomed out so the whole door shows.
-   On phones the photo is printed in cobalt (multiply) under the text.
+/* 6. Buttons: slabs with a hard "painted edge" that they press into
    -------------------------------------------------------------------------- */
-.hero { background: var(--grain) 0 0 / 96px repeat, var(--blue); }
-.hero__bg { background-color: var(--blue); }
-.hero__pause { background: var(--ink); border: 2px solid var(--card); }
+.btn { border-radius: var(--pill); border-width: 2px; font-weight: 700; }
+.btn--cta { background: var(--cta); color: #fff; border-color: var(--cta-edge); box-shadow: 3px 3px 0 var(--cta-edge); }
+.btn--blue { background: var(--blue); color: #fff; border-color: var(--blue-dark); box-shadow: 3px 3px 0 var(--blue-dark); }
+.btn--light { background: var(--card); color: var(--blue); border-color: var(--blue); box-shadow: 3px 3px 0 var(--blue); }
+.btn--outline { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .7); }
+.btn--outline-blue,
+.glass .btn--outline { background: var(--card); color: var(--blue); border-color: var(--blue); box-shadow: 3px 3px 0 var(--edge-brand); }
+.btn--cta:active, .btn--blue:active, .btn--light:active, .btn--outline-blue:active, .glass .btn--outline:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 transparent;
+}
+.btn--call { border-radius: var(--pill); }
+
+/* 7. Hero: washer photo / video full-bleed under a brand overlay, mustard
+   spark, wavy underline under the headline. No floating cards.
+   -------------------------------------------------------------------------- */
+.hero__bg::after {
+  background:
+    var(--grain),
+    linear-gradient(100deg, var(--hero-shade-1) 0%, var(--hero-shade-2) 40%, var(--hero-shade-3) 64%, var(--hero-shade-4) 100%);
+}
+@media (max-width: 61.999em) {
+  .hero__bg::after { background: var(--grain), linear-gradient(180deg, var(--hero-shade-phone-1) 0%, var(--hero-shade-phone-2) 100%); }
+}
+.hero__pause { background: var(--hero-pause-bg); }
 @media (hover: hover) and (pointer: fine) {
-  .hero__pause:hover { background: var(--blue-dark); }
+  .hero__pause:hover { background: var(--hero-pause-bg-hover); }
 }
-@media (min-width: 48em) {
-  .hero {
-    --port-x: calc(50% + min(326px, 26vw));   /* centre of the window */
-    --port-r: min(280px, 22vw, 40vh);          /* radius of the glass */
-  }
-  /* The window itself, with a paper rim. The photo and video inside show 86%
-     of the frame's height, centred on the drum (at 71% / 44% of the frame). */
-  .hero__bg {
-    inset: auto;
-    left: calc(var(--port-x) - var(--port-r));
-    top: calc(50% - var(--port-r));
-    width: calc(2 * var(--port-r));
-    height: calc(2 * var(--port-r));
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 0 0 10px var(--card);
-    background-image: url("../img/hero-washer-1920.jpg");
-    background-image: image-set(url("../img/hero-washer-1920.webp") type("image/webp"), url("../img/hero-washer-1920.jpg") type("image/jpeg"));
-    background-size: auto 116.3%;
-    background-position: 90.9% 7.2%;
-  }
-  .hero__video {
-    inset: auto;
-    left: -96%;
-    top: -1.2%;
-    width: 205.6%;
-    height: 116.3%;
-    object-position: 50% 50%;
-  }
-  /* thin ink ring just inside the paper rim: the door seal */
-  .hero__bg::after { z-index: 1; border-radius: 50%; background: none; box-shadow: inset 0 0 0 3px rgba(20, 27, 44, .55); }
-}
-/* Tablets (one column, room on the right): a smaller porthole beside the
-   text, so the smaller photo is enough */
-@media (min-width: 48em) and (max-width: 61.999em) {
-  .hero { --port-r: clamp(80px, calc(50vw - 290px), 150px); --port-x: calc(100% - var(--port-r) - 28px); }
-  .hero__bg {
-    background-image: url("../img/hero-washer-1280.jpg");
-    background-image: image-set(url("../img/hero-washer-1280.webp") type("image/webp"), url("../img/hero-washer-1280.jpg") type("image/jpeg"));
-  }
-}
-/* Phones: no room beside the text, so the photo is printed in cobalt under it
-   (multiply can only darken, so white text never drops below 9.3:1), and a
-   porthole ring sits in the corner */
-@media (max-width: 47.999em) {
-  .hero__bg::after { z-index: 1; background: var(--grain) 0 0 / 96px repeat, var(--blue); mix-blend-mode: multiply; }
-  .hero__bg::before {   /* porthole ring echo in the corner, clear of the text */
-    content: "";
-    position: absolute;
-    right: -70px;
-    top: -80px;
-    width: 150px;
-    height: 150px;
-    z-index: 2;
-    pointer-events: none;
-    border-radius: 50%;
-    border: 8px solid var(--card);
-    box-shadow: inset 0 0 0 3px rgba(20, 27, 44, .5);
-  }
-}
-
-@media (max-width: 23.749em) {
-  .hero__bg::before { right: -60px; top: -70px; width: 130px; height: 130px; }
-}
-
-.hero h1 { font-size: clamp(2.75rem, 6.2vw, 5rem); margin: 20px 0 22px; max-width: 11ch; }
 .hero__kicker {
   font-family: var(--font);
-  font-size: clamp(1rem, 1.25vw, 1.1rem);
+  font-size: clamp(.8rem, 1.1vw, .9rem);
+  font-weight: 700;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+/* The wavy underline is a mask, so its colour is a token */
+.hero h1::after {
+  content: "";
+  display: block;
+  width: min(62%, 280px);
+  height: 13px;
+  margin-top: 16px;
+  background: var(--aqua);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='13' viewBox='0 0 280 13'%3E%3Cpath d='M3 8 Q 20 2 37 8 T 71 8 T 105 8 T 139 8 T 173 8 T 207 8 T 241 8 T 277 7' fill='none' stroke='%23000' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat left center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='13' viewBox='0 0 280 13'%3E%3Cpath d='M3 8 Q 20 2 37 8 T 71 8 T 105 8 T 139 8 T 173 8 T 207 8 T 241 8 T 277 7' fill='none' stroke='%23000' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat left center / contain;
+}
+.chip {
+  border: 2px solid var(--chip-line);
+  border-radius: var(--pill);
+  background: var(--amber);
+  color: var(--ink);
   font-weight: 700;
   letter-spacing: .01em;
-  color: var(--aqua);
 }
-.hero__lead { color: rgba(255, 255, 255, .92); max-width: 52ch; }
-.hero__actions { gap: 14px; margin-bottom: 32px; }
-.chip {
-  min-height: 36px;
-  padding: 6px 14px 6px 12px;
-  border: 2px solid rgba(255, 255, 255, .85);
-  border-radius: 8px;
-  background: transparent;
-  font-size: .8rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-.chip__dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 0;
-  background: var(--cta);
-  box-shadow: none;
-  clip-path: polygon(50% 2%, 62.3% 35%, 97.6% 36.5%, 70% 58.5%, 79.4% 92.5%, 50% 73%, 20.6% 92.5%, 30% 58.5%, 2.4% 36.5%, 37.7% 35%);
-}
-@media (max-width: 23.749em) {
-  .chip { letter-spacing: .06em; font-size: .75rem; padding-right: 10px; }
-}
-.checklist { gap: 12px; }
-.checklist .icon { color: #fff; width: 24px; height: 24px; }
-.checklist small { color: rgba(255, 255, 255, .9); }
+.chip__dot { width: 8px; height: 8px; background: var(--ink); box-shadow: none; }
+.checklist .icon { color: var(--amber); }
 
-/* Floating proof cards retire; the rating becomes one round sticker on the porthole rim */
-.float-card--rating {
-  top: auto;
-  right: auto;
-  left: 0;
-  bottom: -14px;
-  width: 132px;
-  height: 132px;
-  padding: 0;
-  border-radius: 50%;
-  border: 2px solid var(--ink);
+/* 8. Why us: flat paper cards, hairline border, hard shadow, one brand
+   icon ring instead of four pastel circles
+   -------------------------------------------------------------------------- */
+.feature-card { background: var(--card); border: 1.5px solid var(--line); box-shadow: var(--shadow); }
+.icon-circle,
+.icon-circle--teal, .icon-circle--aqua, .icon-circle--coral, .icon-circle--sea {
   background: var(--card);
-  box-shadow: 0 4px 0 var(--ink);
-  transform: rotate(-9deg);
-  display: grid;
-  place-items: center;
-  text-align: center;
-}
-.float-card--rating .float-card__big { font-family: var(--font-display); font-size: 2.3rem; font-weight: 800; letter-spacing: -.03em; }
-.float-card--rating .star-glyph { color: var(--ink); font-size: .8em; }
-.float-card--rating .float-card__label { margin-top: 2px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
-
-/* 7. Why us: open columns under an ink rule, no icon bubbles
-   -------------------------------------------------------------------------- */
-.feature-grid { gap: 32px; }
-.feature-card {
-  padding: 22px 0 0;
-  border-top: 2px solid var(--ink);
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  text-align: left;
-}
-.feature-card h3 { font-size: 1.3rem; margin-bottom: 8px; }
-.feature-card p { color: var(--text); }
-.feature-card .icon-circle { width: auto; height: auto; margin: 0 0 16px; background: none; justify-content: flex-start; color: var(--blue); }
-.feature-card .icon-circle .icon { width: 34px; height: 34px; stroke-width: 1.6; }
-@media (max-width: 39.999em) {
-  .feature-grid { gap: 0; }
-  .feature-card { padding: 18px 0 20px; grid-template-columns: 40px minmax(0, 1fr); text-align: left; border-top-width: 1.5px; }
-  .feature-card:first-child { border-top-width: 2px; }
-  .feature-card .icon-circle { width: 40px; height: auto; margin: 2px 0 0; }
-  .feature-card .icon-circle .icon { width: 28px; height: 28px; }
+  border: 2px solid var(--blue);
+  color: var(--blue);
 }
 
-/* 8. Stats: a flat cobalt block, big numbers, hairline dividers
+/* 9. Stats band: flat brand field, mustard figures
    -------------------------------------------------------------------------- */
-.stats { background: var(--grain) 0 0 / 96px repeat, var(--blue); }
-.stat__value { font-family: var(--font-display); font-weight: 800; letter-spacing: -.035em; color: #fff; font-size: clamp(2.2rem, 3.8vw, 3.3rem); min-height: calc(clamp(2.2rem, 3.8vw, 3.3rem) * 1.05); }
-.stat__value--sm { font-size: clamp(1.75rem, 2.7vw, 2.4rem); }
-.stat__label { font-weight: 700; }
-.stat__note { color: rgba(255, 255, 255, .9); }
-@media (min-width: 62em) {
-  .stats__grid { gap: 0; }
-  .stat { padding: 4px 28px; border-left: 1.5px solid rgba(255, 255, 255, .35); }
-  .stat:first-child { padding-left: 0; border-left: 0; }
-}
-@media (max-width: 29.999em) {
-  .stat__value { font-size: 2rem; min-height: calc(2rem * 1.05); }
-  .stat__value--sm { font-size: 1.5rem; }
+.stat__value {
+  color: var(--amber);
+  font-family: var(--font-serif);
+  font-variation-settings: "opsz" 110, "SOFT" 30, "wght" 640;
+  letter-spacing: -.01em;
 }
 
-/* 9. Services: 5 cards as a 2 + 3 bento (ATM card removed), flat paper,
-   hairline border, no icon tiles
+/* 10. Services: 5 cards as a 2 + 3 bento on desktop, flat photo cards
    -------------------------------------------------------------------------- */
-.services-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 24px; }
-.services-grid .service-card { grid-column: span 2; }
-.services-grid .service-card:nth-child(-n+2) { grid-column: span 3; }
-.services-grid .service-card:nth-child(-n+2) .service-card__media { height: 280px; }
-.service-card { border: 1.5px solid var(--hair); background: var(--card); box-shadow: none; }
-.service-card__media { height: 210px; border-bottom: 1.5px solid var(--hair); }
+.service-card { border: 1.5px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
 .service-card__badge { display: none; }
-.service-card__body { padding: 22px 24px 26px; }
-.service-card h3 { font-size: 1.35rem; }
-.media--teal, .media--aqua, .media--coral { background: var(--linen-deep); color: var(--blue); }
-@media (max-width: 61.999em) {
-  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .services-grid .service-card, .services-grid .service-card:nth-child(2) { grid-column: span 1; }
-  .services-grid .service-card:first-child { grid-column: 1 / -1; }
-}
-@media (max-width: 39.999em) {
-  .services-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-  .services-grid .service-card, .services-grid .service-card:first-child { grid-column: auto; }
-  .services-grid .service-card:nth-child(-n+2) .service-card__media,
-  .service-card__media--photo { height: 200px; }
+.media--teal { background: linear-gradient(135deg, var(--tint-brand-1), var(--tint-brand-2)); color: var(--blue); }
+.media--aqua { background: linear-gradient(135deg, var(--tint-paper-1), var(--tint-paper-2)); color: var(--blue); }
+.media--coral { background: linear-gradient(135deg, var(--tint-cta-1), var(--tint-cta-2)); color: var(--cta-deep); }
+@media (min-width: 62em) {
+  .services-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 26px; }
+  .services-grid > .service-card:nth-child(1),
+  .services-grid > .service-card:nth-child(2) { grid-column: span 3; }
+  .services-grid > .service-card:nth-child(3),
+  .services-grid > .service-card:nth-child(4),
+  .services-grid > .service-card:nth-child(5) { grid-column: span 2; }
+  .services-grid > .service-card:nth-child(1) .service-card__media--photo,
+  .services-grid > .service-card:nth-child(2) .service-card__media--photo { height: 240px; }
 }
 
-/* 10. About / how it works
+/* 11. How it works: brand step numbers, dotted connector, framed hours card
    -------------------------------------------------------------------------- */
-.how__subtitle { font-family: var(--font); font-size: .85rem; font-weight: 700; letter-spacing: .14em; color: var(--blue); }
-.step__num { background: var(--blue); color: #fff; box-shadow: none; font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; }
+.step__num { border-radius: 50%; box-shadow: var(--shadow-num); }
 .step__num--teal, .step__num--aqua, .step__num--coral { background: var(--blue); color: #fff; }
-.step:not(:last-child)::before { border-left: 2px dashed rgba(20, 27, 44, .35); }
-.step h3 { font-size: 1.25rem; }
-.how__photo { border-radius: var(--radius); box-shadow: none; background: var(--linen-deep); }
-.hours-card {
-  border: 2px solid var(--ink);
-  border-radius: 14px;
-  background: var(--card);
-  box-shadow: 6px 6px 0 var(--blue);
-}
-.hours-card h3 { font-size: 1.25rem; }
-.hours-table th { font-weight: 700; }
-.hours-table tr + tr { border-top: 1px solid var(--line); }
-@media (max-width: 61.999em) {
-  .hours-card { margin: -48px 14px 0; }
-}
+.step:not(:last-child)::before { border-left: 2px dotted var(--rule-brand); }
+.how__photo { border: 2px solid var(--blue); background: linear-gradient(135deg, var(--tint-brand-1), var(--tint-brand-2)); }
+.hours-card { border: 2px solid var(--blue); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow-lg); }
 
-/* 11. Pricing: night band, paper "claim tickets", the featured one in cobalt
+/* 12. Pricing: flat brand band, solid paper "price boards", stamped badge
    -------------------------------------------------------------------------- */
 .pricing::before { display: none; }
-.price-grid { gap: 24px; padding-top: 22px; }
 .glass {
-  border: 0;
+  border: 2px solid var(--blue);
   border-radius: var(--radius);
   background: var(--card);
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
   color: var(--ink);
-  text-align: left;
+  box-shadow: var(--shadow-lg);
 }
-.glass--featured { background: var(--blue); color: #fff; box-shadow: none; }
-.glass h3 { color: var(--ink); text-align: left; font-size: 1.5rem; }
-.glass__sub { text-align: left; color: var(--muted); }
-.price {
-  text-align: left;
-  padding-bottom: 22px;
-  border-bottom: 2px dashed rgba(20, 27, 44, .3);
+.glass--featured { border-color: var(--cta); background: var(--card); box-shadow: var(--shadow-featured); }
+.glass h3 { color: var(--ink); }
+.glass__sub { color: var(--muted); }
+.price__from, .price__unit { color: var(--text); }
+.price__amount {
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-variation-settings: "opsz" 120, "SOFT" 40, "wght" 640;
 }
-.price__amount { font-family: var(--font-display); font-weight: 800; letter-spacing: -.04em; font-size: clamp(3rem, 4.6vw, 3.9rem); }
-.price__from, .price__unit { color: var(--muted); font-weight: 600; }
 .glass li { color: var(--text); }
 .glass li .icon { color: var(--blue); }
-.glass .btn--outline { color: var(--ink); border-color: var(--ink); }
-.glass--featured h3, .glass--featured .price__amount { color: #fff; }
-.glass--featured .glass__sub, .glass--featured .price__from, .glass--featured .price__unit, .glass--featured li { color: rgba(255, 255, 255, .9); }
-.glass--featured li .icon { color: #fff; }
-.glass--featured .price { border-bottom-color: rgba(255, 255, 255, .45); }
-.glass__badge {   /* round-cornered sticker, slightly askew, on the ticket's corner */
-  left: auto;
-  right: 18px;
-  top: 0;
-  transform: translateY(-50%) rotate(4deg);
-  padding: 7px 14px;
-  border: 2px solid var(--ink);
-  border-radius: 8px;
-  background: var(--card);
+.glass__badge {
+  padding: 6px 13px;
+  border: 2px dashed var(--stamp-line);
+  border-radius: 6px;
+  background: var(--amber);
   color: var(--ink);
-  font-size: .78rem;
   font-weight: 800;
-  letter-spacing: .1em;
+  letter-spacing: .04em;
   text-transform: uppercase;
-  box-shadow: 0 3px 0 var(--ink);
+  transform: translate(-50%, -55%) rotate(-3deg);
 }
-.pricing__note { color: rgba(255, 255, 255, .86); }
 
-/* 12. Reviews
+/* 13. Reviews: flat cards, brand / mustard / brick avatars, slab arrows
    -------------------------------------------------------------------------- */
-.review-card { border: 1.5px solid var(--hair); background: var(--card); box-shadow: none; }
-.review-card__name { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; }
-.avatar, .avatar--teal, .avatar--aqua, .avatar--coral, .avatar--sea {
-  background: var(--blue-soft);
-  color: var(--blue);
-  box-shadow: inset 0 0 0 2px var(--blue);
-  font-family: var(--font-display);
-  font-weight: 800;
+.review-card { border: 1.5px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.avatar {
+  border-radius: 10px;
+  font-family: var(--font-serif);
+  font-variation-settings: "opsz" 40, "SOFT" 40, "wght" 640;
 }
-.stars { color: transparent; }
-.stars .icon { stroke: var(--ink); stroke-width: 1.4; }
-.stars__fill { color: var(--cta); }
-.rating-line { font-family: var(--font); font-weight: 700; }
-.review-card__source { color: var(--muted); font-weight: 600; }
-.reviews__track { padding-bottom: 32px; }
+.avatar--teal { background: var(--blue); color: #fff; }
+.avatar--aqua { background: var(--amber); color: var(--ink); }
+.avatar--coral { background: var(--cta); color: #fff; }
+.avatar--sea { background: var(--navy); color: #fff; }
+.stars { color: var(--star-empty); }
+.stars__fill { color: var(--amber); }
+.circle-btn { border-radius: var(--radius); }
+.circle-btn--blue { background: var(--blue); color: #fff; box-shadow: 3px 3px 0 var(--blue-dark); }
+.circle-btn--light { background: var(--card); color: var(--ink); border: 2px solid var(--blue); box-shadow: 3px 3px 0 var(--edge-brand-soft); }
 
-/* 13. Book a pickup: night band over the real shop photo, no glass
+/* 14. Book a pickup: brand overlay on the shop photo, solid hours box,
+   framed form
    -------------------------------------------------------------------------- */
-.book { background: var(--navy); }
-.book__bg {   /* the real shop photo printed in night navy (multiply), darkest under the text */
+.book__bg {
   background:
-    linear-gradient(105deg, #0E1A2E 0%, #15233C 50%, #2A3F61 100%),
+    linear-gradient(105deg, var(--book-shade-1) 0%, var(--book-shade-2) 55%, var(--book-shade-3) 100%),
     url("../img/laundromat_img.jpg") center / cover no-repeat;
-  background-blend-mode: multiply;
-  filter: blur(1.5px);
 }
-.book__phone { font-family: var(--font-display); font-weight: 800; letter-spacing: -.03em; }
-.book__phone .icon { color: var(--cta); }
-.contact-links .icon { color: rgba(255, 255, 255, .8); }
+.book__phone .icon { color: var(--amber); }
 .hours-summary {
-  border: 1.5px solid rgba(255, 255, 255, .4);
-  border-radius: 14px;
-  background: transparent;
+  border: 1.5px solid var(--hours-line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, .07);
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
-.hours-summary h3 { font-size: 1.15rem; }
-.hours-summary dd { color: rgba(255, 255, 255, .88); }
-.hours-summary__note { color: rgba(255, 255, 255, .84); }
-.form-card { border-radius: var(--radius); background: var(--card); box-shadow: none; }
-.form-card h3 { font-size: 1.65rem; }
-.field label { font-weight: 700; }
+.form-card { border: 2px solid var(--blue); border-radius: var(--radius); box-shadow: var(--shadow-lg); }
 .field input, .field select, .field textarea {
-  border: 1.5px solid #878E9C;           /* 3.3:1 against the paper card */
+  border: 1.5px solid var(--field-line);
   border-radius: var(--radius-sm);
-  background: #fff;
+  background: var(--field-bg);
 }
-.field :is(input, select, textarea):focus-visible { outline: 2px solid var(--blue); border-color: var(--blue); }
+.field :is(input, select, textarea):focus-visible { outline-color: var(--blue); border-color: var(--blue); background: #fff; }
 .form-fallback { background: var(--blue-soft); }
 
-/* 14. FAQ: one ruled list instead of a stack of boxes
+/* 15. FAQ: flat paper cards, hairline border
    -------------------------------------------------------------------------- */
-.faq-list { gap: 0; border-top: 2px solid var(--ink); }
-.faq { border: 0; border-bottom: 1.5px solid var(--hair); border-radius: 0; background: transparent; box-shadow: none; }
-.faq summary { padding: 20px 4px; border-radius: 0; font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; letter-spacing: -.01em; }
-.faq summary .icon { color: var(--blue); }
-.faq__body { padding: 0 4px 24px; max-width: 70ch; }
-.faq summary:active { background: var(--linen-deep); }
+.faq { border: 1.5px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.faq summary, .faq summary:focus-visible { border-radius: var(--radius); }
 
-/* 15. Footer: cobalt bookend
+/* 16. Footer: deep signboard with a mustard top rule
    -------------------------------------------------------------------------- */
-.site-footer { background: var(--grain) 0 0 / 96px repeat, var(--blue); color: rgba(255, 255, 255, .9); border-top: 0; }
-.site-footer h4 { font-family: var(--font); font-size: .8rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #fff; }
-.site-footer a { color: #fff; }
-.site-footer .icon { color: rgba(255, 255, 255, .85); }
-.footer__brand .brand__tag { color: rgba(255, 255, 255, .9); }
-.footer__bottom { border-top-color: rgba(255, 255, 255, .3); }
-.site-footer .brand__disc { fill: var(--navy); }
+.site-footer { background: var(--grain), var(--navy); border-top: 3px solid var(--amber); }
 
-/* 16. Secondary pages
+/* 17. Secondary pages: page hero, tag tabs, dotted price rows, stamps
    -------------------------------------------------------------------------- */
-.page-hero { position: relative; isolation: isolate; overflow: hidden; background: var(--grain) 0 0 / 96px repeat, var(--blue); }
-.page-hero::after {   /* porthole rings, echoing the home hero */
-  content: "";
-  position: absolute;
-  z-index: -1;
-  right: max(-120px, calc(50% - 760px));
-  top: 50%;
-  width: 380px;
-  height: 380px;
-  transform: translateY(-50%);
-  border-radius: 50%;
-  border: 10px solid var(--card);
-  box-shadow: inset 0 0 0 3px rgba(20, 27, 44, .55), 0 0 0 46px rgba(20, 27, 44, .12);
-  opacity: .9;
-  pointer-events: none;
+.page-hero h1 { color: #fff; }
+.tabs__tab { border: 1.5px solid var(--line); border-radius: var(--pill); background: var(--card); }
+.tabs__tab[aria-selected="true"] { background: var(--blue); color: #fff; border-color: var(--blue); }
+.price-list__group { color: var(--label); letter-spacing: .1em; }
+.price-row { border-bottom: 1.5px dotted var(--line); }
+.price-row--special { border: 1.5px dashed var(--cta); border-radius: var(--radius-sm); background: var(--cta-tint); }
+.tag {
+  border: 1.5px dashed var(--stamp-line);
+  border-radius: 6px;
+  background: var(--amber);
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: .03em;
+  text-transform: uppercase;
 }
-.page-hero h1 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); max-width: 16ch; }
-.page-hero p:not(.eyebrow) { color: rgba(255, 255, 255, .92); }
-@media (max-width: 61.999em) {   /* a corner ring above the heading, never behind it */
-  .page-hero::after { width: 190px; height: 190px; right: -92px; top: -122px; transform: none; border-width: 8px; box-shadow: inset 0 0 0 3px rgba(20, 27, 44, .55), 0 0 0 26px rgba(20, 27, 44, .12); }
-}
-
-.tabs__tab { border: 1.5px solid var(--ink); border-radius: var(--radius-sm); background: transparent; color: var(--ink); font-weight: 700; }
-.tabs__tab[aria-selected="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
-.price-list__group { color: var(--blue); letter-spacing: .14em; }
-.price-row { border-bottom: 1px solid var(--line); }
-.price-row__price { font-family: var(--font-display); font-weight: 700; font-size: 1.08rem; letter-spacing: -.01em; }
-.price-row--special { border: 1.5px solid var(--blue); background: var(--blue-soft); }
-.tag { border-radius: 6px; background: var(--blue); color: #fff; font-weight: 800; letter-spacing: .04em; }
-
-.card { border: 1.5px solid var(--hair); background: var(--card); box-shadow: none; }
-.card--light { border: 0; }
-
-.wf-card { border: 1.5px solid var(--hair); background: var(--card); box-shadow: none; }
-.wf-price { border: 1.5px solid var(--hair); border-radius: 14px; background: var(--bg); }
-.wf-price--featured { background: var(--blue); border-color: var(--blue); }
-.wf-price__amount { font-family: var(--font-display); font-weight: 800; letter-spacing: -.04em; }
-.wf-price--featured .wf-price__amount, .wf-price--featured .wf-price__label { color: #fff; }
-.wf-price--featured .wf-price__unit, .wf-price--featured .wf-price__sub { color: rgba(255, 255, 255, .9); }
+.card { border: 1.5px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.card--light { border: 0; box-shadow: none; }
+.wf-card { border: 2px solid var(--blue); border-radius: var(--radius); box-shadow: var(--shadow-lg); }
+.wf-price { border: 1.5px solid var(--line); border-radius: var(--radius-sm); background: var(--bg); }
+.wf-price--featured { border-color: var(--blue); background: var(--blue-soft); }
+.wf-price--featured .wf-price__amount { color: var(--blue); }
+.wf-price__amount { font-family: var(--font-serif); font-variation-settings: "opsz" 110, "SOFT" 40, "wght" 640; }
 .wf-card__list .icon { color: var(--blue); }
-.wf-card__actions { border-top: 2px dashed rgba(20, 27, 44, .3); }
-.price-panel { border: 1.5px solid var(--hair); background: var(--card); box-shadow: none; }
-.price-panel__note { background: var(--bg); }
-.price-panel__note .icon, .price-effective .icon { color: var(--blue); }
+.price-panel { border: 1.5px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.price-panel__note { background: var(--bg); border-radius: var(--radius-sm); }
+.map-embed { border: 2px solid var(--blue); border-radius: var(--radius); box-shadow: var(--shadow); }
+.hours-table tr + tr { border-top: 1.5px dotted var(--line); }
+.store-hours__time, .store-hours__big { color: var(--blue); }
+.store-hours__time { font-family: var(--font-serif); font-variation-settings: "opsz" 110, "SOFT" 40, "wght" 640; }
 
-.map-embed { border: 1.5px solid var(--ink); box-shadow: none; background: var(--linen-deep); }
-
-.contact-list .icon-circle { background: transparent; color: var(--blue); box-shadow: inset 0 0 0 1.5px var(--hair); }
-.contact-list__label { color: var(--muted); letter-spacing: .12em; }
-.contact-list a { color: var(--ink); font-weight: 600; }
-
-/* Store hours card: a cobalt block */
-.store-hours { background: var(--grain) 0 0 / 96px repeat, var(--blue); color: #fff; }
-.store-hours h3, .store-hours__big, .store-hours__time, .store-hours__note { color: #fff; }
-.store-hours__time { font-family: var(--font-display); font-weight: 800; letter-spacing: -.035em; font-size: clamp(2.2rem, 3.6vw, 3rem); }
-.store-hours__note { color: rgba(255, 255, 255, .9); }
-.store-hours__note a { color: #fff; }
-.store-hours .icon-circle { background: transparent; color: #fff; box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .8); }
-.icon-circle--teal, .icon-circle--aqua, .icon-circle--coral, .icon-circle--sea { background: transparent; color: var(--blue); }
-
-/* 17. Hover: fine pointers only
+/* 18. Hover: fine pointers only
    -------------------------------------------------------------------------- */
 @media (hover: hover) and (pointer: fine) {
-  .btn--cta:hover { background: var(--cta-hover); box-shadow: 0 6px 0 var(--ink); transform: translateY(-2px); }
-  .btn--cta:active:hover { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
-  .btn--blue:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+  .btn--cta:hover { background: var(--cta-hover); border-color: var(--cta-edge-hover); box-shadow: 4px 4px 0 var(--cta-edge-hover); }
+  .btn--cta:active:hover { box-shadow: 0 0 0 transparent; }
+  .btn--blue:hover { background: var(--blue-dark); }
   .btn--light:hover { background: var(--blue-soft); }
-  .btn--outline:hover { background: rgba(255, 255, 255, .14); border-color: #fff; }
-  .btn--outline-blue:hover, .glass .btn--outline:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
-  .nav__links a:hover { background: var(--linen-deep); color: var(--ink); }
-  .nav__toggle:hover { background: var(--linen-deep); }
-  .feature-card:hover, .review-card:hover { transform: none; box-shadow: none; }
-  .service-card:hover { transform: none; box-shadow: none; border-color: var(--ink); }
-  .circle-btn--light:hover:not(:disabled) { background: var(--linen-deep); }
+  .btn--outline-blue:hover,
+  .glass .btn--outline:hover { background: var(--blue-soft); border-color: var(--blue); }
+  .feature-card:hover, .service-card:hover, .review-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
   .circle-btn--blue:hover:not(:disabled) { background: var(--blue-dark); }
-  .faq summary:hover { color: var(--blue); }
-  .site-footer a:hover { color: #fff; text-decoration: underline; }
-  .tabs__tab:hover:not([aria-selected="true"]) { background: var(--linen-deep); color: var(--ink); border-color: var(--ink); }
-  .link-arrow:hover { color: var(--blue-dark); }
+  .circle-btn--light:hover:not(:disabled) { background: var(--blue-soft); }
+  .tabs__tab:hover:not([aria-selected="true"]) { border-color: var(--blue); color: var(--blue); }
 }

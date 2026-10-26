@@ -194,7 +194,7 @@ def head_block(page, cfg):
         f'  <meta name="description" content="{e(d)}">',
         '  <meta name="robots" content="index, follow, max-image-preview:large">',
         f'  <link rel="canonical" href="{u}">',
-        '  <meta name="theme-color" content="#F3EEE4">',
+        '  <meta name="theme-color" content="#FBF6EB">',
         '  <meta property="og:type" content="website">',
         f'  <meta property="og:site_name" content="{NAME}">',
         '  <meta property="og:locale" content="en_CA">',
