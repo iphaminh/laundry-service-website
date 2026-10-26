@@ -1373,10 +1373,13 @@ html:not(.js) .tabs__list { display: none; }
 
 /* ==========================================================================
    22. Direction C: "Neighbourhood signage"
-   Warm cream paper, one deep brand colour for the big fields (hero overlay,
+   Warm cream paper, one soft denim blue for the big fields (hero overlay,
    stats, pricing and booking bands, footer), a brick-red "open sign" for the
-   one action colour, and a sunflower-mustard spark (hero chip and kicker,
-   the wavy underline, checks, stat figures, stars, stamps).
+   one action colour, and a sunflower spark (hero chip and kicker, the wavy
+   underline, checks, stat figures, stars, stamps). The site owner chose
+   this design on Oct 26, 2026, in blue instead of its original bottle
+   green, and lighter than the steel blue before it: MT found the first
+   cobalt "too saturated" and the steel/navy "so dark".
    Display: Fraunces (variable: opsz, SOFT, WONK, wght). Text/UI: Hanken
    Grotesk. Small radii, hairline borders, hard offset "sign-board" shadows,
    printed uppercase section labels, a faint paper grain on the backgrounds.
@@ -1407,57 +1410,60 @@ html:not(.js) .tabs__list { display: none; }
 /* 1. Tokens. Contrast ratios are WCAG 2.x against the flat token colours.
    -------------------------------------------------------------------------- */
 :root {
-  /* Brand field (bottle green) */
-  --blue: #0E5236;          /* brand: links, icons, icon rings, step numbers, secondary buttons, selected tab, card borders. White on it 9.2:1; on cream 7.6:1 */
-  --blue-dark: #0A3F2A;     /* brand pressed / hover; the edge under brand buttons */
-  --blue-soft: #E7EFE3;     /* pale brand tint: light-button hover, note boxes, featured Wash & Fold box. Brand text on it 7.8:1 */
-  --aqua-deep: var(--blue); /* (name kept) icons on light tints */
-  --navy: #0C3123;          /* darkest field: footer, one review avatar */
-  --navy-deep: #0A2B1E;     /* behind the hero photo and the booking photo before they load */
-  --navy-mid: #0E4430;      /* (name kept, not used by this layer) */
-  --teal-end: #12573B;      /* (name kept, not used by this layer) */
-  --band-1: #0F4430;        /* dark bands (stats, pricing, booking, page heroes): lightest stop, top left. Also their flat fallback colour */
-  --band-2: #0C3B29;        /* dark bands: middle stop */
-  --band-3: #0A3123;        /* dark bands: darkest stop, bottom right */
+  /* Brand field (soft denim, light enough not to read dark, calm enough not to read loud) */
+  --blue: #3A6496;           /* brand: links, icons, icon rings, step numbers, secondary buttons, selected tab, card borders, logo disc. White on it 6.1:1; on cream 5.0:1, on paper 5.7:1 */
+  --blue-dark: #2E527E;      /* brand pressed / hover; the edge under brand buttons. White 8.0:1 */
+  --blue-soft: #E4ECF4;      /* pale denim tint: light-button hover, note boxes, featured Wash & Fold box. Brand on it 5.1:1 */
+  --aqua-deep: var(--blue);  /* (name kept) icons on light tints */
+  --navy: #2E527E;           /* footer (one calm step deeper than the bands), one review avatar. Footer text (78% white) 5.6:1, brand tag (70%) 4.9:1 */
+  --navy-deep: #2C4F7A;      /* behind the hero photo and the booking photo before they load */
+  --navy-mid: #345B8B;       /* (name kept, not used by this layer) */
+  --teal-end: #386092;       /* (name kept, not used by this layer) */
+  --band-1: #386092;         /* bands (stats, pricing, booking, page heroes): lightest stop, top left, and the flat fallback. White 6.45:1; 86% white notes 5.3:1; --aqua labels 4.8:1; stat figures (--amber, large) 4.3:1 */
+  --band-2: #345B8B;         /* bands: middle stop */
+  --band-3: #305583;         /* bands: darkest stop, bottom right */
   --dark-gradient: var(--grain), linear-gradient(162deg, var(--band-1) 0%, var(--band-2) 58%, var(--band-3) 100%), var(--band-1);
 
   /* Hero overlay over the washer photo / video. Desktop runs left to right:
-     dark under the text, lighter over the machine on the right */
-  --hero-shade-1: rgba(8, 38, 26, .93);    /* desktop, left edge (under the text) */
-  --hero-shade-2: rgba(10, 45, 31, .9);    /* desktop, 40% across */
-  --hero-shade-3: rgba(14, 61, 42, .74);   /* desktop, 64% across */
-  --hero-shade-4: rgba(16, 70, 48, .46);   /* desktop, right edge (the washer shows through) */
-  --hero-shade-phone-1: rgba(8, 38, 26, .9);   /* phones and tablets (text crosses the photo): top */
-  --hero-shade-phone-2: rgba(12, 52, 35, .9);  /* phones and tablets: bottom */
-  --hero-pause-bg: rgba(10, 43, 30, .55);       /* video pause button */
-  --hero-pause-bg-hover: rgba(10, 43, 30, .8);  /* video pause button, mouse hover */
-  --book-shade-1: rgba(8, 38, 26, .95);    /* booking band overlay over the shop photo, left */
-  --book-shade-2: rgba(13, 61, 42, .92);   /* booking band overlay, middle */
-  --book-shade-3: rgba(12, 72, 48, .92);   /* booking band overlay, right */
+     deep under the text, a light 22% veil over the machine on the right.
+     The photo's left side is bright, so these print lighter than they read
+     here. Measured over the still and 5 video frames at 320-1440 px: white
+     lead >= 6.1:1, kicker >= 4.6:1, checklist notes >= 5.4:1 */
+  --hero-shade-1: rgba(29, 72, 124, .9); /* desktop, left edge (under the text) */
+  --hero-shade-2: rgba(27, 71, 124, .9); /* desktop, 40% across */
+  --hero-shade-3: rgba(40, 82, 132, .74); /* desktop, 64% across (still covers the lead's right end) */
+  --hero-shade-4: rgba(90, 132, 178, .22); /* desktop, right edge: light and airy, the washer shows */
+  --hero-shade-phone-1: rgba(29, 73, 126, .9); /* phones and tablets: top */
+  --hero-shade-phone-2: rgba(29, 74, 128, .89); /* phones and tablets: bottom */
+  --hero-pause-bg: rgba(36, 66, 104, .55); /* video pause button */
+  --hero-pause-bg-hover: rgba(36, 66, 104, .8); /* video pause button, mouse hover */
+  --book-shade-1: rgba(30, 68, 116, .95); /* booking band over the shop photo, left (under the text) */
+  --book-shade-2: rgba(33, 73, 123, .93); /* middle */
+  --book-shade-3: rgba(58, 100, 150, .86); /* right, under the form card: the dryers show through */
 
   /* Ink and paper */
-  --ink: #20281E;           /* headings, dark labels, chip text: 14:1 on cream */
-  --text: #3B463A;          /* body text: 9.2:1 on paper, 8.1:1 on cream */
-  --muted: #5C6657;         /* secondary text: 5.6:1 on paper, 4.9:1 on cream */
+  --ink: #1D2733;            /* blue-black: headings, dark labels, chip text. 12.4:1 on cream */
+  --text: #3A4553;           /* slate body text: 8.0:1 on cream, 9.0:1 on paper */
+  --muted: #5B6573;          /* secondary text: 4.85:1 on cream, 5.5:1 on paper */
   --bg: #F1E8D6;            /* cream: page bands, note boxes, menu-button fill */
   --card: #FBF6EB;          /* paper: body, white sections, cards, header */
   --line: #D8C8A8;          /* tan hairline: card borders, dotted rows */
   --field-bg: #FFFDF6;      /* form fields */
   --field-line: #A78C4E;    /* form field borders: 3.2:1 on the white form card */
 
-  /* Spark (sunflower mustard) */
-  --amber: #E3A008;         /* hero chip and kicker, checks, stat figures, stars, stamps, footer rule. Ink on it 6.7:1; on the dark bands >= 4.9:1 */
-  --amber-dark: #B87B06;    /* (name kept, not used by this layer) */
-  --aqua: #F2C14E;          /* (name kept) lighter mustard for small text on the dark bands (Pricing / Book a pickup labels) and the wavy underline: 6.6:1 */
-  --stamp-line: #8A5A06;    /* dashed edge of the "Most popular" and "Special" stamps */
-  --star-empty: #C9D9DD;    /* unfilled part of the rating stars */
+  /* Spark (sunflower: C's mustard is too dark to read on a lighter blue) */
+  --amber: #FFCD4A;          /* hero chip and kicker, checks, stat figures, stamps, footer rule. Ink on it 10.1:1 */
+  --amber-dark: #D9A21C;     /* rating stars on paper (C's mustard weight, 2.1:1 on paper; "4.2 on Google" carries the rating in text) */
+  --aqua: #F9DC8A;           /* pale butter: small labels on the bands and the wavy underline. 4.8:1 on --band-1 */
+  --stamp-line: #8F6008;     /* dashed edge of the "Most popular" and "Special" stamps */
+  --star-empty: #A3B1C1;     /* unfilled part of the rating stars (2.0:1 on paper, darker than the gold fill so the 4.2 reads) */
 
   /* Action (brick-red "open sign") */
   --cta: #C23A1C;           /* the one action colour (Call / Book / Send): white label 5.4:1; logo dot */
   --cta-hover: #A6300F;     /* action, mouse hover: white 6.9:1 */
   --cta-deep: #A8341A;      /* action-family icons on light tints */
-  --cta-edge: #7E2410;      /* border and hard "painted edge" under the action buttons */
-  --cta-edge-hover: #6A1D0C;/* the same edge on mouse hover */
+  --cta-edge: #98301A;       /* border and hard edge under the action buttons (was #7E2410) */
+  --cta-edge-hover: #82280F; /* the same edge on mouse hover */
   --cta-tint: #F8E7DD;      /* "Special" price row background */
   --label: #B5330F;         /* printed section labels and price-list group names on light: 5.0:1 on cream */
 
@@ -1467,25 +1473,25 @@ html:not(.js) .tabs__list { display: none; }
   --logo-dot: var(--cta);     /* small dot at the logo's top right */
 
   /* Photo fallbacks (shown only while a photo loads or if it fails) */
-  --tint-brand-1: #E7EFE3;  /* brand tint, light (service card / How-it-works photo boxes) */
-  --tint-brand-2: #D3E2CF;  /* brand tint, dark */
+  --tint-brand-1: #E4ECF4;   /* brand tint, light (service card / How-it-works photo boxes) */
+  --tint-brand-2: #CEDCEB;   /* brand tint, dark */
   --tint-paper-1: #F3EAD6;  /* paper tint, light */
   --tint-paper-2: #E8D9B6;  /* paper tint, dark */
   --tint-cta-1: #F6E0D5;    /* brick tint, light */
   --tint-cta-2: #EFC9B6;    /* brick tint, dark */
 
   /* Hard "sign-board" shadows and see-through edges */
-  --shadow: 3px 4px 0 rgba(20, 40, 30, .11);        /* cards */
-  --shadow-lg: 5px 7px 0 rgba(20, 40, 30, .17);     /* framed cards: hours, form, price boards, Wash & Fold */
-  --shadow-hover: 5px 8px 0 rgba(20, 40, 30, .14);  /* cards lifting on mouse hover */
-  --shadow-featured: 6px 8px 0 rgba(194, 58, 28, .22); /* featured price board (brick tinted) */
-  --shadow-num: 2px 3px 0 rgba(10, 43, 30, .25);    /* How-it-works step numbers */
-  --menu-shadow: 0 24px 40px rgba(20, 40, 30, .14); /* phone menu panel */
-  --edge-brand: rgba(14, 82, 54, .28);       /* edge under outline buttons on paper */
-  --edge-brand-soft: rgba(14, 82, 54, .25);  /* edge under the light review arrow */
-  --rule-brand: rgba(14, 82, 54, .45);       /* dotted line between the How-it-works steps */
-  --chip-line: rgba(32, 40, 30, .5);         /* hero chip border */
-  --hours-line: rgba(246, 231, 198, .35);    /* rim of the hours box on the booking band */
+  --shadow: 3px 4px 0 rgba(58, 100, 150, .13); /* cards */
+  --shadow-lg: 5px 7px 0 rgba(58, 100, 150, .18); /* framed cards: hours, form, price boards, Wash & Fold */
+  --shadow-hover: 5px 8px 0 rgba(58, 100, 150, .16); /* cards lifting on mouse hover */
+  --shadow-featured: 6px 8px 0 rgba(24, 52, 90, .3); /* featured price board: it sits on the denim band, where a brick or light-blue tint disappears */
+  --shadow-num: 2px 3px 0 rgba(58, 100, 150, .3); /* How-it-works step numbers */
+  --menu-shadow: 0 24px 40px rgba(46, 82, 126, .14); /* phone menu panel */
+  --edge-brand: rgba(58, 100, 150, .3); /* edge under outline buttons on paper */
+  --edge-brand-soft: rgba(58, 100, 150, .26); /* edge under the light review arrow */
+  --rule-brand: rgba(58, 100, 150, .5); /* dotted line between the How-it-works steps */
+  --chip-line: rgba(29, 39, 51, .35); /* hero chip border */
+  --hours-line: rgba(255, 240, 205, .4); /* rim of the hours box on the booking band */
 
   /* Paper grain: the design's speckle (its 5% multiply overlay, without the
      overlay's flat 2.5% darkening), laid over section backgrounds as a layer */
@@ -1497,6 +1503,7 @@ html:not(.js) .tabs__list { display: none; }
   --pill: 8px;              /* no full pills: tags and slab buttons */
   --font: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --logo-disc-footer: #4A74A6; /* footer logo badge: a lighter denim so it stands off the footer (1.65:1; C's green had 1.5:1); cream star on it 3.95:1 */
 }
 
 /* 2. Paper base and grain
@@ -1569,7 +1576,7 @@ h1, h2, h3 {
 }
 .btn--call { border-radius: var(--pill); }
 
-/* 7. Hero: washer photo / video full-bleed under a brand overlay, mustard
+/* 7. Hero: washer photo / video full-bleed under a brand overlay, sunflower
    spark, wavy underline under the headline. No floating cards.
    -------------------------------------------------------------------------- */
 .hero__bg::after {
@@ -1625,7 +1632,7 @@ h1, h2, h3 {
   color: var(--blue);
 }
 
-/* 9. Stats band: flat brand field, mustard figures
+/* 9. Stats band: flat brand field, sunflower figures
    -------------------------------------------------------------------------- */
 .stat__value {
   color: var(--amber);
@@ -1695,7 +1702,7 @@ h1, h2, h3 {
   transform: translate(-50%, -55%) rotate(-3deg);
 }
 
-/* 13. Reviews: flat cards, brand / mustard / brick avatars, slab arrows
+/* 13. Reviews: flat cards, brand / sunflower / brick avatars, slab arrows
    -------------------------------------------------------------------------- */
 .review-card { border: 1.5px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
 .avatar {
@@ -1743,7 +1750,7 @@ h1, h2, h3 {
 .faq { border: 1.5px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
 .faq summary, .faq summary:focus-visible { border-radius: var(--radius); }
 
-/* 16. Footer: deep signboard with a mustard top rule
+/* 16. Footer: deep signboard with a sunflower top rule
    -------------------------------------------------------------------------- */
 .site-footer { background: var(--grain), var(--navy); border-top: 3px solid var(--amber); }
 
@@ -1793,3 +1800,17 @@ h1, h2, h3 {
   .circle-btn--light:hover:not(:disabled) { background: var(--blue-soft); }
   .tabs__tab:hover:not([aria-selected="true"]) { border-color: var(--blue); color: var(--blue); }
 }
+
+/* Rules the blue palette needs (a token cannot reach them)
+   -------------------------------------------------------------------------- */
+/* Hero lead: 88% white in site.css. Full white lets the hero overlay sit
+   lighter while the lead keeps >= 6:1 (at 88% it would be ~5.4:1). */
+.hero__lead { color: #fff; }
+/* Small white notes on the bands and in the hero: 76-78% white in
+   site.css; 86% gives them margin (stat notes 5.3:1 on --band-1, hero
+   checklist notes >= 5.4:1 over every frame). */
+.stat__note, .checklist small { color: rgba(255, 255, 255, .86); }
+/* Rating stars on paper: deeper gold (sunflower is 1.4:1 on paper) */
+.stars__fill { color: var(--amber-dark); }
+/* Footer logo badge: the brand disc is only 1.3:1 against the footer */
+.site-footer .brand__disc { fill: var(--logo-disc-footer); }

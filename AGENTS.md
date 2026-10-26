@@ -104,40 +104,42 @@ only with new confirmation from MT.
   price list), `contact.html` (hours, map, pickup request). `about.html` and
   `service.html` are tiny `noindex` redirects to `index.html#about` and
   `index.html#services`, kept so old links and Google results still work.
-- **Styles:** `css/site.css` only. Look: "fresh linen & colour-block"
-  (design B, chosen by the site owner on Oct 25, 2026). The file has two
-  parts: sections 1–21 are the layout (grid, spacing, components), and the
-  final part, "Direction B" (from the `@font-face` rules to the end), sets
-  the look and overrides the older colour values above it. Change colours,
-  fonts and surfaces in that final part; its `:root` holds the real tokens:
-  `--bg` `#F3EEE4` (linen), `--card` `#FFFCF5` (paper), `--blue` `#2F4770`
-  ("steel denim": hero, stats band, footer, featured price card, page
-  heroes, store-hours card, logo disc, links and icons), `--navy` `#15233C`
-  (night navy: pricing and booking bands, footer logo disc), `--ink`
-  `#141B2C` (headings, borders, button labels), `--text` `#384152`,
-  `--muted` `#565F72`, and `--cta` `#FFC83D` (sun yellow: the ONLY filled
-  button colour and the star; never text, never a background block). The
-  blues were toned down on Oct 26, 2026 because MT found the original cobalt
-  `#2A38C8` "too blue, too saturated"; they match the calm steel and navy
-  blues of a laundry-equipment flyer she likes. Don't bring back a bright,
-  saturated blue without asking.
-  Yellow buttons keep their 2px ink border and the ink "sticker" edge below
-  them. No soft shadows: hairlines, ink rules and hard ink offsets only. Light
-  sections, cobalt blocks and the footer carry a faint grain (an inline PNG
-  in the `--grain` token); cards and fields don't. Hero: on tablets and
-  desktop a flat cobalt block with the washer photo/video untinted in a round
-  "porthole" with a paper rim and the round "4.2 on Google" sticker. Keep the
-  porthole's crop: it is the zoomed-out framing the site owner chose (the
-  window shows 86% of the frame's height, centred on the drum). On phones
-  the photo/video sits full-bleed behind the text, printed in cobalt with
-  `mix-blend-mode: multiply`, so text never gets less contrast than on flat
-  cobalt. Every `:hover` rule
+- **Styles:** `css/site.css` only. Look: design C, "neighbourhood signage",
+  in soft denim blue (chosen by the site owner on Oct 26, 2026). The file has
+  two parts: sections 1–21 are the layout (grid, spacing, components), and
+  the final part, section 22 "Direction C" (from its `@font-face` rules to the
+  end), sets the look and overrides the older colour values above it. Every
+  colour is a token in section 22's `:root` (commented with what it colours
+  and its contrast), so recolouring means changing those tokens only; a short
+  block at the very end holds the few rules a token can't reach. Main tokens:
+  `--bg` `#F1E8D6` (cream) and `--card` `#FBF6EB` (paper, also the header and
+  theme-color), `--blue` `#3A6496` (soft denim: links, icons, rings, step
+  numbers, secondary buttons, logo disc), `--band-1/2/3` `#386092` →
+  `#305583` (stats, pricing and booking bands, page heroes), `--navy`
+  `#2E527E` (footer), `--hero-shade-*` (the hero overlay), `--cta` `#C23A1C`
+  (brick red: the ONLY action colour, white label, `--cta-edge` painted edge),
+  `--amber` `#FFCD4A` (sunflower spark: chip, kicker, checks, stat figures,
+  stamps), `--aqua` `#F9DC8A` (pale butter labels and the wavy underline on
+  blue), `--ink` `#1D2733`, `--text` `#3A4553`, `--muted` `#5B6573`. History
+  of the blue: cobalt `#2A38C8` was "too blue, too saturated" (MT), the steel
+  `#2F4770` / navy `#15233C` that followed was "so dark"; denim is the
+  answer to both, so keep the blue light and calm and don't bring back
+  near-black bands or heavy dark shadows. Shadows are hard offsets tinted in
+  light denim. Hero: the washer photo/video full-bleed under a directional
+  denim overlay (deep under the text, a light 22% veil on the right so the
+  washer shows); on phones an even overlay. No floating cards in the hero:
+  the site owner asked to remove the Google rating, the $1.80/lb badge and
+  the address boxes there (the reviews section and the rest of the page
+  still carry them). Section labels (small uppercase eyebrows) sit above
+  every section heading. A faint grain sits on section backgrounds (an
+  inline PNG in the `--grain` token). Every `:hover` rule
   must sit inside `@media (hover: hover) and (pointer: fine)` so taps on phones
   don't leave stuck colours; presses use `:active`.
-- **Fonts:** self-hosted in `fonts/` (Bricolage Grotesque for headings, prices
-  and figures; Hanken Grotesk for everything else), latin subsets from
-  `@fontsource-variable` 5.3.0, SIL OFL 1.1 (licences next to the files).
-  Both are preloaded in each page `<head>`; no Google Fonts.
+- **Fonts:** self-hosted in `fonts/` (Fraunces for headings, prices and
+  figures, variable with opsz/SOFT/WONK/wght axes; Hanken Grotesk for
+  everything else), latin subsets from `@fontsource-variable`, SIL OFL 1.1
+  (licences next to the files). Both are preloaded in each page `<head>`;
+  no Google Fonts.
 - **Script:** `js/site.js` (no dependencies): mobile menu, sticky-header shadow,
   pricing tabs, reviews prev/next, and the pickup form, which opens the
   customer's email app with a pre-filled message to the shop email. Everything
@@ -156,10 +158,11 @@ only with new confirmation from MT.
   - The hero video only loads after the page, never with reduced motion or Data
     Saver, pauses off-screen, and has a pause button (`js/site.js` §6). The
     still photo is the first paint and the fallback.
-  - Icons are inline SVG. The logo is a porthole (steel `#2F4770` disc,
-    sun-yellow `#FFC83D` star; a night-ink disc in the footer, set in CSS)
-    drawn inline on every page; the favicon is the same mark as an inline SVG
-    data URL on all five pages.
+  - Icons are inline SVG. The logo is a round badge (denim `#3A6496` disc,
+    cream star, small brick dot; a lighter denim disc in the footer, set in
+    CSS) drawn inline on every page; the favicon is the same mark as an
+    inline SVG data URL on all five pages (its fills are hard-coded: change
+    them with the tokens).
 - **Repeated on every page:** the header (logo, nav, Call button) and the footer
   (contact details, hours, quick links). Edit all three content pages (and the
   two redirects' `<head>` if titles change) when you change them.
@@ -251,14 +254,14 @@ same `SKILL.md` files as guides. They are advice for the agent, not part of the
 website, and `.vercelignore` keeps `.claude/` off the live site. The business
 facts in this file always win over a design suggestion.
 
-## Status (as of 2026-10-26)
+## Status (as of 2026-10-26, later)
 
 - Live on `main` (old template site): correct prices, delivery rules, email,
   hours, Alterations and ATM, real Google reviews, SEO tags and JSON-LD.
 - **New site built, not live:** a full rebuild (phone-first, SEO + AI-search
-  work, AI photos and a hero video, design B "fresh linen & colour-block") is
-  on branch `redesign`, waiting for the site owner to check the Vercel
-  preview. See the last Session log entry.
+  work, AI photos and a hero video, design C "neighbourhood signage" in soft
+  denim blue) is on branch `redesign`, waiting for MT and the site owner to
+  check the Vercel preview. See the last Session log entry.
 - Branch `mobile-fixes` (phone fixes to the old site) is superseded by
   `redesign`; don't merge both.
 - Branch `preview-cobalt` (the design B mock-up) is obsolete now that B is
@@ -549,3 +552,39 @@ merged/live), and what is next.
     not live.
   - Next: MT and the site owner review the new blue on a phone (item 8);
     then merge `redesign` into `main` when they say go live.
+- **2026-10-26 (later), Claude Code.**
+  - MT and the site owner found the steel version "so dark" (they also
+    blamed the dark button and band shadows), asked for a lighter blue, and
+    picked design C ("neighbourhood signage", the third mock-up from Oct 24)
+    with "the same effect" but blue instead of green, and without the three
+    floating hero boxes (Google rating, $1.80/lb, address).
+  - Multi-agent workflow, part 1 (port, commit e2fe709): design C's mock-up
+    stylesheet ported into `css/site.css` section 22, replacing design B's
+    layer and its porthole hero; every colour made a token (checked with a
+    recolour test); C's fixed full-page grain overlay replaced by grain on
+    section backgrounds; hero floating cards removed from `index.html`;
+    section labels restored above Why us, Services and FAQ; logo rebuilt as
+    disc + star + brick dot; Fraunces added and Bricolage removed (fonts and
+    licences); theme-color `#FBF6EB` (also in `tools/seo/build_seo.py`);
+    `tools/seo/verify_seo.js` checks Fraunces + Hanken.
+  - Part 2 (a container restart lost the first run; restarted from the
+    port): 3 lighter blues for C (clear mid blue, soft denim, sky + harbour),
+    2 judges (MT's view, designer's view): denim 66, clear 59.5, sky 58.5;
+    the winner refined with the judges' tweaks: lighter right side of the
+    hero overlay, 86% white small notes, gold rating stars on paper, a
+    lighter footer logo disc. Mustard became sunflower `#FFCD4A` because
+    mustard can't reach the contrast floor on a lighter blue.
+  - Verified in Chromium: the repo build matches the approved mock-up pixel
+    for pixel at 1440 and 390 on all 3 pages; 0 contrast failures; white
+    hero lead >= 6.1:1 over the still photo and 5 video frames at 320-1440 px
+    (kicker >= 4.6, notes >= 5.4); no sideways scroll 280-1440 px; every
+    :hover gated; tags balanced; 101 SEO checks pass; stale-value check
+    clean.
+  - Where: branch `redesign`, pushed; preview at
+    `sscoinlaundry-git-redesign-iphaminhs-projects.vercel.app`. Not merged,
+    not live.
+  - Next: MT and the site owner review the denim on a phone (item 8). If
+    they call it greyish, a slightly bluer variant was tested (brand
+    `#34649C`, bands `#326098` → `#26548C`); if still dark, the kicker can go
+    pale butter and the hero overlay drop to .88. Then merge `redesign` into
+    `main` when they say go live.
