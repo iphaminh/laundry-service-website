@@ -110,12 +110,17 @@ only with new confirmation from MT.
   final part, "Direction B" (from the `@font-face` rules to the end), sets
   the look and overrides the older colour values above it. Change colours,
   fonts and surfaces in that final part; its `:root` holds the real tokens:
-  `--bg` `#F3EEE4` (linen), `--card` `#FFFCF5` (paper), `--blue` `#2A38C8`
-  (cobalt "laundry bluing": hero, stats band, footer, featured price card),
-  `--navy` `#14162B` (night ink: pricing and booking bands, footer logo
-  disc), `--ink` `#14162B` (headings, borders, button labels), `--text`
-  `#3A3C52`, `--muted` `#5B5D72`, and `--cta` `#FFC83D` (sun yellow: the ONLY
-  filled button colour and the star; never text, never a background block).
+  `--bg` `#F3EEE4` (linen), `--card` `#FFFCF5` (paper), `--blue` `#2F4770`
+  ("steel denim": hero, stats band, footer, featured price card, page
+  heroes, store-hours card, logo disc, links and icons), `--navy` `#15233C`
+  (night navy: pricing and booking bands, footer logo disc), `--ink`
+  `#141B2C` (headings, borders, button labels), `--text` `#384152`,
+  `--muted` `#565F72`, and `--cta` `#FFC83D` (sun yellow: the ONLY filled
+  button colour and the star; never text, never a background block). The
+  blues were toned down on Oct 26, 2026 because MT found the original cobalt
+  `#2A38C8` "too blue, too saturated"; they match the calm steel and navy
+  blues of a laundry-equipment flyer she likes. Don't bring back a bright,
+  saturated blue without asking.
   Yellow buttons keep their 2px ink border and the ink "sticker" edge below
   them. No soft shadows: hairlines, ink rules and hard ink offsets only. Light
   sections, cobalt blocks and the footer carry a faint grain (an inline PNG
@@ -151,7 +156,7 @@ only with new confirmation from MT.
   - The hero video only loads after the page, never with reduced motion or Data
     Saver, pauses off-screen, and has a pause button (`js/site.js` §6). The
     still photo is the first paint and the fallback.
-  - Icons are inline SVG. The logo is a porthole (cobalt `#2A38C8` disc,
+  - Icons are inline SVG. The logo is a porthole (steel `#2F4770` disc,
     sun-yellow `#FFC83D` star; a night-ink disc in the footer, set in CSS)
     drawn inline on every page; the favicon is the same mark as an inline SVG
     data URL on all five pages.
@@ -246,7 +251,7 @@ same `SKILL.md` files as guides. They are advice for the agent, not part of the
 website, and `.vercelignore` keeps `.claude/` off the live site. The business
 facts in this file always win over a design suggestion.
 
-## Status (as of 2026-10-25)
+## Status (as of 2026-10-26)
 
 - Live on `main` (old template site): correct prices, delivery rules, email,
   hours, Alterations and ATM, real Google reviews, SEO tags and JSON-LD.
@@ -518,3 +523,29 @@ merged/live), and what is next.
     container (its proxy blocks vercel.app); the site owner checks in a private
     window.
   - Next: same as the previous entry.
+- **2026-10-26, Claude Code.**
+  - MT said the blue was too strong ("too blue, too saturated") and sent a
+    flyer (Onward Commercial Laundry's 2026 Investor Seminar) with the blues
+    she likes: calm steel and deep navy, hue ~215-224, much less saturated.
+  - Multi-agent workflow: 3 palettes rendered on the real pages (steel denim,
+    deep navy, flyer-style gradient), 2 judges (MT's view, designer's view):
+    steel 66.5, flyer gradient 62.5, navy 60; then the winner was refined
+    with the judges' tweaks.
+  - `css/site.css` section 22 tokens: `--blue #2F4770` (was cobalt
+    `#2A38C8`), `--blue-dark #24395B`, `--blue-soft #E1EAEF`, `--aqua
+    #D3E2EA`, `--navy #15233C`, `--navy-deep #0E1A2E`, `--navy-mid #1A2B48`,
+    `--ink #141B2C`, `--text #384152`, `--muted #565F72`; ink hairlines
+    `rgba(20, 27, 44, a)`; booking band print in the new navies; field
+    border `#878E9C`; secondary white text on steel 90% (keeps ~7:1 on the
+    grain); white focus rings on the page heroes, store-hours card and stats
+    band. Logo disc and favicon `#2F4770` on all 5 pages. Flat colours only:
+    the flyer's gradient was judged a step back to a template look.
+  - Verified in Chromium: 0 contrast failures (white on steel 9.3:1, 8.2 on
+    the grain's light specks; yellow on steel 6.0:1); the build matches the
+    approved mock-up pixel for pixel; no sideways scroll 280-1440 px; 101 SEO
+    checks pass; stale-value check clean.
+  - Where: branch `redesign`, pushed; preview at
+    `sscoinlaundry-git-redesign-iphaminhs-projects.vercel.app`. Not merged,
+    not live.
+  - Next: MT and the site owner review the new blue on a phone (item 8);
+    then merge `redesign` into `main` when they say go live.
