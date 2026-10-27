@@ -254,18 +254,16 @@ same `SKILL.md` files as guides. They are advice for the agent, not part of the
 website, and `.vercelignore` keeps `.claude/` off the live site. The business
 facts in this file always win over a design suggestion.
 
-## Status (as of 2026-10-26, later)
+## Status (as of 2026-10-27)
 
-- Live on `main` (old template site): correct prices, delivery rules, email,
-  hours, Alterations and ATM, real Google reviews, SEO tags and JSON-LD.
-- **New site built, not live:** a full rebuild (phone-first, SEO + AI-search
-  work, AI photos and a hero video, design C "neighbourhood signage" in soft
-  denim blue) is on branch `redesign`, waiting for MT and the site owner to
-  check the Vercel preview. See the last Session log entry.
-- Branch `mobile-fixes` (phone fixes to the old site) is superseded by
-  `redesign`; don't merge both.
-- Branch `preview-cobalt` (the design B mock-up) is obsolete now that B is
-  built properly on `redesign`. Never merge it; it can be deleted.
+- **Live on `main` since 2026-10-27:** the full rebuild (phone-first, SEO +
+  AI-search work, AI photos and a hero video, design C "neighbourhood
+  signage" in soft denim blue), merged from `redesign` by fast-forward at the
+  site owner's "go live". The old template site is gone from `main` (it is
+  still in git history, last commit `1439384`).
+- Branches `redesign` (now identical to `main`), `mobile-fixes` (superseded)
+  and `preview-cobalt` (obsolete mock-up) can be deleted; ask the site owner
+  first. Never merge `mobile-fixes` or `preview-cobalt`.
 - Ownership: the repo, the Vercel project and the `.vercel.app` addresses all
   belong to the site owner. The previous maintainer's Vercel project is deleted.
 
@@ -588,3 +586,23 @@ merged/live), and what is next.
     `#34649C`, bands `#326098` → `#26548C`); if still dark, the kicker can go
     pale butter and the hero overlay drop to .88. Then merge `redesign` into
     `main` when they say go live.
+- **2026-10-27, Claude Code.**
+  - The site owner asked for before/after pictures of the old live site
+    against the new design, then said "go live". Merged `redesign` into
+    `main` by fast-forward (48bbb31 plus this log entry), so every push to
+    `main` deployed the new site to production
+    (https://sscoinlaundry.vercel.app).
+  - Domains: `southernstarlaundry.com` and `southernstarlaundry.ca` are both
+    available. Vercel quotes for 3 years: .com $33.75, .ca $50.97 (USD, before
+    tax, auto-renew on, non-refundable). The site owner chose Vercel for both
+    for 3 years, but nothing is bought yet: the registrant (a real person; for
+    .ca a Canadian citizen, permanent resident or corporation, postal code
+    with a space) must come from MT through the site owner, and a fresh quote
+    (valid 5 minutes) plus "confirm" is needed. Never write those details
+    here: the repo is public.
+  - Next: (1) check the live site on a phone (item 8); (2) buy the domains
+    when the registrant details arrive, then add both to the Vercel project
+    with `.com` primary and 308 redirects from `.ca`, `www`,
+    `sscoinlaundry.vercel.app` and `southern-star-coin-laundry.vercel.app`,
+    change `SITE` in `tools/seo/build_seo.py`, re-run it, submit
+    `sitemap.xml` (open item 1); (3) item 5 (Google listing, directories).
