@@ -272,9 +272,10 @@ facts in this file always win over a design suggestion.
 1. **Domain (in progress).** MT chose `southernstarlaundry.com` as the main domain.
    Plan: also buy `southernstarlaundry.ca` and 308-redirect it to `.com`. Both were
    available at Vercel for $11.25 and $16.99 USD/year (Oct 2026).
-   - **Decision pending:** buy on Vercel (billed to the Vercel team's default card,
-     renewals included) or in MT's own Namecheap account with her card
-     (recommended, so she owns and pays for the domains). If Namecheap, set its
+   - **Decided 2026-10-27:** MT pays with her own card and owns the domains, so
+     she buys them herself at a registrar in her own account (Namecheap
+     suggested; not bought yet). Do NOT buy them on the Vercel team's card. Ask
+     her to turn on auto-renew and use an email she checks. If Namecheap, set its
      nameservers to `ns1.vercel-dns.com` and `ns2.vercel-dns.com` so DNS is
      managed in Vercel.
    - **After purchase:**
@@ -606,3 +607,12 @@ merged/live), and what is next.
     `sscoinlaundry.vercel.app` and `southern-star-coin-laundry.vercel.app`,
     change `SITE` in `tools/seo/build_seo.py`, re-run it, submit
     `sitemap.xml` (open item 1); (3) item 5 (Google listing, directories).
+- **2026-10-27 (later), Claude Code.**
+  - The site owner said MT wants to pay for the domains with her own card, so
+    the plan moved from "buy on Vercel" to "MT buys at her own registrar, then
+    points the nameservers at Vercel". Nothing bought; no card or personal
+    details were given to the agent. Open item 1 updated.
+  - Next: when MT has bought `southernstarlaundry.com` and `.ca` and set the
+    nameservers to `ns1.vercel-dns.com` / `ns2.vercel-dns.com`, add both to the
+    Vercel project, make `.com` primary, set up the 308 redirects, update
+    `SITE` in `tools/seo/build_seo.py` and re-run it (open item 1).
