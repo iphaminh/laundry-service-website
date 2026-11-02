@@ -55,8 +55,9 @@ is ever brought back, its credit must come back with it.
 | Production branch | `main`. Every push to `main` deploys to production automatically. Branches get Vercel preview deployments. |
 | Vercel team | "iphaminh's projects" (Pro), team id `team_hiD7sIxXqfuItkb733M7Df9A` |
 | Vercel project | `sscoinlaundry`, project id `prj_eHs2iNMqaPTQRRnhCHc1OpoAdAqy`, framework preset "Other", root `./` |
-| Live URL (current primary) | https://sscoinlaundry.vercel.app |
-| Other addresses | `southern-star-coin-laundry.vercel.app` 308-redirects to the primary. `sscoinlaundry-theta.vercel.app` is Vercel's auto-assigned alias and can't be removed. |
+| Live URL (primary, since 2026-11-02) | https://southernstarlaundry.com |
+| Other addresses | `www.southernstarlaundry.com`, `southernstarlaundry.ca` and `www.southernstarlaundry.ca` 308-redirect to the primary (Vercel project-domain redirects). `sscoinlaundry.vercel.app` and `sscoinlaundry-theta.vercel.app` 308-redirect to it through host rules in `vercel.json`. `southern-star-coin-laundry.vercel.app` still has a project-domain redirect to `sscoinlaundry.vercel.app`, so it takes two hops; the site owner can point it straight at the .com in Vercel → Project → Settings → Domains (the MCP tools can't edit an existing project domain). |
+| Domains | `southernstarlaundry.com` and `.ca`, registered at **Porkbun** in MT's own account, paid with her card, 5 years (to Nov 2031), auto-renew on. **DNS is Porkbun's** (Porkbun nameservers): apex A `216.150.1.1` + `216.150.16.1`, `www` CNAME `cname.vercel-dns.com`. On the .com Porkbun's 2 MX + SPF records (free email forwarding) and 2 old `_acme-challenge` TXT records stay. Vercel's own DNS was tried first and never created a zone for these external domains (`invalid_zone`), so don't switch the nameservers to Vercel. |
 
 - Do **not** create another Vercel project for this repo. One already exists.
 - Deployment Protection (Vercel Authentication) is **off** since Oct 25, 2026,
@@ -70,8 +71,8 @@ is ever brought back, its credit must come back with it.
   commit one.
 - `.vercelignore` keeps `AGENTS.md`, `CLAUDE.md`, `.claude/` and `tools/` off the
   live site.
-- The `.vercel.app` addresses are what customers and the Google listing use today.
-  Keep them working.
+- The old `.vercel.app` addresses must keep redirecting (old links, the Google listing
+  until the site owner updates it). Never delete `vercel.json`'s host redirects.
 - The old remote branch `midfall-theme` is already merged into `main`. It's safe
   to ignore or delete.
 
@@ -254,7 +255,7 @@ same `SKILL.md` files as guides. They are advice for the agent, not part of the
 website, and `.vercelignore` keeps `.claude/` off the live site. The business
 facts in this file always win over a design suggestion.
 
-## Status (as of 2026-10-27)
+## Status (as of 2026-11-02)
 
 - **Live on `main` since 2026-10-27:** the full rebuild (phone-first, SEO +
   AI-search work, AI photos and a hero video, design C "neighbourhood
@@ -269,24 +270,16 @@ facts in this file always win over a design suggestion.
 
 ## Open items
 
-1. **Domain (in progress).** MT chose `southernstarlaundry.com` as the main domain.
-   Plan: also buy `southernstarlaundry.ca` and 308-redirect it to `.com`. Both were
-   available at Vercel for $11.25 and $16.99 USD/year (Oct 2026).
-   - **Decided 2026-10-27:** MT pays with her own card and owns the domains, so
-     she buys them herself at a registrar in her own account (Namecheap
-     suggested; not bought yet). Do NOT buy them on the Vercel team's card. Ask
-     her to turn on auto-renew and use an email she checks. If Namecheap, set its
-     nameservers to `ns1.vercel-dns.com` and `ns2.vercel-dns.com` so DNS is
-     managed in Vercel.
-   - **After purchase:**
-     - add both domains to the Vercel project and make `.com` the primary
-     - 308-redirect `.ca`, `www.southernstarlaundry.com`, `sscoinlaundry.vercel.app`
-       **and** `southern-star-coin-laundry.vercel.app` straight to the `.com`, so no
-       address goes through two redirects
-     - change `SITE` in `tools/seo/build_seo.py` and re-run it (updates
-       canonical, og:url, JSON-LD, sitemap, robots and llms.txt)
-     - submit `sitemap.xml` in Google Search Console and Bing Webmaster Tools
-     - the site owner updates the website link on MT's Google Business Profile
+1. **Domain (done 2026-11-02, two follow-ups).** `southernstarlaundry.com` is the
+   primary address; see "Hosting and deployment". Still to do:
+   - submit `https://southernstarlaundry.com/sitemap.xml` in Google Search Console and
+     Bing Webmaster Tools (the site owner signs in; verify with a DNS TXT record at
+     Porkbun)
+   - the site owner updates the website link on MT's Google Business Profile to
+     `https://southernstarlaundry.com`
+   - optional: point `southern-star-coin-laundry.vercel.app` straight at the .com in
+     the Vercel dashboard (one hop instead of two)
+   - MT checks the shop Gmail for the `.ca` (CIRA) registrant-agreement email
 2. **Waiting on MT:**
    - self-serve washer and dryer prices (to add a price list)
    - the same-day add-on price
@@ -300,9 +293,12 @@ facts in this file always win over a design suggestion.
 3. **MT's Google listing:** shorten the business name to just "Southern Star Coin
    Laundry" (Google's rules forbid extra keywords in the name) and list the services
    and categories instead.
-4. **Domain email (later):** for example `info@southernstarlaundry.com`. Vercel does
-   not provide email. Options: Hostinger Email (the site owner has an account),
-   Zoho Mail (free plan), or Google Workspace. Add the MX records in Vercel DNS.
+4. **Domain email (later):** `info@southernstarlaundry.com` through Porkbun's free
+   email forwarding (receive only) to the shop Gmail; its MX and SPF records are
+   already on the .com at Porkbun, so MT only creates the forward in Porkbun's Email
+   Forwarding page. Sending as info@ needs a mailbox (Porkbun $36/yr, Zoho free
+   plan, Hostinger). The site keeps `southernstarcoinlaundry@gmail.com` until MT
+   confirms the new address works.
 5. **Local SEO and AI search:** claim Yelp, Bing Places and Apple Business Connect
    listings; rename the Facebook page and then link it; keep collecting Google
    reviews. Research (Oct 2026) found .ca vs .com barely matters; the Google
@@ -616,3 +612,25 @@ merged/live), and what is next.
     nameservers to `ns1.vercel-dns.com` / `ns2.vercel-dns.com`, add both to the
     Vercel project, make `.com` primary, set up the 308 redirects, update
     `SITE` in `tools/seo/build_seo.py` and re-run it (open item 1).
+- **2026-11-02, Claude Code.**
+  - MT bought `southernstarlaundry.com` and `.ca` at Porkbun (her account, her
+    card, 5 years, auto-renew on). Added both to the Vercel project: the .com
+    as the production domain, `www.southernstarlaundry.com`,
+    `southernstarlaundry.ca` and `www.southernstarlaundry.ca` as 308 redirects
+    to it.
+  - Vercel nameservers didn't work: Vercel never created a DNS zone for the
+    externally registered domains (`zone: false`, `create_record` →
+    `invalid_zone`). Switched to Porkbun DNS instead (the site owner did it):
+    A `216.150.1.1` / `216.150.16.1` and `www` CNAME `cname.vercel-dns.com`.
+    Vercel then verified all four names and issued certificates.
+  - Published the address switch on `main` (commit 4a60d0f plus this log):
+    `SITE` in `tools/seo/build_seo.py` and `verify_seo.js` is now
+    `https://southernstarlaundry.com/`, the SEO build re-run (canonicals,
+    og:url, JSON-LD, sitemap, robots, llms.txt), the redirect pages'
+    canonicals updated, and a new `vercel.json` 308-redirects
+    `sscoinlaundry.vercel.app`, `sscoinlaundry-theta.vercel.app` and
+    `southern-star-coin-laundry.vercel.app` to the .com (host rules). 101 SEO
+    checks pass; stale-value check clean.
+  - Next: open item 1's follow-ups (Search Console, Google listing link,
+    optional one-hop redirect), item 4 (info@ forwarding), item 8 (phone
+    check).
