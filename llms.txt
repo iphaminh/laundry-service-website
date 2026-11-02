@@ -100,7 +100,7 @@ For items not listed, ask in store or call 437-423-3962.
 
 ## Pages
 
-- [Home](https://sscoinlaundry.vercel.app/): services, how pickup & delivery works, prices, reviews, FAQ
-- [Pricing](https://sscoinlaundry.vercel.app/pricing.html): wash & fold and the full dry-cleaning price list
-- [Contact & hours](https://sscoinlaundry.vercel.app/contact.html): address, map, store and attendant hours, pickup request
+- [Home](https://southernstarlaundry.com/): services, how pickup & delivery works, prices, reviews, FAQ
+- [Pricing](https://southernstarlaundry.com/pricing.html): wash & fold and the full dry-cleaning price list
+- [Contact & hours](https://southernstarlaundry.com/contact.html): address, map, store and attendant hours, pickup request
 - [Google Maps listing](https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA): directions and customer reviews

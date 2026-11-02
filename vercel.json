@@ -1,0 +1,23 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "sscoinlaundry\\.vercel\\.app" }],
+      "destination": "https://southernstarlaundry.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "sscoinlaundry-theta\\.vercel\\.app" }],
+      "destination": "https://southernstarlaundry.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "southern-star-coin-laundry\\.vercel\\.app" }],
+      "destination": "https://southernstarlaundry.com/:path*",
+      "permanent": true
+    }
+  ]
+}

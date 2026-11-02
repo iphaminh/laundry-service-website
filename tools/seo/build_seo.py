@@ -3,7 +3,7 @@ import html, json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]  # repo root
-SITE = 'https://sscoinlaundry.vercel.app/'
+SITE = 'https://southernstarlaundry.com/'
 MAPS = 'https://maps.app.goo.gl/hLKiNmSBhVdrMN4HA'
 NAME = 'Southern Star Coin Laundry'
 OG_IMAGE = SITE + 'img/og-cover.jpg'  # 1200×630

@@ -1,6 +1,6 @@
 const { chromium } = require('playwright');
 const BASE = 'http://127.0.0.1:8000/';
-const SITE = 'https://sscoinlaundry.vercel.app/';
+const SITE = 'https://southernstarlaundry.com/';
 const NAME = 'Southern Star Coin Laundry';
 const ADDR = 'Unit 10, 3685 Keele Street, North York, ON M3J 3H6';
 const PHONE = '437-423-3962';
