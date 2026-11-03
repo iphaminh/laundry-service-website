@@ -200,7 +200,9 @@ third-party reviews).
 - The hero paragraph on `index.html` is an "answer-first" summary written to be
   quoted by AI assistants. Keep it factual and about three sentences.
 - `robots.txt` allows all crawlers, AI crawlers included; `sitemap.xml` lists the
-  three indexable pages; `llms.txt` is a plain summary for AI crawlers.
+  three indexable pages; `llms.txt` is a plain summary for AI crawlers. Each
+  sitemap `lastmod` is the page's last commit date (today if it has uncommitted
+  edits), so commit page changes before re-running the build when you can.
 - **Keep them in sync:** run `python3 tools/seo/build_seo.py` after changing the
   FAQ, any price, the hero summary or the address. It regenerates the head tags,
   JSON-LD, sitemap and `llms.txt` from the visible page text and is safe to
@@ -255,7 +257,7 @@ same `SKILL.md` files as guides. They are advice for the agent, not part of the
 website, and `.vercelignore` keeps `.claude/` off the live site. The business
 facts in this file always win over a design suggestion.
 
-## Status (as of 2026-11-02)
+## Status (as of 2026-11-03)
 
 - **Live on `main` since 2026-10-27:** the full rebuild (phone-first, SEO +
   AI-search work, AI photos and a hero video, design C "neighbourhood
@@ -270,11 +272,15 @@ facts in this file always win over a design suggestion.
 
 ## Open items
 
-1. **Domain (done 2026-11-02, two follow-ups).** `southernstarlaundry.com` is the
+1. **Domain (done 2026-11-02, follow-ups).** `southernstarlaundry.com` is the
    primary address; see "Hosting and deployment". Still to do:
-   - submit `https://southernstarlaundry.com/sitemap.xml` in Google Search Console and
-     Bing Webmaster Tools (the site owner signs in; verify with a DNS TXT record at
-     Porkbun)
+   - Google Search Console (steps given to the site owner on 2026-11-03; the
+     site side is ready): sign in with the shop Gmail so MT owns it, add a
+     **Domain** property `southernstarlaundry.com`, add Google's
+     `google-site-verification=…` value at Porkbun as a TXT record with the host
+     left blank (keep every other record), Verify, then submit `sitemap.xml`.
+     The `.ca` needs no property (it redirects). Then Bing Webmaster Tools:
+     sign in and "Import from Google Search Console".
    - the site owner updates the website link on MT's Google Business Profile to
      `https://southernstarlaundry.com`
    - optional: point `southern-star-coin-laundry.vercel.app` straight at the .com in
@@ -293,12 +299,18 @@ facts in this file always win over a design suggestion.
 3. **MT's Google listing:** shorten the business name to just "Southern Star Coin
    Laundry" (Google's rules forbid extra keywords in the name) and list the services
    and categories instead.
-4. **Domain email (later):** `info@southernstarlaundry.com` through Porkbun's free
-   email forwarding (receive only) to the shop Gmail; its MX and SPF records are
-   already on the .com at Porkbun, so MT only creates the forward in Porkbun's Email
-   Forwarding page. Sending as info@ needs a mailbox (Porkbun $36/yr, Zoho free
-   plan, Hostinger). The site keeps `southernstarcoinlaundry@gmail.com` until MT
-   confirms the new address works.
+4. **Domain email (steps given 2026-11-03):** `info@southernstarlaundry.com`
+   through Porkbun's free email forwarding (receive only, up to 20 addresses, no
+   catch-all) to the shop Gmail; its MX and SPF records are already on the .com
+   at Porkbun, so MT or the site owner only creates the forward (Porkbun →
+   Domain Management → the .com → Email Forwarding) and sends a test from
+   another address (check Spam the first time). Replies still come from the
+   Gmail; sending as info@ needs a mailbox (Porkbun $36/yr, Zoho free plan,
+   Hostinger). The site keeps `southernstarcoinlaundry@gmail.com` until the site
+   owner confirms info@ works and asks to switch. Then change it in
+   `index.html`, `pricing.html`, `contact.html` (links, text, footer), `js/site.js`
+   (the pickup form's mailto) and the two places in `tools/seo/build_seo.py`,
+   re-run the build (JSON-LD, `llms.txt`), and update "Confirmed business facts".
 5. **Local SEO and AI search:** claim Yelp, Bing Places and Apple Business Connect
    listings; rename the Facebook page and then link it; keep collecting Google
    reviews. Research (Oct 2026) found .ca vs .com barely matters; the Google
@@ -634,3 +646,20 @@ merged/live), and what is next.
   - Next: open item 1's follow-ups (Search Console, Google listing link,
     optional one-hop redirect), item 4 (info@ forwarding), item 8 (phone
     check).
+- **2026-11-03, Claude Code.**
+  - The site owner confirmed the `.ca` redirects to the .com and asked for the
+    info@ email and everything needed before Google Search Console.
+  - Sitemap `lastmod` was hard-coded to 2026-10-23. `tools/seo/build_seo.py`
+    now takes each page's last commit date from git (today if it has
+    uncommitted edits); the sitemap now says 2026-11-02. Build re-run
+    (idempotent), 101 SEO checks pass, stale-value check clean. Checked the live
+    `robots.txt` (allows all, points at the .com sitemap, served over HTTPS
+    with HSTS). Every page name of the old site (`about`, `service`, `pricing`,
+    `contact`, `index`) still exists, so no old URL 404s.
+  - Gave the site owner the Porkbun email-forward steps and the Search Console /
+    Bing / Google Business Profile steps (open items 1 and 4). Nothing on
+    Porkbun or Google was changed by the agent (no access).
+  - Where: `main`, pushed and live (sitemap change only, no visible change).
+  - Next: when the site owner says info@ works, switch the site's email (open
+    item 4); after Search Console verifies, check the sitemap shows "Success"
+    and nothing in Pages is unexpectedly "not indexed"; then item 5.

@@ -1,5 +1,5 @@
 """Rebuild SEO head tags, JSON-LD, robots.txt, sitemap.xml and llms.txt from the page content."""
-import html, json, re, sys
+import datetime, html, json, re, subprocess, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]  # repo root
@@ -242,10 +242,19 @@ robots.append(f'Sitemap: {SITE}sitemap.xml')
 write('robots.txt', '\n'.join(robots) + '\n')
 
 # ---------- sitemap.xml ----------
-urls = [(SITE, '1.0'), (SITE + 'pricing.html', '0.8'), (SITE + 'contact.html', '0.8')]
+def lastmod(page):
+    """Date the page last changed: today if it has uncommitted edits, else its last commit date."""
+    git = ['git', '-C', str(ROOT)]
+    edited = subprocess.run(git + ['diff', '--quiet', 'HEAD', '--', page]).returncode != 0
+    if not edited:
+        d = subprocess.run(git + ['log', '-1', '--format=%cs', '--', page], capture_output=True, text=True).stdout.strip()
+        if d: return d
+    return datetime.date.today().isoformat()
+
+urls = [(SITE, 'index.html', '1.0'), (SITE + 'pricing.html', 'pricing.html', '0.8'), (SITE + 'contact.html', 'contact.html', '0.8')]
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-for u, p in urls:
-    sm += ['  <url>', f'    <loc>{u}</loc>', '    <lastmod>2026-10-23</lastmod>', f'    <priority>{p}</priority>', '  </url>']
+for u, page, p in urls:
+    sm += ['  <url>', f'    <loc>{u}</loc>', f'    <lastmod>{lastmod(page)}</lastmod>', f'    <priority>{p}</priority>', '  </url>']
 sm.append('</urlset>')
 write('sitemap.xml', '\n'.join(sm) + '\n')
 
